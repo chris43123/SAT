@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47dcc172e4044459b57f5e43f7a4d4d1" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="SATModel.tbAsignaturas" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbCargos" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbCarreraAsignaturas" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbCarreras" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbEmpleadoAsignaturas" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbEmpleados" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbEscuelas" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbGrados" Width="1.5" PointX="9.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbJornadaGrados" Width="1.5" PointX="12" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbJornadas" Width="1.5" PointX="9.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SATModel.tbSecciones" Width="1.5" PointX="14.25" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignatura_asig_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_asig_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_carg_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignatura_car_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarrera_car_Encargado" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_emp_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_esc_Contacto" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_esc_Director" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_grad_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jor_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_Sec_ID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
