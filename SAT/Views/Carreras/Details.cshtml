@@ -1,0 +1,67 @@
+﻿@model SAT.Models.tbCarreras
+
+@{
+    ViewBag.Title = "Detalles de la carrera";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de la carrera</h2>
+
+<div>
+    <h4>tbCarreras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.car_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_UsuarioCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_UsuarioCrea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_FechaCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_FechaCrea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_UsuarioModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_UsuarioModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_FechaModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.car_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEmpleados.emp_Identidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEmpleados.emp_Identidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit",null, new { @class = "btn btn-success",  id = Model.dep_Codigo})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default"})
+</p>
