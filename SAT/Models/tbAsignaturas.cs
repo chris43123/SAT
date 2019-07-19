@@ -24,7 +24,7 @@ namespace SAT.Models
     
         public int asig_Id { get; set; }
         public string asig_Descripcion { get; set; }
-        public Nullable<bool> asig_Semestral { get; set; }
+        public bool asig_Semestral { get; set; }
         public int asig_UsuarioCrea { get; set; }
         public System.DateTime asig_FechaCrea { get; set; }
         public Nullable<int> asig_UsuarioModifica { get; set; }
@@ -36,5 +36,7 @@ namespace SAT.Models
         public virtual ICollection<tbEmpleadoAsignaturas> tbEmpleadoAsignaturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbNotas> tbNotas { get; set; }
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

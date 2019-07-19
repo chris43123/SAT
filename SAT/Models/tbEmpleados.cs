@@ -52,5 +52,7 @@ namespace SAT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEscuelas> tbEscuelas1 { get; set; }
         public virtual tbMunicipios tbMunicipios { get; set; }
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

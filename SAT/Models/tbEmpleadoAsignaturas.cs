@@ -24,5 +24,7 @@ namespace SAT.Models
     
         public virtual tbAsignaturas tbAsignaturas { get; set; }
         public virtual tbEmpleados tbEmpleados { get; set; }
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

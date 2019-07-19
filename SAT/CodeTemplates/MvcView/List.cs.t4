@@ -52,7 +52,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     PushIndent("    ");
 }
 #>
-<table class="table table-striped table-bordered dataTable" id="TableGrid">
+<table class="table table-striped table-bordered dataTable">
 <thead>
 	<tr>
 <#

@@ -178,8 +178,41 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="scripts\build\js\custom.js" />
+    <Content Include="scripts\build\js\custom.min.js" />
     <Content Include="scripts\custom.js" />
     <Content Include="scripts\custom.min.js" />
+    <Content Include="scripts\DataTables.js" />
+    <Content Include="scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="scripts\DataTables\datatables.net-bs\js\dataTables.bootstrap.js" />
+    <Content Include="scripts\DataTables\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.css" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader\js\dataTables.fixedHeader.js" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net-keytable\js\dataTables.keyTable.js" />
+    <Content Include="scripts\DataTables\datatables.net-keytable\js\dataTables.keyTable.min.js" />
+    <Content Include="scripts\DataTables\datatables.net-keytable\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\css\responsive.bootstrap.css" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\css\responsive.bootstrap.min.css" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\js\responsive.bootstrap.js" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net-responsive\js\dataTables.responsive.js" />
+    <Content Include="scripts\DataTables\datatables.net-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="scripts\DataTables\datatables.net-responsive\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net-scroller-bs\css\scroller.bootstrap.css" />
+    <Content Include="scripts\DataTables\datatables.net-scroller-bs\css\scroller.bootstrap.min.css" />
+    <Content Include="scripts\DataTables\datatables.net-scroller-bs\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net-scroller\js\dataTables.scroller.js" />
+    <Content Include="scripts\DataTables\datatables.net-scroller\js\dataTables.scroller.min.js" />
+    <Content Include="scripts\DataTables\datatables.net-scroller\License.txt" />
+    <Content Include="scripts\DataTables\datatables.net\js\jquery.dataTables.js" />
+    <Content Include="scripts\DataTables\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Include="scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="scripts\jquery\dist\jquery.js" />
     <Content Include="scripts\jquery\dist\jquery.min.js" />
     <Content Include="Web.config" />
@@ -225,6 +258,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SATModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
@@ -356,6 +395,27 @@
     <Content Include="Views\Municipios\Details.cshtml" />
     <Content Include="Views\Municipios\Edit.cshtml" />
     <Content Include="Views\Municipios\Index.cshtml" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\Readme.md" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-fixedheader\Readme.md" />
+    <Content Include="scripts\DataTables\datatables.net-keytable\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-keytable\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-keytable\Readme.md" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-responsive-bs\Readme.md" />
+    <Content Include="scripts\DataTables\datatables.net-responsive\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-responsive\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-responsive\Readme.md" />
+    <Content Include="scripts\DataTables\datatables.net-scroller-bs\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-scroller-bs\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-scroller-bs\Readme.md" />
+    <Content Include="scripts\DataTables\datatables.net-scroller\.bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-scroller\bower.json" />
+    <Content Include="scripts\DataTables\datatables.net-scroller\Readme.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

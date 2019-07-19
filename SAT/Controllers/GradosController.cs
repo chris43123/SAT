@@ -13,7 +13,7 @@ namespace SAT.Controllers
     public class GradosController : Controller
     {
         private SATEntities db = new SATEntities();
-
+        
         // GET: Grados
         public ActionResult Index()
         {
