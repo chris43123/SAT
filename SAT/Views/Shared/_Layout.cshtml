@@ -112,5 +112,10 @@
     </div>
     @Scripts.Render("~/scripts/jquery/")
     @Scripts.Render("~/scripts/DataTables")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Tables').DataTable({ "scrollx": true });
+        });
+    </script>
 </body>
 </html>
