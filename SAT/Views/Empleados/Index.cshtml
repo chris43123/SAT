@@ -1,0 +1,116 @@
+﻿@model IEnumerable<SAT.Models.tbEmpleados>
+@{
+    ViewBag.Title = "Listado Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Listado Empleados</h2>
+        <div class="nav navbar-right panel_toolbox">
+            @Html.ActionLink("Registrar Empleado", "Create", null, new { @class = "btn btn-info btn-xs" })
+        </div>
+        <div class="clearfix">	</div>
+    </div>
+    <p>
+
+    </p>
+    <table id="Tables" class="table table-bordered table-striped dataTable ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_Identidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_Nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_Apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_FechaNacimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_Sexo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_Direccion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mun_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_CorreoElectronico)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_FechaIngreso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_FechadeSalida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emp_RazonSalida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tbCargos.carg_Descripcion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_Identidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_FechaNacimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_Sexo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mun_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_CorreoElectronico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_FechaIngreso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_FechadeSalida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emp_RazonSalida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tbCargos.carg_Descripcion)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.emp_Id }, new { @class = "btn btn-success btn-xs" })
+                        @Html.ActionLink("Details", "Details", new { id = item.emp_Id }, new { @class = "btn btn-default btn-xs" })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
