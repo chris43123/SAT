@@ -9,6 +9,15 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", "Create", null, new { @class = "btn btn-info" })
+        </div>
+    }
     <h4>tbCarreras</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -60,14 +69,5 @@
             @Html.DisplayFor(model => model.tbEmpleados.emp_Identidad)
         </dd>
 
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+    </dl>    
 </div>

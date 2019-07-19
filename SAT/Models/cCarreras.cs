@@ -18,11 +18,12 @@ namespace SAT.Models
 
         [Display(Name = "Descripcion")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
+        [MaxLength(100, ErrorMessage = "Ha excedido el numero maximo de caracteres")]
         public string car_Descripcion { get; set; }
 
-        [Display(Name = "Encargado")]
+        [Display(ShortName = "Nombre Encargado")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
-        public int car_Encargado { get; set; }
+        public virtual int car_Encargado { get; set; }
 
         [Display(Name = "Usuario Crea")]
         public int car_UsuarioCrea { get; set; }
@@ -36,5 +37,8 @@ namespace SAT.Models
         [Display(Name = "Fecha Modifica")]
 
         public Nullable<System.DateTime> car_FechaModifica { get; set; }
+
+        public virtual ICollection<tbCarreraAsignaturas> tbCarreraAsignaturas { get; set; }
+        public virtual tbEmpleados tbEmpleados { get; set; }
     }
 }
