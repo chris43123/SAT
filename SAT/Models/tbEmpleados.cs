@@ -11,8 +11,7 @@ namespace SAT.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbEmpleados
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +22,8 @@ namespace SAT.Models
             this.tbEscuelas = new HashSet<tbEscuelas>();
             this.tbEscuelas1 = new HashSet<tbEscuelas>();
         }
-        [Display(Name = "Encargado")]
+    
         public int emp_Id { get; set; }
-        [Display(Name = "Encargado")]
         public string emp_Identidad { get; set; }
         public string emp_Nombres { get; set; }
         public string emp_Apellidos { get; set; }
