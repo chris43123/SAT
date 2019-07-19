@@ -36,5 +36,14 @@ namespace SAT.Models
         public virtual DbSet<tbJornadaGrados> tbJornadaGrados { get; set; }
         public virtual DbSet<tbJornadas> tbJornadas { get; set; }
         public virtual DbSet<tbSecciones> tbSecciones { get; set; }
+        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<tbPagos> tbPagos { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<tbAlumnos> tbAlumnos { get; set; }
+        public virtual DbSet<tbMatriculas> tbMatriculas { get; set; }
+        public virtual DbSet<tbNotaDetalles> tbNotaDetalles { get; set; }
+        public virtual DbSet<tbNotas> tbNotas { get; set; }
+        public virtual DbSet<tbDepartamentos> tbDepartamentos { get; set; }
+        public virtual DbSet<tbMunicipios> tbMunicipios { get; set; }
     }
 }

@@ -29,7 +29,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 	<div class="x_title">
 		<h2><#= ViewName#></h2>
 		<div class="nav navbar-right panel_toolbox">
-			@Html.ActionLink("Regresar", "Index")
+		@Html.ActionLink("Regresar", "Index")
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -84,6 +84,7 @@ if (ReferenceScriptLibraries) {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
@@ -187,13 +188,13 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar" class="btn btn-success" />
-				@Html.ActionLink("Cancelar", "Index", null, new {@class = "btn btn-default"})
+				@Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
+
             </div>
         </div>
     </div>
 }
 </div>
-
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>

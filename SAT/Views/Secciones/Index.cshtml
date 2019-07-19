@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SAT.Models.tbSecciones>
+
+@{
+    ViewBag.Title = "Listado Secciones";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Listado Secciones</h2>
+		<div class="nav navbar-right panel_toolbox">
+			@Html.ActionLink("Resgitra Sección", "Create", null, new {@class ="btn btn-info"})
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<table class="table table-striped table-bordered dataTable" id="TableGrid">
+<thead>
+	<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sec_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbJornadaGrados.jgra_Id)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sec_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbJornadaGrados.jgra_Id)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.sec_Id }, new {@class = "btn btn-default btn-xs"})
+            @Html.ActionLink("Detalle", "Details", new { id=item.sec_Id }, new {@class = "btn btn-default btn-xs"})
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+</div>

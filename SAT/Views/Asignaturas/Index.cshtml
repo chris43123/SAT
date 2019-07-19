@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SAT.Models.tbAsignaturas>
+
+@{
+    ViewBag.Title = "Listado Asignaturas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Listado Asignaturas</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Registrar Asignatura", "Create", null,new{@class="btn btn-info"})
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+
+<table class="table table-striped table-bordered"  id="tlb">
+    <thead><tr>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_Semestral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_UsuarioCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_FechaCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_UsuarioModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_FechaModifica)
+        </th>
+        <th></th>
+    </tr>
+	</thead><tbody>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.asig_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asig_Semestral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asig_UsuarioCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asig_FechaCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asig_UsuarioModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asig_FechaModifica)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.asig_Id },new{@class="btn btn-primary btn-xs"}) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.asig_Id },new{@class="btn btn-default btn-xs"})
+        </td>
+    </tr>
+}
+</tbody>
+
+</table>
+</div>

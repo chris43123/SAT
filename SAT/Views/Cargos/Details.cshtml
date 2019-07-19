@@ -1,15 +1,13 @@
 ﻿@model SAT.Models.tbCargos
 
 @{
-    ViewBag.Title = "Detalles Cargo";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalles </h2>
+<h2>Details</h2>
 
 <div>
-    <h4>Detalles Cargo</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.carg_Descripcion)
@@ -54,6 +52,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit",null, new { @class = "btn btn-success",  id = Model.carg_Id })
-    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-default"})
+    @Html.ActionLink("Editar", "Edit", new { id = Model.carg_Id },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
 </p>

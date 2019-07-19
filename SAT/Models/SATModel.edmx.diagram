@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="47dcc172e4044459b57f5e43f7a4d4d1" Name="Diagram1" ZoomLevel="67">
+      <Diagram DiagramId="bc87709f807d4953bcd462e414147139" Name="Diagram1" ZoomLevel="34">
         <EntityTypeShape EntityType="SATModel.tbAsignaturas" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbCargos" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbCarreraAsignaturas" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
@@ -27,6 +27,35 @@
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_grad_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jor_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_Sec_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SATModel.tbUsuarios" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SATModel.tbPagos" Width="1.5" PointX="19.125" PointY="8.375" />
+        <EntityTypeShape EntityType="SATModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SATModel.tbAlumnos" Width="1.5" PointX="14.625" PointY="6.375" />
+        <EntityTypeShape EntityType="SATModel.tbMatriculas" Width="1.5" PointX="16.875" PointY="3.375" />
+        <EntityTypeShape EntityType="SATModel.tbNotaDetalles" Width="1.5" PointX="21.375" PointY="2" />
+        <EntityTypeShape EntityType="SATModel.tbNotas" Width="1.5" PointX="19.125" PointY="2.5" />
+        <EntityTypeShape EntityType="SATModel.tbDepartamentos" Width="1.5" PointX="1.125" PointY="15.5" />
+        <EntityTypeShape EntityType="SATModel.tbMunicipios" Width="1.5" PointX="1.125" PointY="11.125" />
+        <AssociationConnector Association="SATModel.FK_Cont_tbPagos_mat_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_alu_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_car_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_sec_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_mat_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_asig_Id" />
+        <AssociationConnector Association="SATModel.Fk_Esc_tbMunicipios_constraint" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_mun_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_mun_Id" />
+        <AssociationConnector Association="SATModel.FK_Cont_tbPagos_mat_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_alu_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_car_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_sec_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_mat_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_asig_Id" />
+        <AssociationConnector Association="SATModel.Fk_Esc_tbMunicipios_constraint" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_mun_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_mun_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

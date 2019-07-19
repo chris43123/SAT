@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SAT.Models.tbGrados>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Index</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Registrar Departamento", "Create", null,new{@class="btn btn-info"})
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+
+<table class="table table-striped table-bordered"  id="tlb">
+    <thead><tr>
+        <th>
+            @Html.DisplayNameFor(model => model.grad_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grad_UsuarioCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grad_FechaCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grad_UsuarioModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grad_FechaModifica)
+        </th>
+        <th></th>
+    </tr>
+	</thead><tbody>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.grad_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grad_UsuarioCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grad_FechaCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grad_UsuarioModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.grad_FechaModifica)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.grad_Id },new{@class="btn btn-primary btn-xs"}) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.grad_Id },new{@class="btn btn-default btn-xs"})
+        </td>
+    </tr>
+}
+</tbody>
+
+</table>
+</div>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SAT.Models.tbMunicipios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Index</h2>
+		<div class="nav navbar-right panel_toolbox">
+			@Html.ActionLink("Resgitra departamento", "Create", null, new {@class ="btn btn-info"})
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<table class="table table-striped table-bordered dataTable" id="TableGrid">
+<thead>
+	<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.mun_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mun_UsuarioCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mun_FechaCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mun_UsuarioModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mun_FechaModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbDepartamentos.dep_Descripcion)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.mun_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mun_UsuarioCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mun_FechaCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mun_UsuarioModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mun_FechaModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbDepartamentos.dep_Descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.mun_Id }, new {@class = "btn btn-default btn-xs"})
+            @Html.ActionLink("Detalle", "Details", new { id=item.mun_Id }, new {@class = "btn btn-default btn-xs"})
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+</div>

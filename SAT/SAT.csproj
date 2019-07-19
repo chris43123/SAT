@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6D50F26A-6234-48DF-9DD8-68F6FD4F1094}</ProjectGuid>
+    <ProjectGuid>{172FC3A2-95A0-477C-91DB-8B3729FA1491}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -144,23 +144,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Content\Bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Content\Bootstrap\css\bootstrap.css" />
-    <Content Include="Content\Bootstrap\css\bootstrap.min.css" />
-    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\Bootstrap\js\bootstrap.js" />
-    <Content Include="Content\Bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\Bootstrap\js\npm.js" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\custom.min.css" />
-    <Content Include="Content\DataTables\dataTables.bootstrap4.css" />
-    <Content Include="Content\DataTables\dataTables.bootstrap4.min.css" />
-    <Content Include="Content\font-awesome\css\font-awesome.css" />
-    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
     <Content Include="Models\SATModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SATModel.edmx</DependentUpon>
@@ -171,59 +156,30 @@
       <DependentUpon>SATModel.edmx</DependentUpon>
       <LastGenOutput>SATModel.cs</LastGenOutput>
     </Content>
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Content\Bootstrap\css\bootstrap-theme.css.map" />
-    <Content Include="Content\Bootstrap\css\bootstrap-theme.min.css.map" />
-    <Content Include="Content\Bootstrap\css\bootstrap.css.map" />
-    <Content Include="Content\Bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\font-awesome\css\font-awesome.css.map" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\font-awesome\less\animated.less" />
-    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
-    <Content Include="Content\font-awesome\less\core.less" />
-    <Content Include="Content\font-awesome\less\fixed-width.less" />
-    <Content Include="Content\font-awesome\less\font-awesome.less" />
-    <Content Include="Content\font-awesome\less\icons.less" />
-    <Content Include="Content\font-awesome\less\larger.less" />
-    <Content Include="Content\font-awesome\less\list.less" />
-    <Content Include="Content\font-awesome\less\mixins.less" />
-    <Content Include="Content\font-awesome\less\path.less" />
-    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
-    <Content Include="Content\font-awesome\less\screen-reader.less" />
-    <Content Include="Content\font-awesome\less\stacked.less" />
-    <Content Include="Content\font-awesome\less\variables.less" />
-    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
-    <Content Include="Content\font-awesome\scss\_animated.scss" />
-    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="Content\font-awesome\scss\_core.scss" />
-    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="Content\font-awesome\scss\_icons.scss" />
-    <Content Include="Content\font-awesome\scss\_larger.scss" />
-    <Content Include="Content\font-awesome\scss\_list.scss" />
-    <Content Include="Content\font-awesome\scss\_mixins.scss" />
-    <Content Include="Content\font-awesome\scss\_path.scss" />
-    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="Content\font-awesome\scss\_screen-reader.scss" />
-    <Content Include="Content\font-awesome\scss\_stacked.scss" />
-    <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="scripts\bootstrap-progressbar\bootstrap-progressbar.js" />
     <Content Include="scripts\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\npm.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="scripts\custom.js" />
     <Content Include="scripts\custom.min.js" />
-    <Content Include="scripts\DataTables.js" />
-    <Content Include="scripts\DataTables\dataTables.bootstrap4.js" />
-    <Content Include="scripts\DataTables\dataTables.bootstrap4.min.js" />
-    <Content Include="scripts\DataTables\jquery.dataTables.js" />
-    <Content Include="scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="scripts\jquery\dist\jquery.js" />
     <Content Include="scripts\jquery\dist\jquery.min.js" />
     <Content Include="Web.config" />
@@ -231,16 +187,30 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
+    <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
+    <Compile Include="Controllers\EscuelasController.cs" />
+    <Compile Include="Controllers\GradosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JornadasController.cs" />
+    <Compile Include="Controllers\MunicipiosController.cs" />
+    <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\cAsignaturas.cs" />
     <Compile Include="Models\cCargos.cs" />
     <Compile Include="Models\cCarreras.cs" />
+    <Compile Include="Models\cDepartamentos.cs" />
     <Compile Include="Models\cEmpleados.cs" />
+    <Compile Include="Models\cEscuelas.cs" />
+    <Compile Include="Models\cGrados.cs" />
+    <Compile Include="Models\cJornadas.cs" />
+    <Compile Include="Models\cMunicipios.cs" />
+    <Compile Include="Models\cSecciones.cs" />
     <Compile Include="Models\SATModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -256,6 +226,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbAlumnos.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAsignaturas.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
@@ -266,6 +242,9 @@
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbCarreras.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDepartamentos.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbEmpleadoAsignaturas.cs">
@@ -286,7 +265,25 @@
     <Compile Include="Models\tbJornadas.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbMatriculas.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbMunicipios.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbNotaDetalles.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbNotas.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPagos.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbSecciones.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -316,16 +313,49 @@
     <Content Include="Views\Cargos\Details.cshtml" />
     <Content Include="Views\Cargos\Edit.cshtml" />
     <Content Include="Views\Cargos\Index.cshtml" />
-    <Content Include="Views\Empleados\Create.cshtml" />
-    <Content Include="Views\Empleados\Delete.cshtml" />
-    <Content Include="Views\Empleados\Details.cshtml" />
-    <Content Include="Views\Empleados\Edit.cshtml" />
-    <Content Include="Views\Empleados\Index.cshtml" />
+    <Content Include="Views\Grados\Create.cshtml" />
+    <Content Include="Views\Grados\Details.cshtml" />
+    <Content Include="Views\Grados\Edit.cshtml" />
+    <Content Include="Views\Grados\Index.cshtml" />
+    <Content Include="Views\Asignaturas\Create.cshtml" />
+    <Content Include="Views\Asignaturas\Details.cshtml" />
+    <Content Include="Views\Asignaturas\Edit.cshtml" />
+    <Content Include="Views\Asignaturas\Index.cshtml" />
     <Content Include="Views\Carreras\Create.cshtml" />
     <Content Include="Views\Carreras\Delete.cshtml" />
     <Content Include="Views\Carreras\Details.cshtml" />
     <Content Include="Views\Carreras\Edit.cshtml" />
     <Content Include="Views\Carreras\Index.cshtml" />
+    <Content Include="Views\Departamentos\Create.cshtml" />
+    <Content Include="Views\Departamentos\Delete.cshtml" />
+    <Content Include="Views\Departamentos\Details.cshtml" />
+    <Content Include="Views\Departamentos\Edit.cshtml" />
+    <Content Include="Views\Departamentos\Index.cshtml" />
+    <Content Include="Views\Empleados\Create.cshtml" />
+    <Content Include="Views\Empleados\Delete.cshtml" />
+    <Content Include="Views\Empleados\Details.cshtml" />
+    <Content Include="Views\Empleados\Edit.cshtml" />
+    <Content Include="Views\Empleados\Index.cshtml" />
+    <Content Include="Views\Escuelas\Create.cshtml" />
+    <Content Include="Views\Escuelas\Delete.cshtml" />
+    <Content Include="Views\Escuelas\Details.cshtml" />
+    <Content Include="Views\Escuelas\Edit.cshtml" />
+    <Content Include="Views\Escuelas\Index.cshtml" />
+    <Content Include="Views\Secciones\Create.cshtml" />
+    <Content Include="Views\Secciones\Delete.cshtml" />
+    <Content Include="Views\Secciones\Details.cshtml" />
+    <Content Include="Views\Secciones\Edit.cshtml" />
+    <Content Include="Views\Secciones\Index.cshtml" />
+    <Content Include="Views\Jornadas\Create.cshtml" />
+    <Content Include="Views\Jornadas\Delete.cshtml" />
+    <Content Include="Views\Jornadas\Details.cshtml" />
+    <Content Include="Views\Jornadas\Edit.cshtml" />
+    <Content Include="Views\Jornadas\Index.cshtml" />
+    <Content Include="Views\Municipios\Create.cshtml" />
+    <Content Include="Views\Municipios\Delete.cshtml" />
+    <Content Include="Views\Municipios\Details.cshtml" />
+    <Content Include="Views\Municipios\Edit.cshtml" />
+    <Content Include="Views\Municipios\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -335,6 +365,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\font-awesome\css\" />
+    <Folder Include="Content\font-awesome\fonts\" />
+    <Folder Include="Content\font-awesome\less\" />
+    <Folder Include="Content\font-awesome\scss\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -352,9 +386,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60384</DevelopmentServerPort>
+          <DevelopmentServerPort>54427</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60384/</IISUrl>
+          <IISUrl>http://localhost:54427/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

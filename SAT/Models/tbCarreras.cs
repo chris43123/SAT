@@ -18,6 +18,7 @@ namespace SAT.Models
         public tbCarreras()
         {
             this.tbCarreraAsignaturas = new HashSet<tbCarreraAsignaturas>();
+            this.tbMatriculas = new HashSet<tbMatriculas>();
         }
     
         public int car_Id { get; set; }
@@ -31,5 +32,7 @@ namespace SAT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbCarreraAsignaturas> tbCarreraAsignaturas { get; set; }
         public virtual tbEmpleados tbEmpleados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
     }
 }

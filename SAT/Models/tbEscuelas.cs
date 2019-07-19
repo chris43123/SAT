@@ -29,5 +29,6 @@ namespace SAT.Models
     
         public virtual tbEmpleados tbEmpleados { get; set; }
         public virtual tbEmpleados tbEmpleados1 { get; set; }
+        public virtual tbMunicipios tbMunicipios { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace SAT.Models
         {
             this.tbCarreraAsignaturas = new HashSet<tbCarreraAsignaturas>();
             this.tbEmpleadoAsignaturas = new HashSet<tbEmpleadoAsignaturas>();
+            this.tbNotas = new HashSet<tbNotas>();
         }
     
         public int asig_Id { get; set; }
@@ -33,5 +34,7 @@ namespace SAT.Models
         public virtual ICollection<tbCarreraAsignaturas> tbCarreraAsignaturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEmpleadoAsignaturas> tbEmpleadoAsignaturas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbNotas> tbNotas { get; set; }
     }
 }

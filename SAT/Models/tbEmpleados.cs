@@ -51,5 +51,6 @@ namespace SAT.Models
         public virtual ICollection<tbEscuelas> tbEscuelas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEscuelas> tbEscuelas1 { get; set; }
+        public virtual tbMunicipios tbMunicipios { get; set; }
     }
 }

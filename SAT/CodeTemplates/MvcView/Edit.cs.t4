@@ -25,16 +25,14 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 }
 #>
 }
-
 <div class="x_panel">
 	<div class="x_title">
 		<h2><#= ViewName#></h2>
 		<div class="nav navbar-right panel_toolbox">
-			@Html.ActionLink("Regresar", "Index")
-		</div>
-		<div class="clearfix"></div>
+		@Html.ActionLink("Regresar", "Index")
 	</div>
-
+	<div class="clearfix"></div>
+</div>
 <#
 } else {
 #>
@@ -48,7 +46,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title><#= ViewName #></title>
+
 </head>
 <body>
 <#
@@ -84,6 +82,7 @@ if (ReferenceScriptLibraries) {
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
 
 <# 
@@ -189,13 +188,14 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 #>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-success" />
-				@Html.ActionLink("Cancelar", "Index", null, new {@class = "btn btn-default"})
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+				@Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
             </div>
         </div>
     </div>
 }
 </div>
+
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>

@@ -67,17 +67,17 @@ namespace SAT.Models
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
         [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
-        [Display(Name = "Fecha Ingreso")]
+        [Display(Name = "Fecha de Ingreso")]
         public System.DateTime emp_FechaIngreso { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
         [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
-        [Display(Name = "Fecha Salida")]
+        [Display(Name = "Fecha de Salida")]
         public Nullable<System.DateTime> emp_FechadeSalida { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
         [MaxLength(250, ErrorMessage = "Excedio el numero maximo de caracteres")]
-        [Display(Name = "Razon Salida")]
+        [Display(Name = "Razon de Salida")]
         public string emp_RazonSalida { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]

@@ -45,8 +45,6 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 }
 #>
 <div>
-    <h4><#= ViewDataTypeShortName #></h4>
-    <hr />
     <dl class="dl-horizontal">
 <#
 foreach (PropertyMetadata property in ModelMetadata.Properties) {
@@ -78,13 +76,13 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 string pkName = GetPrimaryKeyName();
 if (pkName != null) {
 #>
-    @Html.ActionLink("Editar", "Edit",null, new { @class = "btn btn-success",  id = Model.dep_Codigo})
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default"})
+    @Html.ActionLink("Editar", "Edit", new { id = Model.<#= pkName #> },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
 <#
 } else {
 #>
-    @Html.ActionLink("Editar", "Edit",null, new { /* id = Model.PrimaryKey */ }) 
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default"})
+    @Html.ActionLink("Editar", "Edit", new { id = Model.<#= pkName #> },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
 <#
 }
 #>

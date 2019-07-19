@@ -26,10 +26,12 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 	<div class="x_title">
 		<h2><#= ViewName#></h2>
 		<div class="nav navbar-right panel_toolbox">
-			@Html.ActionLink("Resgitra departamento", "Create", null, new {@class ="btn btn-info"})
+		@Html.ActionLink("Registrar Departamento", "Create", null,new{@class="btn btn-info"})
+
 		</div>
 		<div class="clearfix"></div>
 	</div>
+
 <#
 } else {
 #>
@@ -96,7 +98,6 @@ foreach (PropertyMetadata property in properties) {
     }
 }
 
-
 string pkName = GetPrimaryKeyName();
 if (pkName != null) {
 #>
@@ -117,6 +118,7 @@ if (pkName != null) {
     </tr>
 }
 </tbody>
+
 </table>
 </div>
 <#

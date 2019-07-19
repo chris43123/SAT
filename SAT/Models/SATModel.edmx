@@ -4,7 +4,108 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usu_Id" />
+          </Key>
+          <Property Name="usu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_NombreUsuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_Password" Type="varbinary" MaxLength="64" Nullable="false" />
+          <Property Name="usu_Nombres" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="usu_Apellidos" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="usu_Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="usu_EsActivo" Type="bit" Nullable="false" />
+          <Property Name="usu_RazonInactivo" Type="nvarchar" MaxLength="150" />
+          <Property Name="usu_EsAdministrador" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbPagos">
+          <Key>
+            <PropertyRef Name="cont_Id" />
+          </Key>
+          <Property Name="cont_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mat_Id" Type="int" Nullable="false" />
+          <Property Name="cont_NumeroRecibo" Type="int" Nullable="false" />
+          <Property Name="cont_FechaPagado" Type="date" Nullable="false" />
+          <Property Name="cont_MesesCancelados" Type="int" Nullable="false" />
+          <Property Name="cont_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="cont_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="cont_UsuarioModifica" Type="int" />
+          <Property Name="cont_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbAlumnos">
+          <Key>
+            <PropertyRef Name="alu_Id" />
+          </Key>
+          <Property Name="alu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alu_Identidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="alu_Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="alu_Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="alu_Sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="alu_FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="alu_NombresEncargado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="alu_ApellidosEncargado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="alu_TelefonoEncargado" Type="varchar" MaxLength="25" />
+          <Property Name="alu_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="alu_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="alu_UsuarioModifica" Type="int" />
+          <Property Name="alu_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbMatriculas">
+          <Key>
+            <PropertyRef Name="mat_Id" />
+          </Key>
+          <Property Name="mat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alu_Id" Type="int" Nullable="false" />
+          <Property Name="sec_Id" Type="int" Nullable="false" />
+          <Property Name="car_Id" Type="int" Nullable="false" />
+          <Property Name="mat_Anio" Type="int" Nullable="false" />
+          <Property Name="mat_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="mat_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="mat_UsuarioModifica" Type="int" />
+          <Property Name="mat_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbNotaDetalles">
+          <Key>
+            <PropertyRef Name="notd_Id" />
+          </Key>
+          <Property Name="notd_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="not_Id" Type="int" Nullable="false" />
+          <Property Name="notd_Examen1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Examen2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Examen3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Examen4" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Acumulado1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Acumulado2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Acumulado3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_Acumulado4" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="notd_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="notd_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="notd_UsuarioModifica" Type="int" />
+          <Property Name="notd_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbNotas">
+          <Key>
+            <PropertyRef Name="not_Id" />
+          </Key>
+          <Property Name="not_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asig_Id" Type="int" Nullable="false" />
+          <Property Name="mat_Id" Type="int" Nullable="false" />
+          <Property Name="not_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="not_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="not_UsuarioModifica" Type="int" />
+          <Property Name="not_FechaModifica" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbAsignaturas">
           <Key>
             <PropertyRef Name="asig_Id" />
@@ -21,7 +122,7 @@
           <Key>
             <PropertyRef Name="carg_Id" />
           </Key>
-          <Property Name="carg_Id" Type="int" Nullable="false" />
+          <Property Name="carg_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="carg_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="carg_UsuarioCrea" Type="int" Nullable="false" />
           <Property Name="carg_FechaCrea" Type="datetime" Nullable="false" />
@@ -51,6 +152,17 @@
           <Property Name="car_FechaCrea" Type="datetime" Nullable="false" />
           <Property Name="car_UsuarioModifica" Type="int" />
           <Property Name="car_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbDepartamentos">
+          <Key>
+            <PropertyRef Name="dep_Id" />
+          </Key>
+          <Property Name="dep_Id" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="dep_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dep_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="dep_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="dep_UsuarioModifica" Type="int" />
+          <Property Name="dep_FechaModifica" Type="datetime" />
         </EntityType>
         <EntityType Name="tbEmpleadoAsignaturas">
           <Key>
@@ -138,6 +250,18 @@
           <Property Name="jor_UsuarioModifica" Type="int" />
           <Property Name="jor_FechaModifica" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbMunicipios">
+          <Key>
+            <PropertyRef Name="mun_Id" />
+          </Key>
+          <Property Name="mun_Id" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="mun_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mun_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="mun_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="mun_UsuarioModifica" Type="int" />
+          <Property Name="mun_FechaModifica" Type="datetime" />
+          <Property Name="dep_Id" Type="char" MaxLength="2" />
+        </EntityType>
         <EntityType Name="tbSecciones">
           <Key>
             <PropertyRef Name="sec_Id" />
@@ -150,6 +274,102 @@
           <Property Name="sec_FechaModifica" Type="datetime" />
           <Property Name="jgra_Id" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Cont_tbPagos_mat_Id">
+          <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="1" />
+          <End Role="tbPagos" Type="Self.tbPagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMatriculas">
+              <PropertyRef Name="mat_Id" />
+            </Principal>
+            <Dependent Role="tbPagos">
+              <PropertyRef Name="mat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_alu_Id">
+          <End Role="tbAlumnos" Type="Self.tbAlumnos" Multiplicity="1" />
+          <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAlumnos">
+              <PropertyRef Name="alu_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="alu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_car_Id">
+          <End Role="tbCarreras" Type="Self.tbCarreras" Multiplicity="1" />
+          <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCarreras">
+              <PropertyRef Name="car_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="car_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_sec_Id">
+          <End Role="tbSecciones" Type="Self.tbSecciones" Multiplicity="1" />
+          <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSecciones">
+              <PropertyRef Name="sec_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="sec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Esc_tbMunicipios_constraint">
+          <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="0..1" />
+          <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDepartamentos">
+              <PropertyRef Name="dep_Id" />
+            </Principal>
+            <Dependent Role="tbMunicipios">
+              <PropertyRef Name="dep_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbNotas_asig_Id">
+          <End Role="tbAsignaturas" Type="Self.tbAsignaturas" Multiplicity="1" />
+          <End Role="tbNotas" Type="Self.tbNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAsignaturas">
+              <PropertyRef Name="asig_Id" />
+            </Principal>
+            <Dependent Role="tbNotas">
+              <PropertyRef Name="asig_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbNotas_mat_Id">
+          <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="1" />
+          <End Role="tbNotas" Type="Self.tbNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMatriculas">
+              <PropertyRef Name="mat_Id" />
+            </Principal>
+            <Dependent Role="tbNotas">
+              <PropertyRef Name="mat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbNotas_not_Id">
+          <End Role="tbNotas" Type="Self.tbNotas" Multiplicity="1" />
+          <End Role="tbNotaDetalles" Type="Self.tbNotaDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNotas">
+              <PropertyRef Name="not_Id" />
+            </Principal>
+            <Dependent Role="tbNotaDetalles">
+              <PropertyRef Name="not_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Gral_tbCarrera_car_Encargado">
           <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="1" />
           <End Role="tbCarreras" Type="Self.tbCarreras" Multiplicity="*" />
@@ -222,6 +442,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Gral_tbEmpleados_mun_Id">
+          <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="1" />
+          <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMunicipios">
+              <PropertyRef Name="mun_Id" />
+            </Principal>
+            <Dependent Role="tbEmpleados">
+              <PropertyRef Name="mun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Gral_tbEscuelas_esc_Contacto">
           <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="1" />
           <End Role="tbEscuelas" Type="Self.tbEscuelas" Multiplicity="*" />
@@ -243,6 +475,18 @@
             </Principal>
             <Dependent Role="tbEscuelas">
               <PropertyRef Name="esc_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gral_tbEscuelas_mun_Id">
+          <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="1" />
+          <End Role="tbEscuelas" Type="Self.tbEscuelas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMunicipios">
+              <PropertyRef Name="mun_Id" />
+            </Principal>
+            <Dependent Role="tbEscuelas">
+              <PropertyRef Name="mun_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -283,17 +527,58 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SATModelStoreContainer">
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="Acce" store:Type="Tables" />
+          <EntitySet Name="tbPagos" EntityType="Self.tbPagos" Schema="Cont" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbAlumnos" EntityType="Self.tbAlumnos" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbMatriculas" EntityType="Self.tbMatriculas" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbNotaDetalles" EntityType="Self.tbNotaDetalles" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbNotas" EntityType="Self.tbNotas" Schema="Esc" store:Type="Tables" />
           <EntitySet Name="tbAsignaturas" EntityType="Self.tbAsignaturas" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbCargos" EntityType="Self.tbCargos" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbCarreraAsignaturas" EntityType="Self.tbCarreraAsignaturas" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbCarreras" EntityType="Self.tbCarreras" Schema="Gral" store:Type="Tables" />
+          <EntitySet Name="tbDepartamentos" EntityType="Self.tbDepartamentos" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbEmpleadoAsignaturas" EntityType="Self.tbEmpleadoAsignaturas" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbEmpleados" EntityType="Self.tbEmpleados" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbEscuelas" EntityType="Self.tbEscuelas" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbGrados" EntityType="Self.tbGrados" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbJornadaGrados" EntityType="Self.tbJornadaGrados" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbJornadas" EntityType="Self.tbJornadas" Schema="Gral" store:Type="Tables" />
+          <EntitySet Name="tbMunicipios" EntityType="Self.tbMunicipios" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbSecciones" EntityType="Self.tbSecciones" Schema="Gral" store:Type="Tables" />
+          <AssociationSet Name="FK_Cont_tbPagos_mat_Id" Association="Self.FK_Cont_tbPagos_mat_Id">
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+            <End Role="tbPagos" EntitySet="tbPagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_alu_Id" Association="Self.FK_Esc_tbMatriculas_alu_Id">
+            <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_car_Id" Association="Self.FK_Esc_tbMatriculas_car_Id">
+            <End Role="tbCarreras" EntitySet="tbCarreras" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_sec_Id" Association="Self.FK_Esc_tbMatriculas_sec_Id">
+            <End Role="tbSecciones" EntitySet="tbSecciones" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Esc_tbMunicipios_constraint" Association="Self.Fk_Esc_tbMunicipios_constraint">
+            <End Role="tbDepartamentos" EntitySet="tbDepartamentos" />
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbNotas_asig_Id" Association="Self.FK_Esc_tbNotas_asig_Id">
+            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
+            <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbNotas_mat_Id" Association="Self.FK_Esc_tbNotas_mat_Id">
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+            <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbNotas_not_Id" Association="Self.FK_Esc_tbNotas_not_Id">
+            <End Role="tbNotas" EntitySet="tbNotas" />
+            <End Role="tbNotaDetalles" EntitySet="tbNotaDetalles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Gral_tbCarrera_car_Encargado" Association="Self.FK_Gral_tbCarrera_car_Encargado">
             <End Role="tbEmpleados" EntitySet="tbEmpleados" />
             <End Role="tbCarreras" EntitySet="tbCarreras" />
@@ -318,12 +603,20 @@
             <End Role="tbCargos" EntitySet="tbCargos" />
             <End Role="tbEmpleados" EntitySet="tbEmpleados" />
           </AssociationSet>
+          <AssociationSet Name="FK_Gral_tbEmpleados_mun_Id" Association="Self.FK_Gral_tbEmpleados_mun_Id">
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+            <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+          </AssociationSet>
           <AssociationSet Name="FK_Gral_tbEscuelas_esc_Contacto" Association="Self.FK_Gral_tbEscuelas_esc_Contacto">
             <End Role="tbEmpleados" EntitySet="tbEmpleados" />
             <End Role="tbEscuelas" EntitySet="tbEscuelas" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbEscuelas_esc_Director" Association="Self.FK_Gral_tbEscuelas_esc_Director">
             <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+            <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gral_tbEscuelas_mun_Id" Association="Self.FK_Gral_tbEscuelas_mun_Id">
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
             <End Role="tbEscuelas" EntitySet="tbEscuelas" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbJornadaGrados_grad_Id" Association="Self.FK_Gral_tbJornadaGrados_grad_Id">
@@ -339,8 +632,7 @@
             <End Role="tbSecciones" EntitySet="tbSecciones" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -357,6 +649,7 @@
           <Property Name="asig_FechaModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbCarreraAsignaturas" Relationship="Self.FK_Gral_tbCarreraAsignatura_asig_Id" FromRole="tbAsignaturas" ToRole="tbCarreraAsignaturas" />
           <NavigationProperty Name="tbEmpleadoAsignaturas" Relationship="Self.FK_Gral_tbEmpleadoAsignaturas_asig_Id" FromRole="tbAsignaturas" ToRole="tbEmpleadoAsignaturas" />
+          <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_asig_Id" FromRole="tbAsignaturas" ToRole="tbNotas" />
         </EntityType>
         <EntityType Name="tbCargos">
           <Key>
@@ -397,6 +690,7 @@
           <Property Name="car_FechaModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbCarreraAsignaturas" Relationship="Self.FK_Gral_tbCarreraAsignatura_car_Id" FromRole="tbCarreras" ToRole="tbCarreraAsignaturas" />
           <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbCarrera_car_Encargado" FromRole="tbCarreras" ToRole="tbEmpleados" />
+          <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_car_Id" FromRole="tbCarreras" ToRole="tbMatriculas" />
         </EntityType>
         <EntityType Name="tbEmpleadoAsignaturas">
           <Key>
@@ -439,6 +733,7 @@
           <NavigationProperty Name="tbEmpleadoAsignaturas" Relationship="Self.FK_Gral_tbEmpleadoAsignaturas_emp_Id" FromRole="tbEmpleados" ToRole="tbEmpleadoAsignaturas" />
           <NavigationProperty Name="tbEscuelas" Relationship="Self.FK_Gral_tbEscuelas_esc_Contacto" FromRole="tbEmpleados" ToRole="tbEscuelas" />
           <NavigationProperty Name="tbEscuelas1" Relationship="Self.FK_Gral_tbEscuelas_esc_Director" FromRole="tbEmpleados" ToRole="tbEscuelas" />
+          <NavigationProperty Name="tbMunicipios" Relationship="SATModel.FK_Gral_tbEmpleados_mun_Id" FromRole="tbEmpleados" ToRole="tbMunicipios" />
         </EntityType>
         <EntityType Name="tbEscuelas">
           <Key>
@@ -458,6 +753,7 @@
           <Property Name="esc_FechaModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbEscuelas_esc_Contacto" FromRole="tbEscuelas" ToRole="tbEmpleados" />
           <NavigationProperty Name="tbEmpleados1" Relationship="Self.FK_Gral_tbEscuelas_esc_Director" FromRole="tbEscuelas" ToRole="tbEmpleados" />
+          <NavigationProperty Name="tbMunicipios" Relationship="SATModel.FK_Gral_tbEscuelas_mun_Id" FromRole="tbEscuelas" ToRole="tbMunicipios" />
         </EntityType>
         <EntityType Name="tbGrados">
           <Key>
@@ -510,6 +806,7 @@
           <Property Name="sec_FechaModifica" Type="DateTime" Precision="3" />
           <Property Name="jgra_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbJornadaGrados" Relationship="Self.FK_Gral_tbSecciones_Sec_ID" FromRole="tbSecciones" ToRole="tbJornadaGrados" />
+          <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_sec_Id" FromRole="tbSecciones" ToRole="tbMatriculas" />
         </EntityType>
         <Association Name="FK_Gral_tbCarreraAsignatura_asig_Id">
           <End Role="tbAsignaturas" Type="Self.tbAsignaturas" Multiplicity="0..1" />
@@ -699,7 +996,315 @@
             <End Role="tbJornadaGrados" EntitySet="tbJornadaGrados" />
             <End Role="tbSecciones" EntitySet="tbSecciones" />
           </AssociationSet>
+          <EntitySet Name="tbUsuarios" EntityType="SATModel.tbUsuarios" />
+          <EntitySet Name="tbPagos" EntityType="SATModel.tbPagos" />
+          <EntitySet Name="sysdiagrams" EntityType="SATModel.sysdiagrams" />
+          <EntitySet Name="tbAlumnos" EntityType="SATModel.tbAlumnos" />
+          <EntitySet Name="tbMatriculas" EntityType="SATModel.tbMatriculas" />
+          <EntitySet Name="tbNotaDetalles" EntityType="SATModel.tbNotaDetalles" />
+          <EntitySet Name="tbNotas" EntityType="SATModel.tbNotas" />
+          <EntitySet Name="tbDepartamentos" EntityType="SATModel.tbDepartamentos" />
+          <EntitySet Name="tbMunicipios" EntityType="SATModel.tbMunicipios" />
+          <AssociationSet Name="FK_Cont_tbPagos_mat_Id" Association="SATModel.FK_Cont_tbPagos_mat_Id">
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+            <End Role="tbPagos" EntitySet="tbPagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_alu_Id" Association="SATModel.FK_Esc_tbMatriculas_alu_Id">
+            <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_car_Id" Association="SATModel.FK_Esc_tbMatriculas_car_Id">
+            <End Role="tbCarreras" EntitySet="tbCarreras" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_sec_Id" Association="SATModel.FK_Esc_tbMatriculas_sec_Id">
+            <End Role="tbSecciones" EntitySet="tbSecciones" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbNotas_mat_Id" Association="SATModel.FK_Esc_tbNotas_mat_Id">
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+            <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbNotas_not_Id" Association="SATModel.FK_Esc_tbNotas_not_Id">
+            <End Role="tbNotas" EntitySet="tbNotas" />
+            <End Role="tbNotaDetalles" EntitySet="tbNotaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbNotas_asig_Id" Association="SATModel.FK_Esc_tbNotas_asig_Id">
+            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
+            <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Esc_tbMunicipios_constraint" Association="SATModel.Fk_Esc_tbMunicipios_constraint">
+            <End Role="tbDepartamentos" EntitySet="tbDepartamentos" />
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gral_tbEmpleados_mun_Id" Association="SATModel.FK_Gral_tbEmpleados_mun_Id">
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+            <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gral_tbEscuelas_mun_Id" Association="SATModel.FK_Gral_tbEscuelas_mun_Id">
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+            <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usu_Id" />
+          </Key>
+          <Property Name="usu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_NombreUsuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="usu_Password" Type="Binary" Nullable="false" MaxLength="64" FixedLength="false" />
+          <Property Name="usu_Nombres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="usu_Apellidos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="usu_Correo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="usu_EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="usu_RazonInactivo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="usu_EsAdministrador" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbPagos">
+          <Key>
+            <PropertyRef Name="cont_Id" />
+          </Key>
+          <Property Name="cont_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mat_Id" Type="Int32" Nullable="false" />
+          <Property Name="cont_NumeroRecibo" Type="Int32" Nullable="false" />
+          <Property Name="cont_FechaPagado" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cont_MesesCancelados" Type="Int32" Nullable="false" />
+          <Property Name="cont_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="cont_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cont_UsuarioModifica" Type="Int32" />
+          <Property Name="cont_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Cont_tbPagos_mat_Id" FromRole="tbPagos" ToRole="tbMatriculas" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbAlumnos">
+          <Key>
+            <PropertyRef Name="alu_Id" />
+          </Key>
+          <Property Name="alu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alu_Identidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="alu_Nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alu_Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alu_Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="alu_FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="alu_NombresEncargado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alu_ApellidosEncargado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alu_TelefonoEncargado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="alu_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="alu_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="alu_UsuarioModifica" Type="Int32" />
+          <Property Name="alu_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_alu_Id" FromRole="tbAlumnos" ToRole="tbMatriculas" />
+        </EntityType>
+        <EntityType Name="tbMatriculas">
+          <Key>
+            <PropertyRef Name="mat_Id" />
+          </Key>
+          <Property Name="mat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alu_Id" Type="Int32" Nullable="false" />
+          <Property Name="sec_Id" Type="Int32" Nullable="false" />
+          <Property Name="car_Id" Type="Int32" Nullable="false" />
+          <Property Name="mat_Anio" Type="Int32" Nullable="false" />
+          <Property Name="mat_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="mat_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mat_UsuarioModifica" Type="Int32" />
+          <Property Name="mat_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbPagos" Relationship="SATModel.FK_Cont_tbPagos_mat_Id" FromRole="tbMatriculas" ToRole="tbPagos" />
+          <NavigationProperty Name="tbAlumnos" Relationship="SATModel.FK_Esc_tbMatriculas_alu_Id" FromRole="tbMatriculas" ToRole="tbAlumnos" />
+          <NavigationProperty Name="tbCarreras" Relationship="SATModel.FK_Esc_tbMatriculas_car_Id" FromRole="tbMatriculas" ToRole="tbCarreras" />
+          <NavigationProperty Name="tbSecciones" Relationship="SATModel.FK_Esc_tbMatriculas_sec_Id" FromRole="tbMatriculas" ToRole="tbSecciones" />
+          <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_mat_Id" FromRole="tbMatriculas" ToRole="tbNotas" />
+        </EntityType>
+        <EntityType Name="tbNotaDetalles">
+          <Key>
+            <PropertyRef Name="notd_Id" />
+          </Key>
+          <Property Name="notd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="not_Id" Type="Int32" Nullable="false" />
+          <Property Name="notd_Examen1" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Examen2" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Examen3" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Examen4" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Acumulado1" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Acumulado2" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Acumulado3" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_Acumulado4" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="notd_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="notd_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="notd_UsuarioModifica" Type="Int32" />
+          <Property Name="notd_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_not_Id" FromRole="tbNotaDetalles" ToRole="tbNotas" />
+        </EntityType>
+        <EntityType Name="tbNotas">
+          <Key>
+            <PropertyRef Name="not_Id" />
+          </Key>
+          <Property Name="not_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="asig_Id" Type="Int32" Nullable="false" />
+          <Property Name="mat_Id" Type="Int32" Nullable="false" />
+          <Property Name="not_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="not_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="not_UsuarioModifica" Type="Int32" />
+          <Property Name="not_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbNotas_mat_Id" FromRole="tbNotas" ToRole="tbMatriculas" />
+          <NavigationProperty Name="tbNotaDetalles" Relationship="SATModel.FK_Esc_tbNotas_not_Id" FromRole="tbNotas" ToRole="tbNotaDetalles" />
+          <NavigationProperty Name="tbAsignaturas" Relationship="SATModel.FK_Esc_tbNotas_asig_Id" FromRole="tbNotas" ToRole="tbAsignaturas" />
+        </EntityType>
+        <EntityType Name="tbDepartamentos">
+          <Key>
+            <PropertyRef Name="dep_Id" />
+          </Key>
+          <Property Name="dep_Id" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="dep_Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dep_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="dep_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dep_UsuarioModifica" Type="Int32" />
+          <Property Name="dep_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbMunicipios" Relationship="SATModel.Fk_Esc_tbMunicipios_constraint" FromRole="tbDepartamentos" ToRole="tbMunicipios" />
+        </EntityType>
+        <EntityType Name="tbMunicipios">
+          <Key>
+            <PropertyRef Name="mun_Id" />
+          </Key>
+          <Property Name="mun_Id" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="mun_Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mun_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="mun_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mun_UsuarioModifica" Type="Int32" />
+          <Property Name="mun_FechaModifica" Type="DateTime" Precision="3" />
+          <Property Name="dep_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tbDepartamentos" Relationship="SATModel.Fk_Esc_tbMunicipios_constraint" FromRole="tbMunicipios" ToRole="tbDepartamentos" />
+          <NavigationProperty Name="tbEmpleados" Relationship="SATModel.FK_Gral_tbEmpleados_mun_Id" FromRole="tbMunicipios" ToRole="tbEmpleados" />
+          <NavigationProperty Name="tbEscuelas" Relationship="SATModel.FK_Gral_tbEscuelas_mun_Id" FromRole="tbMunicipios" ToRole="tbEscuelas" />
+        </EntityType>
+        <Association Name="FK_Cont_tbPagos_mat_Id">
+          <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="1" />
+          <End Type="SATModel.tbPagos" Role="tbPagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMatriculas">
+              <PropertyRef Name="mat_Id" />
+            </Principal>
+            <Dependent Role="tbPagos">
+              <PropertyRef Name="mat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_alu_Id">
+          <End Type="SATModel.tbAlumnos" Role="tbAlumnos" Multiplicity="1" />
+          <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAlumnos">
+              <PropertyRef Name="alu_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="alu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_car_Id">
+          <End Type="SATModel.tbCarreras" Role="tbCarreras" Multiplicity="1" />
+          <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCarreras">
+              <PropertyRef Name="car_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="car_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_sec_Id">
+          <End Type="SATModel.tbSecciones" Role="tbSecciones" Multiplicity="1" />
+          <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSecciones">
+              <PropertyRef Name="sec_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="sec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbNotas_mat_Id">
+          <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="1" />
+          <End Type="SATModel.tbNotas" Role="tbNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMatriculas">
+              <PropertyRef Name="mat_Id" />
+            </Principal>
+            <Dependent Role="tbNotas">
+              <PropertyRef Name="mat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbNotas_not_Id">
+          <End Type="SATModel.tbNotas" Role="tbNotas" Multiplicity="1" />
+          <End Type="SATModel.tbNotaDetalles" Role="tbNotaDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNotas">
+              <PropertyRef Name="not_Id" />
+            </Principal>
+            <Dependent Role="tbNotaDetalles">
+              <PropertyRef Name="not_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbNotas_asig_Id">
+          <End Type="SATModel.tbAsignaturas" Role="tbAsignaturas" Multiplicity="1" />
+          <End Type="SATModel.tbNotas" Role="tbNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAsignaturas">
+              <PropertyRef Name="asig_Id" />
+            </Principal>
+            <Dependent Role="tbNotas">
+              <PropertyRef Name="asig_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Esc_tbMunicipios_constraint">
+          <End Type="SATModel.tbDepartamentos" Role="tbDepartamentos" Multiplicity="0..1" />
+          <End Type="SATModel.tbMunicipios" Role="tbMunicipios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDepartamentos">
+              <PropertyRef Name="dep_Id" />
+            </Principal>
+            <Dependent Role="tbMunicipios">
+              <PropertyRef Name="dep_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gral_tbEmpleados_mun_Id">
+          <End Type="SATModel.tbMunicipios" Role="tbMunicipios" Multiplicity="1" />
+          <End Type="SATModel.tbEmpleados" Role="tbEmpleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMunicipios">
+              <PropertyRef Name="mun_Id" />
+            </Principal>
+            <Dependent Role="tbEmpleados">
+              <PropertyRef Name="mun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gral_tbEscuelas_mun_Id">
+          <End Type="SATModel.tbMunicipios" Role="tbMunicipios" Multiplicity="1" />
+          <End Type="SATModel.tbEscuelas" Role="tbEscuelas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMunicipios">
+              <PropertyRef Name="mun_Id" />
+            </Principal>
+            <Dependent Role="tbEscuelas">
+              <PropertyRef Name="mun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -859,6 +1464,139 @@
                 <ScalarProperty Name="sec_UsuarioModifica" ColumnName="sec_UsuarioModifica" />
                 <ScalarProperty Name="sec_FechaModifica" ColumnName="sec_FechaModifica" />
                 <ScalarProperty Name="jgra_Id" ColumnName="jgra_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsuarios">
+            <EntityTypeMapping TypeName="SATModel.tbUsuarios">
+              <MappingFragment StoreEntitySet="tbUsuarios">
+                <ScalarProperty Name="usu_EsAdministrador" ColumnName="usu_EsAdministrador" />
+                <ScalarProperty Name="usu_RazonInactivo" ColumnName="usu_RazonInactivo" />
+                <ScalarProperty Name="usu_EsActivo" ColumnName="usu_EsActivo" />
+                <ScalarProperty Name="usu_Correo" ColumnName="usu_Correo" />
+                <ScalarProperty Name="usu_Apellidos" ColumnName="usu_Apellidos" />
+                <ScalarProperty Name="usu_Nombres" ColumnName="usu_Nombres" />
+                <ScalarProperty Name="usu_Password" ColumnName="usu_Password" />
+                <ScalarProperty Name="usu_NombreUsuario" ColumnName="usu_NombreUsuario" />
+                <ScalarProperty Name="usu_Id" ColumnName="usu_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPagos">
+            <EntityTypeMapping TypeName="SATModel.tbPagos">
+              <MappingFragment StoreEntitySet="tbPagos">
+                <ScalarProperty Name="cont_FechaModifica" ColumnName="cont_FechaModifica" />
+                <ScalarProperty Name="cont_UsuarioModifica" ColumnName="cont_UsuarioModifica" />
+                <ScalarProperty Name="cont_FechaCrea" ColumnName="cont_FechaCrea" />
+                <ScalarProperty Name="cont_UsuarioCrea" ColumnName="cont_UsuarioCrea" />
+                <ScalarProperty Name="cont_MesesCancelados" ColumnName="cont_MesesCancelados" />
+                <ScalarProperty Name="cont_FechaPagado" ColumnName="cont_FechaPagado" />
+                <ScalarProperty Name="cont_NumeroRecibo" ColumnName="cont_NumeroRecibo" />
+                <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
+                <ScalarProperty Name="cont_Id" ColumnName="cont_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SATModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAlumnos">
+            <EntityTypeMapping TypeName="SATModel.tbAlumnos">
+              <MappingFragment StoreEntitySet="tbAlumnos">
+                <ScalarProperty Name="alu_FechaModifica" ColumnName="alu_FechaModifica" />
+                <ScalarProperty Name="alu_UsuarioModifica" ColumnName="alu_UsuarioModifica" />
+                <ScalarProperty Name="alu_FechaCrea" ColumnName="alu_FechaCrea" />
+                <ScalarProperty Name="alu_UsuarioCrea" ColumnName="alu_UsuarioCrea" />
+                <ScalarProperty Name="alu_TelefonoEncargado" ColumnName="alu_TelefonoEncargado" />
+                <ScalarProperty Name="alu_ApellidosEncargado" ColumnName="alu_ApellidosEncargado" />
+                <ScalarProperty Name="alu_NombresEncargado" ColumnName="alu_NombresEncargado" />
+                <ScalarProperty Name="alu_FechaNacimiento" ColumnName="alu_FechaNacimiento" />
+                <ScalarProperty Name="alu_Sexo" ColumnName="alu_Sexo" />
+                <ScalarProperty Name="alu_Apellidos" ColumnName="alu_Apellidos" />
+                <ScalarProperty Name="alu_Nombres" ColumnName="alu_Nombres" />
+                <ScalarProperty Name="alu_Identidad" ColumnName="alu_Identidad" />
+                <ScalarProperty Name="alu_Id" ColumnName="alu_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMatriculas">
+            <EntityTypeMapping TypeName="SATModel.tbMatriculas">
+              <MappingFragment StoreEntitySet="tbMatriculas">
+                <ScalarProperty Name="mat_FechaModifica" ColumnName="mat_FechaModifica" />
+                <ScalarProperty Name="mat_UsuarioModifica" ColumnName="mat_UsuarioModifica" />
+                <ScalarProperty Name="mat_FechaCrea" ColumnName="mat_FechaCrea" />
+                <ScalarProperty Name="mat_UsuarioCrea" ColumnName="mat_UsuarioCrea" />
+                <ScalarProperty Name="mat_Anio" ColumnName="mat_Anio" />
+                <ScalarProperty Name="car_Id" ColumnName="car_Id" />
+                <ScalarProperty Name="sec_Id" ColumnName="sec_Id" />
+                <ScalarProperty Name="alu_Id" ColumnName="alu_Id" />
+                <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNotaDetalles">
+            <EntityTypeMapping TypeName="SATModel.tbNotaDetalles">
+              <MappingFragment StoreEntitySet="tbNotaDetalles">
+                <ScalarProperty Name="notd_FechaModifica" ColumnName="notd_FechaModifica" />
+                <ScalarProperty Name="notd_UsuarioModifica" ColumnName="notd_UsuarioModifica" />
+                <ScalarProperty Name="notd_FechaCrea" ColumnName="notd_FechaCrea" />
+                <ScalarProperty Name="notd_UsuarioCrea" ColumnName="notd_UsuarioCrea" />
+                <ScalarProperty Name="notd_Acumulado4" ColumnName="notd_Acumulado4" />
+                <ScalarProperty Name="notd_Acumulado3" ColumnName="notd_Acumulado3" />
+                <ScalarProperty Name="notd_Acumulado2" ColumnName="notd_Acumulado2" />
+                <ScalarProperty Name="notd_Acumulado1" ColumnName="notd_Acumulado1" />
+                <ScalarProperty Name="notd_Examen4" ColumnName="notd_Examen4" />
+                <ScalarProperty Name="notd_Examen3" ColumnName="notd_Examen3" />
+                <ScalarProperty Name="notd_Examen2" ColumnName="notd_Examen2" />
+                <ScalarProperty Name="notd_Examen1" ColumnName="notd_Examen1" />
+                <ScalarProperty Name="not_Id" ColumnName="not_Id" />
+                <ScalarProperty Name="notd_Id" ColumnName="notd_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNotas">
+            <EntityTypeMapping TypeName="SATModel.tbNotas">
+              <MappingFragment StoreEntitySet="tbNotas">
+                <ScalarProperty Name="not_FechaModifica" ColumnName="not_FechaModifica" />
+                <ScalarProperty Name="not_UsuarioModifica" ColumnName="not_UsuarioModifica" />
+                <ScalarProperty Name="not_FechaCrea" ColumnName="not_FechaCrea" />
+                <ScalarProperty Name="not_UsuarioCrea" ColumnName="not_UsuarioCrea" />
+                <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
+                <ScalarProperty Name="asig_Id" ColumnName="asig_Id" />
+                <ScalarProperty Name="not_Id" ColumnName="not_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDepartamentos">
+            <EntityTypeMapping TypeName="SATModel.tbDepartamentos">
+              <MappingFragment StoreEntitySet="tbDepartamentos">
+                <ScalarProperty Name="dep_FechaModifica" ColumnName="dep_FechaModifica" />
+                <ScalarProperty Name="dep_UsuarioModifica" ColumnName="dep_UsuarioModifica" />
+                <ScalarProperty Name="dep_FechaCrea" ColumnName="dep_FechaCrea" />
+                <ScalarProperty Name="dep_UsuarioCrea" ColumnName="dep_UsuarioCrea" />
+                <ScalarProperty Name="dep_Descripcion" ColumnName="dep_Descripcion" />
+                <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMunicipios">
+            <EntityTypeMapping TypeName="SATModel.tbMunicipios">
+              <MappingFragment StoreEntitySet="tbMunicipios">
+                <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
+                <ScalarProperty Name="mun_FechaModifica" ColumnName="mun_FechaModifica" />
+                <ScalarProperty Name="mun_UsuarioModifica" ColumnName="mun_UsuarioModifica" />
+                <ScalarProperty Name="mun_FechaCrea" ColumnName="mun_FechaCrea" />
+                <ScalarProperty Name="mun_UsuarioCrea" ColumnName="mun_UsuarioCrea" />
+                <ScalarProperty Name="mun_Descripcion" ColumnName="mun_Descripcion" />
+                <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

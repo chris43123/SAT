@@ -14,6 +14,12 @@ namespace SAT.Models
     
     public partial class tbSecciones
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbSecciones()
+        {
+            this.tbMatriculas = new HashSet<tbMatriculas>();
+        }
+    
         public int sec_Id { get; set; }
         public string sec_Descripcion { get; set; }
         public int sec_UsuarioCrea { get; set; }
@@ -23,5 +29,7 @@ namespace SAT.Models
         public int jgra_Id { get; set; }
     
         public virtual tbJornadaGrados tbJornadaGrados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
     }
 }

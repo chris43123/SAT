@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,11 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/Bootstrap/css")
-    @Styles.Render("~/content/font-awesome/css")
-    @Styles.Render("~/content/DataTables")
+   
+
+    @Styles.Render("~/Content/bootstrap");
+    @Styles.Render("~/Content/font-awesome/fonts");
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+   
+
 </head>
 <body class="nav-md">
+
+
     <div class="container body">
         <div class="main_container">
 
@@ -82,6 +90,7 @@
                 </div>
             </div>
 
+
             <div class="top_nav">
                 <div class="nav_menu">
                     <nav>
@@ -97,6 +106,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="dashboard_graph">
                             @RenderBody()
+
+
                         </div>
                     </div>
                 </div>
@@ -108,14 +119,18 @@
                 </div>
                 <div class="clearfix"></div>
             </footer>
+
+
         </div>
     </div>
-    @Scripts.Render("~/scripts/jquery/")
-    @Scripts.Render("~/scripts/DataTables")
+
+
+    @Scripts.Render("~/scripts/jquery")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#Tables').DataTable({ "scrollx": true });
-        });
+            $(document).ready( function () {
+                $('#tlb').DataTable();
+            } );
     </script>
 </body>
 </html>
