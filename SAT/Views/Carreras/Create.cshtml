@@ -8,7 +8,7 @@
 	<div class="x_title">
 		<h2>Registrar carrera</h2>
 		<div class="nav navbar-right panel_toolbox">
-			@Html.ActionLink("Regresar", "Index")
+			@Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-info" })
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.car_Encargado, "car_Encargado", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.car_Encargado, "Encargado", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("car_Encargado", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.car_Encargado, "", new { @class = "text-danger" })

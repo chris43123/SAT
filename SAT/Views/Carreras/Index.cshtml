@@ -9,7 +9,7 @@
 	<div class="x_title">
 		<h2>Listado de carreras</h2>
 		<div class="nav navbar-right panel_toolbox">
-			@Html.ActionLink("Resgitra departamento", "Create", null, new {@class ="btn btn-info"})
+			@Html.ActionLink("Resgitra carreras", "Create", null, new {@class ="btn btn-info"})
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -18,6 +18,9 @@
 	<tr>
         <th>
             @Html.DisplayNameFor(model => model.car_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbEmpleados.emp_Identidad)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.car_UsuarioCrea)
@@ -31,9 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.car_FechaModifica)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbEmpleados.emp_Identidad)
-        </th>
+        
         <th></th>
     </tr>
 </thead>
@@ -42,6 +43,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.car_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbEmpleados.emp_Identidad)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.car_UsuarioCrea)
@@ -54,9 +58,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.car_FechaModifica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbEmpleados.emp_Identidad)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.car_Id }, new {@class = "btn btn-default btn-xs"})
