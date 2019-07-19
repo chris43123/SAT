@@ -22,6 +22,17 @@ namespace SAT.Models
         [Display(Name = "Descripcion")]
         public string carg_Descripcion { get; set; }
 
+<<<<<<< HEAD
+        [Display(Name = "Usuario Crea")]
+        public int carg_UsuarioCrea { get; set; }
+
+        [Display(Name = "Fecha Crea")]
+        public System.DateTime carg_FechaCrea { get; set; }
+
+        [Display(Name = "Usuario Modifica")]
+        public Nullable<int> carg_UsuarioModifica { get; set; }
+
+=======
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(100, ErrorMessage = "Ha excedido el numero maximo de caracteres")]
         [Display(Name = "Usuario Crea")]
@@ -39,6 +50,7 @@ namespace SAT.Models
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(100, ErrorMessage = "Ha excedido el numero maximo de caracteres")]
+>>>>>>> 801e90b4a4134c06c29fc04733fdb1a6bfc5c7c0
         [Display(Name = "Fecha Modifica")]
         public Nullable<System.DateTime> carg_FechaModifica { get; set; }
     }

@@ -11,7 +11,8 @@ namespace SAT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbEmpleados
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +26,7 @@ namespace SAT.Models
     
         public int emp_Id { get; set; }
         public string emp_Identidad { get; set; }
+        [Display(Name ="Nombre Encargado")]
         public string emp_Nombres { get; set; }
         public string emp_Apellidos { get; set; }
         public System.DateTime emp_FechaNacimiento { get; set; }

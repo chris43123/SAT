@@ -1,0 +1,79 @@
+﻿@model SAT.Models.tbCarreras
+
+@{
+    ViewBag.Title = "Editar carrera";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Editar carrera</h2>
+        <div class="nav navbar-right panel_toolbox">
+            @Html.ActionLink("Regresar", "Index", "Create", null, new { @class = "btn btn-info" })
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.car_Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.car_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.car_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.car_Descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.car_Encargado, "Encargado", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("car_Encargado", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.car_Encargado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Auditoría</h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="form-horizontal">
+                <table class="table table-striped table-bordered dataTable">
+                    <thead>
+                        <tr>
+                            <th>Acción</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Creado</td>
+                            <td>@Html.DisplayFor(model => model.car_UsuarioCrea)</td>
+                            <td>@Html.DisplayFor(model => model.car_FechaCrea)</td>
+                        </tr>
+                        <tr>
+                            <td>Modificado</td>
+                            <td>@Html.DisplayFor(model => model.car_UsuarioModifica)</td>
+                            <td>@Html.DisplayFor(model => model.car_FechaModifica)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>

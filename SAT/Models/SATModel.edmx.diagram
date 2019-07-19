@@ -4,8 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD
+      <Diagram DiagramId="47dcc172e4044459b57f5e43f7a4d4d1" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="SATModel.tbAsignaturas" Width="1.5" PointX="4.875" PointY="0.625" IsExpanded="true" />
+=======
       <Diagram DiagramId="47dcc172e4044459b57f5e43f7a4d4d1" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="SATModel.tbAsignaturas" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+>>>>>>> 801e90b4a4134c06c29fc04733fdb1a6bfc5c7c0
         <EntityTypeShape EntityType="SATModel.tbCargos" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbCarreraAsignaturas" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbCarreras" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
