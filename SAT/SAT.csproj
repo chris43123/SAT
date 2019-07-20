@@ -215,7 +215,9 @@
     <Content Include="scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="scripts\jquery\dist\jquery.js" />
     <Content Include="scripts\jquery\dist\jquery.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -316,9 +318,6 @@
     <Compile Include="Models\tbNotas.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbPagos.cs">
-      <DependentUpon>SATModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tbSecciones.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
@@ -340,13 +339,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery\dist\jquery.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <EntityDeploy Include="Models\SATModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SATModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SATModel.edmx.diagram">
-      <DependentUpon>SATModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Cargos\Create.cshtml" />
     <Content Include="Views\Cargos\Delete.cshtml" />
     <Content Include="Views\Cargos\Details.cshtml" />
@@ -416,6 +408,13 @@
     <Content Include="scripts\DataTables\datatables.net-scroller\.bower.json" />
     <Content Include="scripts\DataTables\datatables.net-scroller\bower.json" />
     <Content Include="scripts\DataTables\datatables.net-scroller\Readme.md" />
+    <EntityDeploy Include="Models\SATModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SATModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SATModel.edmx.diagram">
+      <DependentUpon>SATModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

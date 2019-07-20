@@ -29,12 +29,12 @@ namespace SAT.Models
         public Nullable<System.DateTime> mun_FechaModifica { get; set; }
         public string dep_Id { get; set; }
     
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
         public virtual tbDepartamentos tbDepartamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEmpleados> tbEmpleados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEscuelas> tbEscuelas { get; set; }
-        public virtual tbUsuarios tbUsuarios { get; set; }
-        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

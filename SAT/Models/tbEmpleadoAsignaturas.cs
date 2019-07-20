@@ -22,9 +22,9 @@ namespace SAT.Models
         public Nullable<int> empa_UsuarioModifica { get; set; }
         public Nullable<int> empa_FechaModifica { get; set; }
     
-        public virtual tbAsignaturas tbAsignaturas { get; set; }
-        public virtual tbEmpleados tbEmpleados { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }
+        public virtual tbAsignaturas tbAsignaturas { get; set; }
+        public virtual tbEmpleados tbEmpleados { get; set; }
     }
 }

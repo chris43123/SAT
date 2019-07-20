@@ -22,9 +22,9 @@ namespace SAT.Models
         public Nullable<int> carasi_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> carasi_FechaModifica { get; set; }
     
-        public virtual tbAsignaturas tbAsignaturas { get; set; }
-        public virtual tbCarreras tbCarreras { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }
+        public virtual tbAsignaturas tbAsignaturas { get; set; }
+        public virtual tbCarreras tbCarreras { get; set; }
     }
 }

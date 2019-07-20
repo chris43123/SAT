@@ -28,10 +28,10 @@ namespace SAT.Models
         public Nullable<System.DateTime> sec_FechaModifica { get; set; }
         public int jgra_Id { get; set; }
     
-        public virtual tbJornadaGrados tbJornadaGrados { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
+        public virtual tbJornadaGrados tbJornadaGrados { get; set; }
     }
 }

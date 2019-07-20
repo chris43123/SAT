@@ -28,11 +28,11 @@ namespace SAT.Models
         public Nullable<int> not_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> not_FechaModifica { get; set; }
     
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
         public virtual tbMatriculas tbMatriculas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbNotaDetalles> tbNotaDetalles { get; set; }
         public virtual tbAsignaturas tbAsignaturas { get; set; }
-        public virtual tbUsuarios tbUsuarios { get; set; }
-        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

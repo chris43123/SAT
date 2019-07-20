@@ -28,11 +28,11 @@ namespace SAT.Models
         public Nullable<int> jgra_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> jgra_FechaModifica { get; set; }
     
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
         public virtual tbGrados tbGrados { get; set; }
         public virtual tbJornadas tbJornadas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbSecciones> tbSecciones { get; set; }
-        public virtual tbUsuarios tbUsuarios { get; set; }
-        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

@@ -27,26 +27,25 @@ namespace SAT.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<tbAlumnos> tbAlumnos { get; set; }
+        public virtual DbSet<tbMatriculas> tbMatriculas { get; set; }
+        public virtual DbSet<tbNotaDetalles> tbNotaDetalles { get; set; }
+        public virtual DbSet<tbNotas> tbNotas { get; set; }
         public virtual DbSet<tbAsignaturas> tbAsignaturas { get; set; }
         public virtual DbSet<tbCargos> tbCargos { get; set; }
         public virtual DbSet<tbCarreraAsignaturas> tbCarreraAsignaturas { get; set; }
         public virtual DbSet<tbCarreras> tbCarreras { get; set; }
+        public virtual DbSet<tbDepartamentos> tbDepartamentos { get; set; }
         public virtual DbSet<tbEmpleadoAsignaturas> tbEmpleadoAsignaturas { get; set; }
         public virtual DbSet<tbEmpleados> tbEmpleados { get; set; }
         public virtual DbSet<tbEscuelas> tbEscuelas { get; set; }
         public virtual DbSet<tbGrados> tbGrados { get; set; }
         public virtual DbSet<tbJornadaGrados> tbJornadaGrados { get; set; }
         public virtual DbSet<tbJornadas> tbJornadas { get; set; }
-        public virtual DbSet<tbSecciones> tbSecciones { get; set; }
-        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
-        public virtual DbSet<tbPagos> tbPagos { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<tbAlumnos> tbAlumnos { get; set; }
-        public virtual DbSet<tbMatriculas> tbMatriculas { get; set; }
-        public virtual DbSet<tbNotaDetalles> tbNotaDetalles { get; set; }
-        public virtual DbSet<tbNotas> tbNotas { get; set; }
-        public virtual DbSet<tbDepartamentos> tbDepartamentos { get; set; }
         public virtual DbSet<tbMunicipios> tbMunicipios { get; set; }
+        public virtual DbSet<tbSecciones> tbSecciones { get; set; }
     
         public virtual ObjectResult<string> UDP_Acce_tbUsuario_Insert(string usu_NombreUsuario, string usu_Password, Nullable<bool> usu_EsAdministrador)
         {

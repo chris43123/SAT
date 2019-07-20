@@ -17,9 +17,9 @@ namespace SAT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbAsignaturas()
         {
+            this.tbNotas = new HashSet<tbNotas>();
             this.tbCarreraAsignaturas = new HashSet<tbCarreraAsignaturas>();
             this.tbEmpleadoAsignaturas = new HashSet<tbEmpleadoAsignaturas>();
-            this.tbNotas = new HashSet<tbNotas>();
         }
     
         public int asig_Id { get; set; }
@@ -30,13 +30,13 @@ namespace SAT.Models
         public Nullable<int> asig_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> asig_FechaModifica { get; set; }
     
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbNotas> tbNotas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbCarreraAsignaturas> tbCarreraAsignaturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEmpleadoAsignaturas> tbEmpleadoAsignaturas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbNotas> tbNotas { get; set; }
-        public virtual tbUsuarios tbUsuarios { get; set; }
-        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

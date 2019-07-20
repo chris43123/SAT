@@ -42,17 +42,17 @@ namespace SAT.Models
         public Nullable<int> emp_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> emp_FechaModifica { get; set; }
     
+        public virtual tbUsuarios tbUsuarios { get; set; }
+        public virtual tbUsuarios tbUsuarios1 { get; set; }
         public virtual tbCargos tbCargos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbCarreras> tbCarreras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEmpleadoAsignaturas> tbEmpleadoAsignaturas { get; set; }
+        public virtual tbMunicipios tbMunicipios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEscuelas> tbEscuelas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEscuelas> tbEscuelas1 { get; set; }
-        public virtual tbMunicipios tbMunicipios { get; set; }
-        public virtual tbUsuarios tbUsuarios { get; set; }
-        public virtual tbUsuarios tbUsuarios1 { get; set; }
     }
 }

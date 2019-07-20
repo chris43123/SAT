@@ -27,9 +27,9 @@ namespace SAT.Models
         public Nullable<int> carg_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> carg_FechaModifica { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbEmpleados> tbEmpleados { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbEmpleados> tbEmpleados { get; set; }
     }
 }
