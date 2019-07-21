@@ -1,11 +1,11 @@
 ﻿@model SAT.Models.tbCargos
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Cargo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles Cargo</h2>
 
 <div>
     <dl class="dl-horizontal">
@@ -18,14 +18,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.carg_UsuarioCrea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.carg_UsuarioCrea)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.carg_FechaCrea)
         </dt>
 
@@ -34,19 +26,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.carg_UsuarioModifica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.carg_UsuarioModifica)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.carg_FechaModifica)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.carg_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
         </dd>
 
     </dl>

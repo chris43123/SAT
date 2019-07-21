@@ -339,11 +339,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery\dist\jquery.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Cargos\Create.cshtml" />
-    <Content Include="Views\Cargos\Delete.cshtml" />
-    <Content Include="Views\Cargos\Details.cshtml" />
-    <Content Include="Views\Cargos\Edit.cshtml" />
-    <Content Include="Views\Cargos\Index.cshtml" />
     <Content Include="Views\Grados\Create.cshtml" />
     <Content Include="Views\Grados\Details.cshtml" />
     <Content Include="Views\Grados\Edit.cshtml" />
@@ -415,6 +410,11 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Cargos\Create.cshtml" />
+    <Content Include="Views\Cargos\Delete.cshtml" />
+    <Content Include="Views\Cargos\Details.cshtml" />
+    <Content Include="Views\Cargos\Edit.cshtml" />
+    <Content Include="Views\Cargos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

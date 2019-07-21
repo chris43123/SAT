@@ -17,7 +17,8 @@ namespace SAT.Controllers
         // GET: Cargos
         public ActionResult Index()
         {
-            return View(db.tbCargos.ToList());
+            var tbCargos = db.tbCargos.Include(t => t.tbUsuarios).Include(t => t.tbUsuarios1);
+            return View(tbCargos.ToList());
         }
 
         // GET: Cargos/Details/5
@@ -38,6 +39,8 @@ namespace SAT.Controllers
         // GET: Cargos/Create
         public ActionResult Create()
         {
+            ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
+            ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
             return View();
         }
 
@@ -55,6 +58,8 @@ namespace SAT.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
+            ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
             return View(tbCargos);
         }
 
@@ -70,6 +75,8 @@ namespace SAT.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
+            ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
             return View(tbCargos);
         }
 
@@ -86,6 +93,8 @@ namespace SAT.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
+            ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
             return View(tbCargos);
         }
 
