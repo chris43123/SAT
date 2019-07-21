@@ -51,16 +51,46 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "carg_Id,carg_Descripcion,carg_UsuarioCrea,carg_FechaCrea,carg_UsuarioModifica,carg_FechaModifica")] tbCargos tbCargos)
         {
-            if (ModelState.IsValid)
+            tbCargos.carg_FechaCrea = DateTime.Now;
+            tbCargos.carg_UsuarioCrea = 2;
+            if(ModelState.IsValid)
             {
-                db.tbCargos.Add(tbCargos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listcargos = null;
+                    string MensajeError = "";
+                    listcargos = db.UDP_Gral_tbCargos_Insert(tbCargos.carg_Descripcion,
+                                                           tbCargos.carg_UsuarioCrea,
+                                                           tbCargos.carg_FechaCrea);
+                    foreach (UDP_Gral_tbCargos_Insert_Result RES in listcargos)
+                    {
+                        MensajeError = RES.MensajeError;
+                    }
+                    if(MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro ");
+                        //return View(tbCargos);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch(Exception ex)
+                {
+                    ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro");
+                    return View(tbCargos);
+                }
             }
-
-            ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
-            ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
             return View(tbCargos);
+            //if (ModelState.IsValid)
+            //{
+            //    db.tbCargos.Add(tbCargos);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
+            //ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
+            //return View(tbCargos);
         }
 
         // GET: Cargos/Edit/5
@@ -87,15 +117,52 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "carg_Id,carg_Descripcion,carg_UsuarioCrea,carg_FechaCrea,carg_UsuarioModifica,carg_FechaModifica")] tbCargos tbCargos)
         {
-            if (ModelState.IsValid)
+            tbCargos.carg_FechaModifica = DateTime.Now;
+            tbCargos.carg_UsuarioModifica = 2;
+            if(ModelState.IsValid)
             {
-                db.Entry(tbCargos).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listcargos = null;
+                    string MensajeError = "";
+                    listcargos = db.UDP_Gral_tbCargos_Update(tbCargos.carg_Id,
+                                                           tbCargos.carg_Descripcion,
+                                                           tbCargos.carg_UsuarioCrea,
+                                                           tbCargos.carg_FechaCrea,
+                                                           tbCargos.carg_UsuarioModifica,
+                                                           tbCargos.carg_FechaModifica);
+                    foreach(UDP_Gral_tbCargos_Update_Result RES in listcargos)
+                    {
+                        MensajeError = RES.MensajeError;
+                    }
+                    if (!string.IsNullOrEmpty(MensajeError))
+                    {
+                        if (MensajeError.StartsWith("-1"))
+                        {
+                            ModelState.AddModelError("", "1. No se pudo editar el registro");
+                            return View(tbCargos);
+                        }
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception EX)
+                {
+                    EX.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro");
+                    return View(tbCargos);
+                }
+
             }
-            ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
-            ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
             return View(tbCargos);
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(tbCargos).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //ViewBag.carg_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioCrea);
+            //ViewBag.carg_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbCargos.carg_UsuarioModifica);
+            //return View(tbCargos);
         }
 
         // GET: Cargos/Delete/5

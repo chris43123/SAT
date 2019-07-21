@@ -305,8 +305,20 @@
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Insert" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Update" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Update" />
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbCargos_Insert_Result">
+          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Update" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbCargos_Update_Result">
+          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Update" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Insert" />

@@ -455,7 +455,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbAsignaturas_Update", asig_IdParameter, asig_DescripcionParameter, asig_SemestralParameter, asig_UsuarioCreaParameter, asig_FechaCreaParameter, asig_UsuarioModificaParameter, asig_FechaModificaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbCargos_Insert(string carg_Descripcion, Nullable<int> carg_UsuarioCrea, Nullable<System.DateTime> carg_FechaCrea)
+        public virtual ObjectResult<UDP_Gral_tbCargos_Insert_Result> UDP_Gral_tbCargos_Insert(string carg_Descripcion, Nullable<int> carg_UsuarioCrea, Nullable<System.DateTime> carg_FechaCrea)
         {
             var carg_DescripcionParameter = carg_Descripcion != null ?
                 new ObjectParameter("carg_Descripcion", carg_Descripcion) :
@@ -469,10 +469,10 @@ namespace SAT.Models
                 new ObjectParameter("carg_FechaCrea", carg_FechaCrea) :
                 new ObjectParameter("carg_FechaCrea", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbCargos_Insert", carg_DescripcionParameter, carg_UsuarioCreaParameter, carg_FechaCreaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbCargos_Insert_Result>("UDP_Gral_tbCargos_Insert", carg_DescripcionParameter, carg_UsuarioCreaParameter, carg_FechaCreaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbCargos_Update(Nullable<int> carg_Id, string carg_Descripcion, Nullable<int> carg_UsuarioCrea, Nullable<System.DateTime> carg_FechaCrea, Nullable<int> carg_UsuarioModifica, Nullable<System.DateTime> carg_FechaModifica)
+        public virtual ObjectResult<UDP_Gral_tbCargos_Update_Result> UDP_Gral_tbCargos_Update(Nullable<int> carg_Id, string carg_Descripcion, Nullable<int> carg_UsuarioCrea, Nullable<System.DateTime> carg_FechaCrea, Nullable<int> carg_UsuarioModifica, Nullable<System.DateTime> carg_FechaModifica)
         {
             var carg_IdParameter = carg_Id.HasValue ?
                 new ObjectParameter("carg_Id", carg_Id) :
@@ -498,7 +498,7 @@ namespace SAT.Models
                 new ObjectParameter("carg_FechaModifica", carg_FechaModifica) :
                 new ObjectParameter("carg_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbCargos_Update", carg_IdParameter, carg_DescripcionParameter, carg_UsuarioCreaParameter, carg_FechaCreaParameter, carg_UsuarioModificaParameter, carg_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbCargos_Update_Result>("UDP_Gral_tbCargos_Update", carg_IdParameter, carg_DescripcionParameter, carg_UsuarioCreaParameter, carg_FechaCreaParameter, carg_UsuarioModificaParameter, carg_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbCarreras_Insert(string descripcion, Nullable<int> encargado, Nullable<int> car_UsuarioCrea, Nullable<System.DateTime> car_FechaCrea)

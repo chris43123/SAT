@@ -1357,12 +1357,12 @@
       <Parameter Name="asig_UsuarioModifica" Mode="In" Type="Int32" />
       <Parameter Name="asig_FechaModifica" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbCargos_Insert" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbCargos_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbCargos_Insert_Result)">
       <Parameter Name="carg_Descripcion" Mode="In" Type="String" />
       <Parameter Name="carg_UsuarioCrea" Mode="In" Type="Int32" />
       <Parameter Name="carg_FechaCrea" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbCargos_Update" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbCargos_Update" ReturnType="Collection(SATModel.UDP_Gral_tbCargos_Update_Result)">
       <Parameter Name="carg_Id" Mode="In" Type="Int32" />
       <Parameter Name="carg_Descripcion" Mode="In" Type="String" />
       <Parameter Name="carg_UsuarioCrea" Mode="In" Type="Int32" />
@@ -1529,5 +1529,11 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UDP_Gral_tbCargos_Insert_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="UDP_Gral_tbCargos_Update_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
   </ComplexType>
 </Schema>
