@@ -6,22 +6,23 @@
 }
 <div class="x_panel">
 	<div class="x_title">
-		<h2>Ingreso de datos Escuela</h2>
-		<div class="nav navbar-right panel-toolbox">
-			@Html.ActionLink("Regresar", "Index")
+		<h2>Ingresar Datos</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Regresar", "Index")
 		</div>
-	<div class="clearfix"></div>
+		<div class="clearfix"></div>
 	</div>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.esc_Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_Codigo, new { htmlAttributes = new { @class = "form-control",autocomplete = "off" } })
+                @Html.EditorFor(model => model.esc_Codigo, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.esc_Codigo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,9 +36,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.esc_Director, "Director", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.esc_Director, "Director", htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("esc_Director", null, htmlAttributes: new { @class = "form-control",  autocomplete = "off" })
+                @Html.DropDownList("esc_Director", null, htmlAttributes: new { @class = "form-control", autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.esc_Director, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,7 +54,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.esc_Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_Telefono, new { htmlAttributes = new { @class = "form-control", @maxlength = "20", autocomplete = "off" } })
+                @Html.EditorFor(model => model.esc_Telefono, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.esc_Telefono, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,58 +62,28 @@
         <div class="form-group">
             @Html.LabelFor(model => model.esc_Correo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_Correo, new { htmlAttributes = new { @class = "form-control", @maxlength = "100", autocomplete = "off" } })
+                @Html.EditorFor(model => model.esc_Correo, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.esc_Correo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.mun_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.mun_Id, "mun_Id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.mun_Id, new { htmlAttributes = new { @class = "form-control", @maxlength = "4", autocomplete = "off" } })
+                @Html.DropDownList("mun_Id", null, htmlAttributes: new { @class = "form-control", autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.mun_Id, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.esc_UsuarioCrea, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_UsuarioCrea, new { htmlAttributes = new { @class = "form-control",  autocomplete = "off" } })
-                @Html.ValidationMessageFor(model => model.esc_UsuarioCrea, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.esc_FechaCrea, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_FechaCrea, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
-                @Html.ValidationMessageFor(model => model.esc_FechaCrea, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.esc_UsuarioModifica, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_UsuarioModifica, new { htmlAttributes = new { @class = "form-control",  autocomplete = "off" } })
-                @Html.ValidationMessageFor(model => model.esc_UsuarioModifica, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.esc_FechaModifica, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.esc_FechaModifica, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
-                @Html.ValidationMessageFor(model => model.esc_FechaModifica, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar" class="btn btn-success" />
-				@Html.ActionLink("Cancelar","Index",null,new {@class="btn btn-default"})
+				@Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
+
             </div>
         </div>
     </div>
 }
 </div>
-

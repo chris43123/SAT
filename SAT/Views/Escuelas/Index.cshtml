@@ -1,21 +1,23 @@
 ﻿@model IEnumerable<SAT.Models.tbEscuelas>
 
 @{
-    ViewBag.Title = "Listado Escuela";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="x_panel">
 	<div class="x_title">
-		<h2>Listado Escuela</h2>
-		<div class="nav navbar-right panel-toolbox">
-			@Html.ActionLink("Registrar Escuela", "Create",null, new {@class="btn btn-info"} )
+		<h2>Index</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Registrar Escuela", "Create", null,new{@class="btn btn-info"})
+
 		</div>
-	<div class="clearfix"></div>
+		<div class="clearfix"></div>
 	</div>
 
-<table class="table table-striped table-bordered dataTable" id="tabla">
+<table class="table table-striped table-bordered dataTable">
 <thead>
-    <tr>
+	<tr>
         <th>
             @Html.DisplayNameFor(model => model.esc_Codigo)
         </th>
@@ -28,11 +30,11 @@
         <th>
             @Html.DisplayNameFor(model => model.esc_Correo)
         </th>
+  
         <th>
-            @Html.DisplayNameFor(model => model.mun_Id)
+            @Html.DisplayNameFor(model => model.tbEmpleados.emp_Identidad)
         </th>
-    
-    
+ 
         <th></th>
     </tr>
 </thead>
@@ -51,17 +53,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.esc_Correo)
         </td>
+ 
         <td>
-            @Html.DisplayFor(modelItem => item.mun_Id)
+            @Html.DisplayFor(modelItem => item.tbEmpleados.emp_Identidad)
         </td>
-     
-     
+   
         <td>
-            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ },new {@class="btn btn-success btn-xs"}) 
-            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ },new {@class="btn btn-default btn-xs"}) 
+            @Html.ActionLink("Editar", "Edit", new { id=item.esc_Id }, new {@class = "btn btn-default btn-xs"})
+            @Html.ActionLink("Detalle", "Details", new { id=item.esc_Id }, new {@class = "btn btn-default btn-xs"})
         </td>
     </tr>
 }
 </tbody>
+
 </table>
 </div>

@@ -16,7 +16,7 @@ namespace SAT
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HomeController", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Escuelas", action = "Create", id = UrlParameter.Optional }
             );
         }
     }
