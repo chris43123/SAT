@@ -95,6 +95,8 @@
     <NavigationProperty Name="tbCarreras" Relationship="Self.FK_Esc_tbMatriculas_car_Id" FromRole="tbMatriculas" ToRole="tbCarreras" />
     <NavigationProperty Name="tbSecciones" Relationship="Self.FK_Esc_tbMatriculas_sec_Id" FromRole="tbMatriculas" ToRole="tbSecciones" />
     <NavigationProperty Name="tbNotas" Relationship="Self.FK_Esc_tbNotas_mat_Id" FromRole="tbMatriculas" ToRole="tbNotas" />
+    <Property Name="esc_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbEscuelas" Relationship="SATModel.FK_Esc_tbMatriculas_esc_Id" FromRole="tbMatriculas" ToRole="tbEscuelas" />
   </EntityType>
   <EntityType Name="tbNotaDetalles">
     <Key>
@@ -281,6 +283,7 @@
     <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbEscuelas_esc_Contacto" FromRole="tbEscuelas" ToRole="tbEmpleados" />
     <NavigationProperty Name="tbEmpleados1" Relationship="Self.FK_Gral_tbEscuelas_esc_Director" FromRole="tbEscuelas" ToRole="tbEmpleados" />
     <NavigationProperty Name="tbMunicipios" Relationship="Self.FK_Gral_tbEscuelas_mun_Id" FromRole="tbEscuelas" ToRole="tbMunicipios" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_esc_Id" FromRole="tbEscuelas" ToRole="tbMatriculas" />
   </EntityType>
   <EntityType Name="tbGrados">
     <Key>
@@ -1399,7 +1402,7 @@
       <Parameter Name="dep_UsuarioModifica" Mode="In" Type="Int32" />
       <Parameter Name="dep_FechaModifica" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbEmpleados_Insert" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbEmpleados_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbEmpleados_Insert_Result)">
       <Parameter Name="emp_Identidad" Mode="In" Type="String" />
       <Parameter Name="emp_Nombres" Mode="In" Type="String" />
       <Parameter Name="emp_Apellidos" Mode="In" Type="String" />
@@ -1416,7 +1419,7 @@
       <Parameter Name="emp_UsuarioCrea" Mode="In" Type="Int32" />
       <Parameter Name="emp_FechaCrea" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbEmpleados_Update" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbEmpleados_Update" ReturnType="Collection(SATModel.UDP_Gral_tbEmpleados_Update_Result)">
       <Parameter Name="emp_Id" Mode="In" Type="Int32" />
       <Parameter Name="emp_Identidad" Mode="In" Type="String" />
       <Parameter Name="emp_Nombres" Mode="In" Type="String" />
@@ -1518,6 +1521,10 @@
       <Parameter Name="sec_FechaModifica" Mode="In" Type="DateTime" />
       <Parameter Name="jgra_Id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <AssociationSet Name="FK_Esc_tbMatriculas_esc_Id" Association="SATModel.FK_Esc_tbMatriculas_esc_Id">
+      <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -1529,5 +1536,23 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <Association Name="FK_Esc_tbMatriculas_esc_Id">
+    <End Type="SATModel.tbEscuelas" Role="tbEscuelas" Multiplicity="1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEscuelas">
+        <PropertyRef Name="esc_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="esc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="UDP_Gral_tbEmpleados_Insert_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="UDP_Gral_tbEmpleados_Update_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
   </ComplexType>
 </Schema>

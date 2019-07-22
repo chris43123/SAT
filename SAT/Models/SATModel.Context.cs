@@ -605,7 +605,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbDepartamentos_Update", dep_IdParameter, dep_DescripcionParameter, dep_UsuarioCreaParameter, dep_FechaCreaParameter, dep_UsuarioModificaParameter, dep_FechaModificaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbEmpleados_Insert(string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea)
+        public virtual ObjectResult<UDP_Gral_tbEmpleados_Insert_Result> UDP_Gral_tbEmpleados_Insert(string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea)
         {
             var emp_IdentidadParameter = emp_Identidad != null ?
                 new ObjectParameter("emp_Identidad", emp_Identidad) :
@@ -667,10 +667,10 @@ namespace SAT.Models
                 new ObjectParameter("emp_FechaCrea", emp_FechaCrea) :
                 new ObjectParameter("emp_FechaCrea", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbEmpleados_Insert", emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEmpleados_Insert_Result>("UDP_Gral_tbEmpleados_Insert", emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbEmpleados_Update(Nullable<int> emp_Id, string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea, Nullable<int> emp_UsuarioModifica, Nullable<System.DateTime> emp_FechaModifica)
+        public virtual ObjectResult<UDP_Gral_tbEmpleados_Update_Result> UDP_Gral_tbEmpleados_Update(Nullable<int> emp_Id, string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea, Nullable<int> emp_UsuarioModifica, Nullable<System.DateTime> emp_FechaModifica)
         {
             var emp_IdParameter = emp_Id.HasValue ?
                 new ObjectParameter("emp_Id", emp_Id) :
@@ -744,7 +744,7 @@ namespace SAT.Models
                 new ObjectParameter("emp_FechaModifica", emp_FechaModifica) :
                 new ObjectParameter("emp_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbEmpleados_Update", emp_IdParameter, emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter, emp_UsuarioModificaParameter, emp_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEmpleados_Update_Result>("UDP_Gral_tbEmpleados_Update", emp_IdParameter, emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter, emp_UsuarioModificaParameter, emp_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbEscuelas_Insert(string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea)

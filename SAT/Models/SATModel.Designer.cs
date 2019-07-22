@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\keyci\Desktop\SAT 2\SAT\SAT\Models\SATModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\carol\Documents\GitHub\SAT\SAT\Models\SATModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
