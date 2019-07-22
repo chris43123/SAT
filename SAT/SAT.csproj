@@ -229,13 +229,8 @@
     <Compile Include="Controllers\EscuelasController.cs" />
     <Compile Include="Controllers\GradosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Controllers\JornadasController.cs" />
-    <Compile Include="Controllers\MunicipiosController.cs" />
-=======
     <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\NotaDetallesController.cs" />
->>>>>>> Stashed changes
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -248,6 +243,7 @@
     <Compile Include="Models\cEscuelas.cs" />
     <Compile Include="Models\cGrados.cs" />
     <Compile Include="Models\cJornadas.cs" />
+    <Compile Include="Models\cMatriculas.cs" />
     <Compile Include="Models\cMunicipios.cs" />
     <Compile Include="Models\cSecciones.cs" />
     <Compile Include="Models\SATModel.Context.cs">
@@ -328,8 +324,6 @@
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-=======
     <Compile Include="Models\UDP_Esc_tbAlumnos_Insert_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
@@ -360,7 +354,6 @@
     <Compile Include="Models\UDP_Gral_tbSecciones_Insert_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
->>>>>>> Stashed changes
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -452,6 +445,11 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Matriculas\Create.cshtml" />
+    <Content Include="Views\Matriculas\Delete.cshtml" />
+    <Content Include="Views\Matriculas\Details.cshtml" />
+    <Content Include="Views\Matriculas\Edit.cshtml" />
+    <Content Include="Views\Matriculas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

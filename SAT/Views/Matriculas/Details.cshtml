@@ -1,0 +1,89 @@
+﻿@model SAT.Models.tbMatriculas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mat_Anio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mat_Anio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mat_FechaCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mat_FechaCrea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mat_FechaModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mat_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAlumnos.alu_Identidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAlumnos.alu_Identidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbCarreras.car_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbCarreras.car_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEscuelas.esc_Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEscuelas.esc_Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbSecciones.sec_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbSecciones.sec_Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.mat_Id },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
+</p>

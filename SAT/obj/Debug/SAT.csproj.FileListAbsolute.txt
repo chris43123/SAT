@@ -338,8 +338,6 @@ C:\Users\keyci\Desktop\SAT 2\SAT\SAT\bin\System.Web.Mvc.xml
 C:\Users\keyci\Desktop\SAT 2\SAT\SAT\obj\Debug\SAT.csprojResolveAssemblyReference.cache
 C:\Users\keyci\Desktop\SAT 2\SAT\SAT\obj\Debug\SAT.dll
 C:\Users\keyci\Desktop\SAT 2\SAT\SAT\obj\Debug\SAT.pdb
-<<<<<<< Updated upstream
-=======
 C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\bin\ApplicationInsights.config
 C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\bin\roslyn\csc.exe
 C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -396,4 +394,3 @@ C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\bin\System.Web.Helpers.xml
 C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\bin\System.Web.Mvc.xml
 C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\obj\Debug\SAT.dll
 C:\Users\Chris Andino\Documents\GitHub\SAT\SAT\obj\Debug\SAT.pdb
->>>>>>> Stashed changes
