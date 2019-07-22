@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SAT.Models.tbNotas>
+
+@{
+    ViewBag.Title = "Notas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Notas</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Registrar Departamento", "Create", null,new{@class="btn btn-info"})
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+<table class="table table-striped table-bordered dataTable">
+<thead>
+	<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.asig_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mat_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.not_UsuarioCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.not_FechaCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.not_UsuarioModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.not_FechaModifica)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAsignaturas.asig_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbMatriculas.mat_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.not_UsuarioCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.not_FechaCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.not_UsuarioModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.not_FechaModifica)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.not_Id }, new {@class = "btn btn-default btn-xs"})
+            @Html.ActionLink("Detalle", "Details", new { id=item.not_Id }, new {@class = "btn btn-default btn-xs"})
+        </td>
+    </tr>
+}
+</tbody>
+
+</table>
+</div>

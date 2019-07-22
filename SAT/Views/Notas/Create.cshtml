@@ -1,0 +1,46 @@
+﻿@model SAT.Models.tbNotas
+
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Registrar</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Regresar", "Index")
+		</div>
+		<div class="clearfix"></div>
+	</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.asig_Id, "Asignatura", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("asig_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.asig_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mat_Id, "Materia", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("mat_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.mat_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+				@Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
+
+            </div>
+        </div>
+    </div>
+}
+</div>

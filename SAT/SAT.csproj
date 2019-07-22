@@ -232,6 +232,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JornadasController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
+    <Compile Include="Controllers\NotasController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,6 +246,7 @@
     <Compile Include="Models\cGrados.cs" />
     <Compile Include="Models\cJornadas.cs" />
     <Compile Include="Models\cMunicipios.cs" />
+    <Compile Include="Models\cNotas.cs" />
     <Compile Include="Models\cSecciones.cs" />
     <Compile Include="Models\SATModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -415,6 +417,11 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Notas\Create.cshtml" />
+    <Content Include="Views\Notas\Delete.cshtml" />
+    <Content Include="Views\Notas\Details.cshtml" />
+    <Content Include="Views\Notas\Edit.cshtml" />
+    <Content Include="Views\Notas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

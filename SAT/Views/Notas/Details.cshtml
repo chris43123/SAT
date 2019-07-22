@@ -1,0 +1,67 @@
+﻿@model SAT.Models.tbNotas
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.asig_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAsignaturas.asig_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mat_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbMatriculas.mat_Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.not_UsuarioCrea)
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.not_FechaCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.not_FechaCrea)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.not_UsuarioModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.not_FechaModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.not_FechaModifica)
+        </dd>
+
+        
+
+        
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.not_Id },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
+</p>
