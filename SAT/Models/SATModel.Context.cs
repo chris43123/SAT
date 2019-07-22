@@ -1056,7 +1056,7 @@ public partial class SATEntities : DbContext
     }
 
 
-    public virtual ObjectResult<string> UDP_Gral_tbJornadas_Insert(string jor_Descripcion, Nullable<int> jor_UsuarioCrea, Nullable<System.DateTime> jor_FechaCrea)
+    public virtual ObjectResult<UDP_Gral_tbJornadas_Insert_Result> UDP_Gral_tbJornadas_Insert(string jor_Descripcion, Nullable<int> jor_UsuarioCrea, Nullable<System.DateTime> jor_FechaCrea)
     {
 
         var jor_DescripcionParameter = jor_Descripcion != null ?
@@ -1074,11 +1074,11 @@ public partial class SATEntities : DbContext
             new ObjectParameter("jor_FechaCrea", typeof(System.DateTime));
 
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbJornadas_Insert", jor_DescripcionParameter, jor_UsuarioCreaParameter, jor_FechaCreaParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbJornadas_Insert_Result>("UDP_Gral_tbJornadas_Insert", jor_DescripcionParameter, jor_UsuarioCreaParameter, jor_FechaCreaParameter);
     }
 
 
-    public virtual ObjectResult<string> UDP_Gral_tbJornadas_Update(Nullable<int> jor_Id, string jor_Descripcion, Nullable<int> jor_UsuarioCrea, Nullable<System.DateTime> jor_FechaCrea, Nullable<int> jor_UsuarioModifica, Nullable<System.DateTime> jor_FechaModifica)
+    public virtual ObjectResult<UDP_Gral_tbJornadas_Update_Result> UDP_Gral_tbJornadas_Update(Nullable<int> jor_Id, string jor_Descripcion, Nullable<int> jor_UsuarioCrea, Nullable<System.DateTime> jor_FechaCrea, Nullable<int> jor_UsuarioModifica, Nullable<System.DateTime> jor_FechaModifica)
     {
 
         var jor_IdParameter = jor_Id.HasValue ?
@@ -1111,7 +1111,7 @@ public partial class SATEntities : DbContext
             new ObjectParameter("jor_FechaModifica", typeof(System.DateTime));
 
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbJornadas_Update", jor_IdParameter, jor_DescripcionParameter, jor_UsuarioCreaParameter, jor_FechaCreaParameter, jor_UsuarioModificaParameter, jor_FechaModificaParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbJornadas_Update_Result>("UDP_Gral_tbJornadas_Update", jor_IdParameter, jor_DescripcionParameter, jor_UsuarioCreaParameter, jor_FechaCreaParameter, jor_UsuarioModificaParameter, jor_FechaModificaParameter);
     }
 
 

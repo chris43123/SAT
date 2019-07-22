@@ -229,6 +229,7 @@
     <Compile Include="Controllers\EscuelasController.cs" />
     <Compile Include="Controllers\GradosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JornadasController.cs" />
     <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\NotaDetallesController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
@@ -349,6 +350,12 @@
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Gral_tbEscuelas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbJornadas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbJornadas_Update_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Gral_tbSecciones_Insert_Result.cs">

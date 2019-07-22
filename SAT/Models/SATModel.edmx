@@ -1666,12 +1666,12 @@
             <Parameter Name="grad_UsuarioMofifica" Mode="In" Type="Int32" />
             <Parameter Name="grad_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbJornadas_Insert" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Gral_tbJornadas_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbJornadas_Insert_Result)">
             <Parameter Name="jor_Descripcion" Mode="In" Type="String" />
             <Parameter Name="jor_UsuarioCrea" Mode="In" Type="Int32" />
             <Parameter Name="jor_FechaCrea" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbJornadas_Update" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Gral_tbJornadas_Update" ReturnType="Collection(SATModel.UDP_Gral_tbJornadas_Update_Result)">
             <Parameter Name="jor_Id" Mode="In" Type="Int32" />
             <Parameter Name="jor_Descripcion" Mode="In" Type="String" />
             <Parameter Name="jor_UsuarioCrea" Mode="In" Type="Int32" />
@@ -3077,6 +3077,12 @@
         <ComplexType Name="UDP_Gral_tbCarreras_Update_Result">
           <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
         </ComplexType>
+        <ComplexType Name="UDP_Gral_tbJornadas_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbJornadas_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3161,8 +3167,20 @@
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEscuelas_Update" FunctionName="SATModel.Store.UDP_Gral_tbEscuelas_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbGrados_Insert" FunctionName="SATModel.Store.UDP_Gral_tbGrados_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbGrados_Update" FunctionName="SATModel.Store.UDP_Gral_tbGrados_Update" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbJornadas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbJornadas_Insert" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbJornadas_Update" FunctionName="SATModel.Store.UDP_Gral_tbJornadas_Update" />
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbJornadas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbJornadas_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbJornadas_Insert_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbJornadas_Update" FunctionName="SATModel.Store.UDP_Gral_tbJornadas_Update" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbJornadas_Update_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbMunicipios_Insert" FunctionName="SATModel.Store.UDP_Gral_tbMunicipios_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbMunicipios_Update" FunctionName="SATModel.Store.UDP_Gral_tbMunicipios_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbSecciones_Insert" FunctionName="SATModel.Store.UDP_Gral_tbSecciones_Insert" >
