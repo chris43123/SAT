@@ -234,11 +234,11 @@
     </Key>
     <Property Name="mun_Id" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="mun_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dep_Id" Type="char" MaxLength="2" Nullable="false" />
     <Property Name="mun_UsuarioCrea" Type="int" Nullable="false" />
     <Property Name="mun_FechaCrea" Type="datetime" Nullable="false" />
     <Property Name="mun_UsuarioModifica" Type="int" />
     <Property Name="mun_FechaModifica" Type="datetime" />
-    <Property Name="dep_Id" Type="char" MaxLength="2" />
   </EntityType>
   <EntityType Name="tbSecciones">
     <Key>
@@ -337,7 +337,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_Esc_tbMunicipios_constraint">
-    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="0..1" />
+    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="1" />
     <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbDepartamentos">

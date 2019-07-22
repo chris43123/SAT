@@ -14,10 +14,10 @@ namespace SAT.Controllers
     {
         private SATEntities db = new SATEntities();
 
-        // GET:Empleado
+        // GET: Empleados
         public ActionResult Index()
         {
-            var tbEmpleados = db.tbEmpleados.Include(t => t.tbCargos);
+            var tbEmpleados = db.tbEmpleados.Include(t => t.tbUsuarios).Include(t => t.tbUsuarios1).Include(t => t.tbCargos).Include(t => t.tbMunicipios);
             return View(tbEmpleados.ToList());
         }
 
@@ -39,7 +39,10 @@ namespace SAT.Controllers
         // GET: Empleados/Create
         public ActionResult Create()
         {
+            ViewBag.emp_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
+            ViewBag.emp_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
             ViewBag.carg_Id = new SelectList(db.tbCargos, "carg_Id", "carg_Descripcion");
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion");
             return View();
         }
 
@@ -50,15 +53,58 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "emp_Id,emp_Identidad,emp_Nombres,emp_Apellidos,emp_FechaNacimiento,emp_Sexo,emp_Direccion,mun_Id,emp_CorreoElectronico,emp_Telefono,carg_Id,emp_FechaIngreso,emp_FechadeSalida,emp_RazonSalida,emp_UsuarioCrea,emp_FechaCrea,emp_UsuarioModifica,emp_FechaModifica")] tbEmpleados tbEmpleados)
         {
+            tbEmpleados.emp_FechaCrea = DateTime.Now;
+            tbEmpleados.emp_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                
-                db.tbEmpleados.Add(tbEmpleados);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listEmpleados = null;
+                    string MensajeError = "";
+                    listEmpleados = db.UDP_Gral_tbEmpleados_Insert(tbEmpleados.emp_Identidad,
+                                                                    tbEmpleados.emp_Nombres,
+                                                                    tbEmpleados.emp_Apellidos,
+                                                                    tbEmpleados.emp_FechaNacimiento,
+                                                                    tbEmpleados.emp_Sexo,
+                                                                    tbEmpleados.emp_Direccion,
+                                                                    tbEmpleados.mun_Id,
+                                                                    tbEmpleados.emp_CorreoElectronico,
+                                                                    tbEmpleados.emp_Telefono,
+                                                                    tbEmpleados.carg_Id,
+                                                                    tbEmpleados.emp_FechaIngreso,
+                                                                    tbEmpleados.emp_FechadeSalida,
+                                                                    tbEmpleados.emp_RazonSalida,
+                                                                    tbEmpleados.emp_UsuarioCrea,
+                                                                    tbEmpleados.emp_FechaCrea );
+
+                    foreach (UDP_Gral_tbEmpleados_Insert_Result Res in listEmpleados)
+                        MensajeError = Res.MensajeError;
+
+                    if(MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro");
+                        return View(tbEmpleados);
+                    }
+
+                    return RedirectToAction("Index");
+                }
+
+                catch(Exception ex)
+                {
+                    ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro");
+
+                }
+
+                ////db.tbEmpleados.Add(tbEmpleados);
+                ////db.SaveChanges();
+                ////return RedirectToAction("Index");
             }
 
-            ViewBag.carg_Id = new SelectList(db.tbCargos, "carg_Id", "carg_Descripcion", tbEmpleados.carg_Id);
+            //ViewBag.emp_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioCrea);
+            //ViewBag.emp_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioModifica);
+            //ViewBag.carg_Id = new SelectList(db.tbCargos, "carg_Id", "carg_Descripcion", tbEmpleados.carg_Id);
+            //ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEmpleados.mun_Id);
             return View(tbEmpleados);
         }
 
@@ -74,7 +120,10 @@ namespace SAT.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.emp_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioCrea);
+            ViewBag.emp_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioModifica);
             ViewBag.carg_Id = new SelectList(db.tbCargos, "carg_Id", "carg_Descripcion", tbEmpleados.carg_Id);
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEmpleados.mun_Id);
             return View(tbEmpleados);
         }
 
@@ -91,7 +140,10 @@ namespace SAT.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.emp_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioCrea);
+            ViewBag.emp_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioModifica);
             ViewBag.carg_Id = new SelectList(db.tbCargos, "carg_Id", "carg_Descripcion", tbEmpleados.carg_Id);
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEmpleados.mun_Id);
             return View(tbEmpleados);
         }
 

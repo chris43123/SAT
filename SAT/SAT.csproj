@@ -222,16 +222,20 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AsignaturasController.cs" />
+    <Compile Include="Controllers\AlumnosController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
-    <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EscuelasController.cs" />
     <Compile Include="Controllers\GradosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Controllers\JornadasController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
+=======
+    <Compile Include="Controllers\MatriculasController.cs" />
+    <Compile Include="Controllers\NotaDetallesController.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -324,6 +328,39 @@
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Models\UDP_Esc_tbAlumnos_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbMatriculas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbMatriculas_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCargos_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCargos_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCarreras_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCarreras_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbEmpleados_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbEscuelas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbSecciones_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

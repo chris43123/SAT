@@ -4,6 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< Updated upstream
       <Diagram DiagramId="bcc16303a0fe4f2fabcec4de175c9b8b" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="SATModel.tbUsuarios" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -78,6 +79,83 @@
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_grad_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jor_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_Sec_ID" ManuallyRouted="false" />
+=======
+      <Diagram DiagramId="bcc16303a0fe4f2fabcec4de175c9b8b" Name="Diagram1" ZoomLevel="26">
+        <EntityTypeShape EntityType="SATModel.tbUsuarios" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="SATModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SATModel.tbAlumnos" Width="1.5" PointX="3" PointY="21.875" />
+        <EntityTypeShape EntityType="SATModel.tbMatriculas" Width="1.5" PointX="5.25" PointY="23.125" />
+        <EntityTypeShape EntityType="SATModel.tbNotaDetalles" Width="1.5" PointX="15.75" PointY="19.125" />
+        <EntityTypeShape EntityType="SATModel.tbNotas" Width="1.5" PointX="10.5" PointY="24.625" />
+        <EntityTypeShape EntityType="SATModel.tbAsignaturas" Width="1.5" PointX="3" PointY="26.75" />
+        <EntityTypeShape EntityType="SATModel.tbCargos" Width="1.5" PointX="3" PointY="18.375" />
+        <EntityTypeShape EntityType="SATModel.tbCarreraAsignaturas" Width="1.5" PointX="8.25" PointY="24.75" />
+        <EntityTypeShape EntityType="SATModel.tbCarreras" Width="1.5" PointX="12.75" PointY="17.375" />
+        <EntityTypeShape EntityType="SATModel.tbDepartamentos" Width="1.5" PointX="3" PointY="14.875" />
+        <EntityTypeShape EntityType="SATModel.tbEmpleadoAsignaturas" Width="1.5" PointX="9.75" PointY="20.75" />
+        <EntityTypeShape EntityType="SATModel.tbEmpleados" Width="1.5" PointX="7.5" PointY="16" />
+        <EntityTypeShape EntityType="SATModel.tbEscuelas" Width="1.5" PointX="12.75" PointY="21.75" />
+        <EntityTypeShape EntityType="SATModel.tbGrados" Width="1.5" PointX="3" PointY="11.375" />
+        <EntityTypeShape EntityType="SATModel.tbJornadaGrados" Width="1.5" PointX="5.25" PointY="14" />
+        <EntityTypeShape EntityType="SATModel.tbJornadas" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="SATModel.tbMunicipios" Width="1.5" PointX="5.25" PointY="18.375" />
+        <EntityTypeShape EntityType="SATModel.tbSecciones" Width="1.5" PointX="10.5" PointY="16.125" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbAlumnos_alu_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbAlumnos_alu_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotaDetalles_notd_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotaDetalles_notd_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCargos_carg_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCargos_carg_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignaturas_carasi_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignaturas_carasi_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreras_car_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreras_car_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbDepartamentos_dep_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbDepartamentos_dep_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_empa_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_empa_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_emp_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_emp_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_esc_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_esc_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbGrados_grad_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbGrados_grad_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jgra_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jgra_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadas_jor_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadas_jor_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbMunicipios_mun_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbMunicipios_mun_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_sec_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_sec_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_alu_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_car_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_esc_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_sec_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_mat_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_asig_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignatura_asig_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_asig_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_carg_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignatura_car_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbCarrera_car_Encargado" />
+        <AssociationConnector Association="SATModel.Fk_Esc_tbMunicipios_constraint" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_emp_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEmpleados_mun_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_esc_Contacto" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_esc_Director" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbEscuelas_mun_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_grad_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jor_Id" />
+        <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_Sec_ID" />
+>>>>>>> Stashed changes
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

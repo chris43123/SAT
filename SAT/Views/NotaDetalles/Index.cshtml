@@ -1,0 +1,116 @@
+﻿@model IEnumerable<SAT.Models.tbNotaDetalles>
+
+@{
+    ViewBag.Title = "NotaDetalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Notas Detalle</h2>
+		<div class="nav navbar-right panel_toolbox">
+		@Html.ActionLink("Registrar", "Create", null,new{@class="btn btn-info"})
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+<table class="table table-striped table-bordered dataTable">
+<thead>
+	<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Acumulado1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Examen1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Acumulado2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Examen2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Acumulado3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Examen3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Acumulado4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_Examen4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_FechaCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_FechaModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_UsuarioCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notd_UsuarioModifica)
+        </th>
+        
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbNotas.not_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Acumulado1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Examen1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Acumulado2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Examen2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Acumulado3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Examen3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Acumulado4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_Examen4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_FechaCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_FechaModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_UsuarioCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notd_UsuarioModifica)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.notd_Id }, new {@class = "btn btn-default btn-xs"})
+            @Html.ActionLink("Detalle", "Details", new { id=item.notd_Id }, new {@class = "btn btn-default btn-xs"})
+        </td>
+    </tr>
+}
+</tbody>
+
+</table>
+</div>
