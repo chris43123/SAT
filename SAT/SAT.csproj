@@ -326,6 +326,12 @@
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UDP_Esc_tbNotas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbNotas_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

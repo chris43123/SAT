@@ -2730,13 +2730,13 @@
             <Parameter Name="notd_UsuarioModifica" Mode="In" Type="Int32" />
             <Parameter Name="notd_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbNotas_Insert" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Esc_tbNotas_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbNotas_Insert_Result)">
             <Parameter Name="asig_Id" Mode="In" Type="Int32" />
             <Parameter Name="mat_Id" Mode="In" Type="Int32" />
             <Parameter Name="not_UsuarioCrea" Mode="In" Type="Int32" />
             <Parameter Name="not_FechaCrea" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbNotas_Update" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Esc_tbNotas_Update" ReturnType="Collection(SATModel.UDP_Esc_tbNotas_Update_Result)">
             <Parameter Name="not_Id" Mode="In" Type="Int32" />
             <Parameter Name="asig_Id" Mode="In" Type="Int32" />
             <Parameter Name="mat_Id" Mode="In" Type="Int32" />
@@ -2951,6 +2951,12 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UDP_Esc_tbNotas_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Esc_tbNotas_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3256,8 +3262,20 @@
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SATModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update" />
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Insert" />
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Update" />
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbNotas_Insert_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Update" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbNotas_Update_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" />

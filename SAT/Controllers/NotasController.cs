@@ -57,15 +57,29 @@ namespace SAT.Controllers
             tbNotas.not_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.tbNotas.Add(tbNotas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                try
+                {
+                    IEnumerable<object> listnotas = null;
+                    string mensajeerror = "";
+                    listnotas = db.UDP_Esc_tbNotas_Insert(tbNotas.asig_Id, tbNotas.mat_Id, tbNotas.not_UsuarioCrea, tbNotas.not_FechaCrea);
 
-            ViewBag.not_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotas.not_UsuarioCrea);
-            ViewBag.not_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotas.not_UsuarioModifica);
-            ViewBag.mat_Id = new SelectList(db.tbMatriculas, "mat_Id", "mat_Id", tbNotas.mat_Id);
-            ViewBag.asig_Id = new SelectList(db.tbAsignaturas, "asig_Id", "asig_Descripcion", tbNotas.asig_Id);
+                    foreach (UDP_Esc_tbNotas_Insert_Result not in listnotas)
+                        mensajeerror = not.MensajeError;
+                    if (mensajeerror.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro");
+                        return View(tbNotas);
+                    }
+                }
+
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo ingresar el registro");
+                }
+
+                
+            }
             return View(tbNotas);
         }
 

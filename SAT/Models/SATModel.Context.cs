@@ -277,7 +277,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbNotaDetalles_Update", notd_IdParameter, not_IdParameter, notd_Examen1Parameter, notd_Examen2Parameter, notd_Examen3Parameter, notd_Examen4Parameter, notd_Acumulado1Parameter, notd_Acumulado2Parameter, notd_Acumulado3Parameter, notd_Acumulado4Parameter, notd_UsuarioCreaParameter, notd_FechaCreaParameter, notd_UsuarioModificaParameter, notd_FechaModificaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Esc_tbNotas_Insert(Nullable<int> asig_Id, Nullable<int> mat_Id, Nullable<int> not_UsuarioCrea, Nullable<System.DateTime> not_FechaCrea)
+        public virtual ObjectResult<UDP_Esc_tbNotas_Insert_Result> UDP_Esc_tbNotas_Insert(Nullable<int> asig_Id, Nullable<int> mat_Id, Nullable<int> not_UsuarioCrea, Nullable<System.DateTime> not_FechaCrea)
         {
             var asig_IdParameter = asig_Id.HasValue ?
                 new ObjectParameter("asig_Id", asig_Id) :
@@ -295,10 +295,10 @@ namespace SAT.Models
                 new ObjectParameter("not_FechaCrea", not_FechaCrea) :
                 new ObjectParameter("not_FechaCrea", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbNotas_Insert", asig_IdParameter, mat_IdParameter, not_UsuarioCreaParameter, not_FechaCreaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbNotas_Insert_Result>("UDP_Esc_tbNotas_Insert", asig_IdParameter, mat_IdParameter, not_UsuarioCreaParameter, not_FechaCreaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Esc_tbNotas_Update(Nullable<int> not_Id, Nullable<int> asig_Id, Nullable<int> mat_Id, Nullable<int> not_UsuarioCrea, Nullable<System.DateTime> not_FechaCrea, Nullable<int> not_UsuarioModifica, Nullable<System.DateTime> not_FechaModifica)
+        public virtual ObjectResult<UDP_Esc_tbNotas_Update_Result> UDP_Esc_tbNotas_Update(Nullable<int> not_Id, Nullable<int> asig_Id, Nullable<int> mat_Id, Nullable<int> not_UsuarioCrea, Nullable<System.DateTime> not_FechaCrea, Nullable<int> not_UsuarioModifica, Nullable<System.DateTime> not_FechaModifica)
         {
             var not_IdParameter = not_Id.HasValue ?
                 new ObjectParameter("not_Id", not_Id) :
@@ -328,7 +328,7 @@ namespace SAT.Models
                 new ObjectParameter("not_FechaModifica", not_FechaModifica) :
                 new ObjectParameter("not_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbNotas_Update", not_IdParameter, asig_IdParameter, mat_IdParameter, not_UsuarioCreaParameter, not_FechaCreaParameter, not_UsuarioModificaParameter, not_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbNotas_Update_Result>("UDP_Esc_tbNotas_Update", not_IdParameter, asig_IdParameter, mat_IdParameter, not_UsuarioCreaParameter, not_FechaCreaParameter, not_UsuarioModificaParameter, not_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbMatriculas_Insert(Nullable<int> alu_Id, Nullable<int> sec_Id, Nullable<int> car_Id, Nullable<int> mat_Anio, Nullable<int> mat_UsuarioCrea, Nullable<System.DateTime> mat_FechaCrea)
