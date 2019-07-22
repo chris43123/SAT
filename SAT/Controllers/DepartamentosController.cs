@@ -48,11 +48,41 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "dep_Id,dep_Descripcion,dep_UsuarioCrea,dep_FechaCrea,dep_UsuarioModifica,dep_FechaModifica")] tbDepartamentos tbDepartamentos)
         {
+            tbDepartamentos.dep_FechaCrea = DateTime.Now;
+            tbDepartamentos.dep_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                db.tbDepartamentos.Add(tbDepartamentos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //Listado para recorrer el tipo complejo
+                    IEnumerable<object> Listadepartamentos = null;
+                    string MensajeError = "";
+                    //Almacenamos la ejecucion del sp
+                    Listadepartamentos = db.UDP_Gral_tbDepartamentos_Insert(
+                        tbDepartamentos.dep_Id,
+                        tbDepartamentos.dep_Descripcion,
+                        tbDepartamentos.dep_UsuarioCrea,
+                        tbDepartamentos.dep_FechaCrea);
+                    //Recuperacion del valor que traemos con nuestro retorno
+                    foreach (UDP_Gral_tbDepartamentos_Insert_Result res in Listadepartamentos)
+                        MensajeError = res.MensajeError;
+                    //Validacion
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("","1. Ha ocurrido un error durante la inserción del departamento");
+                        return View(tbDepartamentos);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                    ModelState.AddModelError("", "2. Ha ocurrido un error durante la inserción del departamento");
+                    return View(tbDepartamentos);
+                }
+                //db.tbDepartamentos.Add(tbDepartamentos);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
             }
 
             return View(tbDepartamentos);

@@ -555,7 +555,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbCarreras_Update", car_IdParameter, descripcionParameter, encargadoParameter, car_UsuarioCreaParameter, car_FechaCreaParameter, car_UsuarioModificaParameter, car_FechaModificaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbDepartamentos_Insert(string dep_Id, string dep_Descripcion, Nullable<int> usu_Id, Nullable<System.DateTime> usu_Fechacrea)
+        public virtual ObjectResult<UDP_Gral_tbDepartamentos_Insert_Result> UDP_Gral_tbDepartamentos_Insert(string dep_Id, string dep_Descripcion, Nullable<int> usu_Id, Nullable<System.DateTime> usu_Fechacrea)
         {
             var dep_IdParameter = dep_Id != null ?
                 new ObjectParameter("dep_Id", dep_Id) :
@@ -573,10 +573,10 @@ namespace SAT.Models
                 new ObjectParameter("usu_Fechacrea", usu_Fechacrea) :
                 new ObjectParameter("usu_Fechacrea", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbDepartamentos_Insert", dep_IdParameter, dep_DescripcionParameter, usu_IdParameter, usu_FechacreaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbDepartamentos_Insert_Result>("UDP_Gral_tbDepartamentos_Insert", dep_IdParameter, dep_DescripcionParameter, usu_IdParameter, usu_FechacreaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbDepartamentos_Update(string dep_Id, string dep_Descripcion, Nullable<int> dep_UsuarioCrea, Nullable<System.DateTime> dep_FechaCrea, Nullable<int> dep_UsuarioModifica, Nullable<System.DateTime> dep_FechaModifica)
+        public virtual ObjectResult<UDP_Gral_tbDepartamentos_Update_Result> UDP_Gral_tbDepartamentos_Update(string dep_Id, string dep_Descripcion, Nullable<int> dep_UsuarioCrea, Nullable<System.DateTime> dep_FechaCrea, Nullable<int> dep_UsuarioModifica, Nullable<System.DateTime> dep_FechaModifica)
         {
             var dep_IdParameter = dep_Id != null ?
                 new ObjectParameter("dep_Id", dep_Id) :
@@ -602,7 +602,7 @@ namespace SAT.Models
                 new ObjectParameter("dep_FechaModifica", dep_FechaModifica) :
                 new ObjectParameter("dep_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbDepartamentos_Update", dep_IdParameter, dep_DescripcionParameter, dep_UsuarioCreaParameter, dep_FechaCreaParameter, dep_UsuarioModificaParameter, dep_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbDepartamentos_Update_Result>("UDP_Gral_tbDepartamentos_Update", dep_IdParameter, dep_DescripcionParameter, dep_UsuarioCreaParameter, dep_FechaCreaParameter, dep_UsuarioModificaParameter, dep_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbEmpleados_Insert(string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea)

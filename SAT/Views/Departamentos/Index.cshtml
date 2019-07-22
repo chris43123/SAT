@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SAT.Models.tbDepartamentos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="x_panel"
 	<div class="x_title">
-			<h2>Index</h2>
+			<h2>Listado general de departamentos</h2>
 			<div class="nav navbar-right panel_toolbox">
 				@Html.ActionLink("Registrar departamento", "Create",null,new{@class="btn btn-info"})
 			</div>
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.dep_FechaModifica)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning btn-xs" })
-            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-info btn-xs" })
-            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger btn-xs" })
+            @Html.ActionLink("Editar", "Edit", new { id=item.dep_Id }, new { @class = "btn btn-warning btn-xs" })
+            @Html.ActionLink("Detalles", "Details", new { id = item.dep_Id }, new { @class = "btn btn-info btn-xs" })
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.dep_Id }, new { @class = "btn btn-danger btn-xs" })
         </td>
     </tr>
 }

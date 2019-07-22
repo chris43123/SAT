@@ -2807,13 +2807,13 @@
             <Parameter Name="car_UsuarioModifica" Mode="In" Type="Int32" />
             <Parameter Name="car_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbDepartamentos_Insert" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Gral_tbDepartamentos_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbDepartamentos_Insert_Result)">
             <Parameter Name="dep_Id" Mode="In" Type="String" />
             <Parameter Name="dep_Descripcion" Mode="In" Type="String" />
             <Parameter Name="usu_Id" Mode="In" Type="Int32" />
             <Parameter Name="usu_Fechacrea" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbDepartamentos_Update" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Gral_tbDepartamentos_Update" ReturnType="Collection(SATModel.UDP_Gral_tbDepartamentos_Update_Result)">
             <Parameter Name="dep_Id" Mode="In" Type="String" />
             <Parameter Name="dep_Descripcion" Mode="In" Type="String" />
             <Parameter Name="dep_UsuarioCrea" Mode="In" Type="Int32" />
@@ -2951,6 +2951,12 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbDepartamentos_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbDepartamentos_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3266,8 +3272,20 @@
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Update" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Update" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Update" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Insert" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Update" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Update" />
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbDepartamentos_Insert_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Update" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Update" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbDepartamentos_Update_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleados_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEmpleados_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleados_Update" FunctionName="SATModel.Store.UDP_Gral_tbEmpleados_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEscuelas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEscuelas_Insert" />
