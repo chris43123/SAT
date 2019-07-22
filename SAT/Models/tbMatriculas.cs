@@ -29,6 +29,7 @@ namespace SAT.Models
         public System.DateTime mat_FechaCrea { get; set; }
         public Nullable<int> mat_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> mat_FechaModifica { get; set; }
+        public int esc_Id { get; set; }
     
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }
@@ -37,5 +38,6 @@ namespace SAT.Models
         public virtual tbSecciones tbSecciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbNotas> tbNotas { get; set; }
+        public virtual tbEscuelas tbEscuelas { get; set; }
     }
 }

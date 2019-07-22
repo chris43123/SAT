@@ -222,6 +222,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlumnosController.cs" />
     <Compile Include="Controllers\AsignaturasController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\cAlumnos.cs" />
     <Compile Include="Models\cAsignaturas.cs" />
     <Compile Include="Models\cCargos.cs" />
     <Compile Include="Models\cCarreras.cs" />
@@ -322,6 +324,12 @@
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbUsuarios.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbAlumnos_Insert_Result1.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbAlumnos_Update_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -415,6 +423,11 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Alumnos\Create.cshtml" />
+    <Content Include="Views\Alumnos\Delete.cshtml" />
+    <Content Include="Views\Alumnos\Details.cshtml" />
+    <Content Include="Views\Alumnos\Edit.cshtml" />
+    <Content Include="Views\Alumnos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
