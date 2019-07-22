@@ -47,7 +47,14 @@ namespace SAT.Models
         [MaxLength(4, ErrorMessage = "Excedió el máximo de caracteres")]
         public string mun_Id { get; set; }
 
+        [Display(Name = "Usuario crea")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
+        [Range(0, int.MaxValue, ErrorMessage = "Ingrese un numero positivo{0}")]
+        public int esc_UsuarioCrea { get; set; }
 
-
+        [Display(Name = "Fecha crea")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
+        public System.DateTime esc_FechaCrea { get; set; }
     }
+    
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbUsuarios">
           <Key>
             <PropertyRef Name="usu_Id" />
@@ -50,6 +50,7 @@
           </Key>
           <Property Name="mat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="alu_Id" Type="int" Nullable="false" />
+          <Property Name="esc_Id" Type="int" Nullable="false" />
           <Property Name="sec_Id" Type="int" Nullable="false" />
           <Property Name="car_Id" Type="int" Nullable="false" />
           <Property Name="mat_Anio" Type="int" Nullable="false" />
@@ -302,6 +303,18 @@
             </Principal>
             <Dependent Role="tbMatriculas">
               <PropertyRef Name="car_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbMatriculas_esc_Id">
+          <End Role="tbEscuelas" Type="Self.tbEscuelas" Multiplicity="1" />
+          <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEscuelas">
+              <PropertyRef Name="esc_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="esc_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -985,25 +998,6 @@
           <Parameter Name="not_UsuarioModifica" Type="int" Mode="In" />
           <Parameter Name="not_FechaModifica" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="UDP_Gral_tbMatriculas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
-          <Parameter Name="alu_Id" Type="int" Mode="In" />
-          <Parameter Name="sec_Id" Type="int" Mode="In" />
-          <Parameter Name="car_Id" Type="int" Mode="In" />
-          <Parameter Name="mat_Anio" Type="int" Mode="In" />
-          <Parameter Name="mat_UsuarioCrea" Type="int" Mode="In" />
-          <Parameter Name="mat_FechaCrea" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="UDP_Gral_tbMatriculas_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
-          <Parameter Name="mat_Id" Type="int" Mode="In" />
-          <Parameter Name="alu_Id" Type="int" Mode="In" />
-          <Parameter Name="sec_Id" Type="int" Mode="In" />
-          <Parameter Name="car_Id" Type="int" Mode="In" />
-          <Parameter Name="mat_Anio" Type="int" Mode="In" />
-          <Parameter Name="mat_UsuarioCrea" Type="int" Mode="In" />
-          <Parameter Name="mat_FechaCrea" Type="datetime" Mode="In" />
-          <Parameter Name="mat_UsuarioModifica" Type="int" Mode="In" />
-          <Parameter Name="mat_FechaModifica" Type="datetime" Mode="In" />
-        </Function>
         <Function Name="UDP_Gral_tbAsignaturas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
           <Parameter Name="asig_Descripcion" Type="nvarchar" Mode="In" />
           <Parameter Name="asig_Semestral" Type="bit" Mode="In" />
@@ -1216,6 +1210,10 @@
             <End Role="tbCarreras" EntitySet="tbCarreras" />
             <End Role="tbMatriculas" EntitySet="tbMatriculas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbMatriculas_esc_Id" Association="Self.FK_Esc_tbMatriculas_esc_Id">
+            <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
           <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioCrea" Association="Self.FK_Esc_tbMatriculas_mat_UsuarioCrea">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbMatriculas" EntitySet="tbMatriculas" />
@@ -1417,8 +1415,7 @@
             <End Role="tbSecciones" EntitySet="tbSecciones" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1517,6 +1514,8 @@
           <NavigationProperty Name="tbCarreras" Relationship="Self.FK_Esc_tbMatriculas_car_Id" FromRole="tbMatriculas" ToRole="tbCarreras" />
           <NavigationProperty Name="tbSecciones" Relationship="Self.FK_Esc_tbMatriculas_sec_Id" FromRole="tbMatriculas" ToRole="tbSecciones" />
           <NavigationProperty Name="tbNotas" Relationship="Self.FK_Esc_tbNotas_mat_Id" FromRole="tbMatriculas" ToRole="tbNotas" />
+          <Property Name="esc_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbEscuelas" Relationship="SATModel.FK_Esc_tbMatriculas_esc_Id" FromRole="tbMatriculas" ToRole="tbEscuelas" />
         </EntityType>
         <EntityType Name="tbNotaDetalles">
           <Key>
@@ -1703,6 +1702,7 @@
           <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbEscuelas_esc_Contacto" FromRole="tbEscuelas" ToRole="tbEmpleados" />
           <NavigationProperty Name="tbEmpleados1" Relationship="Self.FK_Gral_tbEscuelas_esc_Director" FromRole="tbEscuelas" ToRole="tbEmpleados" />
           <NavigationProperty Name="tbMunicipios" Relationship="Self.FK_Gral_tbEscuelas_mun_Id" FromRole="tbEscuelas" ToRole="tbMunicipios" />
+          <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_esc_Id" FromRole="tbEscuelas" ToRole="tbMatriculas" />
         </EntityType>
         <EntityType Name="tbGrados">
           <Key>
@@ -2858,7 +2858,7 @@
             <Parameter Name="emp_UsuarioModifica" Mode="In" Type="Int32" />
             <Parameter Name="emp_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbEscuelas_Insert" ReturnType="Collection(String)">
+          <FunctionImport Name="UDP_Gral_tbEscuelas_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbEscuelas_Insert_Result)">
             <Parameter Name="esc_Codigo" Mode="In" Type="String" />
             <Parameter Name="esc_NombreEscuela" Mode="In" Type="String" />
             <Parameter Name="esc_Director" Mode="In" Type="Int32" />
@@ -2940,6 +2940,10 @@
             <Parameter Name="sec_FechaModifica" Mode="In" Type="DateTime" />
             <Parameter Name="jgra_Id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_Esc_tbMatriculas_esc_Id" Association="SATModel.FK_Esc_tbMatriculas_esc_Id">
+            <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+            <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2951,6 +2955,21 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK_Esc_tbMatriculas_esc_Id">
+          <End Type="SATModel.tbEscuelas" Role="tbEscuelas" Multiplicity="1" />
+          <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEscuelas">
+              <PropertyRef Name="esc_Id" />
+            </Principal>
+            <Dependent Role="tbMatriculas">
+              <PropertyRef Name="esc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="UDP_Gral_tbEscuelas_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3003,6 +3022,7 @@
           <EntitySetMapping Name="tbMatriculas">
             <EntityTypeMapping TypeName="SATModel.tbMatriculas">
               <MappingFragment StoreEntitySet="tbMatriculas">
+                <ScalarProperty Name="esc_Id" ColumnName="esc_Id" />
                 <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
                 <ScalarProperty Name="alu_Id" ColumnName="alu_Id" />
                 <ScalarProperty Name="sec_Id" ColumnName="sec_Id" />
@@ -3258,8 +3278,6 @@
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Update" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Insert" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Insert" />
@@ -3270,7 +3288,13 @@
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Update" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleados_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEmpleados_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleados_Update" FunctionName="SATModel.Store.UDP_Gral_tbEmpleados_Update" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbEscuelas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEscuelas_Insert" />
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbEscuelas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEscuelas_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbEscuelas_Insert_Result">
+                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbEscuelas_Update" FunctionName="SATModel.Store.UDP_Gral_tbEscuelas_Update" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbGrados_Insert" FunctionName="SATModel.Store.UDP_Gral_tbGrados_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbGrados_Update" FunctionName="SATModel.Store.UDP_Gral_tbGrados_Update" />

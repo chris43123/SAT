@@ -747,7 +747,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbEmpleados_Update", emp_IdParameter, emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter, emp_UsuarioModificaParameter, emp_FechaModificaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbEscuelas_Insert(string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea)
+        public virtual ObjectResult<UDP_Gral_tbEscuelas_Insert_Result> UDP_Gral_tbEscuelas_Insert(string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea)
         {
             var esc_CodigoParameter = esc_Codigo != null ?
                 new ObjectParameter("esc_Codigo", esc_Codigo) :
@@ -785,7 +785,7 @@ namespace SAT.Models
                 new ObjectParameter("esc_FechaCrea", esc_FechaCrea) :
                 new ObjectParameter("esc_FechaCrea", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbEscuelas_Insert", esc_CodigoParameter, esc_NombreEscuelaParameter, esc_DirectorParameter, esc_ContactoParameter, esc_TelefonoParameter, esc_CorreoParameter, mun_IdParameter, esc_UsuarioCreaParameter, esc_FechaCreaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEscuelas_Insert_Result>("UDP_Gral_tbEscuelas_Insert", esc_CodigoParameter, esc_NombreEscuelaParameter, esc_DirectorParameter, esc_ContactoParameter, esc_TelefonoParameter, esc_CorreoParameter, mun_IdParameter, esc_UsuarioCreaParameter, esc_FechaCreaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbEscuelas_Update(Nullable<int> esc_Id, string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea, Nullable<int> esc_UsuarioModifica, Nullable<System.DateTime> esc_FechaModifica)

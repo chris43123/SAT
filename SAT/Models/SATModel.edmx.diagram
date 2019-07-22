@@ -78,6 +78,7 @@
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_grad_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jor_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_Sec_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_esc_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
