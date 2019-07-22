@@ -30,8 +30,8 @@ namespace SAT.Models
     
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }
+        public virtual tbJornadaGrados tbJornadaGrados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
-        public virtual tbJornadaGrados tbJornadaGrados { get; set; }
     }
 }

@@ -4,11 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bcc16303a0fe4f2fabcec4de175c9b8b" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="bcc16303a0fe4f2fabcec4de175c9b8b" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="SATModel.tbUsuarios" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbAlumnos" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SATModel.tbMatriculas" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbNotaDetalles" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbNotas" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SATModel.tbAsignaturas" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
@@ -26,8 +25,6 @@
         <EntityTypeShape EntityType="SATModel.tbSecciones" Width="1.5" PointX="16.5" PointY="18.125" IsExpanded="true" />
         <AssociationConnector Association="SATModel.FK_Esc_tbAlumnos_alu_UsuarioCrea" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Esc_tbAlumnos_alu_UsuarioModifica" ManuallyRouted="false" />
-        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea" ManuallyRouted="false" />
-        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Esc_tbNotaDetalles_notd_UsuarioCrea" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Esc_tbNotaDetalles_notd_UsuarioModifica" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_UsuarioCrea" ManuallyRouted="false" />
@@ -58,10 +55,6 @@
         <AssociationConnector Association="SATModel.FK_Gral_tbMunicipios_mun_UsuarioModifica" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_sec_UsuarioCrea" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_sec_UsuarioModifica" ManuallyRouted="false" />
-        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_alu_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_car_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_sec_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_mat_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Esc_tbNotas_not_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Esc_tbNotas_asig_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbCarreraAsignatura_asig_Id" ManuallyRouted="false" />
@@ -78,6 +71,14 @@
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_grad_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbJornadaGrados_jor_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SATModel.FK_Gral_tbSecciones_Sec_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SATModel.tbMatriculas" Width="1.5" PointX="18.75" PointY="15.625" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_alu_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_car_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_esc_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbMatriculas_sec_Id" />
+        <AssociationConnector Association="SATModel.FK_Esc_tbNotas_mat_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

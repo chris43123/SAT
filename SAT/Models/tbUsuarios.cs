@@ -19,8 +19,6 @@ namespace SAT.Models
         {
             this.tbAlumnos = new HashSet<tbAlumnos>();
             this.tbAlumnos1 = new HashSet<tbAlumnos>();
-            this.tbMatriculas = new HashSet<tbMatriculas>();
-            this.tbMatriculas1 = new HashSet<tbMatriculas>();
             this.tbNotaDetalles = new HashSet<tbNotaDetalles>();
             this.tbNotaDetalles1 = new HashSet<tbNotaDetalles>();
             this.tbNotas = new HashSet<tbNotas>();
@@ -51,6 +49,8 @@ namespace SAT.Models
             this.tbMunicipios1 = new HashSet<tbMunicipios>();
             this.tbSecciones = new HashSet<tbSecciones>();
             this.tbSecciones1 = new HashSet<tbSecciones>();
+            this.tbMatriculas = new HashSet<tbMatriculas>();
+            this.tbMatriculas1 = new HashSet<tbMatriculas>();
         }
     
         public int usu_Id { get; set; }
@@ -64,10 +64,6 @@ namespace SAT.Models
         public virtual ICollection<tbAlumnos> tbAlumnos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbAlumnos> tbAlumnos1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbMatriculas> tbMatriculas1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbNotaDetalles> tbNotaDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -128,5 +124,9 @@ namespace SAT.Models
         public virtual ICollection<tbSecciones> tbSecciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbSecciones> tbSecciones1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbMatriculas> tbMatriculas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbMatriculas> tbMatriculas1 { get; set; }
     }
 }

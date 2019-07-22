@@ -22,6 +22,7 @@ namespace SAT.Models
     
         public int mat_Id { get; set; }
         public int alu_Id { get; set; }
+        public int esc_Id { get; set; }
         public int sec_Id { get; set; }
         public int car_Id { get; set; }
         public int mat_Anio { get; set; }
@@ -34,6 +35,7 @@ namespace SAT.Models
         public virtual tbUsuarios tbUsuarios1 { get; set; }
         public virtual tbAlumnos tbAlumnos { get; set; }
         public virtual tbCarreras tbCarreras { get; set; }
+        public virtual tbEscuelas tbEscuelas { get; set; }
         public virtual tbSecciones tbSecciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbNotas> tbNotas { get; set; }

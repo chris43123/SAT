@@ -30,7 +30,6 @@ namespace SAT.Models
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbAlumnos> tbAlumnos { get; set; }
-        public virtual DbSet<tbMatriculas> tbMatriculas { get; set; }
         public virtual DbSet<tbNotaDetalles> tbNotaDetalles { get; set; }
         public virtual DbSet<tbNotas> tbNotas { get; set; }
         public virtual DbSet<tbAsignaturas> tbAsignaturas { get; set; }
@@ -46,6 +45,7 @@ namespace SAT.Models
         public virtual DbSet<tbJornadas> tbJornadas { get; set; }
         public virtual DbSet<tbMunicipios> tbMunicipios { get; set; }
         public virtual DbSet<tbSecciones> tbSecciones { get; set; }
+        public virtual DbSet<tbMatriculas> tbMatriculas { get; set; }
     
         public virtual ObjectResult<string> UDP_Acce_tbUsuario_Insert(string usu_NombreUsuario, string usu_Password, Nullable<bool> usu_EsAdministrador)
         {
@@ -329,76 +329,6 @@ namespace SAT.Models
                 new ObjectParameter("not_FechaModifica", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbNotas_Update", not_IdParameter, asig_IdParameter, mat_IdParameter, not_UsuarioCreaParameter, not_FechaCreaParameter, not_UsuarioModificaParameter, not_FechaModificaParameter);
-        }
-    
-        public virtual ObjectResult<string> UDP_Gral_tbMatriculas_Insert(Nullable<int> alu_Id, Nullable<int> sec_Id, Nullable<int> car_Id, Nullable<int> mat_Anio, Nullable<int> mat_UsuarioCrea, Nullable<System.DateTime> mat_FechaCrea)
-        {
-            var alu_IdParameter = alu_Id.HasValue ?
-                new ObjectParameter("alu_Id", alu_Id) :
-                new ObjectParameter("alu_Id", typeof(int));
-    
-            var sec_IdParameter = sec_Id.HasValue ?
-                new ObjectParameter("sec_Id", sec_Id) :
-                new ObjectParameter("sec_Id", typeof(int));
-    
-            var car_IdParameter = car_Id.HasValue ?
-                new ObjectParameter("car_Id", car_Id) :
-                new ObjectParameter("car_Id", typeof(int));
-    
-            var mat_AnioParameter = mat_Anio.HasValue ?
-                new ObjectParameter("mat_Anio", mat_Anio) :
-                new ObjectParameter("mat_Anio", typeof(int));
-    
-            var mat_UsuarioCreaParameter = mat_UsuarioCrea.HasValue ?
-                new ObjectParameter("mat_UsuarioCrea", mat_UsuarioCrea) :
-                new ObjectParameter("mat_UsuarioCrea", typeof(int));
-    
-            var mat_FechaCreaParameter = mat_FechaCrea.HasValue ?
-                new ObjectParameter("mat_FechaCrea", mat_FechaCrea) :
-                new ObjectParameter("mat_FechaCrea", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbMatriculas_Insert", alu_IdParameter, sec_IdParameter, car_IdParameter, mat_AnioParameter, mat_UsuarioCreaParameter, mat_FechaCreaParameter);
-        }
-    
-        public virtual ObjectResult<string> UDP_Gral_tbMatriculas_Update(Nullable<int> mat_Id, Nullable<int> alu_Id, Nullable<int> sec_Id, Nullable<int> car_Id, Nullable<int> mat_Anio, Nullable<int> mat_UsuarioCrea, Nullable<System.DateTime> mat_FechaCrea, Nullable<int> mat_UsuarioModifica, Nullable<System.DateTime> mat_FechaModifica)
-        {
-            var mat_IdParameter = mat_Id.HasValue ?
-                new ObjectParameter("mat_Id", mat_Id) :
-                new ObjectParameter("mat_Id", typeof(int));
-    
-            var alu_IdParameter = alu_Id.HasValue ?
-                new ObjectParameter("alu_Id", alu_Id) :
-                new ObjectParameter("alu_Id", typeof(int));
-    
-            var sec_IdParameter = sec_Id.HasValue ?
-                new ObjectParameter("sec_Id", sec_Id) :
-                new ObjectParameter("sec_Id", typeof(int));
-    
-            var car_IdParameter = car_Id.HasValue ?
-                new ObjectParameter("car_Id", car_Id) :
-                new ObjectParameter("car_Id", typeof(int));
-    
-            var mat_AnioParameter = mat_Anio.HasValue ?
-                new ObjectParameter("mat_Anio", mat_Anio) :
-                new ObjectParameter("mat_Anio", typeof(int));
-    
-            var mat_UsuarioCreaParameter = mat_UsuarioCrea.HasValue ?
-                new ObjectParameter("mat_UsuarioCrea", mat_UsuarioCrea) :
-                new ObjectParameter("mat_UsuarioCrea", typeof(int));
-    
-            var mat_FechaCreaParameter = mat_FechaCrea.HasValue ?
-                new ObjectParameter("mat_FechaCrea", mat_FechaCrea) :
-                new ObjectParameter("mat_FechaCrea", typeof(System.DateTime));
-    
-            var mat_UsuarioModificaParameter = mat_UsuarioModifica.HasValue ?
-                new ObjectParameter("mat_UsuarioModifica", mat_UsuarioModifica) :
-                new ObjectParameter("mat_UsuarioModifica", typeof(int));
-    
-            var mat_FechaModificaParameter = mat_FechaModifica.HasValue ?
-                new ObjectParameter("mat_FechaModifica", mat_FechaModifica) :
-                new ObjectParameter("mat_FechaModifica", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbMatriculas_Update", mat_IdParameter, alu_IdParameter, sec_IdParameter, car_IdParameter, mat_AnioParameter, mat_UsuarioCreaParameter, mat_FechaCreaParameter, mat_UsuarioModificaParameter, mat_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbAsignaturas_Insert(string asig_Descripcion, Nullable<bool> asig_Semestral, Nullable<int> asig_UsuarioCrea, Nullable<System.DateTime> asig_FechaCrea)
@@ -1043,6 +973,243 @@ namespace SAT.Models
                 new ObjectParameter("jgra_Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbSecciones_Update", sec_IdParameter, sec_DescripcionParameter, sec_UsuarioCreaParameter, sec_FechaCreaParameter, sec_UsuarioModificaParameter, sec_FechaModificaParameter, jgra_IdParameter);
+        }
+    
+        public virtual ObjectResult<string> UDP_Esc_tbAlumnos_Insert(string aLU_IDENTIDAD, string aLU_NOMBRES, string aLU_APELLIDOS, string aLU_SEXO, Nullable<System.DateTime> aLU_FECHANACIMIENTO, string aLU_NOMBRESENCARGADO, string aLU_APELLIDOSENCARGADO, string aLU_TELEFONOENCARGADO, Nullable<int> aLU_USUARIOCREA, Nullable<System.DateTime> aLU_FECHACREA, Nullable<int> aLU_USUARIOMODIFICA, Nullable<System.DateTime> aLU_FECHAMODIFICA)
+        {
+            var aLU_IDENTIDADParameter = aLU_IDENTIDAD != null ?
+                new ObjectParameter("ALU_IDENTIDAD", aLU_IDENTIDAD) :
+                new ObjectParameter("ALU_IDENTIDAD", typeof(string));
+    
+            var aLU_NOMBRESParameter = aLU_NOMBRES != null ?
+                new ObjectParameter("ALU_NOMBRES", aLU_NOMBRES) :
+                new ObjectParameter("ALU_NOMBRES", typeof(string));
+    
+            var aLU_APELLIDOSParameter = aLU_APELLIDOS != null ?
+                new ObjectParameter("ALU_APELLIDOS", aLU_APELLIDOS) :
+                new ObjectParameter("ALU_APELLIDOS", typeof(string));
+    
+            var aLU_SEXOParameter = aLU_SEXO != null ?
+                new ObjectParameter("ALU_SEXO", aLU_SEXO) :
+                new ObjectParameter("ALU_SEXO", typeof(string));
+    
+            var aLU_FECHANACIMIENTOParameter = aLU_FECHANACIMIENTO.HasValue ?
+                new ObjectParameter("ALU_FECHANACIMIENTO", aLU_FECHANACIMIENTO) :
+                new ObjectParameter("ALU_FECHANACIMIENTO", typeof(System.DateTime));
+    
+            var aLU_NOMBRESENCARGADOParameter = aLU_NOMBRESENCARGADO != null ?
+                new ObjectParameter("ALU_NOMBRESENCARGADO", aLU_NOMBRESENCARGADO) :
+                new ObjectParameter("ALU_NOMBRESENCARGADO", typeof(string));
+    
+            var aLU_APELLIDOSENCARGADOParameter = aLU_APELLIDOSENCARGADO != null ?
+                new ObjectParameter("ALU_APELLIDOSENCARGADO", aLU_APELLIDOSENCARGADO) :
+                new ObjectParameter("ALU_APELLIDOSENCARGADO", typeof(string));
+    
+            var aLU_TELEFONOENCARGADOParameter = aLU_TELEFONOENCARGADO != null ?
+                new ObjectParameter("ALU_TELEFONOENCARGADO", aLU_TELEFONOENCARGADO) :
+                new ObjectParameter("ALU_TELEFONOENCARGADO", typeof(string));
+    
+            var aLU_USUARIOCREAParameter = aLU_USUARIOCREA.HasValue ?
+                new ObjectParameter("ALU_USUARIOCREA", aLU_USUARIOCREA) :
+                new ObjectParameter("ALU_USUARIOCREA", typeof(int));
+    
+            var aLU_FECHACREAParameter = aLU_FECHACREA.HasValue ?
+                new ObjectParameter("ALU_FECHACREA", aLU_FECHACREA) :
+                new ObjectParameter("ALU_FECHACREA", typeof(System.DateTime));
+    
+            var aLU_USUARIOMODIFICAParameter = aLU_USUARIOMODIFICA.HasValue ?
+                new ObjectParameter("ALU_USUARIOMODIFICA", aLU_USUARIOMODIFICA) :
+                new ObjectParameter("ALU_USUARIOMODIFICA", typeof(int));
+    
+            var aLU_FECHAMODIFICAParameter = aLU_FECHAMODIFICA.HasValue ?
+                new ObjectParameter("ALU_FECHAMODIFICA", aLU_FECHAMODIFICA) :
+                new ObjectParameter("ALU_FECHAMODIFICA", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbAlumnos_Insert", aLU_IDENTIDADParameter, aLU_NOMBRESParameter, aLU_APELLIDOSParameter, aLU_SEXOParameter, aLU_FECHANACIMIENTOParameter, aLU_NOMBRESENCARGADOParameter, aLU_APELLIDOSENCARGADOParameter, aLU_TELEFONOENCARGADOParameter, aLU_USUARIOCREAParameter, aLU_FECHACREAParameter, aLU_USUARIOMODIFICAParameter, aLU_FECHAMODIFICAParameter);
+        }
+    
+        public virtual ObjectResult<string> UDP_Esc_tbALUMNOS_Update(Nullable<int> aLU_ID, string aLU_IDENTIDAD, string aLU_NOMBRES, string aLU_APELLIDOS, string aLU_SEXO, Nullable<System.DateTime> aLU_FECHANACIMIENTO, string aLU_NOMBRESENCARGADO, string aLU_APELLIDOSENCARGADO, string aLU_TELEFONOENCARGADO, Nullable<int> aLU_USUARIOCREA, Nullable<System.DateTime> aLU_FECHACREA, Nullable<int> aLU_USUARIOMODIFICA, Nullable<System.DateTime> aLU_FECHAMODIFICA)
+        {
+            var aLU_IDParameter = aLU_ID.HasValue ?
+                new ObjectParameter("ALU_ID", aLU_ID) :
+                new ObjectParameter("ALU_ID", typeof(int));
+    
+            var aLU_IDENTIDADParameter = aLU_IDENTIDAD != null ?
+                new ObjectParameter("ALU_IDENTIDAD", aLU_IDENTIDAD) :
+                new ObjectParameter("ALU_IDENTIDAD", typeof(string));
+    
+            var aLU_NOMBRESParameter = aLU_NOMBRES != null ?
+                new ObjectParameter("ALU_NOMBRES", aLU_NOMBRES) :
+                new ObjectParameter("ALU_NOMBRES", typeof(string));
+    
+            var aLU_APELLIDOSParameter = aLU_APELLIDOS != null ?
+                new ObjectParameter("ALU_APELLIDOS", aLU_APELLIDOS) :
+                new ObjectParameter("ALU_APELLIDOS", typeof(string));
+    
+            var aLU_SEXOParameter = aLU_SEXO != null ?
+                new ObjectParameter("ALU_SEXO", aLU_SEXO) :
+                new ObjectParameter("ALU_SEXO", typeof(string));
+    
+            var aLU_FECHANACIMIENTOParameter = aLU_FECHANACIMIENTO.HasValue ?
+                new ObjectParameter("ALU_FECHANACIMIENTO", aLU_FECHANACIMIENTO) :
+                new ObjectParameter("ALU_FECHANACIMIENTO", typeof(System.DateTime));
+    
+            var aLU_NOMBRESENCARGADOParameter = aLU_NOMBRESENCARGADO != null ?
+                new ObjectParameter("ALU_NOMBRESENCARGADO", aLU_NOMBRESENCARGADO) :
+                new ObjectParameter("ALU_NOMBRESENCARGADO", typeof(string));
+    
+            var aLU_APELLIDOSENCARGADOParameter = aLU_APELLIDOSENCARGADO != null ?
+                new ObjectParameter("ALU_APELLIDOSENCARGADO", aLU_APELLIDOSENCARGADO) :
+                new ObjectParameter("ALU_APELLIDOSENCARGADO", typeof(string));
+    
+            var aLU_TELEFONOENCARGADOParameter = aLU_TELEFONOENCARGADO != null ?
+                new ObjectParameter("ALU_TELEFONOENCARGADO", aLU_TELEFONOENCARGADO) :
+                new ObjectParameter("ALU_TELEFONOENCARGADO", typeof(string));
+    
+            var aLU_USUARIOCREAParameter = aLU_USUARIOCREA.HasValue ?
+                new ObjectParameter("ALU_USUARIOCREA", aLU_USUARIOCREA) :
+                new ObjectParameter("ALU_USUARIOCREA", typeof(int));
+    
+            var aLU_FECHACREAParameter = aLU_FECHACREA.HasValue ?
+                new ObjectParameter("ALU_FECHACREA", aLU_FECHACREA) :
+                new ObjectParameter("ALU_FECHACREA", typeof(System.DateTime));
+    
+            var aLU_USUARIOMODIFICAParameter = aLU_USUARIOMODIFICA.HasValue ?
+                new ObjectParameter("ALU_USUARIOMODIFICA", aLU_USUARIOMODIFICA) :
+                new ObjectParameter("ALU_USUARIOMODIFICA", typeof(int));
+    
+            var aLU_FECHAMODIFICAParameter = aLU_FECHAMODIFICA.HasValue ?
+                new ObjectParameter("ALU_FECHAMODIFICA", aLU_FECHAMODIFICA) :
+                new ObjectParameter("ALU_FECHAMODIFICA", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbALUMNOS_Update", aLU_IDParameter, aLU_IDENTIDADParameter, aLU_NOMBRESParameter, aLU_APELLIDOSParameter, aLU_SEXOParameter, aLU_FECHANACIMIENTOParameter, aLU_NOMBRESENCARGADOParameter, aLU_APELLIDOSENCARGADOParameter, aLU_TELEFONOENCARGADOParameter, aLU_USUARIOCREAParameter, aLU_FECHACREAParameter, aLU_USUARIOMODIFICAParameter, aLU_FECHAMODIFICAParameter);
+        }
+    
+        public virtual ObjectResult<UDP_Esc_tbMatriculas_Update_Result> UDP_Esc_tbMatriculas_Update(Nullable<int> mat_Id, Nullable<int> alu_Id, Nullable<int> esc_Id, Nullable<int> sec_Id, Nullable<int> car_Id, Nullable<int> mat_Anio, Nullable<int> mat_UsuarioCrea, Nullable<System.DateTime> mat_FechaCrea, Nullable<int> mat_UsuarioModifica, Nullable<System.DateTime> mat_FechaModifica)
+        {
+            var mat_IdParameter = mat_Id.HasValue ?
+                new ObjectParameter("mat_Id", mat_Id) :
+                new ObjectParameter("mat_Id", typeof(int));
+    
+            var alu_IdParameter = alu_Id.HasValue ?
+                new ObjectParameter("alu_Id", alu_Id) :
+                new ObjectParameter("alu_Id", typeof(int));
+    
+            var esc_IdParameter = esc_Id.HasValue ?
+                new ObjectParameter("esc_Id", esc_Id) :
+                new ObjectParameter("esc_Id", typeof(int));
+    
+            var sec_IdParameter = sec_Id.HasValue ?
+                new ObjectParameter("sec_Id", sec_Id) :
+                new ObjectParameter("sec_Id", typeof(int));
+    
+            var car_IdParameter = car_Id.HasValue ?
+                new ObjectParameter("car_Id", car_Id) :
+                new ObjectParameter("car_Id", typeof(int));
+    
+            var mat_AnioParameter = mat_Anio.HasValue ?
+                new ObjectParameter("mat_Anio", mat_Anio) :
+                new ObjectParameter("mat_Anio", typeof(int));
+    
+            var mat_UsuarioCreaParameter = mat_UsuarioCrea.HasValue ?
+                new ObjectParameter("mat_UsuarioCrea", mat_UsuarioCrea) :
+                new ObjectParameter("mat_UsuarioCrea", typeof(int));
+    
+            var mat_FechaCreaParameter = mat_FechaCrea.HasValue ?
+                new ObjectParameter("mat_FechaCrea", mat_FechaCrea) :
+                new ObjectParameter("mat_FechaCrea", typeof(System.DateTime));
+    
+            var mat_UsuarioModificaParameter = mat_UsuarioModifica.HasValue ?
+                new ObjectParameter("mat_UsuarioModifica", mat_UsuarioModifica) :
+                new ObjectParameter("mat_UsuarioModifica", typeof(int));
+    
+            var mat_FechaModificaParameter = mat_FechaModifica.HasValue ?
+                new ObjectParameter("mat_FechaModifica", mat_FechaModifica) :
+                new ObjectParameter("mat_FechaModifica", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbMatriculas_Update_Result>("UDP_Esc_tbMatriculas_Update", mat_IdParameter, alu_IdParameter, esc_IdParameter, sec_IdParameter, car_IdParameter, mat_AnioParameter, mat_UsuarioCreaParameter, mat_FechaCreaParameter, mat_UsuarioModificaParameter, mat_FechaModificaParameter);
+        }
+    
+        public virtual ObjectResult<string> UDP_Esc_tbNotaDetalles_Insert1(Nullable<int> not_Id, Nullable<decimal> notd_Acumulado1, Nullable<decimal> notd_Examen1, Nullable<decimal> notd_Acumulado2, Nullable<decimal> notd_Examen2, Nullable<decimal> notd_Acumulado3, Nullable<decimal> notd_Examen3, Nullable<decimal> notd_Acumulado4, Nullable<decimal> notd_Examen4, Nullable<int> notd_UsuarioCrea, Nullable<System.DateTime> notd_FechaCrea)
+        {
+            var not_IdParameter = not_Id.HasValue ?
+                new ObjectParameter("not_Id", not_Id) :
+                new ObjectParameter("not_Id", typeof(int));
+    
+            var notd_Acumulado1Parameter = notd_Acumulado1.HasValue ?
+                new ObjectParameter("notd_Acumulado1", notd_Acumulado1) :
+                new ObjectParameter("notd_Acumulado1", typeof(decimal));
+    
+            var notd_Examen1Parameter = notd_Examen1.HasValue ?
+                new ObjectParameter("notd_Examen1", notd_Examen1) :
+                new ObjectParameter("notd_Examen1", typeof(decimal));
+    
+            var notd_Acumulado2Parameter = notd_Acumulado2.HasValue ?
+                new ObjectParameter("notd_Acumulado2", notd_Acumulado2) :
+                new ObjectParameter("notd_Acumulado2", typeof(decimal));
+    
+            var notd_Examen2Parameter = notd_Examen2.HasValue ?
+                new ObjectParameter("notd_Examen2", notd_Examen2) :
+                new ObjectParameter("notd_Examen2", typeof(decimal));
+    
+            var notd_Acumulado3Parameter = notd_Acumulado3.HasValue ?
+                new ObjectParameter("notd_Acumulado3", notd_Acumulado3) :
+                new ObjectParameter("notd_Acumulado3", typeof(decimal));
+    
+            var notd_Examen3Parameter = notd_Examen3.HasValue ?
+                new ObjectParameter("notd_Examen3", notd_Examen3) :
+                new ObjectParameter("notd_Examen3", typeof(decimal));
+    
+            var notd_Acumulado4Parameter = notd_Acumulado4.HasValue ?
+                new ObjectParameter("notd_Acumulado4", notd_Acumulado4) :
+                new ObjectParameter("notd_Acumulado4", typeof(decimal));
+    
+            var notd_Examen4Parameter = notd_Examen4.HasValue ?
+                new ObjectParameter("notd_Examen4", notd_Examen4) :
+                new ObjectParameter("notd_Examen4", typeof(decimal));
+    
+            var notd_UsuarioCreaParameter = notd_UsuarioCrea.HasValue ?
+                new ObjectParameter("notd_UsuarioCrea", notd_UsuarioCrea) :
+                new ObjectParameter("notd_UsuarioCrea", typeof(int));
+    
+            var notd_FechaCreaParameter = notd_FechaCrea.HasValue ?
+                new ObjectParameter("notd_FechaCrea", notd_FechaCrea) :
+                new ObjectParameter("notd_FechaCrea", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbNotaDetalles_Insert1", not_IdParameter, notd_Acumulado1Parameter, notd_Examen1Parameter, notd_Acumulado2Parameter, notd_Examen2Parameter, notd_Acumulado3Parameter, notd_Examen3Parameter, notd_Acumulado4Parameter, notd_Examen4Parameter, notd_UsuarioCreaParameter, notd_FechaCreaParameter);
+        }
+    
+        public virtual ObjectResult<UDP_Esc_tbMatriculas_Insert_Result> UDP_Esc_tbMatriculas_Insert(Nullable<int> alu_Id, Nullable<int> esc_Id, Nullable<int> sec_Id, Nullable<int> car_Id, Nullable<int> mat_Anio, Nullable<int> mat_UsuarioCrea, Nullable<System.DateTime> mat_FechaCrea)
+        {
+            var alu_IdParameter = alu_Id.HasValue ?
+                new ObjectParameter("alu_Id", alu_Id) :
+                new ObjectParameter("alu_Id", typeof(int));
+    
+            var esc_IdParameter = esc_Id.HasValue ?
+                new ObjectParameter("esc_Id", esc_Id) :
+                new ObjectParameter("esc_Id", typeof(int));
+    
+            var sec_IdParameter = sec_Id.HasValue ?
+                new ObjectParameter("sec_Id", sec_Id) :
+                new ObjectParameter("sec_Id", typeof(int));
+    
+            var car_IdParameter = car_Id.HasValue ?
+                new ObjectParameter("car_Id", car_Id) :
+                new ObjectParameter("car_Id", typeof(int));
+    
+            var mat_AnioParameter = mat_Anio.HasValue ?
+                new ObjectParameter("mat_Anio", mat_Anio) :
+                new ObjectParameter("mat_Anio", typeof(int));
+    
+            var mat_UsuarioCreaParameter = mat_UsuarioCrea.HasValue ?
+                new ObjectParameter("mat_UsuarioCrea", mat_UsuarioCrea) :
+                new ObjectParameter("mat_UsuarioCrea", typeof(int));
+    
+            var mat_FechaCreaParameter = mat_FechaCrea.HasValue ?
+                new ObjectParameter("mat_FechaCrea", mat_FechaCrea) :
+                new ObjectParameter("mat_FechaCrea", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbMatriculas_Insert_Result>("UDP_Esc_tbMatriculas_Insert", alu_IdParameter, esc_IdParameter, sec_IdParameter, car_IdParameter, mat_AnioParameter, mat_UsuarioCreaParameter, mat_FechaCreaParameter);
         }
     }
 }

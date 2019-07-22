@@ -231,6 +231,7 @@
     <Compile Include="Controllers\GradosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JornadasController.cs" />
+    <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -244,6 +245,7 @@
     <Compile Include="Models\cEscuelas.cs" />
     <Compile Include="Models\cGrados.cs" />
     <Compile Include="Models\cJornadas.cs" />
+    <Compile Include="Models\cMatriculas.cs" />
     <Compile Include="Models\cMunicipios.cs" />
     <Compile Include="Models\cSecciones.cs" />
     <Compile Include="Models\SATModel.Context.cs">
@@ -322,6 +324,12 @@
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbUsuarios.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbMatriculas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbMatriculas_Update_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -415,6 +423,11 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Matriculas\Create.cshtml" />
+    <Content Include="Views\Matriculas\Delete.cshtml" />
+    <Content Include="Views\Matriculas\Details.cshtml" />
+    <Content Include="Views\Matriculas\Edit.cshtml" />
+    <Content Include="Views\Matriculas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

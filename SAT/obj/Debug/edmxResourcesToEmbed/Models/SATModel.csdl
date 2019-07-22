@@ -12,8 +12,6 @@
     <Property Name="usu_EsAdministrador" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="tbAlumnos" Relationship="Self.FK_Esc_tbAlumnos_alu_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbAlumnos" />
     <NavigationProperty Name="tbAlumnos1" Relationship="Self.FK_Esc_tbAlumnos_alu_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbAlumnos" />
-    <NavigationProperty Name="tbMatriculas" Relationship="Self.FK_Esc_tbMatriculas_mat_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbMatriculas" />
-    <NavigationProperty Name="tbMatriculas1" Relationship="Self.FK_Esc_tbMatriculas_mat_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbMatriculas" />
     <NavigationProperty Name="tbNotaDetalles" Relationship="Self.FK_Esc_tbNotaDetalles_notd_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbNotaDetalles" />
     <NavigationProperty Name="tbNotaDetalles1" Relationship="Self.FK_Esc_tbNotaDetalles_notd_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbNotaDetalles" />
     <NavigationProperty Name="tbNotas" Relationship="Self.FK_Esc_tbNotas_not_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbNotas" />
@@ -44,6 +42,8 @@
     <NavigationProperty Name="tbMunicipios1" Relationship="Self.FK_Gral_tbMunicipios_mun_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbMunicipios" />
     <NavigationProperty Name="tbSecciones" Relationship="Self.FK_Gral_tbSecciones_sec_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbSecciones" />
     <NavigationProperty Name="tbSecciones1" Relationship="Self.FK_Gral_tbSecciones_sec_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbSecciones" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbMatriculas" />
+    <NavigationProperty Name="tbMatriculas1" Relationship="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbMatriculas" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -74,27 +74,7 @@
     <Property Name="alu_FechaModifica" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Esc_tbAlumnos_alu_UsuarioCrea" FromRole="tbAlumnos" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Esc_tbAlumnos_alu_UsuarioModifica" FromRole="tbAlumnos" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbMatriculas" Relationship="Self.FK_Esc_tbMatriculas_alu_Id" FromRole="tbAlumnos" ToRole="tbMatriculas" />
-  </EntityType>
-  <EntityType Name="tbMatriculas">
-    <Key>
-      <PropertyRef Name="mat_Id" />
-    </Key>
-    <Property Name="mat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="alu_Id" Type="Int32" Nullable="false" />
-    <Property Name="sec_Id" Type="Int32" Nullable="false" />
-    <Property Name="car_Id" Type="Int32" Nullable="false" />
-    <Property Name="mat_Anio" Type="Int32" Nullable="false" />
-    <Property Name="mat_UsuarioCrea" Type="Int32" Nullable="false" />
-    <Property Name="mat_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="mat_UsuarioModifica" Type="Int32" />
-    <Property Name="mat_FechaModifica" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Esc_tbMatriculas_mat_UsuarioCrea" FromRole="tbMatriculas" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Esc_tbMatriculas_mat_UsuarioModifica" FromRole="tbMatriculas" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbAlumnos" Relationship="Self.FK_Esc_tbMatriculas_alu_Id" FromRole="tbMatriculas" ToRole="tbAlumnos" />
-    <NavigationProperty Name="tbCarreras" Relationship="Self.FK_Esc_tbMatriculas_car_Id" FromRole="tbMatriculas" ToRole="tbCarreras" />
-    <NavigationProperty Name="tbSecciones" Relationship="Self.FK_Esc_tbMatriculas_sec_Id" FromRole="tbMatriculas" ToRole="tbSecciones" />
-    <NavigationProperty Name="tbNotas" Relationship="Self.FK_Esc_tbNotas_mat_Id" FromRole="tbMatriculas" ToRole="tbNotas" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_alu_Id" FromRole="tbAlumnos" ToRole="tbMatriculas" />
   </EntityType>
   <EntityType Name="tbNotaDetalles">
     <Key>
@@ -131,9 +111,9 @@
     <Property Name="not_FechaModifica" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Esc_tbNotas_not_UsuarioCrea" FromRole="tbNotas" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Esc_tbNotas_not_UsuarioModifica" FromRole="tbNotas" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbMatriculas" Relationship="Self.FK_Esc_tbNotas_mat_Id" FromRole="tbNotas" ToRole="tbMatriculas" />
     <NavigationProperty Name="tbNotaDetalles" Relationship="Self.FK_Esc_tbNotas_not_Id" FromRole="tbNotas" ToRole="tbNotaDetalles" />
     <NavigationProperty Name="tbAsignaturas" Relationship="Self.FK_Esc_tbNotas_asig_Id" FromRole="tbNotas" ToRole="tbAsignaturas" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbNotas_mat_Id" FromRole="tbNotas" ToRole="tbMatriculas" />
   </EntityType>
   <EntityType Name="tbAsignaturas">
     <Key>
@@ -195,9 +175,9 @@
     <Property Name="car_FechaModifica" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Gral_tbCarreras_car_UsuarioCrea" FromRole="tbCarreras" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Gral_tbCarreras_car_UsuarioModifica" FromRole="tbCarreras" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbMatriculas" Relationship="Self.FK_Esc_tbMatriculas_car_Id" FromRole="tbCarreras" ToRole="tbMatriculas" />
     <NavigationProperty Name="tbCarreraAsignaturas" Relationship="Self.FK_Gral_tbCarreraAsignatura_car_Id" FromRole="tbCarreras" ToRole="tbCarreraAsignaturas" />
     <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbCarrera_car_Encargado" FromRole="tbCarreras" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_car_Id" FromRole="tbCarreras" ToRole="tbMatriculas" />
   </EntityType>
   <EntityType Name="tbDepartamentos">
     <Key>
@@ -281,6 +261,7 @@
     <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbEscuelas_esc_Contacto" FromRole="tbEscuelas" ToRole="tbEmpleados" />
     <NavigationProperty Name="tbEmpleados1" Relationship="Self.FK_Gral_tbEscuelas_esc_Director" FromRole="tbEscuelas" ToRole="tbEmpleados" />
     <NavigationProperty Name="tbMunicipios" Relationship="Self.FK_Gral_tbEscuelas_mun_Id" FromRole="tbEscuelas" ToRole="tbMunicipios" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_esc_Id" FromRole="tbEscuelas" ToRole="tbMatriculas" />
   </EntityType>
   <EntityType Name="tbGrados">
     <Key>
@@ -357,8 +338,8 @@
     <Property Name="jgra_Id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Gral_tbSecciones_sec_UsuarioCrea" FromRole="tbSecciones" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Gral_tbSecciones_sec_UsuarioModifica" FromRole="tbSecciones" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbMatriculas" Relationship="Self.FK_Esc_tbMatriculas_sec_Id" FromRole="tbSecciones" ToRole="tbMatriculas" />
     <NavigationProperty Name="tbJornadaGrados" Relationship="Self.FK_Gral_tbSecciones_Sec_ID" FromRole="tbSecciones" ToRole="tbJornadaGrados" />
+    <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_sec_Id" FromRole="tbSecciones" ToRole="tbMatriculas" />
   </EntityType>
   <Association Name="FK_Esc_tbAlumnos_alu_UsuarioCrea">
     <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
@@ -381,30 +362,6 @@
       </Principal>
       <Dependent Role="tbAlumnos">
         <PropertyRef Name="alu_UsuarioModifica" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Esc_tbMatriculas_mat_UsuarioCrea">
-    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
-    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbUsuarios">
-        <PropertyRef Name="usu_Id" />
-      </Principal>
-      <Dependent Role="tbMatriculas">
-        <PropertyRef Name="mat_UsuarioCrea" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Esc_tbMatriculas_mat_UsuarioModifica">
-    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
-    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbUsuarios">
-        <PropertyRef Name="usu_Id" />
-      </Principal>
-      <Dependent Role="tbMatriculas">
-        <PropertyRef Name="mat_UsuarioModifica" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -768,54 +725,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Esc_tbMatriculas_alu_Id">
-    <End Role="tbAlumnos" Type="Self.tbAlumnos" Multiplicity="1" />
-    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbAlumnos">
-        <PropertyRef Name="alu_Id" />
-      </Principal>
-      <Dependent Role="tbMatriculas">
-        <PropertyRef Name="alu_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Esc_tbMatriculas_car_Id">
-    <End Role="tbCarreras" Type="Self.tbCarreras" Multiplicity="1" />
-    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbCarreras">
-        <PropertyRef Name="car_Id" />
-      </Principal>
-      <Dependent Role="tbMatriculas">
-        <PropertyRef Name="car_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Esc_tbMatriculas_sec_Id">
-    <End Role="tbSecciones" Type="Self.tbSecciones" Multiplicity="1" />
-    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbSecciones">
-        <PropertyRef Name="sec_Id" />
-      </Principal>
-      <Dependent Role="tbMatriculas">
-        <PropertyRef Name="sec_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Esc_tbNotas_mat_Id">
-    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="1" />
-    <End Role="tbNotas" Type="Self.tbNotas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbMatriculas">
-        <PropertyRef Name="mat_Id" />
-      </Principal>
-      <Dependent Role="tbNotas">
-        <PropertyRef Name="mat_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Esc_tbNotas_not_Id">
     <End Role="tbNotas" Type="Self.tbNotas" Multiplicity="1" />
     <End Role="tbNotaDetalles" Type="Self.tbNotaDetalles" Multiplicity="*" />
@@ -1012,7 +921,6 @@
     <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tbAlumnos" EntityType="Self.tbAlumnos" />
-    <EntitySet Name="tbMatriculas" EntityType="Self.tbMatriculas" />
     <EntitySet Name="tbNotaDetalles" EntityType="Self.tbNotaDetalles" />
     <EntitySet Name="tbNotas" EntityType="Self.tbNotas" />
     <EntitySet Name="tbAsignaturas" EntityType="Self.tbAsignaturas" />
@@ -1035,14 +943,6 @@
     <AssociationSet Name="FK_Esc_tbAlumnos_alu_UsuarioModifica" Association="Self.FK_Esc_tbAlumnos_alu_UsuarioModifica">
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
       <End Role="tbAlumnos" EntitySet="tbAlumnos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioCrea" Association="Self.FK_Esc_tbMatriculas_mat_UsuarioCrea">
-      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioModifica" Association="Self.FK_Esc_tbMatriculas_mat_UsuarioModifica">
-      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
     </AssociationSet>
     <AssociationSet Name="FK_Esc_tbNotaDetalles_notd_UsuarioCrea" Association="Self.FK_Esc_tbNotaDetalles_notd_UsuarioCrea">
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
@@ -1163,22 +1063,6 @@
     <AssociationSet Name="FK_Gral_tbSecciones_sec_UsuarioModifica" Association="Self.FK_Gral_tbSecciones_sec_UsuarioModifica">
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
       <End Role="tbSecciones" EntitySet="tbSecciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Esc_tbMatriculas_alu_Id" Association="Self.FK_Esc_tbMatriculas_alu_Id">
-      <End Role="tbAlumnos" EntitySet="tbAlumnos" />
-      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Esc_tbMatriculas_car_Id" Association="Self.FK_Esc_tbMatriculas_car_Id">
-      <End Role="tbCarreras" EntitySet="tbCarreras" />
-      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Esc_tbMatriculas_sec_Id" Association="Self.FK_Esc_tbMatriculas_sec_Id">
-      <End Role="tbSecciones" EntitySet="tbSecciones" />
-      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Esc_tbNotas_mat_Id" Association="Self.FK_Esc_tbNotas_mat_Id">
-      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
-      <End Role="tbNotas" EntitySet="tbNotas" />
     </AssociationSet>
     <AssociationSet Name="FK_Esc_tbNotas_not_Id" Association="Self.FK_Esc_tbNotas_not_Id">
       <End Role="tbNotas" EntitySet="tbNotas" />
@@ -1322,25 +1206,6 @@
       <Parameter Name="not_FechaCrea" Mode="In" Type="DateTime" />
       <Parameter Name="not_UsuarioModifica" Mode="In" Type="Int32" />
       <Parameter Name="not_FechaModifica" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbMatriculas_Insert" ReturnType="Collection(String)">
-      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
-      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
-      <Parameter Name="car_Id" Mode="In" Type="Int32" />
-      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
-      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
-      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbMatriculas_Update" ReturnType="Collection(String)">
-      <Parameter Name="mat_Id" Mode="In" Type="Int32" />
-      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
-      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
-      <Parameter Name="car_Id" Mode="In" Type="Int32" />
-      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
-      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
-      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
-      <Parameter Name="mat_UsuarioModifica" Mode="In" Type="Int32" />
-      <Parameter Name="mat_FechaModifica" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="UDP_Gral_tbAsignaturas_Insert" ReturnType="Collection(String)">
       <Parameter Name="asig_Descripcion" Mode="In" Type="String" />
@@ -1518,6 +1383,98 @@
       <Parameter Name="sec_FechaModifica" Mode="In" Type="DateTime" />
       <Parameter Name="jgra_Id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="tbMatriculas" EntityType="SATModel.tbMatriculas" />
+    <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioCrea" Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioModifica" Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_alu_Id" Association="SATModel.FK_Esc_tbMatriculas_alu_Id">
+      <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_car_Id" Association="SATModel.FK_Esc_tbMatriculas_car_Id">
+      <End Role="tbCarreras" EntitySet="tbCarreras" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_esc_Id" Association="SATModel.FK_Esc_tbMatriculas_esc_Id">
+      <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_sec_Id" Association="SATModel.FK_Esc_tbMatriculas_sec_Id">
+      <End Role="tbSecciones" EntitySet="tbSecciones" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbNotas_mat_Id" Association="SATModel.FK_Esc_tbNotas_mat_Id">
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+      <End Role="tbNotas" EntitySet="tbNotas" />
+    </AssociationSet>
+    <FunctionImport Name="UDP_Esc_tbAlumnos_Insert" ReturnType="Collection(String)">
+      <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+      <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+      <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+      <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbALUMNOS_Update" ReturnType="Collection(String)">
+      <Parameter Name="ALU_ID" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+      <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+      <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+      <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbMatriculas_Update" ReturnType="Collection(SATModel.UDP_Esc_tbMatriculas_Update_Result)">
+      <Parameter Name="mat_Id" Mode="In" Type="Int32" />
+      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
+      <Parameter Name="esc_Id" Mode="In" Type="Int32" />
+      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
+      <Parameter Name="car_Id" Mode="In" Type="Int32" />
+      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
+      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
+      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
+      <Parameter Name="mat_UsuarioModifica" Mode="In" Type="Int32" />
+      <Parameter Name="mat_FechaModifica" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbNotaDetalles_Insert1" ReturnType="Collection(String)">
+      <Parameter Name="not_Id" Mode="In" Type="Int32" />
+      <Parameter Name="notd_Acumulado1" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Examen1" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Acumulado2" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Examen2" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Acumulado3" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Examen3" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Acumulado4" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_Examen4" Mode="In" Type="Decimal" />
+      <Parameter Name="notd_UsuarioCrea" Mode="In" Type="Int32" />
+      <Parameter Name="notd_FechaCrea" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbMatriculas_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbMatriculas_Insert_Result)">
+      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
+      <Parameter Name="esc_Id" Mode="In" Type="Int32" />
+      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
+      <Parameter Name="car_Id" Mode="In" Type="Int32" />
+      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
+      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
+      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -1529,5 +1486,117 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tbMatriculas">
+    <Key>
+      <PropertyRef Name="mat_Id" />
+    </Key>
+    <Property Name="mat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="alu_Id" Type="Int32" Nullable="false" />
+    <Property Name="esc_Id" Type="Int32" Nullable="false" />
+    <Property Name="sec_Id" Type="Int32" Nullable="false" />
+    <Property Name="car_Id" Type="Int32" Nullable="false" />
+    <Property Name="mat_Anio" Type="Int32" Nullable="false" />
+    <Property Name="mat_UsuarioCrea" Type="Int32" Nullable="false" />
+    <Property Name="mat_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mat_UsuarioModifica" Type="Int32" />
+    <Property Name="mat_FechaModifica" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea" FromRole="tbMatriculas" ToRole="tbUsuarios" />
+    <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica" FromRole="tbMatriculas" ToRole="tbUsuarios" />
+    <NavigationProperty Name="tbAlumnos" Relationship="SATModel.FK_Esc_tbMatriculas_alu_Id" FromRole="tbMatriculas" ToRole="tbAlumnos" />
+    <NavigationProperty Name="tbCarreras" Relationship="SATModel.FK_Esc_tbMatriculas_car_Id" FromRole="tbMatriculas" ToRole="tbCarreras" />
+    <NavigationProperty Name="tbEscuelas" Relationship="SATModel.FK_Esc_tbMatriculas_esc_Id" FromRole="tbMatriculas" ToRole="tbEscuelas" />
+    <NavigationProperty Name="tbSecciones" Relationship="SATModel.FK_Esc_tbMatriculas_sec_Id" FromRole="tbMatriculas" ToRole="tbSecciones" />
+    <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_mat_Id" FromRole="tbMatriculas" ToRole="tbNotas" />
+  </EntityType>
+  <Association Name="FK_Esc_tbMatriculas_mat_UsuarioCrea">
+    <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="mat_UsuarioCrea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esc_tbMatriculas_mat_UsuarioModifica">
+    <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="mat_UsuarioModifica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esc_tbMatriculas_alu_Id">
+    <End Type="SATModel.tbAlumnos" Role="tbAlumnos" Multiplicity="1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAlumnos">
+        <PropertyRef Name="alu_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="alu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esc_tbMatriculas_car_Id">
+    <End Type="SATModel.tbCarreras" Role="tbCarreras" Multiplicity="1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCarreras">
+        <PropertyRef Name="car_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="car_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esc_tbMatriculas_esc_Id">
+    <End Type="SATModel.tbEscuelas" Role="tbEscuelas" Multiplicity="1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEscuelas">
+        <PropertyRef Name="esc_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="esc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esc_tbMatriculas_sec_Id">
+    <End Type="SATModel.tbSecciones" Role="tbSecciones" Multiplicity="1" />
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSecciones">
+        <PropertyRef Name="sec_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="sec_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esc_tbNotas_mat_Id">
+    <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="1" />
+    <End Type="SATModel.tbNotas" Role="tbNotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbMatriculas">
+        <PropertyRef Name="mat_Id" />
+      </Principal>
+      <Dependent Role="tbNotas">
+        <PropertyRef Name="mat_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="UDP_Esc_tbMatriculas_Insert_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="UDP_Esc_tbMatriculas_Update_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
   </ComplexType>
 </Schema>
