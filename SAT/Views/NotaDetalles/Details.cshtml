@@ -1,0 +1,121 @@
+﻿@model SAT.Models.tbNotaDetalles
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_FechaCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_FechaCrea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_FechaModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbNotas.not_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbNotas.not_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.notd_Id },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
+</p>
