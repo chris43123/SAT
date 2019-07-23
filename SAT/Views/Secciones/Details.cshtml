@@ -2,13 +2,12 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>tbSecciones</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.sec_Descripcion)
@@ -16,14 +15,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.sec_Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sec_UsuarioCrea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sec_UsuarioCrea)
         </dd>
 
         <dt>
@@ -35,19 +26,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.sec_UsuarioModifica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sec_UsuarioModifica)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.sec_FechaModifica)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.sec_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
         </dd>
 
         <dt>
@@ -61,6 +60,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit",null, new { @class = "btn btn-success",  id = Model.dep_Codigo})
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default"})
+    @Html.ActionLink("Editar", "Edit", new { id = Model.sec_Id },new{@class="btn btn-primary"})
+	 @Html.ActionLink("Cancelar","Index",null,new{@class="btn btn-default"})
 </p>

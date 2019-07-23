@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SAT.Models.tbDepartamentos>
+
+@{
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel"
+	<div class="x_title">
+			<h2>Listado general de departamentos</h2>
+			<div class="nav navbar-right panel_toolbox">
+				@Html.ActionLink("Registrar departamento", "Create",null,new{@class="btn btn-info"})
+			</div>
+	</div>
+	<div class="clearfix"></div>
+
+<table class="display" style="width:100%">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_UsuarioCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_FechaCrea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_UsuarioModifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_FechaModifica)
+        </th>
+        <th>Acciones:</th>
+    </tr>
+</thead>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           py
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dep_UsuarioCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dep_FechaCrea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dep_UsuarioModifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dep_FechaModifica)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.dep_Id }, new { @class = "btn btn-warning btn-xs" })
+            @Html.ActionLink("Detalles", "Details", new { id = item.dep_Id }, new { @class = "btn btn-info btn-xs" })
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.dep_Id }, new { @class = "btn btn-danger btn-xs" })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+</div>
+

@@ -11,8 +11,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
    
 
-    @Styles.Render("~/Content/bootstrap");
-    @Styles.Render("~/Content/font-awesome/fonts");
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/font-awesome/fonts")
+    @Styles.Render("~/content/DataTables")
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
    
 
@@ -124,13 +126,8 @@
         </div>
     </div>
 
-
     @Scripts.Render("~/scripts/jquery")
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
-    <script type="text/javascript">
-            $(document).ready( function () {
-                $('#tlb').DataTable();
-            } );
-    </script>
+    @Scripts.Render("~/scripts/DataTables")
+    <script src="~/scripts/App/General/CreateMunicipio.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ namespace SAT.Controllers
         // GET: Escuelas
         public ActionResult Index()
         {
-            var tbEscuelas = db.tbEscuelas.Include(t => t.tbEmpleados).Include(t => t.tbEmpleados1);
+            var tbEscuelas = db.tbEscuelas.Include(t => t.tbUsuarios).Include(t => t.tbUsuarios1).Include(t => t.tbEmpleados).Include(t => t.tbEmpleados1).Include(t => t.tbMunicipios);
             return View(tbEscuelas.ToList());
         }
 
@@ -39,8 +39,11 @@ namespace SAT.Controllers
         // GET: Escuelas/Create
         public ActionResult Create()
         {
+            ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
+            ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
             ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad");
             ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad");
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion");
             return View();
         }
 
@@ -51,18 +54,56 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "esc_Id,esc_Codigo,esc_NombreEscuela,esc_Director,esc_Contacto,esc_Telefono,esc_Correo,mun_Id,esc_UsuarioCrea,esc_FechaCrea,esc_UsuarioModifica,esc_FechaModifica")] tbEscuelas tbEscuelas)
         {
+            tbEscuelas.esc_FechaCrea = DateTime.Now;
+            tbEscuelas.esc_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                
-                db.tbEscuelas.Add(tbEscuelas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listEscuelas = null;
+                    string MensajeError = "";
+                    listEscuelas = db.UDP_Gral_tbEscuelas_Insert(tbEscuelas.esc_Codigo,
+                                                                 tbEscuelas.esc_NombreEscuela,
+                                                                 tbEscuelas.esc_Director,
+                                                                 tbEscuelas.esc_Contacto,
+                                                                 tbEscuelas.esc_Telefono,
+                                                                 tbEscuelas.esc_Correo,
+                                                                 tbEscuelas.mun_Id,
+                                                                 tbEscuelas.esc_UsuarioCrea,
+                                                                 tbEscuelas.esc_FechaCrea
+                                                                 );
+                    foreach (UDP_Gral_tbEscuelas_Insert_Result Res in listEscuelas)
+                        MensajeError = Res.MensajeError;
+
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbEscuelas);
+                    }
+                    return RedirectToAction("Index");
+
+
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar e registro");
+                    return View(tbEscuelas);
+                }
+            }
+            return View(tbEscuelas);
+                //db.tbEscuelas.Add(tbEscuelas);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
             }
 
-            ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
-            ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
-            return View(tbEscuelas.esc_FechaCrea= DateTime.Now);
-        }
+            //ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
+            //ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
+            //ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
+            //ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
+            //ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
+            //return View(tbEscuelas);
+        
 
         // GET: Escuelas/Edit/5
         public ActionResult Edit(int? id)
@@ -76,8 +117,11 @@ namespace SAT.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
+            ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
             ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
             ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
             return View(tbEscuelas);
         }
 
@@ -94,8 +138,11 @@ namespace SAT.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
+            ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
             ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
             ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
             return View(tbEscuelas);
         }
 

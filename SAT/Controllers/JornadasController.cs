@@ -48,12 +48,36 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "jor_Id,jor_Descripcion,jor_UsuarioCrea,jor_FechaCrea,jor_UsuarioModifica,jor_FechaModifica")] tbJornadas tbJornadas)
         {
+            tbJornadas.jor_FechaCrea = DateTime.Now;
+            tbJornadas.jor_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                tbJornadas.jor_FechaCrea = DateTime.Now;
-                db.tbJornadas.Add(tbJornadas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //Lista para poder recorrer el tipo complejo
+                    IEnumerable<object> listJornadas = null;
+                    string MensajeError = "";
+                    //almacenamos la ejecución del SP
+                    listJornadas = db.UDP_Gral_tbJornadas_Insert(tbJornadas.jor_Descripcion,
+                                                                 tbJornadas.jor_UsuarioCrea,
+                                                                 tbJornadas.jor_FechaCrea);
+                    //Recuperamos el valor que trae nuestro retorno
+                    foreach (UDP_Gral_tbJornadas_Insert_Result Res in listJornadas)
+                        MensajeError = Res.MensajeError;
+                    //Validamos
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbJornadas);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro.");
+                    return View(tbJornadas);
+                }
             }
 
             return View(tbJornadas);
@@ -81,6 +105,8 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "jor_Id,jor_Descripcion,jor_UsuarioCrea,jor_FechaCrea,jor_UsuarioModifica,jor_FechaModifica")] tbJornadas tbJornadas)
         {
+            tbJornadas.jor_FechaModifica = DateTime.Now;
+            tbJornadas.jor_UsuarioModifica = 2;
             if (ModelState.IsValid)
             {
                 db.Entry(tbJornadas).State = EntityState.Modified;

@@ -1,0 +1,129 @@
+﻿@model SAT.Models.tbNotaDetalles
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbNotaDetalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Acumulado4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Acumulado4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_Examen4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_Examen4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_FechaCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_FechaCrea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notd_FechaModifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notd_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbNotas.not_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbNotas.not_Id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

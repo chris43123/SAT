@@ -48,10 +48,21 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "dep_Id,dep_Descripcion,dep_UsuarioCrea,dep_FechaCrea,dep_UsuarioModifica,dep_FechaModifica")] tbDepartamentos tbDepartamentos)
         {
+            var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
+
             if (ModelState.IsValid)
             {
                 db.tbDepartamentos.Add(tbDepartamentos);
                 db.SaveChanges();
+                foreach(tbMunicipios Mun in Sesion)
+                {
+                    db.UDP_Gral_tbMunicipios_Insert(Mun.dep_Id,
+                                                       Mun.mun_Descripcion,                                                       
+                                                       2,
+                                                       DateTime.Now,
+                                                       tbDepartamentos.dep_Id
+                                                       );
+                }
                 return RedirectToAction("Index");
             }
 
@@ -89,30 +100,18 @@ namespace SAT.Controllers
             return View(tbDepartamentos);
         }
 
-        // GET: Departamentos/Delete/5
-        public ActionResult Delete(string id)
+        public JsonResult AgregarMunicipio(tbMunicipios tbMunicipios)
         {
-            if (id == null)
+            List<tbMunicipios> List = new List<tbMunicipios>();
+            var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
+            if (Sesion != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbDepartamentos tbDepartamentos = db.tbDepartamentos.Find(id);
-            if (tbDepartamentos == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbDepartamentos);
-        }
+                List = Sesion;            
 
-        // POST: Departamentos/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            tbDepartamentos tbDepartamentos = db.tbDepartamentos.Find(id);
-            db.tbDepartamentos.Remove(tbDepartamentos);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            }
+             List.Add(tbMunicipios);
+            Session["PollitoMunicipio"] = List;
+            return Json("Exito", JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

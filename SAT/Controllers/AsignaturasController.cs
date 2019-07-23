@@ -14,13 +14,14 @@ namespace SAT.Controllers
     {
         private SATEntities db = new SATEntities();
 
-        // GET: Asignaturas
+        // GET: tbAsignaturas
         public ActionResult Index()
         {
-            return View(db.tbAsignaturas.ToList());
+            var tbAsignaturas = db.tbAsignaturas.Include(t => t.tbUsuarios).Include(t => t.tbUsuarios1);
+            return View(tbAsignaturas.ToList());
         }
 
-        // GET: Asignaturas/Details/5
+        // GET: tbAsignaturas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,30 +36,56 @@ namespace SAT.Controllers
             return View(tbAsignaturas);
         }
 
-        // GET: Asignaturas/Create
-        public ActionResult Create()
+        // GET: tbAsignaturas/Create
+        public ActionResult Create() 
         {
+            ViewBag.asig_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
+            ViewBag.asig_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
             return View();
         }
 
-        // POST: Asignaturas/Create
+        // POST: tbAsignaturas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "asig_Id,asig_Descripcion,asig_Semestral,asig_UsuarioCrea,asig_FechaCrea,asig_UsuarioModifica,asig_FechaModifica")] tbAsignaturas tbAsignaturas)
         {
+            tbAsignaturas.asig_UsuarioCrea = 2;
+            tbAsignaturas.asig_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.tbAsignaturas.Add(tbAsignaturas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<Object> ListAsignaturas = null;
+                    string MensajeError = "";
+                    ListAsignaturas = db.UDP_Gral_tbAsignaturas_Insert(tbAsignaturas.asig_Descripcion,
+                                                                        tbAsignaturas.asig_Semestral,
+                                                                        tbAsignaturas.asig_UsuarioCrea,
+                                                                        tbAsignaturas.asig_FechaCrea);
+                    foreach (UDP_Gral_tbAsignaturas_Insert_Result Res in ListAsignaturas)
+                        MensajeError = Res.MensajeError;
+                    if(MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("asig_Descripcion", "1. No se pudo ingresar el registro.");
+                        return View(tbAsignaturas);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch(Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("asig_Descripcion","2. No se pudo ingresar el registro");
+                    return View(tbAsignaturas);
+                }
             }
 
+            ViewBag.asig_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAsignaturas.asig_UsuarioCrea);
+            ViewBag.asig_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAsignaturas.asig_UsuarioModifica);
             return View(tbAsignaturas);
         }
 
-        // GET: Asignaturas/Edit/5
+        // GET: tbAsignaturas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -70,26 +97,55 @@ namespace SAT.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.asig_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAsignaturas.asig_UsuarioCrea);
+            ViewBag.asig_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAsignaturas.asig_UsuarioModifica);
             return View(tbAsignaturas);
         }
 
-        // POST: Asignaturas/Edit/5
+        // POST: tbAsignaturas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "asig_Id,asig_Descripcion,asig_Semestral,asig_UsuarioCrea,asig_FechaCrea,asig_UsuarioModifica,asig_FechaModifica")] tbAsignaturas tbAsignaturas)
         {
+            tbAsignaturas.asig_FechaModifica = DateTime.Now;
+            tbAsignaturas.asig_UsuarioModifica = 2;
             if (ModelState.IsValid)
             {
-                db.Entry(tbAsignaturas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<Object> ListAsignaturas = null;
+                    string MensajeError = "";
+                    ListAsignaturas = db.UDP_Gral_tbAsignaturas_Update(tbAsignaturas.asig_Id,
+                                                                        tbAsignaturas.asig_Descripcion,
+                                                                        tbAsignaturas.asig_Semestral,
+                                                                        tbAsignaturas.asig_UsuarioCrea,
+                                                                        tbAsignaturas.asig_FechaCrea,
+                                                                        tbAsignaturas.asig_UsuarioModifica,
+                                                                        tbAsignaturas.asig_FechaModifica);
+                    foreach (UDP_Gral_tbAsignaturas_Update_Result Res in ListAsignaturas)
+                        MensajeError = Res.MensajeError;
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("asig_Descripcion", "1. No se pudo actualizar el registro.");
+                        return View(tbAsignaturas);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("asig_Descripcion", "2. No se pudo actualizar el registro");
+                    return View(tbAsignaturas);
+                }
             }
+            ViewBag.asig_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAsignaturas.asig_UsuarioCrea);
+            ViewBag.asig_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAsignaturas.asig_UsuarioModifica);
             return View(tbAsignaturas);
         }
 
-        // GET: Asignaturas/Delete/5
+        // GET: tbAsignaturas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +160,7 @@ namespace SAT.Controllers
             return View(tbAsignaturas);
         }
 
-        // POST: Asignaturas/Delete/5
+        // POST: tbAsignaturas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

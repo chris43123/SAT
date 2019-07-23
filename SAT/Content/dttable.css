@@ -1,0 +1,14 @@
+﻿        .dataTables_wrapper {
+            background-image: url("https://backgrounddownload.com/wp-content/uploads/2018/09/single-background-hd-1.jpg");
+            font-family: 'Raleway', sans-serif;
+            color:black;
+        }
+        table{
+            width:100%;
+        }
+        table,thead,tbody {
+            border:2px solid black;
+            padding:0px;
+            color:black;
+            width:auto;
+        }

@@ -1,0 +1,38 @@
+﻿@model SAT.Models.tbMunicipios
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mun_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mun_Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mun_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mun_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mun_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mun_Descripcion, "", new { @class = "text-danger" })
+            </div>
+
+
+     
+        <input type="button" class="btn btn-primary  col-sm-1" name="name" value="+" id="btnAgregarMunicipio" />
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered dataTable" id="tblMunicipios">
+                <thead>
+                    <tr>
+                        <th>Id Municipio</th>
+                        <th>Municipio</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                        </table>
+        </div>
+    </div>

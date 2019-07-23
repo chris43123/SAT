@@ -18,12 +18,12 @@ namespace SAT.Models
         [MaxLength(20, ErrorMessage = "Excedió el número máxio de caracteres")]
         public string esc_Codigo { get; set; }
 
-        [Display(Name = "Nombre Escuela")]
+        [Display(Name = "Nombre")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(100, ErrorMessage = "Excedió el número máxio de caracteres")]
         public string esc_NombreEscuela { get; set; }
 
-       
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
         [Display(Name = "Director")]
         public int esc_Director { get; set; }
@@ -43,33 +43,18 @@ namespace SAT.Models
         public string esc_Correo { get; set; }
 
         [Display(Name = "Id Municipio")]
-        [Required(AllowEmptyStrings =false,ErrorMessage ="El campo {0} es requerido")]
-        [MaxLength(4,ErrorMessage ="Excedió el máximo de caracteres")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
+        [MaxLength(4, ErrorMessage = "Excedió el máximo de caracteres")]
         public string mun_Id { get; set; }
 
-        //[Display(Name ="Usuario crea")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage ="El campo {0} es requerido")]
-        //[Range(0, int.MaxValue,ErrorMessage ="Ingrese un numero positivo{0}")]
-        //public int esc_UsuarioCrea { get; set; }
+        [Display(Name = "Usuario crea")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
+        [Range(0, int.MaxValue, ErrorMessage = "Ingrese un numero positivo{0}")]
+        public int esc_UsuarioCrea { get; set; }
 
-        //[Display(Name = "Fecha crea")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]  
-     
-        //public System.DateTime esc_FechaCrea { get; set; }
-
-        //[Display(Name = "Usuario modifica")]  
-        //public Nullable<int> esc_UsuarioModifica { get; set; }
-
-        //[Display(Name = "Fecha modifica")]
-        //public Nullable<System.DateTime> esc_FechaModifica { get; set; }
-
-
-
-
-
-
-
-
-
+        [Display(Name = "Fecha crea")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido")]
+        public System.DateTime esc_FechaCrea { get; set; }
     }
+    
 }

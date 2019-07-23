@@ -20,7 +20,7 @@
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.jor_Id)
+        @Html.HiddenFor(model => model.jor_Id) <!--Para no mostrarle al usuario el id y mandarlo al modelo, porque el id no se edita-->
 
         <div class="form-group">
             @Html.LabelFor(model => model.jor_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -29,15 +29,6 @@
                 @Html.ValidationMessageFor(model => model.jor_Descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        
-
-        
-
-       
-      
-
-     
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -48,6 +39,7 @@
     </div>
 }
 </div>
+
 <div class="x_panel">
     <div class="x_title">
         <h2>Auditoría</h2>

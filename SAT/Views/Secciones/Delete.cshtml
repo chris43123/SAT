@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -20,14 +21,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.sec_UsuarioCrea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sec_UsuarioCrea)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.sec_FechaCrea)
         </dt>
 
@@ -36,19 +29,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.sec_UsuarioModifica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sec_UsuarioModifica)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.sec_FechaModifica)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.sec_FechaModifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
         </dd>
 
         <dt>

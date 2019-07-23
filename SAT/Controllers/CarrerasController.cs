@@ -50,14 +50,49 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "car_Id,car_Descripcion,car_Encargado,car_UsuarioCrea,car_FechaCrea,car_UsuarioModifica,car_FechaModifica")] tbCarreras tbCarreras)
         {
+            ViewBag.car_Encargado = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad");
+            tbCarreras.car_FechaCrea = DateTime.Now;
+            tbCarreras.car_UsuarioCrea = 1;
+
             if (ModelState.IsValid)
             {
-                db.tbCarreras.Add(tbCarreras);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                try
+                {
+                    IEnumerable<object> ListCarreras = null;
+                    string MensajeError = "";
 
-            ViewBag.car_Encargado = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbCarreras.car_Encargado);
+                    ListCarreras = db.UDP_Gral_tbCarreras_Insert(tbCarreras.car_Descripcion,
+                                                                    tbCarreras.car_Encargado,
+                                                                    tbCarreras.car_UsuarioCrea,
+                                                                    tbCarreras.car_FechaCrea);
+
+                    foreach (UDP_Gral_tbCarreras_Insert_Result msj in ListCarreras)
+                    {
+                        MensajeError = msj.MensajeError.ToString();
+                    }
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. no se pudo insertar el registro");
+                        return View(tbCarreras);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ex.ToString();
+                    ModelState.AddModelError("", "2. no se pudo insertar el registro");
+                    return View(tbCarreras);
+                }
+            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.tbCarreras.Add(tbCarreras);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //ViewBag.car_Encargado = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbCarreras.car_Encargado);
+            //return View(tbCarreras);
             return View(tbCarreras);
         }
 
@@ -84,13 +119,54 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "car_Id,car_Descripcion,car_Encargado,car_UsuarioCrea,car_FechaCrea,car_UsuarioModifica,car_FechaModifica")] tbCarreras tbCarreras)
         {
+            ViewBag.car_Encargado = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad");
+            tbCarreras.car_FechaModifica = DateTime.Now;
+            tbCarreras.car_UsuarioModifica = 1;
+
             if (ModelState.IsValid)
             {
-                db.Entry(tbCarreras).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> ListCarreras = null;
+                    string MensajeError = "";
+
+                    ListCarreras = db.UDP_Gral_tbCarreras_Update(   tbCarreras.car_Id,
+                                                                    tbCarreras.car_Descripcion,
+                                                                    tbCarreras.car_Encargado,
+                                                                    tbCarreras.car_UsuarioCrea,
+                                                                    tbCarreras.car_FechaCrea,
+                                                                    tbCarreras.car_UsuarioModifica,
+                                                                    tbCarreras.car_FechaModifica
+                                                                    );
+
+                    foreach (UDP_Gral_tbCarreras_Update_Result msj in ListCarreras)
+                    {
+                        MensajeError = msj.MensajeError.ToString();
+                    }
+                    if (!string.IsNullOrEmpty(MensajeError))
+                    {
+                        if (MensajeError.StartsWith("-1"))
+                        {
+                            ModelState.AddModelError("", "1. no se pudo editar el registro");
+                            return View(tbCarreras);
+                        }
+                    }                    
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ex.ToString();
+                    ModelState.AddModelError("", "2. no se pudo editar el registro");
+                    return View(tbCarreras);
+                }
             }
-            ViewBag.car_Encargado = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbCarreras.car_Encargado);
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(tbCarreras).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //ViewBag.car_Encargado = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbCarreras.car_Encargado);
             return View(tbCarreras);
         }
 
