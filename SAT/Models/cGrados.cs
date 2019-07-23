@@ -14,7 +14,7 @@ namespace SAT.Models
     }
     public class cGrados
     {
-        [Display(Name = "Id Grado")]
+        [Display(Name = "Id")]
         public int grad_Id { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo \"{0}\" es requerido")]
         [Display(Name = "Descripcion")]

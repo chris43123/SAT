@@ -146,6 +146,7 @@
   <ItemGroup>
     <Content Include="Content\custom.css" />
     <Content Include="Content\custom.min.css" />
+    <Content Include="Content\dttable.css" />
     <Content Include="Models\SATModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SATModel.edmx</DependentUpon>
@@ -156,6 +157,8 @@
       <DependentUpon>SATModel.edmx</DependentUpon>
       <LastGenOutput>SATModel.cs</LastGenOutput>
     </Content>
+    <Content Include="scripts\App\General\Datatable.js" />
+    <Content Include="scripts\App\General\Mayus.js" />
     <Content Include="scripts\bootstrap-progressbar\bootstrap-progressbar.js" />
     <Content Include="scripts\bootstrap-progressbar\bootstrap-progressbar.min.js" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
@@ -267,9 +270,6 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>SATModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tbAlumnos.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
@@ -324,10 +324,43 @@
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UDP_Esc_tbAlumnos_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbMatriculas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbMatriculas_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCargos_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCargos_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCarreras_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCarreras_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UDP_Gral_tbDepartamentos_Insert_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UDP_Gral_tbDepartamentos_Update_Result.cs">
+    <Compile Include="Models\UDP_Gral_tbEmpleados_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbEscuelas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbJornadas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbJornadas_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbSecciones_Insert_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

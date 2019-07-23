@@ -9,19 +9,14 @@ namespace SAT.Models
     [MetadataType(typeof(cCargos))]
     public partial class tbCargos
     {
-        
     }
-    public class cCargos
+    public  class cCargos
     {
-
-
-
-
         [Display(Name = "Id Cargo")]
         public int carg_Id { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage ="El campo \"{0}\" es requerido")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo \"{0}\" es requerido")]
         [Display(Name = "Descripcion")]
-        [MaxLength(100,ErrorMessage ="Excedio el numero maximo de caracteres")]
+        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         public string carg_Descripcion { get; set; }
         [Display(Name = "Usuario Crea")]
         public int carg_UsuarioCrea { get; set; }
