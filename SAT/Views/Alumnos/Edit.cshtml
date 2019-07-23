@@ -12,10 +12,12 @@
 	</div>
 	<div class="clearfix"></div>
 </div>
-@using (Html.BeginForm())
-{
+
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(model => model.alu_FechaCrea)
+    @Html.HiddenFor(model => model.alu_UsuarioCrea)
+
+
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -85,36 +87,28 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.alu_UsuarioCrea, "alu_UsuarioCrea", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("alu_UsuarioCrea", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.alu_UsuarioCrea, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.alu_FechaCrea, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.alu_FechaCrea, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.alu_FechaCrea, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.alu_UsuarioModifica, "alu_UsuarioModifica", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("alu_UsuarioModifica", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.alu_UsuarioModifica, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.alu_FechaModifica, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.alu_FechaModifica, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.alu_FechaModifica, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-horizontal">
+            <table class="table table-striped table-bordered dataTable">
+                <thead>
+                    <tr>
+                        <th>Acción</th>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Creado</td>
+                        <td>@Html.DisplayFor(model => model.alu_UsuarioCrea)</td>
+                        <td>@Html.DisplayFor(model => model.alu_FechaCrea)</td>
+                    </tr>
+                    <tr>
+                        <td>Modificado</td>
+                        <td>@Html.DisplayFor(model => model.alu_UsuarioModifica)</td>
+                        <td>@Html.DisplayFor(model => model.alu_FechaModifica)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="form-group">
