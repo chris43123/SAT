@@ -45,6 +45,7 @@
     </Key>
     <Property Name="mat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="alu_Id" Type="int" Nullable="false" />
+    <Property Name="esc_Id" Type="int" Nullable="false" />
     <Property Name="sec_Id" Type="int" Nullable="false" />
     <Property Name="car_Id" Type="int" Nullable="false" />
     <Property Name="mat_Anio" Type="int" Nullable="false" />
@@ -234,11 +235,11 @@
     </Key>
     <Property Name="mun_Id" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="mun_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dep_Id" Type="char" MaxLength="2" Nullable="false" />
     <Property Name="mun_UsuarioCrea" Type="int" Nullable="false" />
     <Property Name="mun_FechaCrea" Type="datetime" Nullable="false" />
     <Property Name="mun_UsuarioModifica" Type="int" />
     <Property Name="mun_FechaModifica" Type="datetime" />
-    <Property Name="dep_Id" Type="char" MaxLength="2" />
   </EntityType>
   <EntityType Name="tbSecciones">
     <Key>
@@ -300,6 +301,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Esc_tbMatriculas_esc_Id">
+    <End Role="tbEscuelas" Type="Self.tbEscuelas" Multiplicity="1" />
+    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEscuelas">
+        <PropertyRef Name="esc_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="esc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Esc_tbMatriculas_mat_UsuarioCrea">
     <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
     <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
@@ -337,7 +350,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_Esc_tbMunicipios_constraint">
-    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="0..1" />
+    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="1" />
     <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbDepartamentos">
@@ -936,6 +949,56 @@
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UDP_Esc_tbAlumnos_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
+    <Parameter Name="ALU_IDENTIDAD" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_NOMBRES" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_APELLIDOS" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_SEXO" Type="char" Mode="In" />
+    <Parameter Name="ALU_FECHANACIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="ALU_NOMBRESENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_APELLIDOSENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_TELEFONOENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_USUARIOCREA" Type="int" Mode="In" />
+    <Parameter Name="ALU_FECHACREA" Type="datetime" Mode="In" />
+    <Parameter Name="ALU_USUARIOMODIFICA" Type="int" Mode="In" />
+    <Parameter Name="ALU_FECHAMODIFICA" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="UDP_Esc_tbAlumnos_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
+    <Parameter Name="ALU_ID" Type="int" Mode="In" />
+    <Parameter Name="ALU_IDENTIDAD" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_NOMBRES" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_APELLIDOS" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_SEXO" Type="char" Mode="In" />
+    <Parameter Name="ALU_FECHANACIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="ALU_NOMBRESENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_APELLIDOSENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_TELEFONOENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_USUARIOCREA" Type="int" Mode="In" />
+    <Parameter Name="ALU_FECHACREA" Type="datetime" Mode="In" />
+    <Parameter Name="ALU_USUARIOMODIFICA" Type="int" Mode="In" />
+    <Parameter Name="ALU_FECHAMODIFICA" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="UDP_Esc_tbMatriculas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
+    <Parameter Name="alu_Id" Type="int" Mode="In" />
+    <Parameter Name="esc_Id" Type="int" Mode="In" />
+    <Parameter Name="sec_Id" Type="int" Mode="In" />
+    <Parameter Name="car_Id" Type="int" Mode="In" />
+    <Parameter Name="mat_Anio" Type="int" Mode="In" />
+    <Parameter Name="mat_UsuarioCrea" Type="int" Mode="In" />
+    <Parameter Name="mat_FechaCrea" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="UDP_Esc_tbMatriculas_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
+    <Parameter Name="mat_Id" Type="int" Mode="In" />
+    <Parameter Name="alu_Id" Type="int" Mode="In" />
+    <Parameter Name="esc_Id" Type="int" Mode="In" />
+    <Parameter Name="sec_Id" Type="int" Mode="In" />
+    <Parameter Name="car_Id" Type="int" Mode="In" />
+    <Parameter Name="mat_Anio" Type="int" Mode="In" />
+    <Parameter Name="mat_UsuarioCrea" Type="int" Mode="In" />
+    <Parameter Name="mat_FechaCrea" Type="datetime" Mode="In" />
+    <Parameter Name="mat_UsuarioModifica" Type="int" Mode="In" />
+    <Parameter Name="mat_FechaModifica" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="UDP_Esc_tbNotaDetalles_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
     <Parameter Name="not_Id" Type="int" Mode="In" />
     <Parameter Name="notd_Acumulado1" Type="decimal" Mode="In" />
@@ -979,25 +1042,6 @@
     <Parameter Name="not_FechaCrea" Type="datetime" Mode="In" />
     <Parameter Name="not_UsuarioModifica" Type="int" Mode="In" />
     <Parameter Name="not_FechaModifica" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="UDP_Gral_tbMatriculas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
-    <Parameter Name="alu_Id" Type="int" Mode="In" />
-    <Parameter Name="sec_Id" Type="int" Mode="In" />
-    <Parameter Name="car_Id" Type="int" Mode="In" />
-    <Parameter Name="mat_Anio" Type="int" Mode="In" />
-    <Parameter Name="mat_UsuarioCrea" Type="int" Mode="In" />
-    <Parameter Name="mat_FechaCrea" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="UDP_Gral_tbMatriculas_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
-    <Parameter Name="mat_Id" Type="int" Mode="In" />
-    <Parameter Name="alu_Id" Type="int" Mode="In" />
-    <Parameter Name="sec_Id" Type="int" Mode="In" />
-    <Parameter Name="car_Id" Type="int" Mode="In" />
-    <Parameter Name="mat_Anio" Type="int" Mode="In" />
-    <Parameter Name="mat_UsuarioCrea" Type="int" Mode="In" />
-    <Parameter Name="mat_FechaCrea" Type="datetime" Mode="In" />
-    <Parameter Name="mat_UsuarioModifica" Type="int" Mode="In" />
-    <Parameter Name="mat_FechaModifica" Type="datetime" Mode="In" />
   </Function>
   <Function Name="UDP_Gral_tbAsignaturas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
     <Parameter Name="asig_Descripcion" Type="nvarchar" Mode="In" />
@@ -1209,6 +1253,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Esc_tbMatriculas_car_Id" Association="Self.FK_Esc_tbMatriculas_car_Id">
       <End Role="tbCarreras" EntitySet="tbCarreras" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_esc_Id" Association="Self.FK_Esc_tbMatriculas_esc_Id">
+      <End Role="tbEscuelas" EntitySet="tbEscuelas" />
       <End Role="tbMatriculas" EntitySet="tbMatriculas" />
     </AssociationSet>
     <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioCrea" Association="Self.FK_Esc_tbMatriculas_mat_UsuarioCrea">

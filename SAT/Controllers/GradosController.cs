@@ -13,12 +13,11 @@ namespace SAT.Controllers
     public class GradosController : Controller
     {
         private SATEntities db = new SATEntities();
-
+        
         // GET: Grados
         public ActionResult Index()
         {
-            var tbGrados = db.tbGrados.Include(t => t.tbUsuarios).Include(t => t.tbUsuarios1);
-            return View(tbGrados.ToList());
+            return View(db.tbGrados.ToList());
         }
 
         // GET: Grados/Details/5
@@ -39,8 +38,6 @@ namespace SAT.Controllers
         // GET: Grados/Create
         public ActionResult Create()
         {
-            ViewBag.grad_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
-            ViewBag.grad_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
             return View();
         }
 
@@ -51,7 +48,7 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "grad_Id,grad_Descripcion,grad_UsuarioCrea,grad_FechaCrea,grad_UsuarioModifica,grad_FechaModifica")] tbGrados tbGrados)
         {
-            tbGrados.grad_UsuarioCrea = 2;
+            tbGrados.grad_UsuarioCrea = 1;
             tbGrados.grad_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
             {
@@ -60,8 +57,6 @@ namespace SAT.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.grad_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioCrea);
-            ViewBag.grad_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioModifica);
             return View(tbGrados);
         }
 
@@ -77,8 +72,6 @@ namespace SAT.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.grad_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioCrea);
-            ViewBag.grad_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioModifica);
             return View(tbGrados);
         }
 
@@ -89,7 +82,7 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "grad_Id,grad_Descripcion,grad_UsuarioCrea,grad_FechaCrea,grad_UsuarioModifica,grad_FechaModifica")] tbGrados tbGrados)
         {
-            tbGrados.grad_UsuarioModifica = 2;
+            tbGrados.grad_UsuarioModifica = 1;
             tbGrados.grad_FechaModifica = DateTime.Now;
             if (ModelState.IsValid)
             {
@@ -97,13 +90,10 @@ namespace SAT.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.grad_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioCrea);
-            ViewBag.grad_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioModifica);
             return View(tbGrados);
         }
 
-        // GET: Grados/Delete/5
-
+  
 
 
         protected override void Dispose(bool disposing)

@@ -48,6 +48,7 @@
         <MappingFragment StoreEntitySet="tbMatriculas">
           <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
           <ScalarProperty Name="alu_Id" ColumnName="alu_Id" />
+          <ScalarProperty Name="esc_Id" ColumnName="esc_Id" />
           <ScalarProperty Name="sec_Id" ColumnName="sec_Id" />
           <ScalarProperty Name="car_Id" ColumnName="car_Id" />
           <ScalarProperty Name="mat_Anio" ColumnName="mat_Anio" />
@@ -251,11 +252,11 @@
         <MappingFragment StoreEntitySet="tbMunicipios">
           <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
           <ScalarProperty Name="mun_Descripcion" ColumnName="mun_Descripcion" />
+          <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
           <ScalarProperty Name="mun_UsuarioCrea" ColumnName="mun_UsuarioCrea" />
           <ScalarProperty Name="mun_FechaCrea" ColumnName="mun_FechaCrea" />
           <ScalarProperty Name="mun_UsuarioModifica" ColumnName="mun_UsuarioModifica" />
           <ScalarProperty Name="mun_FechaModifica" ColumnName="mun_FechaModifica" />
-          <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -297,18 +298,32 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SATModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SATModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Insert" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Insert" />
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Update" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Update" />
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Insert" />
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Update" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Insert" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Gral_tbMatriculas_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Update" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Update" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Insert" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Update" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Update" />
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbCarreras_Insert_Result">
+          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbCarreras_Update" FunctionName="SATModel.Store.UDP_Gral_tbCarreras_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbCarreras_Update_Result">
+          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbDepartamentos_Update" FunctionName="SATModel.Store.UDP_Gral_tbDepartamentos_Update" />
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleados_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEmpleados_Insert" />

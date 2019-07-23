@@ -23,11 +23,11 @@ namespace SAT.Models
     
         public string mun_Id { get; set; }
         public string mun_Descripcion { get; set; }
+        public string dep_Id { get; set; }
         public int mun_UsuarioCrea { get; set; }
         public System.DateTime mun_FechaCrea { get; set; }
         public Nullable<int> mun_UsuarioModifica { get; set; }
         public Nullable<System.DateTime> mun_FechaModifica { get; set; }
-        public string dep_Id { get; set; }
     
         public virtual tbUsuarios tbUsuarios { get; set; }
         public virtual tbUsuarios tbUsuarios1 { get; set; }

@@ -93,10 +93,6 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -108,14 +104,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
       <Private>True</Private>
@@ -168,6 +156,7 @@
       <DependentUpon>SATModel.edmx</DependentUpon>
       <LastGenOutput>SATModel.cs</LastGenOutput>
     </Content>
+    <Content Include="scripts\App\General\CreateMunicipio.js" />
     <Content Include="scripts\bootstrap-progressbar\bootstrap-progressbar.js" />
     <Content Include="scripts\bootstrap-progressbar\bootstrap-progressbar.min.js" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
@@ -245,8 +234,6 @@
     <Compile Include="Controllers\JornadasController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
-    <Compile Include="Controllers\ValuesController1.cs" />
-    <Compile Include="Controllers\ValuesController2.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -338,6 +325,12 @@
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UDP_Gral_tbCarreras_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbCarreras_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -347,60 +340,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery\dist\jquery.min.map" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Cargos\Create.cshtml" />
-    <Content Include="Views\Cargos\Delete.cshtml" />
-    <Content Include="Views\Cargos\Details.cshtml" />
-    <Content Include="Views\Cargos\Edit.cshtml" />
-    <Content Include="Views\Cargos\Index.cshtml" />
-    <Content Include="Views\Grados\Create.cshtml" />
-    <Content Include="Views\Grados\Details.cshtml" />
-    <Content Include="Views\Grados\Edit.cshtml" />
-    <Content Include="Views\Grados\Index.cshtml" />
-    <Content Include="Views\Asignaturas\Create.cshtml" />
-    <Content Include="Views\Asignaturas\Details.cshtml" />
-    <Content Include="Views\Asignaturas\Edit.cshtml" />
-    <Content Include="Views\Asignaturas\Index.cshtml" />
     <Content Include="Views\Carreras\Create.cshtml" />
     <Content Include="Views\Carreras\Delete.cshtml" />
     <Content Include="Views\Carreras\Details.cshtml" />
     <Content Include="Views\Carreras\Edit.cshtml" />
     <Content Include="Views\Carreras\Index.cshtml" />
-    <Content Include="Views\Departamentos\Create.cshtml" />
-    <Content Include="Views\Departamentos\Delete.cshtml" />
-    <Content Include="Views\Departamentos\Details.cshtml" />
-    <Content Include="Views\Departamentos\Edit.cshtml" />
-    <Content Include="Views\Departamentos\Index.cshtml" />
-    <Content Include="Views\Empleados\Create.cshtml" />
-    <Content Include="Views\Empleados\Delete.cshtml" />
-    <Content Include="Views\Empleados\Details.cshtml" />
-    <Content Include="Views\Empleados\Edit.cshtml" />
-    <Content Include="Views\Empleados\Index.cshtml" />
-    <Content Include="Views\Escuelas\Create.cshtml" />
-    <Content Include="Views\Escuelas\Delete.cshtml" />
-    <Content Include="Views\Escuelas\Details.cshtml" />
-    <Content Include="Views\Escuelas\Edit.cshtml" />
-    <Content Include="Views\Escuelas\Index.cshtml" />
-    <Content Include="Views\Secciones\Create.cshtml" />
-    <Content Include="Views\Secciones\Delete.cshtml" />
-    <Content Include="Views\Secciones\Details.cshtml" />
-    <Content Include="Views\Secciones\Edit.cshtml" />
-    <Content Include="Views\Secciones\Index.cshtml" />
-    <Content Include="Views\Jornadas\Create.cshtml" />
-    <Content Include="Views\Jornadas\Delete.cshtml" />
-    <Content Include="Views\Jornadas\Details.cshtml" />
-    <Content Include="Views\Jornadas\Edit.cshtml" />
-    <Content Include="Views\Jornadas\Index.cshtml" />
-    <Content Include="Views\Municipios\Create.cshtml" />
-    <Content Include="Views\Municipios\Delete.cshtml" />
-    <Content Include="Views\Municipios\Details.cshtml" />
-    <Content Include="Views\Municipios\Edit.cshtml" />
-    <Content Include="Views\Municipios\Index.cshtml" />
     <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\.bower.json" />
     <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\bower.json" />
     <Content Include="scripts\DataTables\datatables.net-fixedheader-bs\Readme.md" />
@@ -429,6 +377,7 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

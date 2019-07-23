@@ -82,6 +82,7 @@
     </Key>
     <Property Name="mat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="alu_Id" Type="Int32" Nullable="false" />
+    <Property Name="esc_Id" Type="Int32" Nullable="false" />
     <Property Name="sec_Id" Type="Int32" Nullable="false" />
     <Property Name="car_Id" Type="Int32" Nullable="false" />
     <Property Name="mat_Anio" Type="Int32" Nullable="false" />
@@ -93,6 +94,7 @@
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Esc_tbMatriculas_mat_UsuarioModifica" FromRole="tbMatriculas" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbAlumnos" Relationship="Self.FK_Esc_tbMatriculas_alu_Id" FromRole="tbMatriculas" ToRole="tbAlumnos" />
     <NavigationProperty Name="tbCarreras" Relationship="Self.FK_Esc_tbMatriculas_car_Id" FromRole="tbMatriculas" ToRole="tbCarreras" />
+    <NavigationProperty Name="tbEscuelas" Relationship="Self.FK_Esc_tbMatriculas_esc_Id" FromRole="tbMatriculas" ToRole="tbEscuelas" />
     <NavigationProperty Name="tbSecciones" Relationship="Self.FK_Esc_tbMatriculas_sec_Id" FromRole="tbMatriculas" ToRole="tbSecciones" />
     <NavigationProperty Name="tbNotas" Relationship="Self.FK_Esc_tbNotas_mat_Id" FromRole="tbMatriculas" ToRole="tbNotas" />
   </EntityType>
@@ -278,6 +280,7 @@
     <Property Name="esc_FechaModifica" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Gral_tbEscuelas_esc_UsuarioCrea" FromRole="tbEscuelas" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Gral_tbEscuelas_esc_UsuarioModifica" FromRole="tbEscuelas" ToRole="tbUsuarios" />
+    <NavigationProperty Name="tbMatriculas" Relationship="Self.FK_Esc_tbMatriculas_esc_Id" FromRole="tbEscuelas" ToRole="tbMatriculas" />
     <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_Gral_tbEscuelas_esc_Contacto" FromRole="tbEscuelas" ToRole="tbEmpleados" />
     <NavigationProperty Name="tbEmpleados1" Relationship="Self.FK_Gral_tbEscuelas_esc_Director" FromRole="tbEscuelas" ToRole="tbEmpleados" />
     <NavigationProperty Name="tbMunicipios" Relationship="Self.FK_Gral_tbEscuelas_mun_Id" FromRole="tbEscuelas" ToRole="tbMunicipios" />
@@ -333,11 +336,11 @@
     </Key>
     <Property Name="mun_Id" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="mun_Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dep_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="mun_UsuarioCrea" Type="Int32" Nullable="false" />
     <Property Name="mun_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="mun_UsuarioModifica" Type="Int32" />
     <Property Name="mun_FechaModifica" Type="DateTime" Precision="3" />
-    <Property Name="dep_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Gral_tbMunicipios_mun_UsuarioCrea" FromRole="tbMunicipios" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Gral_tbMunicipios_mun_UsuarioModifica" FromRole="tbMunicipios" ToRole="tbUsuarios" />
     <NavigationProperty Name="tbDepartamentos" Relationship="Self.Fk_Esc_tbMunicipios_constraint" FromRole="tbMunicipios" ToRole="tbDepartamentos" />
@@ -792,6 +795,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Esc_tbMatriculas_esc_Id">
+    <End Role="tbEscuelas" Type="Self.tbEscuelas" Multiplicity="1" />
+    <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEscuelas">
+        <PropertyRef Name="esc_Id" />
+      </Principal>
+      <Dependent Role="tbMatriculas">
+        <PropertyRef Name="esc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Esc_tbMatriculas_sec_Id">
     <End Role="tbSecciones" Type="Self.tbSecciones" Multiplicity="1" />
     <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
@@ -901,7 +916,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_Esc_tbMunicipios_constraint">
-    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="0..1" />
+    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="1" />
     <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbDepartamentos">
@@ -1172,6 +1187,10 @@
       <End Role="tbCarreras" EntitySet="tbCarreras" />
       <End Role="tbMatriculas" EntitySet="tbMatriculas" />
     </AssociationSet>
+    <AssociationSet Name="FK_Esc_tbMatriculas_esc_Id" Association="Self.FK_Esc_tbMatriculas_esc_Id">
+      <End Role="tbEscuelas" EntitySet="tbEscuelas" />
+      <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+    </AssociationSet>
     <AssociationSet Name="FK_Esc_tbMatriculas_sec_Id" Association="Self.FK_Esc_tbMatriculas_sec_Id">
       <End Role="tbSecciones" EntitySet="tbSecciones" />
       <End Role="tbMatriculas" EntitySet="tbMatriculas" />
@@ -1279,6 +1298,56 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="UDP_Esc_tbAlumnos_Insert" ReturnType="Collection(String)">
+      <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+      <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+      <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+      <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbAlumnos_Update" ReturnType="Collection(String)">
+      <Parameter Name="ALU_ID" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+      <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+      <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+      <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbMatriculas_Insert" ReturnType="Collection(String)">
+      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
+      <Parameter Name="esc_Id" Mode="In" Type="Int32" />
+      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
+      <Parameter Name="car_Id" Mode="In" Type="Int32" />
+      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
+      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
+      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbMatriculas_Update" ReturnType="Collection(String)">
+      <Parameter Name="mat_Id" Mode="In" Type="Int32" />
+      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
+      <Parameter Name="esc_Id" Mode="In" Type="Int32" />
+      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
+      <Parameter Name="car_Id" Mode="In" Type="Int32" />
+      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
+      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
+      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
+      <Parameter Name="mat_UsuarioModifica" Mode="In" Type="Int32" />
+      <Parameter Name="mat_FechaModifica" Mode="In" Type="DateTime" />
+    </FunctionImport>
     <FunctionImport Name="UDP_Esc_tbNotaDetalles_Insert" ReturnType="Collection(String)">
       <Parameter Name="not_Id" Mode="In" Type="Int32" />
       <Parameter Name="notd_Acumulado1" Mode="In" Type="Decimal" />
@@ -1323,25 +1392,6 @@
       <Parameter Name="not_UsuarioModifica" Mode="In" Type="Int32" />
       <Parameter Name="not_FechaModifica" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbMatriculas_Insert" ReturnType="Collection(String)">
-      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
-      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
-      <Parameter Name="car_Id" Mode="In" Type="Int32" />
-      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
-      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
-      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbMatriculas_Update" ReturnType="Collection(String)">
-      <Parameter Name="mat_Id" Mode="In" Type="Int32" />
-      <Parameter Name="alu_Id" Mode="In" Type="Int32" />
-      <Parameter Name="sec_Id" Mode="In" Type="Int32" />
-      <Parameter Name="car_Id" Mode="In" Type="Int32" />
-      <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
-      <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
-      <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
-      <Parameter Name="mat_UsuarioModifica" Mode="In" Type="Int32" />
-      <Parameter Name="mat_FechaModifica" Mode="In" Type="DateTime" />
-    </FunctionImport>
     <FunctionImport Name="UDP_Gral_tbAsignaturas_Insert" ReturnType="Collection(String)">
       <Parameter Name="asig_Descripcion" Mode="In" Type="String" />
       <Parameter Name="asig_Semestral" Mode="In" Type="Boolean" />
@@ -1370,13 +1420,13 @@
       <Parameter Name="carg_UsuarioModifica" Mode="In" Type="Int32" />
       <Parameter Name="carg_FechaModifica" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbCarreras_Insert" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbCarreras_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbCarreras_Insert_Result)">
       <Parameter Name="Descripcion" Mode="In" Type="String" />
       <Parameter Name="Encargado" Mode="In" Type="Int32" />
       <Parameter Name="car_UsuarioCrea" Mode="In" Type="Int32" />
       <Parameter Name="car_FechaCrea" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbCarreras_Update" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbCarreras_Update" ReturnType="Collection(SATModel.UDP_Gral_tbCarreras_Update_Result)">
       <Parameter Name="car_Id" Mode="In" Type="Int32" />
       <Parameter Name="Descripcion" Mode="In" Type="String" />
       <Parameter Name="Encargado" Mode="In" Type="Int32" />
@@ -1529,5 +1579,11 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UDP_Gral_tbCarreras_Insert_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="UDP_Gral_tbCarreras_Update_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
   </ComplexType>
 </Schema>
