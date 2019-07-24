@@ -66,10 +66,13 @@ namespace SAT.Controllers
                     {
                         MensajeError = RES.MensajeError;
                     }
-                    if(MensajeError.StartsWith("-1"))
+                    if (!string.IsNullOrEmpty(MensajeError))
                     {
-                        ModelState.AddModelError("", "1. No se pudo insertar el registro ");
-                        //return View(tbCargos);
+                        if (MensajeError.StartsWith("-1"))
+                        {
+                            ModelState.AddModelError("", "1. No se pudo editar el registro");
+                            return View(tbCargos);
+                        }
                     }
                     return RedirectToAction("Index");
                 }

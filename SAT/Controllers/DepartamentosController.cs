@@ -14,6 +14,10 @@ namespace SAT.Controllers
     {
         private SATEntities db = new SATEntities();
 
+        public ActionResult _IndexMunicipio(string dep_id)
+        {
+            return PartialView(db.tbMunicipios.Where(x => x.dep_Id == dep_id));
+        }
         // GET: Departamentos
         public ActionResult Index()
         {
@@ -49,21 +53,46 @@ namespace SAT.Controllers
         public ActionResult Create([Bind(Include = "dep_Id,dep_Descripcion,dep_UsuarioCrea,dep_FechaCrea,dep_UsuarioModifica,dep_FechaModifica")] tbDepartamentos tbDepartamentos)
         {
             var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
-
+            tbDepartamentos.dep_FechaCrea = DateTime.Now;
+            tbDepartamentos.dep_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                db.tbDepartamentos.Add(tbDepartamentos);
-                db.SaveChanges();
-                foreach(tbMunicipios Mun in Sesion)
+                try
                 {
-                    db.UDP_Gral_tbMunicipios_Insert(Mun.dep_Id,
-                                                       Mun.mun_Descripcion,                                                       
-                                                       2,
-                                                       DateTime.Now,
-                                                       tbDepartamentos.dep_Id
-                                                       );
+                    IEnumerable<object> listdepartamentos = null;
+                    string MensajeError = "";
+                    listdepartamentos = db.UDP_Gral_tbDepartamentos_Insert(tbDepartamentos.dep_Id,
+                                                                            tbDepartamentos.dep_Descripcion,
+                                                                         tbDepartamentos.dep_UsuarioCrea,
+                                                                         tbDepartamentos.dep_FechaCrea);
+                    foreach (UDP_Gral_tbDepartamentos_Insert_Result res in listdepartamentos)
+                        MensajeError = res.MensajeError;
+
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1.no se pudo insertar el registro");
+                        return View(tbDepartamentos);
+                    }
+                    else
+                    {
+                        foreach (tbMunicipios Mun in Sesion)
+                        {
+                            db.UDP_Gral_tbMunicipios_Insert(Mun.dep_Id,
+                                                               Mun.mun_Descripcion,
+                                                               2,
+                                                               DateTime.Now,
+                                                               tbDepartamentos.dep_Id
+                                                               );
+                        }
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                catch (Exception EX)
+                {
+                    EX.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro");
+                    return View(tbDepartamentos);
+                }
             }
 
             return View(tbDepartamentos);
@@ -91,6 +120,12 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "dep_Id,dep_Descripcion,dep_UsuarioCrea,dep_FechaCrea,dep_UsuarioModifica,dep_FechaModifica")] tbDepartamentos tbDepartamentos)
         {
+            //var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
+            //if (ModelState.IsValid)
+            //{
+            //    db.tbDepartamentos.
+            //}
+
             if (ModelState.IsValid)
             {
                 db.Entry(tbDepartamentos).State = EntityState.Modified;
@@ -113,7 +148,16 @@ namespace SAT.Controllers
             Session["PollitoMunicipio"] = List;
             return Json("Exito", JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult RemoveMunicipio(string mun_Id)
+        {
+            var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
+            if (Sesion != null)
+            {
+                var itemremove = Sesion.Find(x => x.mun_Id == mun_Id);
+                Sesion.Remove(itemremove);
+            }
+            return Json("Exito", JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

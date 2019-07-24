@@ -56,14 +56,41 @@ namespace SAT.Controllers
             tbNotaDetalles.notd_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.tbNotaDetalles.Add(tbNotaDetalles);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //Lista para poder recorrer el tipo complejo
+                    IEnumerable<object> listnotas = null;
+                    string MensajeError = "";
+                    //almacenamos la ejecución del SP
+                    listnotas = db.UDP_Esc_tbNotaDetalles_Insert(tbNotaDetalles.notd_Id,
+                                                                 tbNotaDetalles.notd_Acumulado1,
+                                                                 tbNotaDetalles.notd_Examen1,
+                                                                 tbNotaDetalles.notd_Acumulado2,
+                                                                 tbNotaDetalles.notd_Examen2,
+                                                                 tbNotaDetalles.notd_Acumulado3,
+                                                                 tbNotaDetalles.notd_Examen3,
+                                                                 tbNotaDetalles.notd_Acumulado4,
+                                                                 tbNotaDetalles.notd_Examen4,
+                                                                 tbNotaDetalles.notd_UsuarioCrea,
+                                                                 tbNotaDetalles.notd_FechaCrea);
+                    //Recuperamos el valor que trae nuestro retorno
+                    foreach (UDP_Esc_tbNotaDetalles_Insert_Result Res in listnotas)
+                        MensajeError = Res.MensajeError;
+                    //Validamos
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbNotaDetalles);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro.");
+                    return View(tbNotaDetalles);
+                }
             }
-
-            ViewBag.notd_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotaDetalles.notd_UsuarioCrea);
-            ViewBag.notd_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotaDetalles.notd_UsuarioModifica);
-            ViewBag.not_Id = new SelectList(db.tbNotas, "not_Id", "not_Id", tbNotaDetalles.not_Id);
             return View(tbNotaDetalles);
         }
 
@@ -92,17 +119,51 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "notd_Id,not_Id,notd_Acumulado1,notd_Examen1,notd_Acumulado2,notd_Examen2,notd_Acumulado3,notd_Examen3,notd_Acumulado4,notd_Examen4,notd_UsuarioCrea,notd_FechaCrea,notd_UsuarioModifica,notd_FechaModifica")] tbNotaDetalles tbNotaDetalles)
         {
-            tbNotaDetalles.notd_UsuarioModifica = 2;
-            tbNotaDetalles.notd_FechaModifica = DateTime.Now;
+            tbNotaDetalles.notd_UsuarioCrea = 2;
+            tbNotaDetalles.notd_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.Entry(tbNotaDetalles).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //Lista para poder recorrer el tipo complejo
+                    IEnumerable<object> listnotas = null;
+                    string MensajeError = "";
+                    //almacenamos la ejecución del SP
+                    listnotas = db.UDP_Esc_tbNotaDetalles_Update(tbNotaDetalles.notd_Id,
+                                                                 tbNotaDetalles.not_Id,
+                                                                 tbNotaDetalles.notd_Examen1,
+                                                                 tbNotaDetalles.notd_Examen2,
+                                                                 tbNotaDetalles.notd_Examen3,
+                                                                 tbNotaDetalles.notd_Examen4,
+                                                                    tbNotaDetalles.notd_Acumulado1,
+                                                                 tbNotaDetalles.notd_Acumulado2,
+                                                                 tbNotaDetalles.notd_Acumulado3,
+                                                                 tbNotaDetalles.notd_Acumulado4,
+                                                                 tbNotaDetalles.notd_UsuarioCrea,
+                                                                 tbNotaDetalles.notd_FechaCrea,
+                                                                 tbNotaDetalles.notd_UsuarioModifica,
+                                                                 tbNotaDetalles.notd_FechaModifica);
+                    //Recuperamos el valor que trae nuestro retorno
+                    foreach (UDP_Esc_tbNotaDetalles_Update_Result Res in listnotas)
+                        MensajeError = Res.MensajeError;
+                    //Validamos
+                    if (!string.IsNullOrEmpty(MensajeError))
+                    {
+                        if (MensajeError.StartsWith("-1"))
+                        {
+                            ModelState.AddModelError("", "1. No se pudo editar el registro");
+                            return View(tbNotaDetalles);
+                        }
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro.");
+                    return View(tbNotaDetalles);
+                }
             }
-            ViewBag.notd_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotaDetalles.notd_UsuarioCrea);
-            ViewBag.notd_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotaDetalles.notd_UsuarioModifica);
-            ViewBag.not_Id = new SelectList(db.tbNotas, "not_Id", "not_Id", tbNotaDetalles.not_Id);
             return View(tbNotaDetalles);
         }
 

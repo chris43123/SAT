@@ -236,6 +236,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JornadasController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
+    <Compile Include="Controllers\NotaDetallesController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -334,6 +335,12 @@
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Esc_tbMatriculas_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbNotaDetalles_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Esc_tbNotaDetalles_Update_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Gral_tbAsignaturas_Insert_Result.cs">
@@ -466,6 +473,13 @@
     <Content Include="Models\SATModel.edmx.diagram">
       <DependentUpon>SATModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Departamentos\_CreateMunicipio.cshtml" />
+    <Content Include="Views\Departamentos\_IndexMunicipio.cshtml" />
+    <Content Include="Views\NotaDetalles\Create.cshtml" />
+    <Content Include="Views\NotaDetalles\Delete.cshtml" />
+    <Content Include="Views\NotaDetalles\Details.cshtml" />
+    <Content Include="Views\NotaDetalles\Edit.cshtml" />
+    <Content Include="Views\NotaDetalles\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

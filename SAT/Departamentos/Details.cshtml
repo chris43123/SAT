@@ -1,13 +1,14 @@
 ﻿@model SAT.Models.tbDepartamentos
 
 @{
-    ViewBag.Title = "Detalles";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalles del departamento</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>tbDepartamentos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -54,6 +55,6 @@
 </div>
 <p>
 
-    @Html.ActionLink("Editar", "Edit", new { id = Model.dep_Id },new{@class=" btn-info"})
+    @Html.ActionLink("Edit", "Edit", new { id = Model.dep_Id },new{@class=" btn-info"})
     @Html.ActionLink("Cancelar", "Index" , null ,new{@class="btn btn-info"})
 </p>

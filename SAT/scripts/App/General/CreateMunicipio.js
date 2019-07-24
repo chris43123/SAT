@@ -45,3 +45,20 @@ function LimpiarControles()
 /* Otra manera de usar un button y no iput siempre funciona.
 newtr += "<td><button type='button' class='btn btn-danger btn-xs'  id='Quitarmunicipios'>Quitar</button></td></tr>";
 */
+
+$(document).on("click", "#tblIndexDep tbody tr td button#btnExpandir", function () {
+    var dep = $(this).data('id');
+    var fila = $("#fila-" + dep);
+    console.log(dep);
+    if (fila.css('display') == 'none') {
+   
+        fila.css('display', 'table-row');
+        $(this).text('-');
+
+    }
+    else {
+        fila.css('display', 'none');
+        $(this).text('+');
+    }
+
+});

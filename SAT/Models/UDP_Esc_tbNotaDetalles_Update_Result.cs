@@ -11,7 +11,7 @@ namespace SAT.Models
 {
     using System;
     
-    public partial class UDP_Gral_tbSecciones_Insert_Result
+    public partial class UDP_Esc_tbNotaDetalles_Update_Result
     {
         public string MensajeError { get; set; }
     }
