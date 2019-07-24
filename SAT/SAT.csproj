@@ -603,6 +603,7 @@
     <Compile Include="Controllers\GradosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JornadasController.cs" />
+    <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\NotaDetallesController.cs" />
     <Compile Include="Controllers\SeccionesController.cs" />
@@ -891,6 +892,11 @@
     <Content Include="Content\datepicker\moment\CHANGELOG.md" />
     <Content Include="Content\datepicker\moment\LICENSE" />
     <Content Include="Content\datepicker\moment\README.md" />
+    <Content Include="Views\Matriculas\Create.cshtml" />
+    <Content Include="Views\Matriculas\Delete.cshtml" />
+    <Content Include="Views\Matriculas\Details.cshtml" />
+    <Content Include="Views\Matriculas\Edit.cshtml" />
+    <Content Include="Views\Matriculas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

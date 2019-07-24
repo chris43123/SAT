@@ -9,12 +9,56 @@
 
 <div>
     <dl class="dl-horizontal">
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.alu_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAlumnos.alu_Nombres)
+            &nbsp
+            @Html.DisplayFor(model => model.tbAlumnos.alu_Apellidos)
+
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.car_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbCarreras.car_Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sec_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbSecciones.sec_Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.esc_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEscuelas.esc_NombreEscuela)
+        </dd>
+
+
         <dt>
             @Html.DisplayNameFor(model => model.mat_Anio)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.mat_Anio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mat_UsuarioCrea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
         </dd>
 
         <dt>
@@ -30,56 +74,21 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.mat_FechaModifica)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbUsuarios.usu_NombreUsuario)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.tbUsuarios1.usu_NombreUsuario)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tbAlumnos.alu_Identidad)
+            @Html.DisplayNameFor(model => model.mat_FechaModifica)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tbAlumnos.alu_Identidad)
+            @Html.DisplayFor(model => model.mat_FechaModifica)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbCarreras.car_Descripcion)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbCarreras.car_Descripcion)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbEscuelas.esc_Codigo)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbEscuelas.esc_Codigo)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbSecciones.sec_Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbSecciones.sec_Descripcion)
-        </dd>
 
     </dl>
 </div>

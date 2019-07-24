@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SAT.Models.tbMatriculas>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Matriculas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="x_panel">
 	<div class="x_title">
-		<h2>Index</h2>
+		<h2>Matriculas</h2>
 		<div class="nav navbar-right panel_toolbox">
-		@Html.ActionLink("Registrar ", "Create", null,new{@class="btn btn-info"})
+		@Html.ActionLink("Registrar", "Create", null,new{@class="btn btn-info"})
 
 		</div>
 		<div class="clearfix"></div>
@@ -18,32 +18,23 @@
 <table class="table table-striped table-bordered dataTable">
 <thead>
 	<tr>
+
+        
+        <th>
+            @Html.DisplayNameFor(model => model.alu_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sec_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esc_Id)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.mat_Anio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mat_FechaCrea)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mat_FechaModifica)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbAlumnos.alu_Identidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbCarreras.car_Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbEscuelas.esc_Codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbSecciones.sec_Descripcion)
         </th>
         <th></th>
     </tr>
@@ -51,33 +42,28 @@
 <tbody>
 @foreach (var item in Model) {
     <tr>
+
         <td>
-            @Html.DisplayFor(modelItem => item.mat_Anio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mat_FechaCrea)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mat_FechaModifica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbUsuarios.usu_NombreUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbUsuarios1.usu_NombreUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbAlumnos.alu_Identidad)
+            @Html.DisplayFor(modelItem => item.tbAlumnos.alu_Nombres)
+            &nbsp
+            @Html.DisplayFor(modelItem => item.tbAlumnos.alu_Apellidos)
+
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.tbCarreras.car_Descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tbEscuelas.esc_Codigo)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.tbSecciones.sec_Descripcion)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbEscuelas.esc_NombreEscuela)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.mat_Anio)
+        </td>
+
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.mat_Id }, new {@class = "btn btn-default btn-xs"})
             @Html.ActionLink("Detalle", "Details", new { id=item.mat_Id }, new {@class = "btn btn-default btn-xs"})
