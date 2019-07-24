@@ -21,6 +21,7 @@ namespace SAT.Models
         [Display(Name = "Usuario creación")]
         public int dep_UsuarioCrea { get; set; }
         [Display(Name = "Fecha de creación")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime dep_FechaCrea { get; set; }
         [Display(Name = "Usuario que realizo modificación")]
         public Nullable<int> dep_UsuarioModifica { get; set; }

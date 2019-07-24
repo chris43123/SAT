@@ -990,14 +990,14 @@
   <Function Name="UDP_Esc_tbNotaDetalles_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
     <Parameter Name="notd_Id" Type="int" Mode="In" />
     <Parameter Name="not_Id" Type="int" Mode="In" />
+    <Parameter Name="notd_Acumulado1" Type="decimal" Mode="In" />
     <Parameter Name="notd_Examen1" Type="decimal" Mode="In" />
+    <Parameter Name="notd_Acumulado2" Type="decimal" Mode="In" />
     <Parameter Name="notd_Examen2" Type="decimal" Mode="In" />
     <Parameter Name="notd_Examen3" Type="decimal" Mode="In" />
-    <Parameter Name="notd_Examen4" Type="decimal" Mode="In" />
-    <Parameter Name="notd_Acumulado1" Type="decimal" Mode="In" />
-    <Parameter Name="notd_Acumulado2" Type="decimal" Mode="In" />
     <Parameter Name="notd_Acumulado3" Type="decimal" Mode="In" />
     <Parameter Name="notd_Acumulado4" Type="decimal" Mode="In" />
+    <Parameter Name="notd_Examen4" Type="decimal" Mode="In" />
     <Parameter Name="notd_UsuarioCrea" Type="int" Mode="In" />
     <Parameter Name="notd_FechaCrea" Type="datetime" Mode="In" />
     <Parameter Name="notd_UsuarioModifica" Type="int" Mode="In" />
@@ -1169,6 +1169,9 @@
     <Parameter Name="mun_UsuarioCrea" Type="int" Mode="In" />
     <Parameter Name="mun_FechaCrea" Type="datetime" Mode="In" />
     <Parameter Name="dep_Id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="UDP_Gral_tbMunicipios_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+    <Parameter Name="mun_id" Type="char" Mode="In" />
   </Function>
   <Function Name="UDP_Gral_tbMunicipios_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
     <Parameter Name="mun_Id" Type="char" Mode="In" />

@@ -1,0 +1,17 @@
+﻿@model SAT.Models.tbMunicipios
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id="frmEditarMun"}))
+{
+    @Html.HiddenFor(x => x.mun_Id)
+    @Html.HiddenFor(x=>x.mun_FechaCrea)
+    @Html.HiddenFor(x => x.mun_UsuarioCrea)
+    <div class="form-group">
+        @Html.LabelFor(model => model.mun_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.mun_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.mun_Descripcion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}
+
+

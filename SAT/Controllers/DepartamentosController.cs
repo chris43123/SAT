@@ -148,6 +148,7 @@ namespace SAT.Controllers
             Session["PollitoMunicipio"] = List;
             return Json("Exito", JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult RemoveMunicipio(string mun_Id)
         {
             var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
@@ -156,6 +157,18 @@ namespace SAT.Controllers
                 var itemremove = Sesion.Find(x => x.mun_Id == mun_Id);
                 Sesion.Remove(itemremove);
             }
+            return Json("Exito", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult _EditarMunicipio(string mun_Id)
+        {
+            var List = db.UDP_Gral_tbMunicipios_Select(mun_Id).ToList();
+            return Json(List, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UpdateMun(tbMunicipios Municipio)
+        {
+            //Aqui va el update Municipio
             return Json("Exito", JsonRequestBehavior.AllowGet);
         }
         protected override void Dispose(bool disposing)

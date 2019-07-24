@@ -215,7 +215,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbNotaDetalles_Insert", not_IdParameter, notd_Acumulado1Parameter, notd_Examen1Parameter, notd_Acumulado2Parameter, notd_Examen2Parameter, notd_Acumulado3Parameter, notd_Examen3Parameter, notd_Acumulado4Parameter, notd_Examen4Parameter, notd_UsuarioCreaParameter, notd_FechaCreaParameter);
         }
     
-        public virtual ObjectResult<UDP_Esc_tbNotaDetalles_Update_Result> UDP_Esc_tbNotaDetalles_Update(Nullable<int> notd_Id, Nullable<int> not_Id, Nullable<decimal> notd_Examen1, Nullable<decimal> notd_Examen2, Nullable<decimal> notd_Examen3, Nullable<decimal> notd_Examen4, Nullable<decimal> notd_Acumulado1, Nullable<decimal> notd_Acumulado2, Nullable<decimal> notd_Acumulado3, Nullable<decimal> notd_Acumulado4, Nullable<int> notd_UsuarioCrea, Nullable<System.DateTime> notd_FechaCrea, Nullable<int> notd_UsuarioModifica, Nullable<System.DateTime> notd_FechaModifica)
+        public virtual ObjectResult<UDP_Esc_tbNotaDetalles_Update_Result> UDP_Esc_tbNotaDetalles_Update(Nullable<int> notd_Id, Nullable<int> not_Id, Nullable<decimal> notd_Acumulado1, Nullable<decimal> notd_Examen1, Nullable<decimal> notd_Acumulado2, Nullable<decimal> notd_Examen2, Nullable<decimal> notd_Examen3, Nullable<decimal> notd_Acumulado3, Nullable<decimal> notd_Acumulado4, Nullable<decimal> notd_Examen4, Nullable<int> notd_UsuarioCrea, Nullable<System.DateTime> notd_FechaCrea, Nullable<int> notd_UsuarioModifica, Nullable<System.DateTime> notd_FechaModifica)
         {
             var notd_IdParameter = notd_Id.HasValue ?
                 new ObjectParameter("notd_Id", notd_Id) :
@@ -225,9 +225,17 @@ namespace SAT.Models
                 new ObjectParameter("not_Id", not_Id) :
                 new ObjectParameter("not_Id", typeof(int));
     
+            var notd_Acumulado1Parameter = notd_Acumulado1.HasValue ?
+                new ObjectParameter("notd_Acumulado1", notd_Acumulado1) :
+                new ObjectParameter("notd_Acumulado1", typeof(decimal));
+    
             var notd_Examen1Parameter = notd_Examen1.HasValue ?
                 new ObjectParameter("notd_Examen1", notd_Examen1) :
                 new ObjectParameter("notd_Examen1", typeof(decimal));
+    
+            var notd_Acumulado2Parameter = notd_Acumulado2.HasValue ?
+                new ObjectParameter("notd_Acumulado2", notd_Acumulado2) :
+                new ObjectParameter("notd_Acumulado2", typeof(decimal));
     
             var notd_Examen2Parameter = notd_Examen2.HasValue ?
                 new ObjectParameter("notd_Examen2", notd_Examen2) :
@@ -237,18 +245,6 @@ namespace SAT.Models
                 new ObjectParameter("notd_Examen3", notd_Examen3) :
                 new ObjectParameter("notd_Examen3", typeof(decimal));
     
-            var notd_Examen4Parameter = notd_Examen4.HasValue ?
-                new ObjectParameter("notd_Examen4", notd_Examen4) :
-                new ObjectParameter("notd_Examen4", typeof(decimal));
-    
-            var notd_Acumulado1Parameter = notd_Acumulado1.HasValue ?
-                new ObjectParameter("notd_Acumulado1", notd_Acumulado1) :
-                new ObjectParameter("notd_Acumulado1", typeof(decimal));
-    
-            var notd_Acumulado2Parameter = notd_Acumulado2.HasValue ?
-                new ObjectParameter("notd_Acumulado2", notd_Acumulado2) :
-                new ObjectParameter("notd_Acumulado2", typeof(decimal));
-    
             var notd_Acumulado3Parameter = notd_Acumulado3.HasValue ?
                 new ObjectParameter("notd_Acumulado3", notd_Acumulado3) :
                 new ObjectParameter("notd_Acumulado3", typeof(decimal));
@@ -256,6 +252,10 @@ namespace SAT.Models
             var notd_Acumulado4Parameter = notd_Acumulado4.HasValue ?
                 new ObjectParameter("notd_Acumulado4", notd_Acumulado4) :
                 new ObjectParameter("notd_Acumulado4", typeof(decimal));
+    
+            var notd_Examen4Parameter = notd_Examen4.HasValue ?
+                new ObjectParameter("notd_Examen4", notd_Examen4) :
+                new ObjectParameter("notd_Examen4", typeof(decimal));
     
             var notd_UsuarioCreaParameter = notd_UsuarioCrea.HasValue ?
                 new ObjectParameter("notd_UsuarioCrea", notd_UsuarioCrea) :
@@ -273,7 +273,7 @@ namespace SAT.Models
                 new ObjectParameter("notd_FechaModifica", notd_FechaModifica) :
                 new ObjectParameter("notd_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbNotaDetalles_Update_Result>("UDP_Esc_tbNotaDetalles_Update", notd_IdParameter, not_IdParameter, notd_Examen1Parameter, notd_Examen2Parameter, notd_Examen3Parameter, notd_Examen4Parameter, notd_Acumulado1Parameter, notd_Acumulado2Parameter, notd_Acumulado3Parameter, notd_Acumulado4Parameter, notd_UsuarioCreaParameter, notd_FechaCreaParameter, notd_UsuarioModificaParameter, notd_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbNotaDetalles_Update_Result>("UDP_Esc_tbNotaDetalles_Update", notd_IdParameter, not_IdParameter, notd_Acumulado1Parameter, notd_Examen1Parameter, notd_Acumulado2Parameter, notd_Examen2Parameter, notd_Examen3Parameter, notd_Acumulado3Parameter, notd_Acumulado4Parameter, notd_Examen4Parameter, notd_UsuarioCreaParameter, notd_FechaCreaParameter, notd_UsuarioModificaParameter, notd_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Esc_tbNotas_Insert(Nullable<int> asig_Id, Nullable<int> mat_Id, Nullable<int> not_UsuarioCrea, Nullable<System.DateTime> not_FechaCrea)
@@ -599,7 +599,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEmpleados_Insert_Result>("UDP_Gral_tbEmpleados_Insert", emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbEmpleados_Update(Nullable<int> emp_Id, string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea, Nullable<int> emp_UsuarioModifica, Nullable<System.DateTime> emp_FechaModifica)
+        public virtual ObjectResult<UDP_Gral_tbEmpleados_Update_Result> UDP_Gral_tbEmpleados_Update(Nullable<int> emp_Id, string emp_Identidad, string emp_Nombres, string emp_Apellidos, Nullable<System.DateTime> emp_FechaNacimiento, string emp_Sexo, string emp_Direccion, string mun_Id, string emp_CorreoElectronico, string emp_Telefono, Nullable<int> carg_Id, Nullable<System.DateTime> emp_FechaIngreso, Nullable<System.DateTime> emp_FechadeSalida, string emp_RazonSalida, Nullable<int> emp_UsuarioCrea, Nullable<System.DateTime> emp_FechaCrea, Nullable<int> emp_UsuarioModifica, Nullable<System.DateTime> emp_FechaModifica)
         {
             var emp_IdParameter = emp_Id.HasValue ?
                 new ObjectParameter("emp_Id", emp_Id) :
@@ -673,7 +673,7 @@ namespace SAT.Models
                 new ObjectParameter("emp_FechaModifica", emp_FechaModifica) :
                 new ObjectParameter("emp_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbEmpleados_Update", emp_IdParameter, emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter, emp_UsuarioModificaParameter, emp_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEmpleados_Update_Result>("UDP_Gral_tbEmpleados_Update", emp_IdParameter, emp_IdentidadParameter, emp_NombresParameter, emp_ApellidosParameter, emp_FechaNacimientoParameter, emp_SexoParameter, emp_DireccionParameter, mun_IdParameter, emp_CorreoElectronicoParameter, emp_TelefonoParameter, carg_IdParameter, emp_FechaIngresoParameter, emp_FechadeSalidaParameter, emp_RazonSalidaParameter, emp_UsuarioCreaParameter, emp_FechaCreaParameter, emp_UsuarioModificaParameter, emp_FechaModificaParameter);
         }
     
         public virtual ObjectResult<UDP_Gral_tbEscuelas_Insert_Result> UDP_Gral_tbEscuelas_Insert(string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea)
@@ -717,7 +717,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEscuelas_Insert_Result>("UDP_Gral_tbEscuelas_Insert", esc_CodigoParameter, esc_NombreEscuelaParameter, esc_DirectorParameter, esc_ContactoParameter, esc_TelefonoParameter, esc_CorreoParameter, mun_IdParameter, esc_UsuarioCreaParameter, esc_FechaCreaParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbEscuelas_Update(Nullable<int> esc_Id, string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea, Nullable<int> esc_UsuarioModifica, Nullable<System.DateTime> esc_FechaModifica)
+        public virtual ObjectResult<UDP_Gral_tbEscuelas_Update_Result> UDP_Gral_tbEscuelas_Update(Nullable<int> esc_Id, string esc_Codigo, string esc_NombreEscuela, Nullable<int> esc_Director, Nullable<int> esc_Contacto, string esc_Telefono, string esc_Correo, string mun_Id, Nullable<int> esc_UsuarioCrea, Nullable<System.DateTime> esc_FechaCrea, Nullable<int> esc_UsuarioModifica, Nullable<System.DateTime> esc_FechaModifica)
         {
             var esc_IdParameter = esc_Id.HasValue ?
                 new ObjectParameter("esc_Id", esc_Id) :
@@ -767,7 +767,7 @@ namespace SAT.Models
                 new ObjectParameter("esc_FechaModifica", esc_FechaModifica) :
                 new ObjectParameter("esc_FechaModifica", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbEscuelas_Update", esc_IdParameter, esc_CodigoParameter, esc_NombreEscuelaParameter, esc_DirectorParameter, esc_ContactoParameter, esc_TelefonoParameter, esc_CorreoParameter, mun_IdParameter, esc_UsuarioCreaParameter, esc_FechaCreaParameter, esc_UsuarioModificaParameter, esc_FechaModificaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbEscuelas_Update_Result>("UDP_Gral_tbEscuelas_Update", esc_IdParameter, esc_CodigoParameter, esc_NombreEscuelaParameter, esc_DirectorParameter, esc_ContactoParameter, esc_TelefonoParameter, esc_CorreoParameter, mun_IdParameter, esc_UsuarioCreaParameter, esc_FechaCreaParameter, esc_UsuarioModificaParameter, esc_FechaModificaParameter);
         }
     
         public virtual ObjectResult<string> UDP_Gral_tbGrados_Insert(string grad_Descripcion, Nullable<int> grad_UsuarioCrea, Nullable<System.DateTime> grad_FechaCrea)
@@ -1209,6 +1209,15 @@ namespace SAT.Models
                 new ObjectParameter("mat_FechaCrea", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbMatriculas_Insert_Result>("UDP_Esc_tbMatriculas_Insert", alu_IdParameter, esc_IdParameter, sec_IdParameter, car_IdParameter, mat_AnioParameter, mat_UsuarioCreaParameter, mat_FechaCreaParameter);
+        }
+    
+        public virtual ObjectResult<UDP_Gral_tbMunicipios_Select_Result> UDP_Gral_tbMunicipios_Select(string mun_id)
+        {
+            var mun_idParameter = mun_id != null ?
+                new ObjectParameter("mun_id", mun_id) :
+                new ObjectParameter("mun_id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbMunicipios_Select_Result>("UDP_Gral_tbMunicipios_Select", mun_idParameter);
         }
     }
 }

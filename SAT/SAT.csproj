@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -146,6 +148,372 @@
   <ItemGroup>
     <Content Include="Content\custom.css" />
     <Content Include="Content\custom.min.css" />
+    <Content Include="Content\DataTables\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker-standalone.css" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.css" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\build\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\android-chrome-144x144.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\android-chrome-192x192.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\android-chrome-36x36.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\android-chrome-48x48.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\android-chrome-72x72.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\android-chrome-96x96.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-114x114.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-120x120.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-144x144.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-152x152.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-180x180.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-57x57.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-60x60.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-72x72.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-76x76.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon-precomposed.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\apple-touch-icon.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\base.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\browserconfig.xml" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\content.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\css\base.css" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\css\prettify-1.0.css" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\favicon-16x16.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\favicon-32x32.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\favicon-96x96.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\favicon.ico" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\js\base.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\js\prettify-1.0.min.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\mstile-144x144.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\mstile-150x150.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\mstile-310x150.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\mstile-310x310.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\mstile-70x70.png" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\nav.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\toc.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\Gruntfile.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\nuget\NuGet.exe" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\tasks\bump_version.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\publicApiSpec.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\base.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\compile.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\index.js" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\t1.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\t2.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\t3.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\t4.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\screen-capture\t5.html" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\test\timezoneDataHelper.js" />
+    <Content Include="Content\datepicker\moment\locale\af.js" />
+    <Content Include="Content\datepicker\moment\locale\ar-ma.js" />
+    <Content Include="Content\datepicker\moment\locale\ar-sa.js" />
+    <Content Include="Content\datepicker\moment\locale\ar-tn.js" />
+    <Content Include="Content\datepicker\moment\locale\ar.js" />
+    <Content Include="Content\datepicker\moment\locale\az.js" />
+    <Content Include="Content\datepicker\moment\locale\be.js" />
+    <Content Include="Content\datepicker\moment\locale\bg.js" />
+    <Content Include="Content\datepicker\moment\locale\bn.js" />
+    <Content Include="Content\datepicker\moment\locale\bo.js" />
+    <Content Include="Content\datepicker\moment\locale\br.js" />
+    <Content Include="Content\datepicker\moment\locale\bs.js" />
+    <Content Include="Content\datepicker\moment\locale\ca.js" />
+    <Content Include="Content\datepicker\moment\locale\cs.js" />
+    <Content Include="Content\datepicker\moment\locale\cv.js" />
+    <Content Include="Content\datepicker\moment\locale\cy.js" />
+    <Content Include="Content\datepicker\moment\locale\da.js" />
+    <Content Include="Content\datepicker\moment\locale\de-at.js" />
+    <Content Include="Content\datepicker\moment\locale\de.js" />
+    <Content Include="Content\datepicker\moment\locale\dv.js" />
+    <Content Include="Content\datepicker\moment\locale\el.js" />
+    <Content Include="Content\datepicker\moment\locale\en-au.js" />
+    <Content Include="Content\datepicker\moment\locale\en-ca.js" />
+    <Content Include="Content\datepicker\moment\locale\en-gb.js" />
+    <Content Include="Content\datepicker\moment\locale\en-ie.js" />
+    <Content Include="Content\datepicker\moment\locale\en-nz.js" />
+    <Content Include="Content\datepicker\moment\locale\eo.js" />
+    <Content Include="Content\datepicker\moment\locale\es.js" />
+    <Content Include="Content\datepicker\moment\locale\et.js" />
+    <Content Include="Content\datepicker\moment\locale\eu.js" />
+    <Content Include="Content\datepicker\moment\locale\fa.js" />
+    <Content Include="Content\datepicker\moment\locale\fi.js" />
+    <Content Include="Content\datepicker\moment\locale\fo.js" />
+    <Content Include="Content\datepicker\moment\locale\fr-ca.js" />
+    <Content Include="Content\datepicker\moment\locale\fr-ch.js" />
+    <Content Include="Content\datepicker\moment\locale\fr.js" />
+    <Content Include="Content\datepicker\moment\locale\fy.js" />
+    <Content Include="Content\datepicker\moment\locale\gd.js" />
+    <Content Include="Content\datepicker\moment\locale\gl.js" />
+    <Content Include="Content\datepicker\moment\locale\he.js" />
+    <Content Include="Content\datepicker\moment\locale\hi.js" />
+    <Content Include="Content\datepicker\moment\locale\hr.js" />
+    <Content Include="Content\datepicker\moment\locale\hu.js" />
+    <Content Include="Content\datepicker\moment\locale\hy-am.js" />
+    <Content Include="Content\datepicker\moment\locale\id.js" />
+    <Content Include="Content\datepicker\moment\locale\is.js" />
+    <Content Include="Content\datepicker\moment\locale\it.js" />
+    <Content Include="Content\datepicker\moment\locale\ja.js" />
+    <Content Include="Content\datepicker\moment\locale\jv.js" />
+    <Content Include="Content\datepicker\moment\locale\ka.js" />
+    <Content Include="Content\datepicker\moment\locale\kk.js" />
+    <Content Include="Content\datepicker\moment\locale\km.js" />
+    <Content Include="Content\datepicker\moment\locale\ko.js" />
+    <Content Include="Content\datepicker\moment\locale\ky.js" />
+    <Content Include="Content\datepicker\moment\locale\lb.js" />
+    <Content Include="Content\datepicker\moment\locale\lo.js" />
+    <Content Include="Content\datepicker\moment\locale\lt.js" />
+    <Content Include="Content\datepicker\moment\locale\lv.js" />
+    <Content Include="Content\datepicker\moment\locale\me.js" />
+    <Content Include="Content\datepicker\moment\locale\mk.js" />
+    <Content Include="Content\datepicker\moment\locale\ml.js" />
+    <Content Include="Content\datepicker\moment\locale\mr.js" />
+    <Content Include="Content\datepicker\moment\locale\ms-my.js" />
+    <Content Include="Content\datepicker\moment\locale\ms.js" />
+    <Content Include="Content\datepicker\moment\locale\my.js" />
+    <Content Include="Content\datepicker\moment\locale\nb.js" />
+    <Content Include="Content\datepicker\moment\locale\ne.js" />
+    <Content Include="Content\datepicker\moment\locale\nl.js" />
+    <Content Include="Content\datepicker\moment\locale\nn.js" />
+    <Content Include="Content\datepicker\moment\locale\pa-in.js" />
+    <Content Include="Content\datepicker\moment\locale\pl.js" />
+    <Content Include="Content\datepicker\moment\locale\pt-br.js" />
+    <Content Include="Content\datepicker\moment\locale\pt.js" />
+    <Content Include="Content\datepicker\moment\locale\ro.js" />
+    <Content Include="Content\datepicker\moment\locale\ru.js" />
+    <Content Include="Content\datepicker\moment\locale\se.js" />
+    <Content Include="Content\datepicker\moment\locale\si.js" />
+    <Content Include="Content\datepicker\moment\locale\sk.js" />
+    <Content Include="Content\datepicker\moment\locale\sl.js" />
+    <Content Include="Content\datepicker\moment\locale\sq.js" />
+    <Content Include="Content\datepicker\moment\locale\sr-cyrl.js" />
+    <Content Include="Content\datepicker\moment\locale\sr.js" />
+    <Content Include="Content\datepicker\moment\locale\ss.js" />
+    <Content Include="Content\datepicker\moment\locale\sv.js" />
+    <Content Include="Content\datepicker\moment\locale\sw.js" />
+    <Content Include="Content\datepicker\moment\locale\ta.js" />
+    <Content Include="Content\datepicker\moment\locale\te.js" />
+    <Content Include="Content\datepicker\moment\locale\th.js" />
+    <Content Include="Content\datepicker\moment\locale\tl-ph.js" />
+    <Content Include="Content\datepicker\moment\locale\tlh.js" />
+    <Content Include="Content\datepicker\moment\locale\tr.js" />
+    <Content Include="Content\datepicker\moment\locale\tzl.js" />
+    <Content Include="Content\datepicker\moment\locale\tzm-latn.js" />
+    <Content Include="Content\datepicker\moment\locale\tzm.js" />
+    <Content Include="Content\datepicker\moment\locale\uk.js" />
+    <Content Include="Content\datepicker\moment\locale\uz.js" />
+    <Content Include="Content\datepicker\moment\locale\vi.js" />
+    <Content Include="Content\datepicker\moment\locale\x-pseudo.js" />
+    <Content Include="Content\datepicker\moment\locale\zh-cn.js" />
+    <Content Include="Content\datepicker\moment\locale\zh-tw.js" />
+    <Content Include="Content\datepicker\moment\min\locales.js" />
+    <Content Include="Content\datepicker\moment\min\locales.min.js" />
+    <Content Include="Content\datepicker\moment\min\moment-with-locales.js" />
+    <Content Include="Content\datepicker\moment\min\moment-with-locales.min.js" />
+    <Content Include="Content\datepicker\moment\min\moment.min.js" />
+    <Content Include="Content\datepicker\moment\min\tests.js" />
+    <Content Include="Content\datepicker\moment\moment.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\check-overflow.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\date-from-array.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\from-anything.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\from-array.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\from-object.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\from-string-and-array.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\from-string-and-format.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\from-string.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\local.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\parsing-flags.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\utc.js" />
+    <Content Include="Content\datepicker\moment\src\lib\create\valid.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\abs.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\add-subtract.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\as.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\bubble.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\constructor.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\create.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\duration.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\get.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\humanize.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\iso-string.js" />
+    <Content Include="Content\datepicker\moment\src\lib\duration\prototype.js" />
+    <Content Include="Content\datepicker\moment\src\lib\format\format.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\calendar.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\constructor.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\en.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\formats.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\invalid.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\lists.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\locale.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\locales.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\ordinal.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\pre-post-format.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\prototype.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\relative.js" />
+    <Content Include="Content\datepicker\moment\src\lib\locale\set.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\add-subtract.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\calendar.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\clone.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\compare.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\constructor.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\creation-data.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\diff.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\format.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\from.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\get-set.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\locale.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\min-max.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\moment.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\now.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\prototype.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\start-end-of.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\to-type.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\to.js" />
+    <Content Include="Content\datepicker\moment\src\lib\moment\valid.js" />
+    <Content Include="Content\datepicker\moment\src\lib\parse\regex.js" />
+    <Content Include="Content\datepicker\moment\src\lib\parse\token.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\aliases.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\constants.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\day-of-month.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\day-of-week.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\day-of-year.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\hour.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\millisecond.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\minute.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\month.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\offset.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\quarter.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\second.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\timestamp.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\timezone.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\units.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\week-calendar-utils.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\week-year.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\week.js" />
+    <Content Include="Content\datepicker\moment\src\lib\units\year.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\abs-ceil.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\abs-floor.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\abs-round.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\compare-arrays.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\defaults.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\deprecate.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\extend.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\has-own-prop.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\hooks.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\index-of.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\is-array.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\is-date.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\is-function.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\is-object.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\is-undefined.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\keys.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\map.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\some.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\to-int.js" />
+    <Content Include="Content\datepicker\moment\src\lib\utils\zero-fill.js" />
+    <Content Include="Content\datepicker\moment\src\locale\af.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ar-ma.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ar-sa.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ar-tn.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ar.js" />
+    <Content Include="Content\datepicker\moment\src\locale\az.js" />
+    <Content Include="Content\datepicker\moment\src\locale\be.js" />
+    <Content Include="Content\datepicker\moment\src\locale\bg.js" />
+    <Content Include="Content\datepicker\moment\src\locale\bn.js" />
+    <Content Include="Content\datepicker\moment\src\locale\bo.js" />
+    <Content Include="Content\datepicker\moment\src\locale\br.js" />
+    <Content Include="Content\datepicker\moment\src\locale\bs.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ca.js" />
+    <Content Include="Content\datepicker\moment\src\locale\cs.js" />
+    <Content Include="Content\datepicker\moment\src\locale\cv.js" />
+    <Content Include="Content\datepicker\moment\src\locale\cy.js" />
+    <Content Include="Content\datepicker\moment\src\locale\da.js" />
+    <Content Include="Content\datepicker\moment\src\locale\de-at.js" />
+    <Content Include="Content\datepicker\moment\src\locale\de.js" />
+    <Content Include="Content\datepicker\moment\src\locale\dv.js" />
+    <Content Include="Content\datepicker\moment\src\locale\el.js" />
+    <Content Include="Content\datepicker\moment\src\locale\en-au.js" />
+    <Content Include="Content\datepicker\moment\src\locale\en-ca.js" />
+    <Content Include="Content\datepicker\moment\src\locale\en-gb.js" />
+    <Content Include="Content\datepicker\moment\src\locale\en-ie.js" />
+    <Content Include="Content\datepicker\moment\src\locale\en-nz.js" />
+    <Content Include="Content\datepicker\moment\src\locale\eo.js" />
+    <Content Include="Content\datepicker\moment\src\locale\es.js" />
+    <Content Include="Content\datepicker\moment\src\locale\et.js" />
+    <Content Include="Content\datepicker\moment\src\locale\eu.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fa.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fi.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fo.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fr-ca.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fr-ch.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fr.js" />
+    <Content Include="Content\datepicker\moment\src\locale\fy.js" />
+    <Content Include="Content\datepicker\moment\src\locale\gd.js" />
+    <Content Include="Content\datepicker\moment\src\locale\gl.js" />
+    <Content Include="Content\datepicker\moment\src\locale\he.js" />
+    <Content Include="Content\datepicker\moment\src\locale\hi.js" />
+    <Content Include="Content\datepicker\moment\src\locale\hr.js" />
+    <Content Include="Content\datepicker\moment\src\locale\hu.js" />
+    <Content Include="Content\datepicker\moment\src\locale\hy-am.js" />
+    <Content Include="Content\datepicker\moment\src\locale\id.js" />
+    <Content Include="Content\datepicker\moment\src\locale\is.js" />
+    <Content Include="Content\datepicker\moment\src\locale\it.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ja.js" />
+    <Content Include="Content\datepicker\moment\src\locale\jv.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ka.js" />
+    <Content Include="Content\datepicker\moment\src\locale\kk.js" />
+    <Content Include="Content\datepicker\moment\src\locale\km.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ko.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ky.js" />
+    <Content Include="Content\datepicker\moment\src\locale\lb.js" />
+    <Content Include="Content\datepicker\moment\src\locale\lo.js" />
+    <Content Include="Content\datepicker\moment\src\locale\lt.js" />
+    <Content Include="Content\datepicker\moment\src\locale\lv.js" />
+    <Content Include="Content\datepicker\moment\src\locale\me.js" />
+    <Content Include="Content\datepicker\moment\src\locale\mk.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ml.js" />
+    <Content Include="Content\datepicker\moment\src\locale\mr.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ms-my.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ms.js" />
+    <Content Include="Content\datepicker\moment\src\locale\my.js" />
+    <Content Include="Content\datepicker\moment\src\locale\nb.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ne.js" />
+    <Content Include="Content\datepicker\moment\src\locale\nl.js" />
+    <Content Include="Content\datepicker\moment\src\locale\nn.js" />
+    <Content Include="Content\datepicker\moment\src\locale\pa-in.js" />
+    <Content Include="Content\datepicker\moment\src\locale\pl.js" />
+    <Content Include="Content\datepicker\moment\src\locale\pt-br.js" />
+    <Content Include="Content\datepicker\moment\src\locale\pt.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ro.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ru.js" />
+    <Content Include="Content\datepicker\moment\src\locale\se.js" />
+    <Content Include="Content\datepicker\moment\src\locale\si.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sk.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sl.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sq.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sr-cyrl.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sr.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ss.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sv.js" />
+    <Content Include="Content\datepicker\moment\src\locale\sw.js" />
+    <Content Include="Content\datepicker\moment\src\locale\ta.js" />
+    <Content Include="Content\datepicker\moment\src\locale\te.js" />
+    <Content Include="Content\datepicker\moment\src\locale\th.js" />
+    <Content Include="Content\datepicker\moment\src\locale\tl-ph.js" />
+    <Content Include="Content\datepicker\moment\src\locale\tlh.js" />
+    <Content Include="Content\datepicker\moment\src\locale\tr.js" />
+    <Content Include="Content\datepicker\moment\src\locale\tzl.js" />
+    <Content Include="Content\datepicker\moment\src\locale\tzm-latn.js" />
+    <Content Include="Content\datepicker\moment\src\locale\tzm.js" />
+    <Content Include="Content\datepicker\moment\src\locale\uk.js" />
+    <Content Include="Content\datepicker\moment\src\locale\uz.js" />
+    <Content Include="Content\datepicker\moment\src\locale\vi.js" />
+    <Content Include="Content\datepicker\moment\src\locale\x-pseudo.js" />
+    <Content Include="Content\datepicker\moment\src\locale\zh-cn.js" />
+    <Content Include="Content\datepicker\moment\src\locale\zh-tw.js" />
+    <Content Include="Content\datepicker\moment\src\moment.js" />
+    <Content Include="Content\datepicker\moment\templates\amd-named.js" />
+    <Content Include="Content\datepicker\moment\templates\amd.js" />
+    <Content Include="Content\datepicker\moment\templates\default.js" />
+    <Content Include="Content\datepicker\moment\templates\globals.js" />
+    <Content Include="Content\datepicker\moment\templates\locale-header.js" />
+    <Content Include="Content\datepicker\moment\templates\test-header.js" />
     <Content Include="Content\dttable.css" />
     <Content Include="Models\SATModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -367,7 +735,13 @@
     <Compile Include="Models\UDP_Gral_tbEmpleados_Insert_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UDP_Gral_tbEmpleados_Update_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UDP_Gral_tbEscuelas_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbEscuelas_Update_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Gral_tbJornadas_Insert_Result.cs">
@@ -377,6 +751,9 @@
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Gral_tbMunicipios_Insert_Result.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDP_Gral_tbMunicipios_Select_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Gral_tbSecciones_Insert_Result.cs">
@@ -481,6 +858,39 @@
     <Content Include="Views\NotaDetalles\Edit.cshtml" />
     <Content Include="Views\NotaDetalles\Index.cshtml" />
     <Content Include="Views\Empleados\_IndexEmpleadoAsignaturas.cshtml" />
+    <Content Include="Views\Departamentos\_EditarMunicipio.cshtml" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\bower.json" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\component.json" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\composer.json" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\CONTRIBUTING.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\ChangeLog.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\ContributorsGuide.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Events.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Extras.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\FAQ.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Functions.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\index.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Installing.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Options.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\theme\manifest.json" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Version 4 Changelog.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\docs\Version 4 Contributors guide.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\LICENSE" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\mkdocs.yml" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\package.json" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\README.md" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\less\bootstrap-datetimepicker-build.less" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\less\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\nuget\Bootstrap.v3.Datetimepicker.CSS.nuspec" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\nuget\Bootstrap.v3.Datetimepicker.nuspec" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\nuget\install.ps1" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\sass\bootstrap-datetimepicker-build.scss" />
+    <Content Include="Content\datepicker\bootstrap-datetimepicker\src\sass\_bootstrap-datetimepicker.scss" />
+    <Content Include="Content\datepicker\moment\.bower.json" />
+    <Content Include="Content\datepicker\moment\bower.json" />
+    <Content Include="Content\datepicker\moment\CHANGELOG.md" />
+    <Content Include="Content\datepicker\moment\LICENSE" />
+    <Content Include="Content\datepicker\moment\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -496,13 +906,18 @@
     <Folder Include="Content\font-awesome\scss\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\datepicker\moment\moment.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

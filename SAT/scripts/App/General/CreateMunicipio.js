@@ -1,4 +1,21 @@
-﻿$("#btnAgregarMunicipio").click(function () {
+﻿function pad2(number) {
+    return (number < 10 ? '0' : '') + number
+}
+
+function FechaFormato(pFecha) {
+    var fechaString = pFecha.substr(6);
+    var fechaActual = new Date(parseInt(fechaString));
+    var mes = fechaActual.getMonth() + 1;
+    var dia = pad2(fechaActual.getDate());
+    var anio = fechaActual.getFullYear();
+    var hora = pad2(fechaActual.getHours());
+    var minutos = pad2(fechaActual.getMinutes());
+    var segundos = pad2(fechaActual.getSeconds().toString());
+    var FechaFinal = dia + "/" + mes + "/" + anio + " " + hora + ":" + minutos + ":" + segundos;
+    return FechaFinal;
+}
+
+$("#btnAgregarMunicipio").click(function () {
     var IDmunicipios = $("#mun_Id").val();
     var municipio = $("#mun_Descripcion").val();
     var newtr = "<tr data-id="+IDmunicipios+"><td>" + IDmunicipios + "</td>";
@@ -61,4 +78,39 @@ $(document).on("click", "#tblIndexDep tbody tr td button#btnExpandir", function 
         $(this).text('+');
     }
 
+});
+
+$(document).on("click", "#tlb tbody tr td input#EditarMunicipio", function () {
+    var mun = $(this).closest('tr').data('id');
+    $.ajax({
+        url: "/Departamentos/_EditarMunicipio",
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json; charset = utf-8",
+        data: JSON.stringify({ mun_Id: mun }),
+    })
+    .done(function (data) {
+        if(data.length>0)
+        {
+            $.each(data, function(i, item){
+                $("#modalEditarMun").modal();
+                var Fecha = FechaFormato(item.mun_FechaCrea);
+                console.log(Fecha);
+                $("#mun_Descripcion").val(item.mun_Descripcion);
+                $("#mun_Id").val(item.mun_Id);
+            })
+        }
+        
+    });
+});
+
+$("#btnGuardarMun").click(function () {
+    var dataMun = $("#frmEditarMun").serializeArray();
+
+    console.log("Hola", dataMun);
+    $.ajax({
+        url: "/Departamentos/UpdateMun",
+        method: "POST",
+        data: dataMun,
+    });
 });

@@ -30,7 +30,6 @@ namespace SAT.Models
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
         [Display(Name = "Fecha Nacimiento")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         public System.DateTime emp_FechaNacimiento { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
@@ -64,12 +63,10 @@ namespace SAT.Models
         public int carg_Id { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         [Display(Name = "Fecha Ingreso")]
         public System.DateTime emp_FechaIngreso { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         [Display(Name = "Fecha Salida")]
         public Nullable<System.DateTime> emp_FechadeSalida { get; set; }
 
@@ -79,22 +76,18 @@ namespace SAT.Models
         public string emp_RazonSalida { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         [Display(Name = "Usuario Crea")]
         public int emp_UsuarioCrea { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         [Display(Name = "Fecha Crea")]
         public System.DateTime emp_FechaCrea { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         [Display(Name = "Usuario Modifica")]
         public Nullable<int> emp_UsuarioModifica { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es requerido ")]
-        [MaxLength(100, ErrorMessage = "Excedio el numero maximo de caracteres")]
         [Display(Name = "Fecha Modifica")]
         public Nullable<System.DateTime> emp_FechaModifica { get; set; }
 

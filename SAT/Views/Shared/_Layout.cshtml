@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-   
+
+    <link href="~/Content/datepicker/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
 
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/font-awesome/fonts")
@@ -129,5 +130,16 @@
     @Scripts.Render("~/scripts/jquery")
     @Scripts.Render("~/scripts/DataTables")
     <script src="~/scripts/App/General/CreateMunicipio.js"></script>
+    <script src="~/Content/datepicker/moment/min/moment.min.js"></script>   
+    <script src="~/Content/datepicker/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#emp_FechaNacimiento').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        });
+    </script>
 </body>
 </html>

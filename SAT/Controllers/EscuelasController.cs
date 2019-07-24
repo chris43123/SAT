@@ -55,7 +55,7 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "esc_Id,esc_Codigo,esc_NombreEscuela,esc_Director,esc_Contacto,esc_Telefono,esc_Correo,mun_Id,esc_UsuarioCrea,esc_FechaCrea,esc_UsuarioModifica,esc_FechaModifica")] tbEscuelas tbEscuelas)
         {
-
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion");
             ViewBag.esc_Director = new SelectList(db.tbEscuelas, "esc_Id", "esc_Codigo");
             ViewBag.esc_Contacto = new SelectList(db.tbEscuelas, "esc_Id", "esc_Contacto");
             tbEscuelas.esc_FechaCrea = DateTime.Now;
