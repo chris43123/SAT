@@ -57,8 +57,8 @@
      
      
         <td>
-            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ },new {@class="btn btn-success btn-xs"}) 
-            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ },new {@class="btn btn-default btn-xs"}) 
+            @Html.ActionLink("Editar", "Edit", new { id = item.esc_Id }, new { @class = "btn btn-success btn-xs" }) 
+            @Html.ActionLink("Detalle", "Details", new { id = item.esc_Id }, new { @class = "btn btn-default btn-xs" })
         </td>
     </tr>
 }

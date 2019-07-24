@@ -119,6 +119,7 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "notd_Id,not_Id,notd_Acumulado1,notd_Examen1,notd_Acumulado2,notd_Examen2,notd_Acumulado3,notd_Examen3,notd_Acumulado4,notd_Examen4,notd_UsuarioCrea,notd_FechaCrea,notd_UsuarioModifica,notd_FechaModifica")] tbNotaDetalles tbNotaDetalles)
         {
+            ViewBag.not_Id = new SelectList(db.tbNotas, "not_Id", "not_Id", tbNotaDetalles.not_Id);
             tbNotaDetalles.notd_UsuarioCrea = 2;
             tbNotaDetalles.notd_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
@@ -164,6 +165,9 @@ namespace SAT.Controllers
                     return View(tbNotaDetalles);
                 }
             }
+            ViewBag.notd_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotaDetalles.notd_UsuarioCrea);
+            ViewBag.notd_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbNotaDetalles.notd_UsuarioModifica);
+        
             return View(tbNotaDetalles);
         }
 

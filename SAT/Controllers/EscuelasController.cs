@@ -41,8 +41,9 @@ namespace SAT.Controllers
         {
             ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
             ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario");
-            ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad");
-            ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad");
+
+            ViewBag.esc_Director = new SelectList(db.tbEscuelas, "esc_Id", "esc_Codigo");
+            ViewBag.esc_Contacto = new SelectList(db.tbEscuelas, "esc_Id", "esc_Contacto");
             ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion");
             return View();
         }
@@ -54,6 +55,9 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "esc_Id,esc_Codigo,esc_NombreEscuela,esc_Director,esc_Contacto,esc_Telefono,esc_Correo,mun_Id,esc_UsuarioCrea,esc_FechaCrea,esc_UsuarioModifica,esc_FechaModifica")] tbEscuelas tbEscuelas)
         {
+
+            ViewBag.esc_Director = new SelectList(db.tbEscuelas, "esc_Id", "esc_Codigo");
+            ViewBag.esc_Contacto = new SelectList(db.tbEscuelas, "esc_Id", "esc_Contacto");
             tbEscuelas.esc_FechaCrea = DateTime.Now;
             tbEscuelas.esc_UsuarioCrea = 2;
             if (ModelState.IsValid)
@@ -91,19 +95,17 @@ namespace SAT.Controllers
                     return View(tbEscuelas);
                 }
             }
+            ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
+            ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
+            ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
+            ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
             return View(tbEscuelas);
-                //db.tbEscuelas.Add(tbEscuelas);
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
+               
             }
 
-            //ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
-            //ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
-            //ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
-            //ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
-            //ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
-            //return View(tbEscuelas);
-        
+    
+   
 
         // GET: Escuelas/Edit/5
         public ActionResult Edit(int? id)
@@ -119,8 +121,9 @@ namespace SAT.Controllers
             }
             ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
             ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
-            ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
-            ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
+
+            ViewBag.esc_Director = new SelectList(db.tbEscuelas, "esc_Id", "esc_Codigo");
+            ViewBag.esc_Contacto = new SelectList(db.tbEscuelas, "esc_Id", "esc_Contacto");
             ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
             return View(tbEscuelas);
         }
@@ -132,45 +135,60 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "esc_Id,esc_Codigo,esc_NombreEscuela,esc_Director,esc_Contacto,esc_Telefono,esc_Correo,mun_Id,esc_UsuarioCrea,esc_FechaCrea,esc_UsuarioModifica,esc_FechaModifica")] tbEscuelas tbEscuelas)
         {
+
+            ViewBag.esc_Director = new SelectList(db.tbEscuelas, "esc_Id", "esc_Codigo");
+            ViewBag.esc_Contacto = new SelectList(db.tbEscuelas, "esc_Id", "esc_Contacto");
+            tbEscuelas.esc_FechaCrea = DateTime.Now;
+            tbEscuelas.esc_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                db.Entry(tbEscuelas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listEscuelas = null;
+                    string MensajeError = "";
+                    listEscuelas = db.UDP_Gral_tbEscuelas_Update(tbEscuelas.esc_Id,
+                                                                 tbEscuelas.esc_Codigo,
+                                                                 tbEscuelas.esc_NombreEscuela,
+                                                                 tbEscuelas.esc_Director,
+                                                                 tbEscuelas.esc_Contacto,
+                                                                 tbEscuelas.esc_Telefono,
+                                                                 tbEscuelas.esc_Correo,
+                                                                 tbEscuelas.mun_Id,
+                                                                 tbEscuelas.esc_UsuarioCrea,
+                                                                 tbEscuelas.esc_FechaCrea,
+                                                                 tbEscuelas.esc_UsuarioModifica,
+                                                                 tbEscuelas.esc_FechaModifica
+                                                                 );
+
+                    foreach (UDP_Gral_tbEscuelas_Update_Result Res in listEscuelas)
+                        MensajeError = Res.MensajeError;
+
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbEscuelas);
+                    }
+                    return RedirectToAction("Index");
+
+
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar e registro");
+                    return View(tbEscuelas);
+                }
             }
+
+
             ViewBag.esc_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioCrea);
             ViewBag.esc_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEscuelas.esc_UsuarioModifica);
-            ViewBag.esc_Contacto = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Contacto);
-            ViewBag.esc_Director = new SelectList(db.tbEmpleados, "emp_Id", "emp_Identidad", tbEscuelas.esc_Director);
-            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEscuelas.mun_Id);
+          
             return View(tbEscuelas);
         }
 
-        // GET: Escuelas/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbEscuelas tbEscuelas = db.tbEscuelas.Find(id);
-            if (tbEscuelas == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbEscuelas);
-        }
-
-        // POST: Escuelas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tbEscuelas tbEscuelas = db.tbEscuelas.Find(id);
-            db.tbEscuelas.Remove(tbEscuelas);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+    
+        
 
         protected override void Dispose(bool disposing)
         {

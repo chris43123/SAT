@@ -21,6 +21,11 @@ namespace SAT.Controllers
             return View(tbEmpleados.ToList());
         }
 
+        public ActionResult _IndexAsignaturas(int emp_Id)
+        {
+            return PartialView(db.tbEmpleadoAsignaturas.Where(x => x.emp_Id == emp_Id));
+        }
+
         // GET: Empleados/Details/5
         public ActionResult Details(int? id)
         {
@@ -77,8 +82,8 @@ namespace SAT.Controllers
                                                                     tbEmpleados.emp_UsuarioCrea,
                                                                     tbEmpleados.emp_FechaCrea );
 
-                    foreach (UDP_Gral_tbEmpleados_Insert_Result Res in listEmpleados)
-                        MensajeError = Res.MensajeError;
+                    foreach (UDP_Gral_tbEmpleados_Insert_Result Emp in listEmpleados)
+                        MensajeError = Emp.MensajeError;
 
                     if(MensajeError.StartsWith("-1"))
                     {
@@ -94,17 +99,8 @@ namespace SAT.Controllers
                     ex.Message.ToString();
                     ModelState.AddModelError("", "2. No se pudo insertar el registro");
 
-                }
-
-                ////db.tbEmpleados.Add(tbEmpleados);
-                ////db.SaveChanges();
-                ////return RedirectToAction("Index");
-            }
-
-            //ViewBag.emp_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioCrea);
-            //ViewBag.emp_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioModifica);
-            //ViewBag.carg_Id = new SelectList(db.tbCargos, "carg_Id", "carg_Descripcion", tbEmpleados.carg_Id);
-            //ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbEmpleados.mun_Id);
+                }                    
+            }         
             return View(tbEmpleados);
         }
 
@@ -134,11 +130,51 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "emp_Id,emp_Identidad,emp_Nombres,emp_Apellidos,emp_FechaNacimiento,emp_Sexo,emp_Direccion,mun_Id,emp_CorreoElectronico,emp_Telefono,carg_Id,emp_FechaIngreso,emp_FechadeSalida,emp_RazonSalida,emp_UsuarioCrea,emp_FechaCrea,emp_UsuarioModifica,emp_FechaModifica")] tbEmpleados tbEmpleados)
         {
+            tbEmpleados.emp_FechaModifica = DateTime.Now;
+            tbEmpleados.emp_UsuarioModifica = 2;
             if (ModelState.IsValid)
             {
-                db.Entry(tbEmpleados).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listEmpleados = null;
+                    string MensajeError = "";
+                    listEmpleados = db.UDP_Gral_tbEmpleados_Update(tbEmpleados.emp_Id,
+                                                                    tbEmpleados.emp_Identidad,
+                                                                    tbEmpleados.emp_Nombres,
+                                                                    tbEmpleados.emp_Apellidos,
+                                                                    tbEmpleados.emp_FechaNacimiento,
+                                                                    tbEmpleados.emp_Sexo,
+                                                                    tbEmpleados.emp_Direccion,
+                                                                    tbEmpleados.mun_Id,
+                                                                    tbEmpleados.emp_CorreoElectronico,
+                                                                    tbEmpleados.emp_Telefono,
+                                                                    tbEmpleados.carg_Id,
+                                                                    tbEmpleados.emp_FechaIngreso,
+                                                                    tbEmpleados.emp_FechadeSalida,
+                                                                    tbEmpleados.emp_RazonSalida,
+                                                                    tbEmpleados.emp_UsuarioCrea,
+                                                                    tbEmpleados.emp_FechaCrea,
+                                                                    tbEmpleados.emp_UsuarioModifica,
+                                                                    tbEmpleados.emp_FechaModifica);
+
+                    foreach (UDP_Gral_tbEmpleados_Update_Result Emp in listEmpleados)
+                        MensajeError = Emp.MensajeError;
+
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro");
+                        return View(tbEmpleados);
+                    }
+
+                    return RedirectToAction("Index");
+                }
+
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro");
+
+                }
             }
             ViewBag.emp_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioCrea);
             ViewBag.emp_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbEmpleados.emp_UsuarioModifica);

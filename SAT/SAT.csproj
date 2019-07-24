@@ -480,6 +480,7 @@
     <Content Include="Views\NotaDetalles\Details.cshtml" />
     <Content Include="Views\NotaDetalles\Edit.cshtml" />
     <Content Include="Views\NotaDetalles\Index.cshtml" />
+    <Content Include="Views\Empleados\_IndexEmpleadoAsignaturas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

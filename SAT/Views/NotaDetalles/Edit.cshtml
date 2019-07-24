@@ -19,17 +19,20 @@
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.notd_Id)
-        @Html.HiddenFor(model =>model.notd_Acumulado1)
+        @*@Html.HiddenFor(model => model.notd_Id)*@
+        @*@Html.HiddenFor(model =>model.notd_Acumulado1)
         @Html.HiddenFor(model => model.notd_Examen1)
         @Html.HiddenFor(model => model.notd_Acumulado2)
         @Html.HiddenFor(model => model.notd_Examen2)
         @Html.HiddenFor(model => model.notd_Acumulado3)
         @Html.HiddenFor(model => model.notd_Examen3)
         @Html.HiddenFor(model => model.notd_Acumulado4)
-        @Html.HiddenFor(model => model.notd_Examen4)
+        @Html.HiddenFor(model => model.notd_Examen4)*@
         @Html.HiddenFor(model => model.notd_UsuarioCrea)
         @Html.HiddenFor(model => model.notd_FechaCrea)
+
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.not_Id, "not_Id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

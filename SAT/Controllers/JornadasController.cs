@@ -109,11 +109,46 @@ namespace SAT.Controllers
             tbJornadas.jor_UsuarioModifica = 2;
             if (ModelState.IsValid)
             {
-                db.Entry(tbJornadas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //Lista para poder recorrer el tipo complejo
+                    IEnumerable<object> listJornadas = null;
+                    string MensajeError = "";
+                    //almacenamos la ejecución del SP
+                    listJornadas = db.UDP_Gral_tbJornadas_Update(tbJornadas.jor_Id,
+                                                                tbJornadas.jor_Descripcion,
+                                                                tbJornadas.jor_UsuarioCrea,
+                                                                tbJornadas.jor_FechaCrea,
+                                                                tbJornadas.jor_UsuarioModifica,
+                                                                tbJornadas.jor_FechaModifica);
+                    //Recuperamos el valor que trae nuestro retorno
+                    foreach (UDP_Gral_tbJornadas_Update_Result Res in listJornadas)
+                        MensajeError = Res.MensajeError;
+                    //Validamos
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbJornadas);
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro.");
+                    return View(tbJornadas);
+                }
             }
+
             return View(tbJornadas);
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(tbJornadas).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(tbJornadas);
         }
 
         // GET: Jornadas/Delete/5

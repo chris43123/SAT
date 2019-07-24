@@ -55,10 +55,34 @@ namespace SAT.Controllers
             tbGrados.grad_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.tbGrados.Add(tbGrados);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                try
+                {
+                    IEnumerable<object> listdepart = null;
+                    string MensajeError = "";
+                    listdepart = db.UDP_Gral_tbGrados_Insert(tbGrados.grad_Descripcion,
+                                                                    tbGrados.grad_UsuarioCrea,
+                                                                    tbGrados.grad_FechaCrea);
+             
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbGrados);
+                    }
+                    return RedirectToAction("Index");
+
+
+
+
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro.");
+                    return View(tbGrados);
+                }
             }
+
 
             ViewBag.grad_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioCrea);
             ViewBag.grad_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioModifica);
@@ -93,9 +117,35 @@ namespace SAT.Controllers
             tbGrados.grad_FechaModifica = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.Entry(tbGrados).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                try
+                {
+                    IEnumerable<object> listdepart = null;
+                    string MensajeError = "";
+                    listdepart = db.UDP_Gral_tbGrados_Update(tbGrados.grad_Id,
+                                                                    tbGrados.grad_Descripcion,
+                                                                    tbGrados.grad_UsuarioCrea,
+                                                                    tbGrados.grad_FechaCrea,
+                                                                    tbGrados.grad_UsuarioModifica,
+                                                                    tbGrados.grad_FechaModifica);
+                    
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbGrados);
+                    }
+                    return RedirectToAction("Index");
+
+
+
+
+                }
+                catch (Exception Ex)
+                {
+                    Ex.Message.ToString();
+                    ModelState.AddModelError("", "2. No se pudo insertar el registro.");
+                    return View(tbGrados);
+                }
             }
             ViewBag.grad_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioCrea);
             ViewBag.grad_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbGrados.grad_UsuarioModifica);
