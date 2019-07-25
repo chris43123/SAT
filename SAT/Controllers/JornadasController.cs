@@ -14,13 +14,12 @@ namespace SAT.Controllers
     {
         private SATEntities db = new SATEntities();
 
-        //Aquí iria el codigo de la instancia del index de grados
+        //Instancia del index de grados
 
-         //-----*******CUANDO TENGAMOS EL INDEX QUITAR EL COMENTARIO****
-        //public ActionResult _IndexGrado(string dep_id)
-        //{
-        //    return PartialView(db.tbMunicipios.Where(x => x.dep_Id == dep_id));
-        //}
+        public ActionResult _IndexGrado(int jor_Id)
+        {
+            return PartialView(db.tbJornadas.Where(x => x.jor_Id == jor_Id));
+        }
 
 
         // GET: Jornadas
@@ -57,20 +56,44 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "jor_Id,jor_Descripcion,jor_UsuarioCrea,jor_FechaCrea,jor_UsuarioModifica,jor_FechaModifica")] tbJornadas tbJornadas)
         {
+            var Sesion = (List<tbGrados>)Session["PollitoGrados"];
+            tbJornadas.jor_FechaCrea = DateTime.Now;
+            tbJornadas.jor_UsuarioCrea = 2;
             if (ModelState.IsValid)
             {
-                var Sesion = (List<tbGrados>)Session["PollitoMunicipio"];
-                db.tbJornadas.Add(tbJornadas);
-                db.SaveChanges();
-                foreach (tbGrados grad in Sesion)
+                try
                 {
-                    db.UDP_Gral_tbGrados_Insert(
-                                                    grad.grad_Descripcion,
-                                                    2,
-                                                    DateTime.Now
-                                                    );
+                    IEnumerable<object> listjornadas = null;
+                    string MensajeError = "";
+                    listjornadas = db.UDP_Gral_tbJornadas_Insert(tbJornadas.jor_Descripcion,
+                                                                tbJornadas.jor_UsuarioCrea,
+                                                                tbJornadas.jor_FechaCrea);
+
+                    foreach (UDP_Gral_tbJornadas_Insert_Result jor in listjornadas)
+                    MensajeError = jor.MensajeError;
+
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
+                        return View(tbJornadas);
+                    }
+                    else
+                    {
+                        foreach (tbGrados grad in Sesion)
+                        {
+
+                            db.UDP_Gral_tbGrados_Insert(grad.grad_Descripcion, 2, DateTime.Now);
+                        }
+                    }
+
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                catch (Exception EX)
+                {
+                    EX.Message.ToString();
+                    ModelState.AddModelError("", "2.No se pudo insertar el registro");
+                    return View(tbJornadas);
+                }
             }
 
             return View(tbJornadas);
@@ -83,7 +106,7 @@ namespace SAT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbJornadas tbjornada = db.tbJornadas.Find();
+            tbJornadas tbjornada = db.tbJornadas.Find(id);
             if (tbjornada == null)
             {
                 return HttpNotFound();
@@ -98,12 +121,51 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "jor_Id,jor_Descripcion,jor_UsuarioCrea,jor_FechaCrea,jor_UsuarioModifica,jor_FechaModifica")] tbJornadas tbJornadas)
         {
+            var Sesion = (List<tbGrados>)Session["PollitoGrados"];
+            tbJornadas.jor_FechaModifica = DateTime.Now;
+            tbJornadas.jor_UsuarioModifica = 2;
             if (ModelState.IsValid)
             {
-                db.Entry(tbJornadas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    IEnumerable<object> listjornadas = null;
+                    string MensajeError = "";
+                    listjornadas = db.UDP_Gral_tbJornadas_Update(tbJornadas.jor_Id,
+                                                                tbJornadas.jor_Descripcion,
+                                                                tbJornadas.jor_UsuarioCrea,
+                                                                tbJornadas.jor_FechaCrea,
+                                                                tbJornadas.jor_UsuarioModifica,
+                                                                tbJornadas.jor_FechaModifica);
+
+                    foreach (UDP_Gral_tbJornadas_Update_Result jor in listjornadas)
+                        MensajeError = jor.MensajeError;
+                    if (!string.IsNullOrEmpty(MensajeError))
+                    {
+                        if (MensajeError.StartsWith("-1"))
+                        {
+                            ModelState.AddModelError("", "1. No se pudo editar el registro");
+                            return View(tbJornadas);
+                        }
+                    }
+                    else
+                    {
+                        foreach (tbGrados grad in Sesion)
+                        {
+
+                            db.UDP_Gral_tbGrados_Update(grad.grad_Id,grad.grad_Descripcion,grad.grad_UsuarioCrea,grad.grad_FechaCrea,grad.grad_UsuarioModifica,grad.grad_FechaModifica);
+                        }
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception EX)
+                {
+                    EX.Message.ToString();
+                    ModelState.AddModelError("", "2.No se pudo insertar el registro");
+                    return View(tbJornadas);
+                }
             }
+
             return View(tbJornadas);
         }
 
@@ -126,8 +188,8 @@ namespace SAT.Controllers
             var Sesion = (List<tbGrados>)Session["PollitoGrados"];
             if (Sesion != null)
             {
-                var itemToRemove = Sesion.Find(x => x.grad_Id == grad_id); //x es el nombre de la tabla o el alias que les damos
-                Sesion.Remove(itemToRemove);
+                var itemremove = Sesion.Find(x => x.grad_Id == grad_id); //x es el nombre de la tabla o el alias que les damos
+                Sesion.Remove(itemremove);
             }
             return Json("Exito", JsonRequestBehavior.AllowGet);
         }
@@ -140,7 +202,5 @@ namespace SAT.Controllers
             }
             base.Dispose(disposing);
         }
-    }
-
-        
+    }       
 }

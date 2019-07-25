@@ -941,7 +941,7 @@ namespace SAT.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbSecciones_Insert_Result>("UDP_Gral_tbSecciones_Insert", sec_DescripcionParameter, sec_UsuarioCreaParameter, sec_FechaCreaParameter, jgra_IdParameter);
         }
     
-        public virtual ObjectResult<string> UDP_Gral_tbSecciones_Update(Nullable<int> sec_Id, string sec_Descripcion, Nullable<int> sec_UsuarioCrea, Nullable<System.DateTime> sec_FechaCrea, Nullable<int> sec_UsuarioModifica, Nullable<System.DateTime> sec_FechaModifica, Nullable<int> jgra_Id)
+        public virtual ObjectResult<UDP_Gral_tbSecciones_Update_Result> UDP_Gral_tbSecciones_Update(Nullable<int> sec_Id, string sec_Descripcion, Nullable<int> sec_UsuarioCrea, Nullable<System.DateTime> sec_FechaCrea, Nullable<int> sec_UsuarioModifica, Nullable<System.DateTime> sec_FechaModifica, Nullable<int> jgra_Id)
         {
             var sec_IdParameter = sec_Id.HasValue ?
                 new ObjectParameter("sec_Id", sec_Id) :
@@ -971,7 +971,7 @@ namespace SAT.Models
                 new ObjectParameter("jgra_Id", jgra_Id) :
                 new ObjectParameter("jgra_Id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Gral_tbSecciones_Update", sec_IdParameter, sec_DescripcionParameter, sec_UsuarioCreaParameter, sec_FechaCreaParameter, sec_UsuarioModificaParameter, sec_FechaModificaParameter, jgra_IdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbSecciones_Update_Result>("UDP_Gral_tbSecciones_Update", sec_IdParameter, sec_DescripcionParameter, sec_UsuarioCreaParameter, sec_FechaCreaParameter, sec_UsuarioModificaParameter, sec_FechaModificaParameter, jgra_IdParameter);
         }
     
         public virtual ObjectResult<UDP_Esc_tbAlumnos_Insert_Result> UDP_Esc_tbAlumnos_Insert(string aLU_IDENTIDAD, string aLU_NOMBRES, string aLU_APELLIDOS, string aLU_SEXO, Nullable<System.DateTime> aLU_FECHANACIMIENTO, string aLU_NOMBRESENCARGADO, string aLU_APELLIDOSENCARGADO, string aLU_TELEFONOENCARGADO, Nullable<int> aLU_USUARIOCREA, Nullable<System.DateTime> aLU_FECHACREA, Nullable<int> aLU_USUARIOMODIFICA, Nullable<System.DateTime> aLU_FECHAMODIFICA)
@@ -1025,63 +1025,6 @@ namespace SAT.Models
                 new ObjectParameter("ALU_FECHAMODIFICA", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbAlumnos_Insert_Result>("UDP_Esc_tbAlumnos_Insert", aLU_IDENTIDADParameter, aLU_NOMBRESParameter, aLU_APELLIDOSParameter, aLU_SEXOParameter, aLU_FECHANACIMIENTOParameter, aLU_NOMBRESENCARGADOParameter, aLU_APELLIDOSENCARGADOParameter, aLU_TELEFONOENCARGADOParameter, aLU_USUARIOCREAParameter, aLU_FECHACREAParameter, aLU_USUARIOMODIFICAParameter, aLU_FECHAMODIFICAParameter);
-        }
-    
-        public virtual ObjectResult<string> UDP_Esc_tbALUMNOS_Update(Nullable<int> aLU_ID, string aLU_IDENTIDAD, string aLU_NOMBRES, string aLU_APELLIDOS, string aLU_SEXO, Nullable<System.DateTime> aLU_FECHANACIMIENTO, string aLU_NOMBRESENCARGADO, string aLU_APELLIDOSENCARGADO, string aLU_TELEFONOENCARGADO, Nullable<int> aLU_USUARIOCREA, Nullable<System.DateTime> aLU_FECHACREA, Nullable<int> aLU_USUARIOMODIFICA, Nullable<System.DateTime> aLU_FECHAMODIFICA)
-        {
-            var aLU_IDParameter = aLU_ID.HasValue ?
-                new ObjectParameter("ALU_ID", aLU_ID) :
-                new ObjectParameter("ALU_ID", typeof(int));
-    
-            var aLU_IDENTIDADParameter = aLU_IDENTIDAD != null ?
-                new ObjectParameter("ALU_IDENTIDAD", aLU_IDENTIDAD) :
-                new ObjectParameter("ALU_IDENTIDAD", typeof(string));
-    
-            var aLU_NOMBRESParameter = aLU_NOMBRES != null ?
-                new ObjectParameter("ALU_NOMBRES", aLU_NOMBRES) :
-                new ObjectParameter("ALU_NOMBRES", typeof(string));
-    
-            var aLU_APELLIDOSParameter = aLU_APELLIDOS != null ?
-                new ObjectParameter("ALU_APELLIDOS", aLU_APELLIDOS) :
-                new ObjectParameter("ALU_APELLIDOS", typeof(string));
-    
-            var aLU_SEXOParameter = aLU_SEXO != null ?
-                new ObjectParameter("ALU_SEXO", aLU_SEXO) :
-                new ObjectParameter("ALU_SEXO", typeof(string));
-    
-            var aLU_FECHANACIMIENTOParameter = aLU_FECHANACIMIENTO.HasValue ?
-                new ObjectParameter("ALU_FECHANACIMIENTO", aLU_FECHANACIMIENTO) :
-                new ObjectParameter("ALU_FECHANACIMIENTO", typeof(System.DateTime));
-    
-            var aLU_NOMBRESENCARGADOParameter = aLU_NOMBRESENCARGADO != null ?
-                new ObjectParameter("ALU_NOMBRESENCARGADO", aLU_NOMBRESENCARGADO) :
-                new ObjectParameter("ALU_NOMBRESENCARGADO", typeof(string));
-    
-            var aLU_APELLIDOSENCARGADOParameter = aLU_APELLIDOSENCARGADO != null ?
-                new ObjectParameter("ALU_APELLIDOSENCARGADO", aLU_APELLIDOSENCARGADO) :
-                new ObjectParameter("ALU_APELLIDOSENCARGADO", typeof(string));
-    
-            var aLU_TELEFONOENCARGADOParameter = aLU_TELEFONOENCARGADO != null ?
-                new ObjectParameter("ALU_TELEFONOENCARGADO", aLU_TELEFONOENCARGADO) :
-                new ObjectParameter("ALU_TELEFONOENCARGADO", typeof(string));
-    
-            var aLU_USUARIOCREAParameter = aLU_USUARIOCREA.HasValue ?
-                new ObjectParameter("ALU_USUARIOCREA", aLU_USUARIOCREA) :
-                new ObjectParameter("ALU_USUARIOCREA", typeof(int));
-    
-            var aLU_FECHACREAParameter = aLU_FECHACREA.HasValue ?
-                new ObjectParameter("ALU_FECHACREA", aLU_FECHACREA) :
-                new ObjectParameter("ALU_FECHACREA", typeof(System.DateTime));
-    
-            var aLU_USUARIOMODIFICAParameter = aLU_USUARIOMODIFICA.HasValue ?
-                new ObjectParameter("ALU_USUARIOMODIFICA", aLU_USUARIOMODIFICA) :
-                new ObjectParameter("ALU_USUARIOMODIFICA", typeof(int));
-    
-            var aLU_FECHAMODIFICAParameter = aLU_FECHAMODIFICA.HasValue ?
-                new ObjectParameter("ALU_FECHAMODIFICA", aLU_FECHAMODIFICA) :
-                new ObjectParameter("ALU_FECHAMODIFICA", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UDP_Esc_tbALUMNOS_Update", aLU_IDParameter, aLU_IDENTIDADParameter, aLU_NOMBRESParameter, aLU_APELLIDOSParameter, aLU_SEXOParameter, aLU_FECHANACIMIENTOParameter, aLU_NOMBRESENCARGADOParameter, aLU_APELLIDOSENCARGADOParameter, aLU_TELEFONOENCARGADOParameter, aLU_USUARIOCREAParameter, aLU_FECHACREAParameter, aLU_USUARIOMODIFICAParameter, aLU_FECHAMODIFICAParameter);
         }
     
         public virtual ObjectResult<UDP_Esc_tbMatriculas_Update_Result> UDP_Esc_tbMatriculas_Update(Nullable<int> mat_Id, Nullable<int> alu_Id, Nullable<int> esc_Id, Nullable<int> sec_Id, Nullable<int> car_Id, Nullable<int> mat_Anio, Nullable<int> mat_UsuarioCrea, Nullable<System.DateTime> mat_FechaCrea, Nullable<int> mat_UsuarioModifica, Nullable<System.DateTime> mat_FechaModifica)
@@ -1218,6 +1161,63 @@ namespace SAT.Models
                 new ObjectParameter("mun_id", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Gral_tbMunicipios_Select_Result>("UDP_Gral_tbMunicipios_Select", mun_idParameter);
+        }
+    
+        public virtual ObjectResult<UDP_Esc_tbAlumnos_Update1_Result> UDP_Esc_tbAlumnos_Update1(Nullable<int> aLU_ID, string aLU_IDENTIDAD, string aLU_NOMBRES, string aLU_APELLIDOS, string aLU_SEXO, Nullable<System.DateTime> aLU_FECHANACIMIENTO, string aLU_NOMBRESENCARGADO, string aLU_APELLIDOSENCARGADO, string aLU_TELEFONOENCARGADO, Nullable<int> aLU_USUARIOCREA, Nullable<System.DateTime> aLU_FECHACREA, Nullable<int> aLU_USUARIOMODIFICA, Nullable<System.DateTime> aLU_FECHAMODIFICA)
+        {
+            var aLU_IDParameter = aLU_ID.HasValue ?
+                new ObjectParameter("ALU_ID", aLU_ID) :
+                new ObjectParameter("ALU_ID", typeof(int));
+    
+            var aLU_IDENTIDADParameter = aLU_IDENTIDAD != null ?
+                new ObjectParameter("ALU_IDENTIDAD", aLU_IDENTIDAD) :
+                new ObjectParameter("ALU_IDENTIDAD", typeof(string));
+    
+            var aLU_NOMBRESParameter = aLU_NOMBRES != null ?
+                new ObjectParameter("ALU_NOMBRES", aLU_NOMBRES) :
+                new ObjectParameter("ALU_NOMBRES", typeof(string));
+    
+            var aLU_APELLIDOSParameter = aLU_APELLIDOS != null ?
+                new ObjectParameter("ALU_APELLIDOS", aLU_APELLIDOS) :
+                new ObjectParameter("ALU_APELLIDOS", typeof(string));
+    
+            var aLU_SEXOParameter = aLU_SEXO != null ?
+                new ObjectParameter("ALU_SEXO", aLU_SEXO) :
+                new ObjectParameter("ALU_SEXO", typeof(string));
+    
+            var aLU_FECHANACIMIENTOParameter = aLU_FECHANACIMIENTO.HasValue ?
+                new ObjectParameter("ALU_FECHANACIMIENTO", aLU_FECHANACIMIENTO) :
+                new ObjectParameter("ALU_FECHANACIMIENTO", typeof(System.DateTime));
+    
+            var aLU_NOMBRESENCARGADOParameter = aLU_NOMBRESENCARGADO != null ?
+                new ObjectParameter("ALU_NOMBRESENCARGADO", aLU_NOMBRESENCARGADO) :
+                new ObjectParameter("ALU_NOMBRESENCARGADO", typeof(string));
+    
+            var aLU_APELLIDOSENCARGADOParameter = aLU_APELLIDOSENCARGADO != null ?
+                new ObjectParameter("ALU_APELLIDOSENCARGADO", aLU_APELLIDOSENCARGADO) :
+                new ObjectParameter("ALU_APELLIDOSENCARGADO", typeof(string));
+    
+            var aLU_TELEFONOENCARGADOParameter = aLU_TELEFONOENCARGADO != null ?
+                new ObjectParameter("ALU_TELEFONOENCARGADO", aLU_TELEFONOENCARGADO) :
+                new ObjectParameter("ALU_TELEFONOENCARGADO", typeof(string));
+    
+            var aLU_USUARIOCREAParameter = aLU_USUARIOCREA.HasValue ?
+                new ObjectParameter("ALU_USUARIOCREA", aLU_USUARIOCREA) :
+                new ObjectParameter("ALU_USUARIOCREA", typeof(int));
+    
+            var aLU_FECHACREAParameter = aLU_FECHACREA.HasValue ?
+                new ObjectParameter("ALU_FECHACREA", aLU_FECHACREA) :
+                new ObjectParameter("ALU_FECHACREA", typeof(System.DateTime));
+    
+            var aLU_USUARIOMODIFICAParameter = aLU_USUARIOMODIFICA.HasValue ?
+                new ObjectParameter("ALU_USUARIOMODIFICA", aLU_USUARIOMODIFICA) :
+                new ObjectParameter("ALU_USUARIOMODIFICA", typeof(int));
+    
+            var aLU_FECHAMODIFICAParameter = aLU_FECHAMODIFICA.HasValue ?
+                new ObjectParameter("ALU_FECHAMODIFICA", aLU_FECHAMODIFICA) :
+                new ObjectParameter("ALU_FECHAMODIFICA", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UDP_Esc_tbAlumnos_Update1_Result>("UDP_Esc_tbAlumnos_Update1", aLU_IDParameter, aLU_IDENTIDADParameter, aLU_NOMBRESParameter, aLU_APELLIDOSParameter, aLU_SEXOParameter, aLU_FECHANACIMIENTOParameter, aLU_NOMBRESENCARGADOParameter, aLU_APELLIDOSENCARGADOParameter, aLU_TELEFONOENCARGADOParameter, aLU_USUARIOCREAParameter, aLU_FECHACREAParameter, aLU_USUARIOMODIFICAParameter, aLU_FECHAMODIFICAParameter);
         }
     }
 }

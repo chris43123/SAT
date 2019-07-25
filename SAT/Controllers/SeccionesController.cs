@@ -53,6 +53,7 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "sec_Id,sec_Descripcion,sec_UsuarioCrea,sec_FechaCrea,sec_UsuarioModifica,sec_FechaModifica,jgra_Id")] tbSecciones tbSecciones)
         {
+            ViewBag.jgra_Id = new SelectList(db.tbJornadaGrados, "jgra_Id", "jgra_Id");
             tbSecciones.sec_FechaCrea = DateTime.Now;
             tbSecciones.sec_UsuarioCrea = 2;
 
@@ -111,6 +112,8 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "sec_Id,sec_Descripcion,sec_UsuarioCrea,sec_FechaCrea,sec_UsuarioModifica,sec_FechaModifica,jgra_Id")] tbSecciones tbSecciones)
         {
+            ViewBag.jgra_Id = new SelectList(db.tbJornadaGrados, "jgra_Id", "jgra_Id");
+
             tbSecciones.sec_FechaModifica = DateTime.Now;
             tbSecciones.sec_UsuarioModifica = 2;
 
@@ -127,13 +130,20 @@ namespace SAT.Controllers
                                                                    tbSecciones.sec_UsuarioModifica,
                                                                    tbSecciones.sec_FechaModifica,
                                                                    tbSecciones.jgra_Id);
-                    foreach (UDP_Gral_tbSecciones_Insert_Result Res in listSecciones)
-                        MensajeError = Res.MensajeError;
-                    if (MensajeError.StartsWith("-1 "))
+                    foreach (UDP_Gral_tbSecciones_Update_Result Res in listSecciones)
                     {
-                        ModelState.AddModelError("", "1. No se pudo insertar el registro.");
-                        return View(tbSecciones);
+                        MensajeError = Res.MensajeError;
                     }
+                     
+                    if (!string.IsNullOrEmpty(MensajeError))
+                    {
+                        if (MensajeError.StartsWith("-1"))
+                        {
+                            ModelState.AddModelError("", "1. No se pudo editar el registro");
+                            return View(tbSecciones);
+                        }
+                    }
+
                     return RedirectToAction("Index");
                 }
                 catch (Exception Ex)

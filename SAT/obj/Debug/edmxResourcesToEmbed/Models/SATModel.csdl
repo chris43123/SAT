@@ -247,7 +247,7 @@
       <Parameter Name="sec_FechaCrea" Mode="In" Type="DateTime" />
       <Parameter Name="jgra_Id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="UDP_Gral_tbSecciones_Update" ReturnType="Collection(String)">
+    <FunctionImport Name="UDP_Gral_tbSecciones_Update" ReturnType="Collection(SATModel.UDP_Gral_tbSecciones_Update_Result)">
       <Parameter Name="sec_Id" Mode="In" Type="Int32" />
       <Parameter Name="sec_Descripcion" Mode="In" Type="String" />
       <Parameter Name="sec_UsuarioCrea" Mode="In" Type="Int32" />
@@ -257,21 +257,6 @@
       <Parameter Name="jgra_Id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="UDP_Esc_tbAlumnos_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbAlumnos_Insert_Result)">
-      <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
-      <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
-      <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
-      <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
-      <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
-      <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
-      <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
-      <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
-      <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
-      <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
-      <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
-      <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="UDP_Esc_tbALUMNOS_Update" ReturnType="Collection(String)">
-      <Parameter Name="ALU_ID" Mode="In" Type="Int32" />
       <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
       <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
       <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
@@ -559,6 +544,21 @@
     </AssociationSet>
     <FunctionImport Name="UDP_Gral_tbMunicipios_Select" ReturnType="Collection(SATModel.UDP_Gral_tbMunicipios_Select_Result)">
       <Parameter Name="mun_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UDP_Esc_tbAlumnos_Update1" ReturnType="Collection(SATModel.UDP_Esc_tbAlumnos_Update1_Result)">
+      <Parameter Name="ALU_ID" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+      <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+      <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+      <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+      <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+      <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+      <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1653,5 +1653,11 @@
     <Property Type="DateTime" Name="mun_FechaCrea" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="mun_UsuarioModifica" Nullable="true" />
     <Property Type="DateTime" Name="mun_FechaModifica" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="UDP_Gral_tbSecciones_Update_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="UDP_Esc_tbAlumnos_Update1_Result">
+    <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
   </ComplexType>
 </Schema>

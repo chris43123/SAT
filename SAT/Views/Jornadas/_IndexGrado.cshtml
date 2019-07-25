@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SAT.Models.tbJornadaGrados>
+
+<table class="table table-striped table-bordered dataTable">
+<thead>
+	<tr>        
+        <th>
+            Grados
+        </th>
+
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbJornadas.jor_Descripcion)
+        </td>
+    </tr>
+}
+</tbody>
+
+</table>

@@ -16,12 +16,16 @@
 </div>
 
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.sec_UsuarioModifica)
-    @Html.HiddenFor(model => model.sec_FechaModifica)
+    
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.sec_Id)
+       
+        @Html.HiddenFor(model => model.sec_UsuarioCrea)
+        @Html.HiddenFor(model => model.sec_FechaCrea)
+        @Html.HiddenFor(model => model.sec_UsuarioModifica)
+        @Html.HiddenFor(model => model.sec_FechaModifica)
 
         <div class="form-group">
             @Html.LabelFor(model => model.sec_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })

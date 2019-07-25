@@ -128,7 +128,7 @@ namespace SAT.Controllers
                 try
                 {
                     IEnumerable<object> ListCarreras = null;
-                    string MensajeError = "";
+                    string MensajeError="";
 
                     ListCarreras = db.UDP_Gral_tbCarreras_Update(   tbCarreras.car_Id,
                                                                     tbCarreras.car_Descripcion,
@@ -141,7 +141,11 @@ namespace SAT.Controllers
 
                     foreach (UDP_Gral_tbCarreras_Update_Result msj in ListCarreras)
                     {
-                        MensajeError = msj.MensajeError.ToString();
+                        if (msj.MensajeError!=null)
+                        {
+                            MensajeError = msj.MensajeError;
+                            break;
+                        }                        
                     }
                     if (!string.IsNullOrEmpty(MensajeError))
                     {

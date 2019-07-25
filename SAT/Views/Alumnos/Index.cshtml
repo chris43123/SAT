@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SAT.Models.tbAlumnos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Alumnos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="x_panel">
 	<div class="x_title">
-		<h2>Index</h2>
+		<h2>Alumnos</h2>
 		<div class="nav navbar-right panel_toolbox">
-		@Html.ActionLink("Registrar Departamento", "Create", null,new{@class="btn btn-info"})
+		@Html.ActionLink("Registrar", "Create", null,new{@class="btn btn-info"})
 
 		</div>
 		<div class="clearfix"></div>
@@ -42,18 +42,7 @@
         <th>
             @Html.DisplayNameFor(model => model.alu_TelefonoEncargado)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.alu_FechaCrea)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.alu_FechaModifica)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbUsuarios.usu_NombreUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbUsuarios1.usu_NombreUsuario)
-        </th>
+
         <th></th>
     </tr>
 </thead>
@@ -81,18 +70,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.alu_ApellidosEncargado)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.alu_TelefonoEncargado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.alu_FechaCrea)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.alu_FechaModifica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbUsuarios.usu_NombreUsuario)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.tbUsuarios1.usu_NombreUsuario)
         </td>

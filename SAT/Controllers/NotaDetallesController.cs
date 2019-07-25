@@ -52,6 +52,8 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "notd_Id,not_Id,notd_Acumulado1,notd_Examen1,notd_Acumulado2,notd_Examen2,notd_Acumulado3,notd_Examen3,notd_Acumulado4,notd_Examen4,notd_UsuarioCrea,notd_FechaCrea,notd_UsuarioModifica,notd_FechaModifica")] tbNotaDetalles tbNotaDetalles)
         {
+            ///**********///
+            ///CORRECION DE PA*///
             tbNotaDetalles.notd_UsuarioCrea = 2;
             tbNotaDetalles.notd_FechaCrea = DateTime.Now;
             if (ModelState.IsValid)
@@ -62,6 +64,7 @@ namespace SAT.Controllers
                     IEnumerable<object> listnotas = null;
                     string MensajeError = "";
                     //almacenamos la ejecución del SP
+                    /////CORRECCION DE PA //////
                     listnotas = db.UDP_Esc_tbNotaDetalles_Insert(tbNotaDetalles.notd_Id,
                                                                  tbNotaDetalles.notd_Acumulado1,
                                                                  tbNotaDetalles.notd_Examen1,

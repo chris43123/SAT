@@ -953,6 +953,21 @@
     <Parameter Name="ALU_USUARIOMODIFICA" Type="int" Mode="In" />
     <Parameter Name="ALU_FECHAMODIFICA" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="UDP_Esc_tbAlumnos_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
+    <Parameter Name="ALU_ID" Type="int" Mode="In" />
+    <Parameter Name="ALU_IDENTIDAD" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_NOMBRES" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_APELLIDOS" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_SEXO" Type="char" Mode="In" />
+    <Parameter Name="ALU_FECHANACIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="ALU_NOMBRESENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_APELLIDOSENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_TELEFONOENCARGADO" Type="varchar" Mode="In" />
+    <Parameter Name="ALU_USUARIOCREA" Type="int" Mode="In" />
+    <Parameter Name="ALU_FECHACREA" Type="datetime" Mode="In" />
+    <Parameter Name="ALU_USUARIOMODIFICA" Type="int" Mode="In" />
+    <Parameter Name="ALU_FECHAMODIFICA" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="UDP_Esc_tbMatriculas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Esc">
     <Parameter Name="alu_Id" Type="int" Mode="In" />
     <Parameter Name="esc_Id" Type="int" Mode="In" />
