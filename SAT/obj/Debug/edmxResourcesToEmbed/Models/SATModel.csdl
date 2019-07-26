@@ -616,6 +616,12 @@
       <Parameter Name="asig_UsuarioModifica" Mode="In" Type="Int32" />
       <Parameter Name="asig_FechaModifica" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="UDP_Gral_tbEmpleadoAsignaturas_Insert" ReturnType="Collection(String)">
+      <Parameter Name="emp_Id" Mode="In" Type="Int32" />
+      <Parameter Name="asig_Id" Mode="In" Type="Int32" />
+      <Parameter Name="empa_UsuarioCrea" Mode="In" Type="Int32" />
+      <Parameter Name="empa_FechaCrea" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

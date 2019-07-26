@@ -510,5 +510,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleadoAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEmpleadoAsignaturas_Insert" />
   </EntityContainerMapping>
 </Mapping>

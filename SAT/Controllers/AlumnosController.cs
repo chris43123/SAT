@@ -54,6 +54,7 @@ namespace SAT.Controllers
         {
 
             ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion");
+
             tbAlumnos.alu_FechaCrea = DateTime.Now;
             tbAlumnos.alu_UsuarioCrea = 2;
             if (ModelState.IsValid)
@@ -95,11 +96,10 @@ namespace SAT.Controllers
                     return View(tbAlumnos);
                 }
             }
-
-                ViewBag.alu_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAlumnos.alu_UsuarioCrea);
-                ViewBag.alu_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAlumnos.alu_UsuarioModifica);
-
-                return View(tbAlumnos);
+            ViewBag.mun_Id = new SelectList(db.tbMunicipios, "mun_Id", "mun_Descripcion", tbAlumnos.mun_Id);
+            ViewBag.alu_UsuarioCrea = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAlumnos.alu_UsuarioCrea);
+            ViewBag.alu_UsuarioModifica = new SelectList(db.tbUsuarios, "usu_Id", "usu_NombreUsuario", tbAlumnos.alu_UsuarioModifica);
+            return View(tbAlumnos);
             
         }
 

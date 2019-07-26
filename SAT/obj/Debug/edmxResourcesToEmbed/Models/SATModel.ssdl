@@ -1329,6 +1329,12 @@
     <Parameter Name="dep_UsuarioModifica" Type="int" Mode="In" />
     <Parameter Name="dep_FechaModifica" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="UDP_Gral_tbEmpleadoAsignaturas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+    <Parameter Name="emp_Id" Type="int" Mode="In" />
+    <Parameter Name="asig_Id" Type="int" Mode="In" />
+    <Parameter Name="empa_UsuarioCrea" Type="int" Mode="In" />
+    <Parameter Name="empa_FechaCrea" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="UDP_Gral_tbEmpleados_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
     <Parameter Name="emp_Identidad" Type="varchar" Mode="In" />
     <Parameter Name="emp_Nombres" Type="nvarchar" Mode="In" />
