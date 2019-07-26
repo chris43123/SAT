@@ -15,29 +15,33 @@ namespace SAT.Models
 using System;
     using System.Collections.Generic;
     
-public partial class tbCargos
+public partial class tbHorarios
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public tbCargos()
+    public tbHorarios()
     {
 
-        this.tbEmpleados = new HashSet<tbEmpleados>();
+        this.tbHorarioDetalles = new HashSet<tbHorarioDetalles>();
 
     }
 
 
-    public int carg_Id { get; set; }
+    public int hro_Id { get; set; }
 
-    public string carg_Descripcion { get; set; }
+    public int sec_Id { get; set; }
 
-    public int carg_UsuarioCrea { get; set; }
+    public int hro_Anio { get; set; }
 
-    public System.DateTime carg_FechaCrea { get; set; }
+    public int sem_Id { get; set; }
 
-    public Nullable<int> carg_UsuarioModifica { get; set; }
+    public Nullable<int> hro_UsuarioCrea { get; set; }
 
-    public Nullable<System.DateTime> carg_FechaModifica { get; set; }
+    public Nullable<System.DateTime> hro_FechaCrea { get; set; }
+
+    public Nullable<int> hro_UsuarioModifica { get; set; }
+
+    public Nullable<System.DateTime> hro_FechaMofica { get; set; }
 
 
 
@@ -47,7 +51,11 @@ public partial class tbCargos
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<tbEmpleados> tbEmpleados { get; set; }
+    public virtual ICollection<tbHorarioDetalles> tbHorarioDetalles { get; set; }
+
+    public virtual tbSecciones tbSecciones { get; set; }
+
+    public virtual tbSemestres tbSemestres { get; set; }
 
 }
 

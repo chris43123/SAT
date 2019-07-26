@@ -15,22 +15,24 @@ namespace SAT.Models
 using System;
     using System.Collections.Generic;
     
-public partial class tbCarreraAsignaturas
+public partial class tbHorarioDetalles
 {
 
-    public int carasi_Id { get; set; }
+    public int hode_Id { get; set; }
 
-    public Nullable<int> car_Id { get; set; }
+    public int hro_Id { get; set; }
 
-    public Nullable<int> asig_Id { get; set; }
+    public int hora_Id { get; set; }
 
-    public int carasi_UsuarioCrea { get; set; }
+    public int empa_Id { get; set; }
 
-    public System.DateTime carasi_FechaCrea { get; set; }
+    public Nullable<int> hode_UsuarioCrea { get; set; }
 
-    public Nullable<int> carasi_UsuarioModifica { get; set; }
+    public Nullable<System.DateTime> hode_FechaCrea { get; set; }
 
-    public Nullable<System.DateTime> carasi_FechaModifica { get; set; }
+    public Nullable<int> hode_UsuarioModifica { get; set; }
+
+    public Nullable<System.DateTime> hode_FechaMofica { get; set; }
 
 
 
@@ -38,9 +40,11 @@ public partial class tbCarreraAsignaturas
 
     public virtual tbUsuarios tbUsuarios1 { get; set; }
 
-    public virtual tbAsignaturas tbAsignaturas { get; set; }
+    public virtual tbEmpleadoAsignaturas tbEmpleadoAsignaturas { get; set; }
 
-    public virtual tbCarreras tbCarreras { get; set; }
+    public virtual tbHoras tbHoras { get; set; }
+
+    public virtual tbHorarios tbHorarios { get; set; }
 
 }
 

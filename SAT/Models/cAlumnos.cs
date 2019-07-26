@@ -78,5 +78,16 @@ namespace SAT.Models
         [Display(Name = "Fecha Crea")]
         public Nullable<System.DateTime> alu_FechaModifica { get; set; }
 
+        [Display(Name = "Es Activo ")]
+        public bool alu_EsActivo { get; set; }
+
+        [Display(Name = "Razon Incativo ")]
+        public string alu_RazonInactivo { get; set; }
+
+        [Display(Name = "Direccion")]
+        public string alu_direccion { get; set; }
+
+        [Display(Name =  " Id Municipio ")]
+        public string mun_Id { get; set; }
     }
 }

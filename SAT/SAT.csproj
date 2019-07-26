@@ -588,10 +588,6 @@
     <Content Include="scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="scripts\jquery\dist\jquery.js" />
     <Content Include="scripts\jquery\dist\jquery.min.js" />
-    <Content Include="Views\Alumnos\Create.cshtml" />
-    <Content Include="Views\Alumnos\Details.cshtml" />
-    <Content Include="Views\Alumnos\Edit.cshtml" />
-    <Content Include="Views\Alumnos\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -650,6 +646,9 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAlumnos.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
@@ -680,6 +679,15 @@
     <Compile Include="Models\tbGrados.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbHorarioDetalles.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbHorarios.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbHoras.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbJornadaGrados.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
@@ -701,13 +709,16 @@
     <Compile Include="Models\tbSecciones.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbSemestres.cs">
+      <DependentUpon>SATModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Esc_tbAlumnos_Insert_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UDP_Esc_tbAlumnos_Update1_Result.cs">
+    <Compile Include="Models\UDP_Esc_tbAlumnos_Update_Result.cs">
       <DependentUpon>SATModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UDP_Esc_tbMatriculas_Insert_Result.cs">
@@ -912,7 +923,11 @@
     <Content Include="Views\Matriculas\Index.cshtml" />
     <Content Include="Views\Jornadas\_CreateGrados.cshtml" />
     <Content Include="Views\Jornadas\_IndexGrado.cshtml" />
+    <Content Include="Views\Alumnos\Create.cshtml" />
     <Content Include="Views\Alumnos\Delete.cshtml" />
+    <Content Include="Views\Alumnos\Details.cshtml" />
+    <Content Include="Views\Alumnos\Edit.cshtml" />
+    <Content Include="Views\Alumnos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

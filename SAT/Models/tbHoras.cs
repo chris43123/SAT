@@ -15,31 +15,31 @@ namespace SAT.Models
 using System;
     using System.Collections.Generic;
     
-public partial class tbJornadaGrados
+public partial class tbHoras
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public tbJornadaGrados()
+    public tbHoras()
     {
 
-        this.tbSecciones = new HashSet<tbSecciones>();
+        this.tbHorarioDetalles = new HashSet<tbHorarioDetalles>();
 
     }
 
 
-    public int jgra_Id { get; set; }
+    public int hora_Id { get; set; }
 
-    public int grad_Id { get; set; }
+    public string hora_Descricion { get; set; }
 
     public int jor_Id { get; set; }
 
-    public int jgra_UsuarioCrea { get; set; }
+    public int hora_UsuarioCrea { get; set; }
 
-    public System.DateTime jgra_FechaCrea { get; set; }
+    public System.DateTime hora_FechaCrea { get; set; }
 
-    public Nullable<int> jgra_UsuarioModifica { get; set; }
+    public Nullable<int> hora_UsuarioModifica { get; set; }
 
-    public Nullable<System.DateTime> jgra_FechaModifica { get; set; }
+    public Nullable<System.DateTime> hora_FechaModifica { get; set; }
 
 
 
@@ -47,13 +47,9 @@ public partial class tbJornadaGrados
 
     public virtual tbUsuarios tbUsuarios1 { get; set; }
 
-    public virtual tbGrados tbGrados { get; set; }
-
-    public virtual tbJornadas tbJornadas { get; set; }
-
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<tbSecciones> tbSecciones { get; set; }
+    public virtual ICollection<tbHorarioDetalles> tbHorarioDetalles { get; set; }
 
 }
 

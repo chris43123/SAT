@@ -26,29 +26,8 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SATModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SATModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbNotaDetalles_Update_Result">
-          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Insert" />
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Update" />
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbAsignaturas_Insert_Result">
-          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbAsignaturas_Update_Result">
-          <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Insert">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbCargos_Insert_Result">
@@ -151,13 +130,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Insert" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Insert">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Insert_Result">
-          <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Update">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbMatriculas_Update_Result">
@@ -165,16 +137,39 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Insert1" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Insert">
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Insert">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbNotaDetalles_Insert_Result">
+        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbMatriculas_Insert_Result">
           <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Insert">
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbMunicipios_Select" FunctionName="SATModel.Store.UDP_Gral_tbMunicipios_Select">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbMatriculas_Insert_Result">
+        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbMunicipios_Select_Result">
+          <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
+          <ScalarProperty Name="mun_Descripcion" ColumnName="mun_Descripcion" />
+          <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
+          <ScalarProperty Name="mun_UsuarioCrea" ColumnName="mun_UsuarioCrea" />
+          <ScalarProperty Name="mun_FechaCrea" ColumnName="mun_FechaCrea" />
+          <ScalarProperty Name="mun_UsuarioModifica" ColumnName="mun_UsuarioModifica" />
+          <ScalarProperty Name="mun_FechaModifica" ColumnName="mun_FechaModifica" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Insert" />
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update" />
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" />
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Insert" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Insert_Result">
+          <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Update" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Update_Result">
           <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -191,6 +186,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SATModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbAlumnos">
       <EntityTypeMapping TypeName="SATModel.tbAlumnos">
         <MappingFragment StoreEntitySet="tbAlumnos">
@@ -198,15 +204,60 @@
           <ScalarProperty Name="alu_UsuarioModifica" ColumnName="alu_UsuarioModifica" />
           <ScalarProperty Name="alu_FechaCrea" ColumnName="alu_FechaCrea" />
           <ScalarProperty Name="alu_UsuarioCrea" ColumnName="alu_UsuarioCrea" />
+          <ScalarProperty Name="alu_RazonInactivo" ColumnName="alu_RazonInactivo" />
+          <ScalarProperty Name="alu_EsActivo" ColumnName="alu_EsActivo" />
           <ScalarProperty Name="alu_TelefonoEncargado" ColumnName="alu_TelefonoEncargado" />
           <ScalarProperty Name="alu_ApellidosEncargado" ColumnName="alu_ApellidosEncargado" />
           <ScalarProperty Name="alu_NombresEncargado" ColumnName="alu_NombresEncargado" />
+          <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
+          <ScalarProperty Name="alu_direccion" ColumnName="alu_direccion" />
           <ScalarProperty Name="alu_FechaNacimiento" ColumnName="alu_FechaNacimiento" />
           <ScalarProperty Name="alu_Sexo" ColumnName="alu_Sexo" />
           <ScalarProperty Name="alu_Apellidos" ColumnName="alu_Apellidos" />
           <ScalarProperty Name="alu_Nombres" ColumnName="alu_Nombres" />
           <ScalarProperty Name="alu_Identidad" ColumnName="alu_Identidad" />
           <ScalarProperty Name="alu_Id" ColumnName="alu_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbHorarioDetalles">
+      <EntityTypeMapping TypeName="SATModel.tbHorarioDetalles">
+        <MappingFragment StoreEntitySet="tbHorarioDetalles">
+          <ScalarProperty Name="hode_FechaMofica" ColumnName="hode_FechaMofica" />
+          <ScalarProperty Name="hode_UsuarioModifica" ColumnName="hode_UsuarioModifica" />
+          <ScalarProperty Name="hode_FechaCrea" ColumnName="hode_FechaCrea" />
+          <ScalarProperty Name="hode_UsuarioCrea" ColumnName="hode_UsuarioCrea" />
+          <ScalarProperty Name="empa_Id" ColumnName="empa_Id" />
+          <ScalarProperty Name="hora_Id" ColumnName="hora_Id" />
+          <ScalarProperty Name="hro_Id" ColumnName="hro_Id" />
+          <ScalarProperty Name="hode_Id" ColumnName="hode_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbHorarios">
+      <EntityTypeMapping TypeName="SATModel.tbHorarios">
+        <MappingFragment StoreEntitySet="tbHorarios">
+          <ScalarProperty Name="hro_FechaMofica" ColumnName="hro_FechaMofica" />
+          <ScalarProperty Name="hro_UsuarioModifica" ColumnName="hro_UsuarioModifica" />
+          <ScalarProperty Name="hro_FechaCrea" ColumnName="hro_FechaCrea" />
+          <ScalarProperty Name="hro_UsuarioCrea" ColumnName="hro_UsuarioCrea" />
+          <ScalarProperty Name="sem_Id" ColumnName="sem_Id" />
+          <ScalarProperty Name="hro_Anio" ColumnName="hro_Anio" />
+          <ScalarProperty Name="sec_Id" ColumnName="sec_Id" />
+          <ScalarProperty Name="hro_Id" ColumnName="hro_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbHoras">
+      <EntityTypeMapping TypeName="SATModel.tbHoras">
+        <MappingFragment StoreEntitySet="tbHoras">
+          <ScalarProperty Name="hora_FechaModifica" ColumnName="hora_FechaModifica" />
+          <ScalarProperty Name="hora_UsuarioModifica" ColumnName="hora_UsuarioModifica" />
+          <ScalarProperty Name="hora_FechaCrea" ColumnName="hora_FechaCrea" />
+          <ScalarProperty Name="hora_UsuarioCrea" ColumnName="hora_UsuarioCrea" />
+          <ScalarProperty Name="jor_Id" ColumnName="jor_Id" />
+          <ScalarProperty Name="hora_Descricion" ColumnName="hora_Descricion" />
+          <ScalarProperty Name="hora_Id" ColumnName="hora_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -254,8 +305,20 @@
           <ScalarProperty Name="not_FechaCrea" ColumnName="not_FechaCrea" />
           <ScalarProperty Name="not_UsuarioCrea" ColumnName="not_UsuarioCrea" />
           <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
-          <ScalarProperty Name="asig_Id" ColumnName="asig_Id" />
+          <ScalarProperty Name="empa_Id" ColumnName="empa_Id" />
           <ScalarProperty Name="not_Id" ColumnName="not_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbSemestres">
+      <EntityTypeMapping TypeName="SATModel.tbSemestres">
+        <MappingFragment StoreEntitySet="tbSemestres">
+          <ScalarProperty Name="sem_FechaModifica" ColumnName="sem_FechaModifica" />
+          <ScalarProperty Name="sem_UsuarioModfica" ColumnName="sem_UsuarioModfica" />
+          <ScalarProperty Name="sem_FechaCrea" ColumnName="sem_FechaCrea" />
+          <ScalarProperty Name="sem_UsuarioCrea" ColumnName="sem_UsuarioCrea" />
+          <ScalarProperty Name="sem_Descripcion" ColumnName="sem_Descripcion" />
+          <ScalarProperty Name="sem_Id" ColumnName="sem_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -440,22 +503,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="UDP_Gral_tbMunicipios_Select" FunctionName="SATModel.Store.UDP_Gral_tbMunicipios_Select">
+    <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbMunicipios_Select_Result">
-          <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
-          <ScalarProperty Name="mun_Descripcion" ColumnName="mun_Descripcion" />
-          <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
-          <ScalarProperty Name="mun_UsuarioCrea" ColumnName="mun_UsuarioCrea" />
-          <ScalarProperty Name="mun_FechaCrea" ColumnName="mun_FechaCrea" />
-          <ScalarProperty Name="mun_UsuarioModifica" ColumnName="mun_UsuarioModifica" />
-          <ScalarProperty Name="mun_FechaModifica" ColumnName="mun_FechaModifica" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Update1" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Update">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Update1_Result">
+        <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbAsignaturas_Update_Result">
           <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
         </ComplexTypeMapping>
       </ResultMapping>

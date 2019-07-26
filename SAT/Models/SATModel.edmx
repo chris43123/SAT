@@ -16,6 +16,16 @@
           <Property Name="usu_RazonInactivo" Type="nvarchar" MaxLength="150" />
           <Property Name="usu_EsAdministrador" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tbAlumnos">
           <Key>
             <PropertyRef Name="alu_Id" />
@@ -26,13 +36,55 @@
           <Property Name="alu_Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="alu_Sexo" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="alu_FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="alu_direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="mun_Id" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="alu_NombresEncargado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="alu_ApellidosEncargado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="alu_TelefonoEncargado" Type="varchar" MaxLength="25" />
+          <Property Name="alu_EsActivo" Type="bit" Nullable="false" />
+          <Property Name="alu_RazonInactivo" Type="nvarchar" MaxLength="150" />
           <Property Name="alu_UsuarioCrea" Type="int" Nullable="false" />
           <Property Name="alu_FechaCrea" Type="datetime" Nullable="false" />
           <Property Name="alu_UsuarioModifica" Type="int" />
           <Property Name="alu_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbHorarioDetalles">
+          <Key>
+            <PropertyRef Name="hode_Id" />
+          </Key>
+          <Property Name="hode_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hro_Id" Type="int" Nullable="false" />
+          <Property Name="hora_Id" Type="int" Nullable="false" />
+          <Property Name="empa_Id" Type="int" Nullable="false" />
+          <Property Name="hode_UsuarioCrea" Type="int" />
+          <Property Name="hode_FechaCrea" Type="datetime" />
+          <Property Name="hode_UsuarioModifica" Type="int" />
+          <Property Name="hode_FechaMofica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbHorarios">
+          <Key>
+            <PropertyRef Name="hro_Id" />
+          </Key>
+          <Property Name="hro_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sec_Id" Type="int" Nullable="false" />
+          <Property Name="hro_Anio" Type="int" Nullable="false" />
+          <Property Name="sem_Id" Type="int" Nullable="false" />
+          <Property Name="hro_UsuarioCrea" Type="int" />
+          <Property Name="hro_FechaCrea" Type="datetime" />
+          <Property Name="hro_UsuarioModifica" Type="int" />
+          <Property Name="hro_FechaMofica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbHoras">
+          <Key>
+            <PropertyRef Name="hora_Id" />
+          </Key>
+          <Property Name="hora_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hora_Descricion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="jor_Id" Type="int" Nullable="false" />
+          <Property Name="hora_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="hora_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="hora_UsuarioModifica" Type="int" />
+          <Property Name="hora_FechaModifica" Type="datetime" />
         </EntityType>
         <EntityType Name="tbMatriculas">
           <Key>
@@ -55,14 +107,14 @@
           </Key>
           <Property Name="notd_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="not_Id" Type="int" Nullable="false" />
-          <Property Name="notd_Acumulado1" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen1" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Acumulado2" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen2" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Acumulado3" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen3" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Acumulado4" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen4" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="notd_Acumulado1" Type="int" />
+          <Property Name="notd_Examen1" Type="int" />
+          <Property Name="notd_Acumulado2" Type="int" />
+          <Property Name="notd_Examen2" Type="int" />
+          <Property Name="notd_Acumulado3" Type="int" />
+          <Property Name="notd_Examen3" Type="int" />
+          <Property Name="notd_Acumulado4" Type="int" />
+          <Property Name="notd_Examen4" Type="int" />
           <Property Name="notd_UsuarioCrea" Type="int" Nullable="false" />
           <Property Name="notd_FechaCrea" Type="datetime" Nullable="false" />
           <Property Name="notd_UsuarioModifica" Type="int" />
@@ -73,12 +125,23 @@
             <PropertyRef Name="not_Id" />
           </Key>
           <Property Name="not_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="asig_Id" Type="int" Nullable="false" />
+          <Property Name="empa_Id" Type="int" Nullable="false" />
           <Property Name="mat_Id" Type="int" Nullable="false" />
           <Property Name="not_UsuarioCrea" Type="int" Nullable="false" />
           <Property Name="not_FechaCrea" Type="datetime" Nullable="false" />
           <Property Name="not_UsuarioModifica" Type="int" />
           <Property Name="not_FechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbSemestres">
+          <Key>
+            <PropertyRef Name="sem_Id" />
+          </Key>
+          <Property Name="sem_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sem_Descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sem_UsuarioCrea" Type="int" Nullable="false" />
+          <Property Name="sem_FechaCrea" Type="datetime" Nullable="false" />
+          <Property Name="sem_UsuarioModfica" Type="int" />
+          <Property Name="sem_FechaModifica" Type="datetime" />
         </EntityType>
         <EntityType Name="tbAsignaturas">
           <Key>
@@ -158,7 +221,7 @@
           <Property Name="emp_Identidad" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="emp_Nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="emp_Apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="emp_FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="emp_FechaNacimiento" Type="date" />
           <Property Name="emp_Sexo" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="emp_Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="mun_Id" Type="char" MaxLength="4" Nullable="false" />
@@ -272,6 +335,126 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Esc_tbAlumnos_mun_Id">
+          <End Role="tbMunicipios" Type="Self.tbMunicipios" Multiplicity="1" />
+          <End Role="tbAlumnos" Type="Self.tbAlumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMunicipios">
+              <PropertyRef Name="mun_Id" />
+            </Principal>
+            <Dependent Role="tbAlumnos">
+              <PropertyRef Name="mun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbEmpleadoAsignaturas_asig_Id">
+          <End Role="tbAsignaturas" Type="Self.tbAsignaturas" Multiplicity="1" />
+          <End Role="tbEmpleadoAsignaturas" Type="Self.tbEmpleadoAsignaturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAsignaturas">
+              <PropertyRef Name="asig_Id" />
+            </Principal>
+            <Dependent Role="tbEmpleadoAsignaturas">
+              <PropertyRef Name="asig_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarioDetalles_hode_UsuarioCrea">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbHorarioDetalles" Type="Self.tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hode_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarioDetalles_hode_UsuarioModifica">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbHorarioDetalles" Type="Self.tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hode_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_hro_UsuarioCrea">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="hro_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_hro_UsuarioModifica">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="hro_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_sec_Id">
+          <End Role="tbSecciones" Type="Self.tbSecciones" Multiplicity="1" />
+          <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSecciones">
+              <PropertyRef Name="sec_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="sec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_sem_Id">
+          <End Role="tbSemestres" Type="Self.tbSemestres" Multiplicity="1" />
+          <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSemestres">
+              <PropertyRef Name="sem_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="sem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHoras_hora_UsuarioCrea">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbHoras" Type="Self.tbHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHoras">
+              <PropertyRef Name="hora_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHoras_hora_UsuarioModifica">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbHoras" Type="Self.tbHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHoras">
+              <PropertyRef Name="hora_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Esc_tbMatriculas_alu_Id">
           <End Role="tbAlumnos" Type="Self.tbAlumnos" Multiplicity="1" />
           <End Role="tbMatriculas" Type="Self.tbMatriculas" Multiplicity="*" />
@@ -380,15 +563,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Esc_tbNotas_asig_Id">
-          <End Role="tbAsignaturas" Type="Self.tbAsignaturas" Multiplicity="1" />
+        <Association Name="FK_Esc_tbNotas_empa_Id">
+          <End Role="tbEmpleadoAsignaturas" Type="Self.tbEmpleadoAsignaturas" Multiplicity="1" />
           <End Role="tbNotas" Type="Self.tbNotas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbAsignaturas">
-              <PropertyRef Name="asig_Id" />
+            <Principal Role="tbEmpleadoAsignaturas">
+              <PropertyRef Name="empa_Id" />
             </Principal>
             <Dependent Role="tbNotas">
-              <PropertyRef Name="asig_Id" />
+              <PropertyRef Name="empa_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -437,6 +620,30 @@
             </Principal>
             <Dependent Role="tbNotas">
               <PropertyRef Name="not_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbSemestres_sem_UsuarioCrea">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbSemestres" Type="Self.tbSemestres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbSemestres">
+              <PropertyRef Name="sem_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbSemestres_sem_UsuarioModifica">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbSemestres" Type="Self.tbSemestres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbSemestres">
+              <PropertyRef Name="sem_UsuarioModfica" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -593,18 +800,6 @@
             </Principal>
             <Dependent Role="tbDepartamentos">
               <PropertyRef Name="dep_UsuarioModifica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Gral_tbEmpleadoAsignaturas_asig_Id">
-          <End Role="tbAsignaturas" Type="Self.tbAsignaturas" Multiplicity="1" />
-          <End Role="tbEmpleadoAsignaturas" Type="Self.tbEmpleadoAsignaturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAsignaturas">
-              <PropertyRef Name="asig_Id" />
-            </Principal>
-            <Dependent Role="tbEmpleadoAsignaturas">
-              <PropertyRef Name="asig_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -908,6 +1103,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbHorarioDetalles_empa_Id">
+          <End Role="tbEmpleadoAsignaturas" Type="Self.tbEmpleadoAsignaturas" Multiplicity="1" />
+          <End Role="tbHorarioDetalles" Type="Self.tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleadoAsignaturas">
+              <PropertyRef Name="empa_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="empa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbHorarioDetalles_hora_Id">
+          <End Role="tbHoras" Type="Self.tbHoras" Multiplicity="1" />
+          <End Role="tbHorarioDetalles" Type="Self.tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbHoras">
+              <PropertyRef Name="hora_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hora_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbHorarioDetalles_hro_Id">
+          <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="1" />
+          <End Role="tbHorarioDetalles" Type="Self.tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbHorarios">
+              <PropertyRef Name="hro_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="UDP_Acce_tbUsuario_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
           <Parameter Name="usu_NombreUsuario" Type="varchar" Mode="In" />
           <Parameter Name="usu_Password" Type="varchar" Mode="In" />
@@ -950,9 +1181,13 @@
           <Parameter Name="ALU_APELLIDOS" Type="varchar" Mode="In" />
           <Parameter Name="ALU_SEXO" Type="char" Mode="In" />
           <Parameter Name="ALU_FECHANACIMIENTO" Type="date" Mode="In" />
+          <Parameter Name="ALU_DIRECCION" Type="nvarchar" Mode="In" />
+          <Parameter Name="MUN_ID" Type="char" Mode="In" />
           <Parameter Name="ALU_NOMBRESENCARGADO" Type="varchar" Mode="In" />
           <Parameter Name="ALU_APELLIDOSENCARGADO" Type="varchar" Mode="In" />
           <Parameter Name="ALU_TELEFONOENCARGADO" Type="varchar" Mode="In" />
+          <Parameter Name="ALU_ESACTIVO" Type="bit" Mode="In" />
+          <Parameter Name="ALU_RAZONINACTIVO" Type="nvarchar" Mode="In" />
           <Parameter Name="ALU_USUARIOCREA" Type="int" Mode="In" />
           <Parameter Name="ALU_FECHACREA" Type="datetime" Mode="In" />
           <Parameter Name="ALU_USUARIOMODIFICA" Type="int" Mode="In" />
@@ -965,9 +1200,13 @@
           <Parameter Name="ALU_APELLIDOS" Type="varchar" Mode="In" />
           <Parameter Name="ALU_SEXO" Type="char" Mode="In" />
           <Parameter Name="ALU_FECHANACIMIENTO" Type="date" Mode="In" />
+          <Parameter Name="ALU_DIRECCION" Type="nvarchar" Mode="In" />
+          <Parameter Name="MUN_ID" Type="char" Mode="In" />
           <Parameter Name="ALU_NOMBRESENCARGADO" Type="varchar" Mode="In" />
           <Parameter Name="ALU_APELLIDOSENCARGADO" Type="varchar" Mode="In" />
           <Parameter Name="ALU_TELEFONOENCARGADO" Type="varchar" Mode="In" />
+          <Parameter Name="ALU_ESACTIVO" Type="bit" Mode="In" />
+          <Parameter Name="ALU_RAZONINACTIVO" Type="nvarchar" Mode="In" />
           <Parameter Name="ALU_USUARIOCREA" Type="int" Mode="In" />
           <Parameter Name="ALU_FECHACREA" Type="datetime" Mode="In" />
           <Parameter Name="ALU_USUARIOMODIFICA" Type="int" Mode="In" />
@@ -1095,6 +1334,12 @@
           <Parameter Name="dep_UsuarioModifica" Type="int" Mode="In" />
           <Parameter Name="dep_FechaModifica" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="UDP_Gral_tbEmpleadoAsignaturas_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="emp_Id" Type="int" Mode="In" />
+          <Parameter Name="asig_Id" Type="int" Mode="In" />
+          <Parameter Name="empa_UsuarioCrea" Type="int" Mode="In" />
+          <Parameter Name="empa_FechaCrea" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="UDP_Gral_tbEmpleados_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
           <Parameter Name="emp_Identidad" Type="varchar" Mode="In" />
           <Parameter Name="emp_Nombres" Type="nvarchar" Mode="In" />
@@ -1219,10 +1464,15 @@
         </Function>
         <EntityContainer Name="SATModelStoreContainer">
           <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="Acce" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAlumnos" EntityType="Self.tbAlumnos" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbHorarioDetalles" EntityType="Self.tbHorarioDetalles" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbHorarios" EntityType="Self.tbHorarios" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbHoras" EntityType="Self.tbHoras" Schema="Esc" store:Type="Tables" />
           <EntitySet Name="tbMatriculas" EntityType="Self.tbMatriculas" Schema="Esc" store:Type="Tables" />
           <EntitySet Name="tbNotaDetalles" EntityType="Self.tbNotaDetalles" Schema="Esc" store:Type="Tables" />
           <EntitySet Name="tbNotas" EntityType="Self.tbNotas" Schema="Esc" store:Type="Tables" />
+          <EntitySet Name="tbSemestres" EntityType="Self.tbSemestres" Schema="Esc" store:Type="Tables" />
           <EntitySet Name="tbAsignaturas" EntityType="Self.tbAsignaturas" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbCargos" EntityType="Self.tbCargos" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbCarreraAsignaturas" EntityType="Self.tbCarreraAsignaturas" Schema="Gral" store:Type="Tables" />
@@ -1243,6 +1493,46 @@
           <AssociationSet Name="FK_Esc_tbAlumnos_alu_UsuarioModifica" Association="Self.FK_Esc_tbAlumnos_alu_UsuarioModifica">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbAlumnos_mun_Id" Association="Self.FK_Esc_tbAlumnos_mun_Id">
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+            <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbEmpleadoAsignaturas_asig_Id" Association="Self.FK_Esc_tbEmpleadoAsignaturas_asig_Id">
+            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
+            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarioDetalles_hode_UsuarioCrea" Association="Self.FK_Esc_tbHorarioDetalles_hode_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarioDetalles_hode_UsuarioModifica" Association="Self.FK_Esc_tbHorarioDetalles_hode_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_hro_UsuarioCrea" Association="Self.FK_Esc_tbHorarios_hro_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_hro_UsuarioModifica" Association="Self.FK_Esc_tbHorarios_hro_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_sec_Id" Association="Self.FK_Esc_tbHorarios_sec_Id">
+            <End Role="tbSecciones" EntitySet="tbSecciones" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_sem_Id" Association="Self.FK_Esc_tbHorarios_sem_Id">
+            <End Role="tbSemestres" EntitySet="tbSemestres" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHoras_hora_UsuarioCrea" Association="Self.FK_Esc_tbHoras_hora_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHoras" EntitySet="tbHoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHoras_hora_UsuarioModifica" Association="Self.FK_Esc_tbHoras_hora_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHoras" EntitySet="tbHoras" />
           </AssociationSet>
           <AssociationSet Name="FK_Esc_tbMatriculas_alu_Id" Association="Self.FK_Esc_tbMatriculas_alu_Id">
             <End Role="tbAlumnos" EntitySet="tbAlumnos" />
@@ -1280,8 +1570,8 @@
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbNotaDetalles" EntitySet="tbNotaDetalles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Esc_tbNotas_asig_Id" Association="Self.FK_Esc_tbNotas_asig_Id">
-            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
+          <AssociationSet Name="FK_Esc_tbNotas_empa_Id" Association="Self.FK_Esc_tbNotas_empa_Id">
+            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
             <End Role="tbNotas" EntitySet="tbNotas" />
           </AssociationSet>
           <AssociationSet Name="FK_Esc_tbNotas_mat_Id" Association="Self.FK_Esc_tbNotas_mat_Id">
@@ -1299,6 +1589,14 @@
           <AssociationSet Name="FK_Esc_tbNotas_not_UsuarioModifica" Association="Self.FK_Esc_tbNotas_not_UsuarioModifica">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbSemestres_sem_UsuarioCrea" Association="Self.FK_Esc_tbSemestres_sem_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbSemestres" EntitySet="tbSemestres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbSemestres_sem_UsuarioModifica" Association="Self.FK_Esc_tbSemestres_sem_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbSemestres" EntitySet="tbSemestres" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbAsignaturas_asig_UsuarioCrea" Association="Self.FK_Gral_tbAsignaturas_asig_UsuarioCrea">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
@@ -1351,10 +1649,6 @@
           <AssociationSet Name="FK_Gral_tbDepartamentos_dep_UsuarioModifica" Association="Self.FK_Gral_tbDepartamentos_dep_UsuarioModifica">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbDepartamentos" EntitySet="tbDepartamentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Gral_tbEmpleadoAsignaturas_asig_Id" Association="Self.FK_Gral_tbEmpleadoAsignaturas_asig_Id">
-            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
-            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbEmpleadoAsignaturas_emp_Id" Association="Self.FK_Gral_tbEmpleadoAsignaturas_emp_Id">
             <End Role="tbEmpleados" EntitySet="tbEmpleados" />
@@ -1456,6 +1750,18 @@
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbSecciones" EntitySet="tbSecciones" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbHorarioDetalles_empa_Id" Association="Self.FK_tbHorarioDetalles_empa_Id">
+            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbHorarioDetalles_hora_Id" Association="Self.FK_tbHorarioDetalles_hora_Id">
+            <End Role="tbHoras" EntitySet="tbHoras" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbHorarioDetalles_hro_Id" Association="Self.FK_tbHorarioDetalles_hro_Id">
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -1497,35 +1803,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="UDP_Esc_tbNotaDetalles_Insert" ReturnType="Collection(String)">
-            <Parameter Name="not_Id" Mode="In" Type="Int32" />
-            <Parameter Name="notd_Acumulado1" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen1" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Acumulado2" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen2" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Acumulado3" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen3" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Acumulado4" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen4" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_UsuarioCrea" Mode="In" Type="Int32" />
-            <Parameter Name="notd_FechaCrea" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbNotaDetalles_Update" ReturnType="Collection(SATModel.UDP_Esc_tbNotaDetalles_Update_Result)">
-            <Parameter Name="notd_Id" Mode="In" Type="Int32" />
-            <Parameter Name="not_Id" Mode="In" Type="Int32" />
-            <Parameter Name="notd_Acumulado1" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen1" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Acumulado2" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen2" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen3" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Acumulado3" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Acumulado4" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_Examen4" Mode="In" Type="Decimal" />
-            <Parameter Name="notd_UsuarioCrea" Mode="In" Type="Int32" />
-            <Parameter Name="notd_FechaCrea" Mode="In" Type="DateTime" />
-            <Parameter Name="notd_UsuarioModifica" Mode="In" Type="Int32" />
-            <Parameter Name="notd_FechaModifica" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="UDP_Esc_tbNotas_Insert" ReturnType="Collection(String)">
             <Parameter Name="asig_Id" Mode="In" Type="Int32" />
             <Parameter Name="mat_Id" Mode="In" Type="Int32" />
@@ -1540,21 +1817,6 @@
             <Parameter Name="not_FechaCrea" Mode="In" Type="DateTime" />
             <Parameter Name="not_UsuarioModifica" Mode="In" Type="Int32" />
             <Parameter Name="not_FechaModifica" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbAsignaturas_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbAsignaturas_Insert_Result)">
-            <Parameter Name="asig_Descripcion" Mode="In" Type="String" />
-            <Parameter Name="asig_Semestral" Mode="In" Type="Boolean" />
-            <Parameter Name="asig_UsuarioCrea" Mode="In" Type="Int32" />
-            <Parameter Name="asig_FechaCrea" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="UDP_Gral_tbAsignaturas_Update" ReturnType="Collection(SATModel.UDP_Gral_tbAsignaturas_Update_Result)">
-            <Parameter Name="asig_Id" Mode="In" Type="Int32" />
-            <Parameter Name="asig_Descripcion" Mode="In" Type="String" />
-            <Parameter Name="asig_Semestral" Mode="In" Type="Boolean" />
-            <Parameter Name="asig_UsuarioCrea" Mode="In" Type="Int32" />
-            <Parameter Name="asig_FechaCrea" Mode="In" Type="DateTime" />
-            <Parameter Name="asig_UsuarioModifica" Mode="In" Type="Int32" />
-            <Parameter Name="asig_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="UDP_Gral_tbCargos_Insert" ReturnType="Collection(SATModel.UDP_Gral_tbCargos_Insert_Result)">
             <Parameter Name="carg_Descripcion" Mode="In" Type="String" />
@@ -1717,20 +1979,6 @@
             <Parameter Name="sec_FechaModifica" Mode="In" Type="DateTime" />
             <Parameter Name="jgra_Id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbAlumnos_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbAlumnos_Insert_Result)">
-            <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
-            <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
-            <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
-            <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
-            <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
-            <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
-            <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
-            <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
-            <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
-            <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
-            <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
-            <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="UDP_Esc_tbMatriculas_Update" ReturnType="Collection(SATModel.UDP_Esc_tbMatriculas_Update_Result)">
             <Parameter Name="mat_Id" Mode="In" Type="Int32" />
             <Parameter Name="alu_Id" Mode="In" Type="Int32" />
@@ -1743,7 +1991,19 @@
             <Parameter Name="mat_UsuarioModifica" Mode="In" Type="Int32" />
             <Parameter Name="mat_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbNotaDetalles_Insert1" ReturnType="Collection(SATModel.UDP_Esc_tbNotaDetalles_Insert_Result)">
+          <FunctionImport Name="UDP_Esc_tbMatriculas_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbMatriculas_Insert_Result)">
+            <Parameter Name="alu_Id" Mode="In" Type="Int32" />
+            <Parameter Name="esc_Id" Mode="In" Type="Int32" />
+            <Parameter Name="sec_Id" Mode="In" Type="Int32" />
+            <Parameter Name="car_Id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
+            <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
+            <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_Gral_tbMunicipios_Select" ReturnType="Collection(SATModel.UDP_Gral_tbMunicipios_Select_Result)">
+          <Parameter Name="mun_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_Esc_tbNotaDetalles_Insert" ReturnType="Collection(String)">
             <Parameter Name="not_Id" Mode="In" Type="Int32" />
             <Parameter Name="notd_Acumulado1" Mode="In" Type="Decimal" />
             <Parameter Name="notd_Examen1" Mode="In" Type="Decimal" />
@@ -1756,20 +2016,75 @@
             <Parameter Name="notd_UsuarioCrea" Mode="In" Type="Int32" />
             <Parameter Name="notd_FechaCrea" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbMatriculas_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbMatriculas_Insert_Result)">
-            <Parameter Name="alu_Id" Mode="In" Type="Int32" />
-            <Parameter Name="esc_Id" Mode="In" Type="Int32" />
-            <Parameter Name="sec_Id" Mode="In" Type="Int32" />
-            <Parameter Name="car_Id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_Anio" Mode="In" Type="Int32" />
-            <Parameter Name="mat_UsuarioCrea" Mode="In" Type="Int32" />
-            <Parameter Name="mat_FechaCrea" Mode="In" Type="DateTime" />
+          <FunctionImport Name="UDP_Esc_tbNotaDetalles_Update" ReturnType="Collection(String)">
+            <Parameter Name="notd_Id" Mode="In" Type="Int32" />
+            <Parameter Name="not_Id" Mode="In" Type="Int32" />
+            <Parameter Name="notd_Acumulado1" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Examen1" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Acumulado2" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Examen2" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Examen3" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Acumulado3" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Acumulado4" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_Examen4" Mode="In" Type="Decimal" />
+            <Parameter Name="notd_UsuarioCrea" Mode="In" Type="Int32" />
+            <Parameter Name="notd_FechaCrea" Mode="In" Type="DateTime" />
+            <Parameter Name="notd_UsuarioModifica" Mode="In" Type="Int32" />
+            <Parameter Name="notd_FechaModifica" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_Gral_tbAsignaturas_Insert" ReturnType="Collection(String)">
+            <Parameter Name="asig_Descripcion" Mode="In" Type="String" />
+            <Parameter Name="asig_Semestral" Mode="In" Type="Boolean" />
+            <Parameter Name="asig_UsuarioCrea" Mode="In" Type="Int32" />
+            <Parameter Name="asig_FechaCrea" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_Esc_tbAlumnos_Insert" ReturnType="Collection(SATModel.UDP_Esc_tbAlumnos_Insert_Result)">
+            <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+            <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+            <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+            <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+            <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+            <Parameter Name="ALU_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="MUN_ID" Mode="In" Type="String" />
+            <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+            <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+            <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+            <Parameter Name="ALU_ESACTIVO" Mode="In" Type="Boolean" />
+            <Parameter Name="ALU_RAZONINACTIVO" Mode="In" Type="String" />
+            <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+            <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+            <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+            <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_Esc_tbAlumnos_Update" ReturnType="Collection(SATModel.UDP_Esc_tbAlumnos_Update_Result)">
+            <Parameter Name="ALU_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
+            <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
+            <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
+            <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
+            <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
+            <Parameter Name="ALU_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="MUN_ID" Mode="In" Type="String" />
+            <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
+            <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
+            <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
+            <Parameter Name="ALU_ESACTIVO" Mode="In" Type="Boolean" />
+            <Parameter Name="ALU_RAZONINACTIVO" Mode="In" Type="String" />
+            <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
+            <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
+            <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
+            <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="tbUsuarios" EntityType="SATModel.tbUsuarios" />
+          <EntitySet Name="sysdiagrams" EntityType="SATModel.sysdiagrams" />
           <EntitySet Name="tbAlumnos" EntityType="SATModel.tbAlumnos" />
+          <EntitySet Name="tbHorarioDetalles" EntityType="SATModel.tbHorarioDetalles" />
+          <EntitySet Name="tbHorarios" EntityType="SATModel.tbHorarios" />
+          <EntitySet Name="tbHoras" EntityType="SATModel.tbHoras" />
           <EntitySet Name="tbMatriculas" EntityType="SATModel.tbMatriculas" />
           <EntitySet Name="tbNotaDetalles" EntityType="SATModel.tbNotaDetalles" />
           <EntitySet Name="tbNotas" EntityType="SATModel.tbNotas" />
+          <EntitySet Name="tbSemestres" EntityType="SATModel.tbSemestres" />
           <EntitySet Name="tbAsignaturas" EntityType="SATModel.tbAsignaturas" />
           <EntitySet Name="tbCargos" EntityType="SATModel.tbCargos" />
           <EntitySet Name="tbCarreraAsignaturas" EntityType="SATModel.tbCarreraAsignaturas" />
@@ -1790,6 +2105,30 @@
           <AssociationSet Name="FK_Esc_tbAlumnos_alu_UsuarioModifica" Association="SATModel.FK_Esc_tbAlumnos_alu_UsuarioModifica">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarioDetalles_hode_UsuarioCrea" Association="SATModel.FK_Esc_tbHorarioDetalles_hode_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarioDetalles_hode_UsuarioModifica" Association="SATModel.FK_Esc_tbHorarioDetalles_hode_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_hro_UsuarioCrea" Association="SATModel.FK_Esc_tbHorarios_hro_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_hro_UsuarioModifica" Association="SATModel.FK_Esc_tbHorarios_hro_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHoras_hora_UsuarioCrea" Association="SATModel.FK_Esc_tbHoras_hora_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHoras" EntitySet="tbHoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHoras_hora_UsuarioModifica" Association="SATModel.FK_Esc_tbHoras_hora_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbHoras" EntitySet="tbHoras" />
           </AssociationSet>
           <AssociationSet Name="FK_Esc_tbMatriculas_mat_UsuarioCrea" Association="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
@@ -1814,6 +2153,14 @@
           <AssociationSet Name="FK_Esc_tbNotas_not_UsuarioModifica" Association="SATModel.FK_Esc_tbNotas_not_UsuarioModifica">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbSemestres_sem_UsuarioCrea" Association="SATModel.FK_Esc_tbSemestres_sem_UsuarioCrea">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbSemestres" EntitySet="tbSemestres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbSemestres_sem_UsuarioModifica" Association="SATModel.FK_Esc_tbSemestres_sem_UsuarioModifica">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbSemestres" EntitySet="tbSemestres" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbAsignaturas_asig_UsuarioCrea" Association="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioCrea">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
@@ -1919,9 +2266,33 @@
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbSecciones" EntitySet="tbSecciones" />
           </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbAlumnos_mun_Id" Association="SATModel.FK_Esc_tbAlumnos_mun_Id">
+            <End Role="tbMunicipios" EntitySet="tbMunicipios" />
+            <End Role="tbAlumnos" EntitySet="tbAlumnos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Esc_tbMatriculas_alu_Id" Association="SATModel.FK_Esc_tbMatriculas_alu_Id">
             <End Role="tbAlumnos" EntitySet="tbAlumnos" />
             <End Role="tbMatriculas" EntitySet="tbMatriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbHorarioDetalles_empa_Id" Association="SATModel.FK_tbHorarioDetalles_empa_Id">
+            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbHorarioDetalles_hora_Id" Association="SATModel.FK_tbHorarioDetalles_hora_Id">
+            <End Role="tbHoras" EntitySet="tbHoras" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbHorarioDetalles_hro_Id" Association="SATModel.FK_tbHorarioDetalles_hro_Id">
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+            <End Role="tbHorarioDetalles" EntitySet="tbHorarioDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_sec_Id" Association="SATModel.FK_Esc_tbHorarios_sec_Id">
+            <End Role="tbSecciones" EntitySet="tbSecciones" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbHorarios_sem_Id" Association="SATModel.FK_Esc_tbHorarios_sem_Id">
+            <End Role="tbSemestres" EntitySet="tbSemestres" />
+            <End Role="tbHorarios" EntitySet="tbHorarios" />
           </AssociationSet>
           <AssociationSet Name="FK_Esc_tbMatriculas_car_Id" Association="SATModel.FK_Esc_tbMatriculas_car_Id">
             <End Role="tbCarreras" EntitySet="tbCarreras" />
@@ -1943,17 +2314,17 @@
             <End Role="tbNotas" EntitySet="tbNotas" />
             <End Role="tbNotaDetalles" EntitySet="tbNotaDetalles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Esc_tbNotas_asig_Id" Association="SATModel.FK_Esc_tbNotas_asig_Id">
-            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
+          <AssociationSet Name="FK_Esc_tbNotas_empa_Id" Association="SATModel.FK_Esc_tbNotas_empa_Id">
+            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
             <End Role="tbNotas" EntitySet="tbNotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Esc_tbEmpleadoAsignaturas_asig_Id" Association="SATModel.FK_Esc_tbEmpleadoAsignaturas_asig_Id">
+            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
+            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbCarreraAsignatura_asig_Id" Association="SATModel.FK_Gral_tbCarreraAsignatura_asig_Id">
             <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
             <End Role="tbCarreraAsignaturas" EntitySet="tbCarreraAsignaturas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Gral_tbEmpleadoAsignaturas_asig_Id" Association="SATModel.FK_Gral_tbEmpleadoAsignaturas_asig_Id">
-            <End Role="tbAsignaturas" EntitySet="tbAsignaturas" />
-            <End Role="tbEmpleadoAsignaturas" EntitySet="tbEmpleadoAsignaturas" />
           </AssociationSet>
           <AssociationSet Name="FK_Gral_tbEmpleados_carg_Id" Association="SATModel.FK_Gral_tbEmpleados_carg_Id">
             <End Role="tbCargos" EntitySet="tbCargos" />
@@ -2003,25 +2374,22 @@
             <End Role="tbJornadaGrados" EntitySet="tbJornadaGrados" />
             <End Role="tbSecciones" EntitySet="tbSecciones" />
           </AssociationSet>
-          <FunctionImport Name="UDP_Gral_tbMunicipios_Select" ReturnType="Collection(SATModel.UDP_Gral_tbMunicipios_Select_Result)">
-          <Parameter Name="mun_id" Mode="In" Type="String" />
+          <FunctionImport Name="UDP_Gral_tbAsignaturas_Update" ReturnType="Collection(SATModel.UDP_Gral_tbAsignaturas_Update_Result)">
+            <Parameter Name="asig_Id" Mode="In" Type="Int32" />
+            <Parameter Name="asig_Descripcion" Mode="In" Type="String" />
+            <Parameter Name="asig_Semestral" Mode="In" Type="Boolean" />
+            <Parameter Name="asig_UsuarioCrea" Mode="In" Type="Int32" />
+            <Parameter Name="asig_FechaCrea" Mode="In" Type="DateTime" />
+            <Parameter Name="asig_UsuarioModifica" Mode="In" Type="Int32" />
+            <Parameter Name="asig_FechaModifica" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UDP_Esc_tbAlumnos_Update1" ReturnType="Collection(SATModel.UDP_Esc_tbAlumnos_Update1_Result)">
-            <Parameter Name="ALU_ID" Mode="In" Type="Int32" />
-            <Parameter Name="ALU_IDENTIDAD" Mode="In" Type="String" />
-            <Parameter Name="ALU_NOMBRES" Mode="In" Type="String" />
-            <Parameter Name="ALU_APELLIDOS" Mode="In" Type="String" />
-            <Parameter Name="ALU_SEXO" Mode="In" Type="String" />
-            <Parameter Name="ALU_FECHANACIMIENTO" Mode="In" Type="DateTime" />
-            <Parameter Name="ALU_NOMBRESENCARGADO" Mode="In" Type="String" />
-            <Parameter Name="ALU_APELLIDOSENCARGADO" Mode="In" Type="String" />
-            <Parameter Name="ALU_TELEFONOENCARGADO" Mode="In" Type="String" />
-            <Parameter Name="ALU_USUARIOCREA" Mode="In" Type="Int32" />
-            <Parameter Name="ALU_FECHACREA" Mode="In" Type="DateTime" />
-            <Parameter Name="ALU_USUARIOMODIFICA" Mode="In" Type="Int32" />
-            <Parameter Name="ALU_FECHAMODIFICA" Mode="In" Type="DateTime" />
+          <FunctionImport Name="UDP_Gral_tbEmpleadoAsignaturas_Insert" ReturnType="Collection(String)">
+            <Parameter Name="emp_Id" Mode="In" Type="Int32" />
+            <Parameter Name="asig_Id" Mode="In" Type="Int32" />
+            <Parameter Name="empa_UsuarioCrea" Mode="In" Type="Int32" />
+            <Parameter Name="empa_FechaCrea" Mode="In" Type="DateTime" />
           </FunctionImport>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -2039,6 +2407,75 @@
         <ComplexType Name="UDP_Esc_tbMatriculas_Update_Result">
           <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
         </ComplexType>
+        <ComplexType Name="UDP_Gral_tbEscuelas_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbSecciones_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Esc_tbAlumnos_Insert_Result">
+          <Property Type="String" Name="MENSAJEERROR" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbEmpleados_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbCargos_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbCargos_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbCarreras_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbCarreras_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbJornadas_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbJornadas_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbDepartamentos_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbMunicipios_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbAsignaturas_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbAsignaturas_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Esc_tbNotaDetalles_Insert_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Esc_tbNotaDetalles_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbEmpleados_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbEscuelas_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbMunicipios_Select_Result">
+          <Property Type="String" Name="mun_Id" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mun_Descripcion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="dep_Id" Nullable="false" MaxLength="2" />
+          <Property Type="Int32" Name="mun_UsuarioCrea" Nullable="false" />
+          <Property Type="DateTime" Name="mun_FechaCrea" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="mun_UsuarioModifica" Nullable="true" />
+          <Property Type="DateTime" Name="mun_FechaModifica" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="UDP_Gral_tbSecciones_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="UDP_Esc_tbAlumnos_Update_Result">
+          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
+        </ComplexType>
         <EntityType Name="tbUsuarios">
           <Key>
             <PropertyRef Name="usu_Id" />
@@ -2051,12 +2488,20 @@
           <Property Name="usu_EsAdministrador" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tbAlumnos" Relationship="SATModel.FK_Esc_tbAlumnos_alu_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbAlumnos" />
           <NavigationProperty Name="tbAlumnos1" Relationship="SATModel.FK_Esc_tbAlumnos_alu_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbAlumnos" />
+          <NavigationProperty Name="tbHorarioDetalles" Relationship="SATModel.FK_Esc_tbHorarioDetalles_hode_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbHorarioDetalles" />
+          <NavigationProperty Name="tbHorarioDetalles1" Relationship="SATModel.FK_Esc_tbHorarioDetalles_hode_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbHorarioDetalles" />
+          <NavigationProperty Name="tbHorarios" Relationship="SATModel.FK_Esc_tbHorarios_hro_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbHorarios" />
+          <NavigationProperty Name="tbHorarios1" Relationship="SATModel.FK_Esc_tbHorarios_hro_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbHorarios" />
+          <NavigationProperty Name="tbHoras" Relationship="SATModel.FK_Esc_tbHoras_hora_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbHoras" />
+          <NavigationProperty Name="tbHoras1" Relationship="SATModel.FK_Esc_tbHoras_hora_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbHoras" />
           <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_mat_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbMatriculas" />
           <NavigationProperty Name="tbMatriculas1" Relationship="SATModel.FK_Esc_tbMatriculas_mat_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbMatriculas" />
           <NavigationProperty Name="tbNotaDetalles" Relationship="SATModel.FK_Esc_tbNotaDetalles_notd_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbNotaDetalles" />
           <NavigationProperty Name="tbNotaDetalles1" Relationship="SATModel.FK_Esc_tbNotaDetalles_notd_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbNotaDetalles" />
           <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_not_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbNotas" />
           <NavigationProperty Name="tbNotas1" Relationship="SATModel.FK_Esc_tbNotas_not_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbNotas" />
+          <NavigationProperty Name="tbSemestres" Relationship="SATModel.FK_Esc_tbSemestres_sem_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbSemestres" />
+          <NavigationProperty Name="tbSemestres1" Relationship="SATModel.FK_Esc_tbSemestres_sem_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbSemestres" />
           <NavigationProperty Name="tbAsignaturas" Relationship="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbAsignaturas" />
           <NavigationProperty Name="tbAsignaturas1" Relationship="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbAsignaturas" />
           <NavigationProperty Name="tbCargos" Relationship="SATModel.FK_Gral_tbCargos_carg_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbCargos" />
@@ -2084,6 +2529,16 @@
           <NavigationProperty Name="tbSecciones" Relationship="SATModel.FK_Gral_tbSecciones_sec_UsuarioCrea" FromRole="tbUsuarios" ToRole="tbSecciones" />
           <NavigationProperty Name="tbSecciones1" Relationship="SATModel.FK_Gral_tbSecciones_sec_UsuarioModifica" FromRole="tbUsuarios" ToRole="tbSecciones" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="tbAlumnos">
           <Key>
             <PropertyRef Name="alu_Id" />
@@ -2094,16 +2549,72 @@
           <Property Name="alu_Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="alu_Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="alu_FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="alu_direccion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="mun_Id" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
           <Property Name="alu_NombresEncargado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="alu_ApellidosEncargado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="alu_TelefonoEncargado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="alu_EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="alu_RazonInactivo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="alu_UsuarioCrea" Type="Int32" Nullable="false" />
           <Property Name="alu_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="alu_UsuarioModifica" Type="Int32" />
           <Property Name="alu_FechaModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Esc_tbAlumnos_alu_UsuarioCrea" FromRole="tbAlumnos" ToRole="tbUsuarios" />
           <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbAlumnos_alu_UsuarioModifica" FromRole="tbAlumnos" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbMunicipios" Relationship="SATModel.FK_Esc_tbAlumnos_mun_Id" FromRole="tbAlumnos" ToRole="tbMunicipios" />
           <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_alu_Id" FromRole="tbAlumnos" ToRole="tbMatriculas" />
+        </EntityType>
+        <EntityType Name="tbHorarioDetalles">
+          <Key>
+            <PropertyRef Name="hode_Id" />
+          </Key>
+          <Property Name="hode_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hro_Id" Type="Int32" Nullable="false" />
+          <Property Name="hora_Id" Type="Int32" Nullable="false" />
+          <Property Name="empa_Id" Type="Int32" Nullable="false" />
+          <Property Name="hode_UsuarioCrea" Type="Int32" />
+          <Property Name="hode_FechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="hode_UsuarioModifica" Type="Int32" />
+          <Property Name="hode_FechaMofica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Esc_tbHorarioDetalles_hode_UsuarioCrea" FromRole="tbHorarioDetalles" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbHorarioDetalles_hode_UsuarioModifica" FromRole="tbHorarioDetalles" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbEmpleadoAsignaturas" Relationship="SATModel.FK_tbHorarioDetalles_empa_Id" FromRole="tbHorarioDetalles" ToRole="tbEmpleadoAsignaturas" />
+          <NavigationProperty Name="tbHoras" Relationship="SATModel.FK_tbHorarioDetalles_hora_Id" FromRole="tbHorarioDetalles" ToRole="tbHoras" />
+          <NavigationProperty Name="tbHorarios" Relationship="SATModel.FK_tbHorarioDetalles_hro_Id" FromRole="tbHorarioDetalles" ToRole="tbHorarios" />
+        </EntityType>
+        <EntityType Name="tbHorarios">
+          <Key>
+            <PropertyRef Name="hro_Id" />
+          </Key>
+          <Property Name="hro_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sec_Id" Type="Int32" Nullable="false" />
+          <Property Name="hro_Anio" Type="Int32" Nullable="false" />
+          <Property Name="sem_Id" Type="Int32" Nullable="false" />
+          <Property Name="hro_UsuarioCrea" Type="Int32" />
+          <Property Name="hro_FechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="hro_UsuarioModifica" Type="Int32" />
+          <Property Name="hro_FechaMofica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Esc_tbHorarios_hro_UsuarioCrea" FromRole="tbHorarios" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbHorarios_hro_UsuarioModifica" FromRole="tbHorarios" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbHorarioDetalles" Relationship="SATModel.FK_tbHorarioDetalles_hro_Id" FromRole="tbHorarios" ToRole="tbHorarioDetalles" />
+          <NavigationProperty Name="tbSecciones" Relationship="SATModel.FK_Esc_tbHorarios_sec_Id" FromRole="tbHorarios" ToRole="tbSecciones" />
+          <NavigationProperty Name="tbSemestres" Relationship="SATModel.FK_Esc_tbHorarios_sem_Id" FromRole="tbHorarios" ToRole="tbSemestres" />
+        </EntityType>
+        <EntityType Name="tbHoras">
+          <Key>
+            <PropertyRef Name="hora_Id" />
+          </Key>
+          <Property Name="hora_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hora_Descricion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="jor_Id" Type="Int32" Nullable="false" />
+          <Property Name="hora_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="hora_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hora_UsuarioModifica" Type="Int32" />
+          <Property Name="hora_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Esc_tbHoras_hora_UsuarioCrea" FromRole="tbHoras" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbHoras_hora_UsuarioModifica" FromRole="tbHoras" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbHorarioDetalles" Relationship="SATModel.FK_tbHorarioDetalles_hora_Id" FromRole="tbHoras" ToRole="tbHorarioDetalles" />
         </EntityType>
         <EntityType Name="tbMatriculas">
           <Key>
@@ -2133,14 +2644,14 @@
           </Key>
           <Property Name="notd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="not_Id" Type="Int32" Nullable="false" />
-          <Property Name="notd_Acumulado1" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen1" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Acumulado2" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen2" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Acumulado3" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen3" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Acumulado4" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="notd_Examen4" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="notd_Acumulado1" Type="Int32" />
+          <Property Name="notd_Examen1" Type="Int32" />
+          <Property Name="notd_Acumulado2" Type="Int32" />
+          <Property Name="notd_Examen2" Type="Int32" />
+          <Property Name="notd_Acumulado3" Type="Int32" />
+          <Property Name="notd_Examen3" Type="Int32" />
+          <Property Name="notd_Acumulado4" Type="Int32" />
+          <Property Name="notd_Examen4" Type="Int32" />
           <Property Name="notd_UsuarioCrea" Type="Int32" Nullable="false" />
           <Property Name="notd_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="notd_UsuarioModifica" Type="Int32" />
@@ -2154,7 +2665,7 @@
             <PropertyRef Name="not_Id" />
           </Key>
           <Property Name="not_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="asig_Id" Type="Int32" Nullable="false" />
+          <Property Name="empa_Id" Type="Int32" Nullable="false" />
           <Property Name="mat_Id" Type="Int32" Nullable="false" />
           <Property Name="not_UsuarioCrea" Type="Int32" Nullable="false" />
           <Property Name="not_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
@@ -2164,7 +2675,21 @@
           <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbNotas_not_UsuarioModifica" FromRole="tbNotas" ToRole="tbUsuarios" />
           <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbNotas_mat_Id" FromRole="tbNotas" ToRole="tbMatriculas" />
           <NavigationProperty Name="tbNotaDetalles" Relationship="SATModel.FK_Esc_tbNotas_not_Id" FromRole="tbNotas" ToRole="tbNotaDetalles" />
-          <NavigationProperty Name="tbAsignaturas" Relationship="SATModel.FK_Esc_tbNotas_asig_Id" FromRole="tbNotas" ToRole="tbAsignaturas" />
+          <NavigationProperty Name="tbEmpleadoAsignaturas" Relationship="SATModel.FK_Esc_tbNotas_empa_Id" FromRole="tbNotas" ToRole="tbEmpleadoAsignaturas" />
+        </EntityType>
+        <EntityType Name="tbSemestres">
+          <Key>
+            <PropertyRef Name="sem_Id" />
+          </Key>
+          <Property Name="sem_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sem_Descripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sem_UsuarioCrea" Type="Int32" Nullable="false" />
+          <Property Name="sem_FechaCrea" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sem_UsuarioModfica" Type="Int32" />
+          <Property Name="sem_FechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Esc_tbSemestres_sem_UsuarioCrea" FromRole="tbSemestres" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Esc_tbSemestres_sem_UsuarioModifica" FromRole="tbSemestres" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbHorarios" Relationship="SATModel.FK_Esc_tbHorarios_sem_Id" FromRole="tbSemestres" ToRole="tbHorarios" />
         </EntityType>
         <EntityType Name="tbAsignaturas">
           <Key>
@@ -2179,9 +2704,8 @@
           <Property Name="asig_FechaModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioCrea" FromRole="tbAsignaturas" ToRole="tbUsuarios" />
           <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Gral_tbAsignaturas_asig_UsuarioModifica" FromRole="tbAsignaturas" ToRole="tbUsuarios" />
-          <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_asig_Id" FromRole="tbAsignaturas" ToRole="tbNotas" />
+          <NavigationProperty Name="tbEmpleadoAsignaturas" Relationship="SATModel.FK_Esc_tbEmpleadoAsignaturas_asig_Id" FromRole="tbAsignaturas" ToRole="tbEmpleadoAsignaturas" />
           <NavigationProperty Name="tbCarreraAsignaturas" Relationship="SATModel.FK_Gral_tbCarreraAsignatura_asig_Id" FromRole="tbAsignaturas" ToRole="tbCarreraAsignaturas" />
-          <NavigationProperty Name="tbEmpleadoAsignaturas" Relationship="SATModel.FK_Gral_tbEmpleadoAsignaturas_asig_Id" FromRole="tbAsignaturas" ToRole="tbEmpleadoAsignaturas" />
         </EntityType>
         <EntityType Name="tbCargos">
           <Key>
@@ -2257,7 +2781,9 @@
           <Property Name="empa_FechaModifica" Type="Int32" />
           <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Gral_tbEmpleadoAsignaturas_empa_UsuarioCrea" FromRole="tbEmpleadoAsignaturas" ToRole="tbUsuarios" />
           <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Gral_tbEmpleadoAsignaturas_empa_UsuarioModifica" FromRole="tbEmpleadoAsignaturas" ToRole="tbUsuarios" />
-          <NavigationProperty Name="tbAsignaturas" Relationship="SATModel.FK_Gral_tbEmpleadoAsignaturas_asig_Id" FromRole="tbEmpleadoAsignaturas" ToRole="tbAsignaturas" />
+          <NavigationProperty Name="tbHorarioDetalles" Relationship="SATModel.FK_tbHorarioDetalles_empa_Id" FromRole="tbEmpleadoAsignaturas" ToRole="tbHorarioDetalles" />
+          <NavigationProperty Name="tbNotas" Relationship="SATModel.FK_Esc_tbNotas_empa_Id" FromRole="tbEmpleadoAsignaturas" ToRole="tbNotas" />
+          <NavigationProperty Name="tbAsignaturas" Relationship="SATModel.FK_Esc_tbEmpleadoAsignaturas_asig_Id" FromRole="tbEmpleadoAsignaturas" ToRole="tbAsignaturas" />
           <NavigationProperty Name="tbEmpleados" Relationship="SATModel.FK_Gral_tbEmpleadoAsignaturas_emp_Id" FromRole="tbEmpleadoAsignaturas" ToRole="tbEmpleados" />
         </EntityType>
         <EntityType Name="tbEmpleados">
@@ -2268,7 +2794,7 @@
           <Property Name="emp_Identidad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="emp_Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="emp_Apellidos" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="emp_FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="emp_FechaNacimiento" Type="DateTime" Precision="0" />
           <Property Name="emp_Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="emp_Direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="mun_Id" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
@@ -2372,6 +2898,7 @@
           <Property Name="mun_FechaModifica" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Gral_tbMunicipios_mun_UsuarioCrea" FromRole="tbMunicipios" ToRole="tbUsuarios" />
           <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Gral_tbMunicipios_mun_UsuarioModifica" FromRole="tbMunicipios" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbAlumnos" Relationship="SATModel.FK_Esc_tbAlumnos_mun_Id" FromRole="tbMunicipios" ToRole="tbAlumnos" />
           <NavigationProperty Name="tbDepartamentos" Relationship="SATModel.Fk_Esc_tbMunicipios_constraint" FromRole="tbMunicipios" ToRole="tbDepartamentos" />
           <NavigationProperty Name="tbEmpleados" Relationship="SATModel.FK_Gral_tbEmpleados_mun_Id" FromRole="tbMunicipios" ToRole="tbEmpleados" />
           <NavigationProperty Name="tbEscuelas" Relationship="SATModel.FK_Gral_tbEscuelas_mun_Id" FromRole="tbMunicipios" ToRole="tbEscuelas" />
@@ -2389,6 +2916,7 @@
           <Property Name="jgra_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbUsuarios" Relationship="SATModel.FK_Gral_tbSecciones_sec_UsuarioCrea" FromRole="tbSecciones" ToRole="tbUsuarios" />
           <NavigationProperty Name="tbUsuarios1" Relationship="SATModel.FK_Gral_tbSecciones_sec_UsuarioModifica" FromRole="tbSecciones" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbHorarios" Relationship="SATModel.FK_Esc_tbHorarios_sec_Id" FromRole="tbSecciones" ToRole="tbHorarios" />
           <NavigationProperty Name="tbMatriculas" Relationship="SATModel.FK_Esc_tbMatriculas_sec_Id" FromRole="tbSecciones" ToRole="tbMatriculas" />
           <NavigationProperty Name="tbJornadaGrados" Relationship="SATModel.FK_Gral_tbSecciones_Sec_ID" FromRole="tbSecciones" ToRole="tbJornadaGrados" />
         </EntityType>
@@ -2413,6 +2941,78 @@
             </Principal>
             <Dependent Role="tbAlumnos">
               <PropertyRef Name="alu_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarioDetalles_hode_UsuarioCrea">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="SATModel.tbHorarioDetalles" Role="tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hode_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarioDetalles_hode_UsuarioModifica">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="SATModel.tbHorarioDetalles" Role="tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hode_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_hro_UsuarioCrea">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="SATModel.tbHorarios" Role="tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="hro_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_hro_UsuarioModifica">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="SATModel.tbHorarios" Role="tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="hro_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHoras_hora_UsuarioCrea">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="1" />
+          <End Type="SATModel.tbHoras" Role="tbHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHoras">
+              <PropertyRef Name="hora_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHoras_hora_UsuarioModifica">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="SATModel.tbHoras" Role="tbHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbHoras">
+              <PropertyRef Name="hora_UsuarioModifica" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2485,6 +3085,30 @@
             </Principal>
             <Dependent Role="tbNotas">
               <PropertyRef Name="not_UsuarioModifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbSemestres_sem_UsuarioCrea">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="1" />
+          <End Type="SATModel.tbSemestres" Role="tbSemestres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbSemestres">
+              <PropertyRef Name="sem_UsuarioCrea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbSemestres_sem_UsuarioModifica">
+          <End Type="SATModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="SATModel.tbSemestres" Role="tbSemestres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usu_Id" />
+            </Principal>
+            <Dependent Role="tbSemestres">
+              <PropertyRef Name="sem_UsuarioModfica" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2800,6 +3424,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Esc_tbAlumnos_mun_Id">
+          <End Type="SATModel.tbMunicipios" Role="tbMunicipios" Multiplicity="1" />
+          <End Type="SATModel.tbAlumnos" Role="tbAlumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMunicipios">
+              <PropertyRef Name="mun_Id" />
+            </Principal>
+            <Dependent Role="tbAlumnos">
+              <PropertyRef Name="mun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Esc_tbMatriculas_alu_Id">
           <End Type="SATModel.tbAlumnos" Role="tbAlumnos" Multiplicity="1" />
           <End Type="SATModel.tbMatriculas" Role="tbMatriculas" Multiplicity="*" />
@@ -2809,6 +3445,66 @@
             </Principal>
             <Dependent Role="tbMatriculas">
               <PropertyRef Name="alu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbHorarioDetalles_empa_Id">
+          <End Type="SATModel.tbEmpleadoAsignaturas" Role="tbEmpleadoAsignaturas" Multiplicity="1" />
+          <End Type="SATModel.tbHorarioDetalles" Role="tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleadoAsignaturas">
+              <PropertyRef Name="empa_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="empa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbHorarioDetalles_hora_Id">
+          <End Type="SATModel.tbHoras" Role="tbHoras" Multiplicity="1" />
+          <End Type="SATModel.tbHorarioDetalles" Role="tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbHoras">
+              <PropertyRef Name="hora_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hora_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbHorarioDetalles_hro_Id">
+          <End Type="SATModel.tbHorarios" Role="tbHorarios" Multiplicity="1" />
+          <End Type="SATModel.tbHorarioDetalles" Role="tbHorarioDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbHorarios">
+              <PropertyRef Name="hro_Id" />
+            </Principal>
+            <Dependent Role="tbHorarioDetalles">
+              <PropertyRef Name="hro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_sec_Id">
+          <End Type="SATModel.tbSecciones" Role="tbSecciones" Multiplicity="1" />
+          <End Type="SATModel.tbHorarios" Role="tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSecciones">
+              <PropertyRef Name="sec_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="sec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbHorarios_sem_Id">
+          <End Type="SATModel.tbSemestres" Role="tbSemestres" Multiplicity="1" />
+          <End Type="SATModel.tbHorarios" Role="tbHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSemestres">
+              <PropertyRef Name="sem_Id" />
+            </Principal>
+            <Dependent Role="tbHorarios">
+              <PropertyRef Name="sem_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2872,14 +3568,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Esc_tbNotas_asig_Id">
-          <End Type="SATModel.tbAsignaturas" Role="tbAsignaturas" Multiplicity="1" />
+        <Association Name="FK_Esc_tbNotas_empa_Id">
+          <End Type="SATModel.tbEmpleadoAsignaturas" Role="tbEmpleadoAsignaturas" Multiplicity="1" />
           <End Type="SATModel.tbNotas" Role="tbNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleadoAsignaturas">
+              <PropertyRef Name="empa_Id" />
+            </Principal>
+            <Dependent Role="tbNotas">
+              <PropertyRef Name="empa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Esc_tbEmpleadoAsignaturas_asig_Id">
+          <End Type="SATModel.tbAsignaturas" Role="tbAsignaturas" Multiplicity="1" />
+          <End Type="SATModel.tbEmpleadoAsignaturas" Role="tbEmpleadoAsignaturas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbAsignaturas">
               <PropertyRef Name="asig_Id" />
             </Principal>
-            <Dependent Role="tbNotas">
+            <Dependent Role="tbEmpleadoAsignaturas">
               <PropertyRef Name="asig_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -2892,18 +3600,6 @@
               <PropertyRef Name="asig_Id" />
             </Principal>
             <Dependent Role="tbCarreraAsignaturas">
-              <PropertyRef Name="asig_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Gral_tbEmpleadoAsignaturas_asig_Id">
-          <End Type="SATModel.tbAsignaturas" Role="tbAsignaturas" Multiplicity="1" />
-          <End Type="SATModel.tbEmpleadoAsignaturas" Role="tbEmpleadoAsignaturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAsignaturas">
-              <PropertyRef Name="asig_Id" />
-            </Principal>
-            <Dependent Role="tbEmpleadoAsignaturas">
               <PropertyRef Name="asig_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -3052,76 +3748,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="UDP_Gral_tbEscuelas_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbSecciones_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Esc_tbAlumnos_Insert_Result">
-          <Property Type="String" Name="MENSAJEERROR" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbEmpleados_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbCargos_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbCargos_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbCarreras_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbCarreras_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbJornadas_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbJornadas_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbDepartamentos_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbMunicipios_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbAsignaturas_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbAsignaturas_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Esc_tbNotaDetalles_Insert_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Esc_tbNotaDetalles_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbEmpleados_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbEscuelas_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbMunicipios_Select_Result">
-          <Property Type="String" Name="mun_Id" Nullable="false" MaxLength="4" />
-          <Property Type="String" Name="mun_Descripcion" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="dep_Id" Nullable="false" MaxLength="2" />
-          <Property Type="Int32" Name="mun_UsuarioCrea" Nullable="false" />
-          <Property Type="DateTime" Name="mun_FechaCrea" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="mun_UsuarioModifica" Nullable="true" />
-          <Property Type="DateTime" Name="mun_FechaModifica" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="UDP_Gral_tbSecciones_Update_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="UDP_Esc_tbAlumnos_Update1_Result">
-          <Property Type="String" Name="MensajeError" Nullable="true" MaxLength="30" />
-        </ComplexType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -3152,29 +3779,8 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SATModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SATModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbNotaDetalles_Update_Result">
-                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Insert" />
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotas_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotas_Update" />
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbAsignaturas_Insert_Result">
-                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbAsignaturas_Update_Result">
-                <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Gral_tbCargos_Insert" FunctionName="SATModel.Store.UDP_Gral_tbCargos_Insert" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbCargos_Insert_Result">
@@ -3277,13 +3883,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Insert" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Insert" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Insert_Result">
-                <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Update" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Update" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbMatriculas_Update_Result">
@@ -3291,16 +3890,39 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Insert1" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Insert" >
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Insert" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbNotaDetalles_Insert_Result">
+              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbMatriculas_Insert_Result">
                 <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbMatriculas_Insert" FunctionName="SATModel.Store.UDP_Esc_tbMatriculas_Insert" >
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbMunicipios_Select" FunctionName="SATModel.Store.UDP_Gral_tbMunicipios_Select">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbMatriculas_Insert_Result">
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbMunicipios_Select_Result">
+                <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
+                <ScalarProperty Name="mun_Descripcion" ColumnName="mun_Descripcion" />
+                <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
+                <ScalarProperty Name="mun_UsuarioCrea" ColumnName="mun_UsuarioCrea" />
+                <ScalarProperty Name="mun_FechaCrea" ColumnName="mun_FechaCrea" />
+                <ScalarProperty Name="mun_UsuarioModifica" ColumnName="mun_UsuarioModifica" />
+                <ScalarProperty Name="mun_FechaModifica" ColumnName="mun_FechaModifica" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Insert" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Insert" />
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbNotaDetalles_Update" FunctionName="SATModel.Store.UDP_Esc_tbNotaDetalles_Update" />
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Insert" />
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Insert" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Insert_Result">
+                <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Update" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Update" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Update_Result">
                 <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -3317,6 +3939,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SATModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbAlumnos">
             <EntityTypeMapping TypeName="SATModel.tbAlumnos">
               <MappingFragment StoreEntitySet="tbAlumnos">
@@ -3324,15 +3957,60 @@
                 <ScalarProperty Name="alu_UsuarioModifica" ColumnName="alu_UsuarioModifica" />
                 <ScalarProperty Name="alu_FechaCrea" ColumnName="alu_FechaCrea" />
                 <ScalarProperty Name="alu_UsuarioCrea" ColumnName="alu_UsuarioCrea" />
+                <ScalarProperty Name="alu_RazonInactivo" ColumnName="alu_RazonInactivo" />
+                <ScalarProperty Name="alu_EsActivo" ColumnName="alu_EsActivo" />
                 <ScalarProperty Name="alu_TelefonoEncargado" ColumnName="alu_TelefonoEncargado" />
                 <ScalarProperty Name="alu_ApellidosEncargado" ColumnName="alu_ApellidosEncargado" />
                 <ScalarProperty Name="alu_NombresEncargado" ColumnName="alu_NombresEncargado" />
+                <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
+                <ScalarProperty Name="alu_direccion" ColumnName="alu_direccion" />
                 <ScalarProperty Name="alu_FechaNacimiento" ColumnName="alu_FechaNacimiento" />
                 <ScalarProperty Name="alu_Sexo" ColumnName="alu_Sexo" />
                 <ScalarProperty Name="alu_Apellidos" ColumnName="alu_Apellidos" />
                 <ScalarProperty Name="alu_Nombres" ColumnName="alu_Nombres" />
                 <ScalarProperty Name="alu_Identidad" ColumnName="alu_Identidad" />
                 <ScalarProperty Name="alu_Id" ColumnName="alu_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbHorarioDetalles">
+            <EntityTypeMapping TypeName="SATModel.tbHorarioDetalles">
+              <MappingFragment StoreEntitySet="tbHorarioDetalles">
+                <ScalarProperty Name="hode_FechaMofica" ColumnName="hode_FechaMofica" />
+                <ScalarProperty Name="hode_UsuarioModifica" ColumnName="hode_UsuarioModifica" />
+                <ScalarProperty Name="hode_FechaCrea" ColumnName="hode_FechaCrea" />
+                <ScalarProperty Name="hode_UsuarioCrea" ColumnName="hode_UsuarioCrea" />
+                <ScalarProperty Name="empa_Id" ColumnName="empa_Id" />
+                <ScalarProperty Name="hora_Id" ColumnName="hora_Id" />
+                <ScalarProperty Name="hro_Id" ColumnName="hro_Id" />
+                <ScalarProperty Name="hode_Id" ColumnName="hode_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbHorarios">
+            <EntityTypeMapping TypeName="SATModel.tbHorarios">
+              <MappingFragment StoreEntitySet="tbHorarios">
+                <ScalarProperty Name="hro_FechaMofica" ColumnName="hro_FechaMofica" />
+                <ScalarProperty Name="hro_UsuarioModifica" ColumnName="hro_UsuarioModifica" />
+                <ScalarProperty Name="hro_FechaCrea" ColumnName="hro_FechaCrea" />
+                <ScalarProperty Name="hro_UsuarioCrea" ColumnName="hro_UsuarioCrea" />
+                <ScalarProperty Name="sem_Id" ColumnName="sem_Id" />
+                <ScalarProperty Name="hro_Anio" ColumnName="hro_Anio" />
+                <ScalarProperty Name="sec_Id" ColumnName="sec_Id" />
+                <ScalarProperty Name="hro_Id" ColumnName="hro_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbHoras">
+            <EntityTypeMapping TypeName="SATModel.tbHoras">
+              <MappingFragment StoreEntitySet="tbHoras">
+                <ScalarProperty Name="hora_FechaModifica" ColumnName="hora_FechaModifica" />
+                <ScalarProperty Name="hora_UsuarioModifica" ColumnName="hora_UsuarioModifica" />
+                <ScalarProperty Name="hora_FechaCrea" ColumnName="hora_FechaCrea" />
+                <ScalarProperty Name="hora_UsuarioCrea" ColumnName="hora_UsuarioCrea" />
+                <ScalarProperty Name="jor_Id" ColumnName="jor_Id" />
+                <ScalarProperty Name="hora_Descricion" ColumnName="hora_Descricion" />
+                <ScalarProperty Name="hora_Id" ColumnName="hora_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3380,8 +4058,20 @@
                 <ScalarProperty Name="not_FechaCrea" ColumnName="not_FechaCrea" />
                 <ScalarProperty Name="not_UsuarioCrea" ColumnName="not_UsuarioCrea" />
                 <ScalarProperty Name="mat_Id" ColumnName="mat_Id" />
-                <ScalarProperty Name="asig_Id" ColumnName="asig_Id" />
+                <ScalarProperty Name="empa_Id" ColumnName="empa_Id" />
                 <ScalarProperty Name="not_Id" ColumnName="not_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSemestres">
+            <EntityTypeMapping TypeName="SATModel.tbSemestres">
+              <MappingFragment StoreEntitySet="tbSemestres">
+                <ScalarProperty Name="sem_FechaModifica" ColumnName="sem_FechaModifica" />
+                <ScalarProperty Name="sem_UsuarioModfica" ColumnName="sem_UsuarioModfica" />
+                <ScalarProperty Name="sem_FechaCrea" ColumnName="sem_FechaCrea" />
+                <ScalarProperty Name="sem_UsuarioCrea" ColumnName="sem_UsuarioCrea" />
+                <ScalarProperty Name="sem_Descripcion" ColumnName="sem_Descripcion" />
+                <ScalarProperty Name="sem_Id" ColumnName="sem_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3566,27 +4256,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="UDP_Gral_tbMunicipios_Select" FunctionName="SATModel.Store.UDP_Gral_tbMunicipios_Select">
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbAsignaturas_Update" FunctionName="SATModel.Store.UDP_Gral_tbAsignaturas_Update" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbMunicipios_Select_Result">
-                <ScalarProperty Name="mun_Id" ColumnName="mun_Id" />
-                <ScalarProperty Name="mun_Descripcion" ColumnName="mun_Descripcion" />
-                <ScalarProperty Name="dep_Id" ColumnName="dep_Id" />
-                <ScalarProperty Name="mun_UsuarioCrea" ColumnName="mun_UsuarioCrea" />
-                <ScalarProperty Name="mun_FechaCrea" ColumnName="mun_FechaCrea" />
-                <ScalarProperty Name="mun_UsuarioModifica" ColumnName="mun_UsuarioModifica" />
-                <ScalarProperty Name="mun_FechaModifica" ColumnName="mun_FechaModifica" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UDP_Esc_tbAlumnos_Update1" FunctionName="SATModel.Store.UDP_Esc_tbAlumnos_Update" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SATModel.UDP_Esc_tbAlumnos_Update1_Result">
+              <ComplexTypeMapping TypeName="SATModel.UDP_Gral_tbAsignaturas_Update_Result">
                 <ScalarProperty Name="MensajeError" ColumnName="MensajeError" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="UDP_Gral_tbEmpleadoAsignaturas_Insert" FunctionName="SATModel.Store.UDP_Gral_tbEmpleadoAsignaturas_Insert" />
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

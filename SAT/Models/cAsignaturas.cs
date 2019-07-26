@@ -22,6 +22,8 @@ namespace SAT.Models
         [Display(Name = "Semetre de Asignatura")]
         [Required(AllowEmptyStrings = true, ErrorMessage = "El campo \"{0}\" es requerido")]
         public Nullable<bool> asig_Semestral { get; set; }
+        [Display(Name = "Id Cargo")]
+        public int car_Id { get; set; }
         [Display(Name = "Usuario Crea")]
         public int asig_UsuarioCrea { get; set; }
         [Display(Name = "Fecha Creación")]
