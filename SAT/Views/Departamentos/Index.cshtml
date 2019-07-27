@@ -45,8 +45,8 @@
                         @Html.DisplayFor(modelItem => item.dep_FechaCrea)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning btn-xs" })
-                        @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-info btn-xs" })
+                        @Html.ActionLink("Editar", "Edit", new {  id=item.dep_Id }, new { @class = "btn btn-warning btn-xs" })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.dep_Id }, new { @class = "btn btn-info btn-xs" })
                     </td>
                 </tr>
                 <tr style="display:none" id="fila-@item.dep_Id">

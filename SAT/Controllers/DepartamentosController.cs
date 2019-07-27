@@ -60,29 +60,39 @@ namespace SAT.Controllers
                 try
                 {
                     IEnumerable<object> listdepartamentos = null;
+                    string Mensaje = "";
                     string MensajeError = "";
                     listdepartamentos = db.UDP_Gral_tbDepartamentos_Insert(tbDepartamentos.dep_Id,
                                                                             tbDepartamentos.dep_Descripcion,
                                                                          tbDepartamentos.dep_UsuarioCrea,
                                                                          tbDepartamentos.dep_FechaCrea);
-                    foreach (UDP_Gral_tbDepartamentos_Insert_Result res in listdepartamentos)
-                        MensajeError = res.MensajeError;
+                    if (listdepartamentos != null)
+                    {
+                        foreach (UDP_Gral_tbDepartamentos_Insert_Result res in listdepartamentos)
+                            MensajeError = res.MensajeError;
 
-                    if (MensajeError.StartsWith("-1"))
-                    {
-                        ModelState.AddModelError("", "1.no se pudo insertar el registro");
-                        return View(tbDepartamentos);
-                    }
-                    else
-                    {
-                        foreach (tbMunicipios Mun in Sesion)
+                        if (MensajeError.StartsWith("-1"))
                         {
-                            db.UDP_Gral_tbMunicipios_Insert(Mun.dep_Id,
-                                                               Mun.mun_Descripcion,
-                                                               2,
-                                                               DateTime.Now,
-                                                               tbDepartamentos.dep_Id
-                                                               );
+                            ModelState.AddModelError("", "1.no se pudo insertar el registro");
+                            return View(tbDepartamentos);
+                        }
+                        else
+                        {
+                            foreach (tbMunicipios Mun in Sesion)
+                            {
+                                var lol =
+                                db.UDP_Gral_tbMunicipios_Insert(Mun.mun_Id,
+                                                                   Mun.mun_Descripcion,
+                                                                   2,
+                                                                   DateTime.Now,
+                                                                   tbDepartamentos.dep_Id
+                                                                   );
+                                foreach (UDP_Gral_tbMunicipios_Insert_Result item in lol)
+                                {
+                                    Mensaje = item.MensajeError;
+                                }
+
+                            }
                         }
                     }
                     return RedirectToAction("Index");
@@ -120,16 +130,39 @@ namespace SAT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "dep_Id,dep_Descripcion,dep_UsuarioCrea,dep_FechaCrea,dep_UsuarioModifica,dep_FechaModifica")] tbDepartamentos tbDepartamentos)
         {
-            //var Sesion = (List<tbMunicipios>)Session["PollitoMunicipio"];
-            //if (ModelState.IsValid)
-            //{
-            //    db.tbDepartamentos.
-            //}
-
+            tbDepartamentos.dep_FechaModifica = DateTime.Now;
+            tbDepartamentos.dep_UsuarioModifica = 2;
             if (ModelState.IsValid)
             {
-                db.Entry(tbDepartamentos).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    IEnumerable<object> listdepartamentos = null;
+                    // string Mensaje = "";
+                    string MensajeError = "";
+
+                    listdepartamentos = db.UDP_Gral_tbDepartamentos_Update(
+                                                                            tbDepartamentos.dep_Id,
+                                                                            tbDepartamentos.dep_Descripcion,
+                                                                            tbDepartamentos.dep_UsuarioCrea,
+                                                                            tbDepartamentos.dep_FechaCrea,
+                                                                            tbDepartamentos.dep_UsuarioModifica,
+                                                                            tbDepartamentos.dep_FechaModifica
+                                                                            );
+                    foreach (UDP_Gral_tbDepartamentos_Update_Result item in listdepartamentos)
+                    {
+                        MensajeError = item.MensajeError;
+                    }
+                    if (MensajeError.StartsWith("-1"))
+                    {
+                        ModelState.AddModelError("", "1.no se pudo insertar el registro");
+                        return View(tbDepartamentos);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ex.ToString();
+                }
                 return RedirectToAction("Index");
             }
             return View(tbDepartamentos);
